@@ -11,6 +11,7 @@ has its figures. The server calls no model and no network: the data stays on
 the machine that runs it.
 """
 
+from collections.abc import Mapping
 from typing import Literal
 
 from mcp.server.mcpserver import MCPServer
@@ -146,7 +147,7 @@ server = MCPServer(
 )
 
 
-def _data(raw: DataInput | None) -> Data:
+def _data(raw: Mapping[str, object] | None) -> Data:
     try:
         return parse_data(dict(raw or {}))
     except DataError as exc:
@@ -174,16 +175,11 @@ def _report(result: Result) -> ReportOutput:
     }
 
 
-@server.tool(annotations=_READ_ONLY)
-def prepare_report(brief: str, data: DataInput, locale: Literal["es", "en"] = "en") -> PreparedOutput:
-    """Call first when you must write a text from the user's figures.
+# What each tool does, shared with the HTTP service (http_server.py): the data
+# comes as any JSON object, and the receipt can name who wrote the text.
 
-    Returns the placeholder for each figure and verdict, the shape Python will
-    write each one in («N units»), which way each change went, and the rules.
-    Write the draft with those placeholders, never typing a figure, then send
-    it to compose_report with the same data. A change between two facts goes
-    in as a fact with compute, from and to: the server computes it, not you.
-    """
+
+def run_prepare(brief: str, data: Mapping[str, object], locale: str) -> PreparedOutput:
     parsed = _data(data)
     try:
         _, prompt = build_prompt(
@@ -202,15 +198,7 @@ def prepare_report(brief: str, data: DataInput, locale: Literal["es", "en"] = "e
     return {"instructions": prompt, "placeholders": placeholders}
 
 
-@server.tool(annotations=_READ_ONLY)
-def compose_report(draft: str, data: DataInput, locale: Literal["es", "en"] = "en") -> ReportOutput:
-    """Fill a draft written with placeholders and keep only the sentences that pass.
-
-    Python writes every figure. A sentence that types a figure, contradicts a
-    change, names someone no source names, forecasts, claims certainty, states
-    a cause or carries no data is dropped, or replaced by the user's fallback.
-    Give the user `text`, and say what `sentences` reports as dropped.
-    """
+def run_compose(draft: str, data: Mapping[str, object], locale: str, *, writer: str) -> ReportOutput:
     parsed = _data(data)
     try:
         result = compose(
@@ -221,11 +209,63 @@ def compose_report(draft: str, data: DataInput, locale: Literal["es", "en"] = "e
             fallbacks=parsed.fallbacks,
             policy=parsed.policy,
             locale=locale,
-            writer="mcp client",
+            writer=writer,
         )
     except (ValueError, TypeError) as exc:
         raise ToolError(str(exc)) from exc
     return _report(result)
+
+
+def run_verify(text: str, data: Mapping[str, object], locale: str, *, writer: str = "") -> ReportOutput:
+    parsed = _data(data)
+    try:
+        result = verify(
+            text,
+            parsed.facts,
+            parsed.labels,
+            parsed.sources,
+            fallbacks=parsed.fallbacks,
+            policy=parsed.policy,
+            locale=locale,
+            writer=writer,
+        )
+    except (ValueError, TypeError) as exc:
+        raise ToolError(str(exc)) from exc
+    return _report(result)
+
+
+def run_check_receipt(receipt: Mapping[str, object], data: Mapping[str, object] | None) -> ReceiptCheckOutput:
+    check = verify_receipt(receipt)
+    if check.status is not ReceiptStatus.VERIFIED:
+        return {"digest": check.status.value, "replay": "skipped", "reason": check.reason}
+    again = replay(receipt, _data(data).sources if data else ())
+    reason = again.reason if again.status is not ReplayStatus.REPRODUCED else ""
+    return {"digest": check.status.value, "replay": again.status.value, "reason": reason}
+
+
+@server.tool(annotations=_READ_ONLY)
+def prepare_report(brief: str, data: DataInput, locale: Literal["es", "en"] = "en") -> PreparedOutput:
+    """Call first when you must write a text from the user's figures.
+
+    Returns the placeholder for each figure and verdict, the shape Python will
+    write each one in («N units»), which way each change went, and the rules.
+    Write the draft with those placeholders, never typing a figure, then send
+    it to compose_report with the same data. A change between two facts goes
+    in as a fact with compute, from and to: the server computes it, not you.
+    """
+    return run_prepare(brief, data, locale)
+
+
+@server.tool(annotations=_READ_ONLY)
+def compose_report(draft: str, data: DataInput, locale: Literal["es", "en"] = "en") -> ReportOutput:
+    """Fill a draft written with placeholders and keep only the sentences that pass.
+
+    Python writes every figure. A sentence that types a figure, contradicts a
+    change, names someone no source names, forecasts, claims certainty, states
+    a cause or carries no data is dropped, or replaced by the user's fallback.
+    Give the user `text`, and say what `sentences` reports as dropped.
+    """
+    return run_compose(draft, data, locale, writer="mcp client")
 
 
 @server.tool(annotations=_READ_ONLY)
@@ -239,20 +279,7 @@ def verify_text(
     sentences with no data are checked as in compose_report. locale decides
     how «1.250» reads: "es" (1250), "en" (1.25) or "auto" (either).
     """
-    parsed = _data(data)
-    try:
-        result = verify(
-            text,
-            parsed.facts,
-            parsed.labels,
-            parsed.sources,
-            fallbacks=parsed.fallbacks,
-            policy=parsed.policy,
-            locale=locale,
-        )
-    except (ValueError, TypeError) as exc:
-        raise ToolError(str(exc)) from exc
-    return _report(result)
+    return run_verify(text, data, locale)
 
 
 @server.tool(annotations=_READ_ONLY)
@@ -263,12 +290,7 @@ def check_receipt(receipt: dict[str, object], data: DataInput | None = None) -> 
     Sources are recorded by hash only: pass the same data to replay a decision
     that used sources.
     """
-    check = verify_receipt(receipt)
-    if check.status is not ReceiptStatus.VERIFIED:
-        return {"digest": check.status.value, "replay": "skipped", "reason": check.reason}
-    again = replay(receipt, _data(data).sources if data else ())
-    reason = again.reason if again.status is not ReplayStatus.REPRODUCED else ""
-    return {"digest": check.status.value, "replay": again.status.value, "reason": reason}
+    return run_check_receipt(receipt, data)
 
 
 def main() -> None:

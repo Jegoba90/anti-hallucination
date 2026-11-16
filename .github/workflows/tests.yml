@@ -100,3 +100,49 @@ jobs:
 
           asyncio.run(asyncio.wait_for(main(), 60))
           PY
+
+  # The image a company runs, built from this commit and called the way a
+  # client calls it: no start without a token, the checks with one.
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Build the image
+        run: docker build -t anti-hallucination .
+
+      - name: Refuse to start without a token
+        run: |
+          set +e
+          docker run --rm anti-hallucination
+          status=$?
+          set -e
+          test "$status" -eq 2
+
+      - name: Serve with a token and call it
+        env:
+          TOKEN: ci-token-0123456789abcdef
+        run: |
+          docker run -d --name service -p 8000:8000 -e ANTIHALLUCINATION_TOKEN="$TOKEN" anti-hallucination
+          for attempt in $(seq 30); do curl -sf localhost:8000/health && break; sleep 1; done
+          test "$(curl -s -o /dev/null -w '%{http_code}' -X POST localhost:8000/v1/verify)" = 401
+          python3 - <<'PY'
+          import json, os, urllib.request
+
+          data = json.load(open("examples/saas/data.json"))
+          text = open("examples/saas/written_by_an_ai.txt").read()
+          request = urllib.request.Request(
+              "http://127.0.0.1:8000/v1/verify",
+              data=json.dumps({"text": text, "data": data}).encode(),
+              headers={"Content-Type": "application/json", "Authorization": "Bearer " + os.environ["TOKEN"]},
+          )
+          report = json.load(urllib.request.urlopen(request, timeout=30))
+          print(report["text"])
+          spans = {finding["span"] for sentence in report["sentences"] for finding in sentence["findings"]}
+          assert {"8%", "49,000"} <= spans, spans
+          assert report["text"] == "MRR was 48,200 USD (+6.1%). Churn fell to 2.3%. 37 new customers joined."
+          PY
+
+      - name: Service logs
+        if: always()
+        run: docker logs service || true

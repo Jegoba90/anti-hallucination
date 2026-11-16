@@ -4,8 +4,10 @@
     compose  DRAFT --data DATA   fill a draft with placeholders and check it
     write    --data DATA --brief "..." [--writer claude]   have a model draft it
     receipt  RECEIPT [--data DATA]   check a receipt and run its decision again
+    serve    [--host H] [--port P]   serve the checks over HTTP: a REST API and MCP
 
-TEXT and DRAFT are file paths, or - to read standard input.
+TEXT and DRAFT are file paths, or - to read standard input. serve reads its
+token from ANTIHALLUCINATION_TOKEN and needs the [server] extra.
 
 Exit codes: 0 every sentence passed, 1 some sentence failed (the text printed
 holds the ones that passed and your fallbacks), 2 the input could not be read,
@@ -14,6 +16,7 @@ holds the ones that passed and your fallbacks), 2 the input could not be read,
 
 import argparse
 import json
+import os
 import sys
 from collections.abc import Sequence
 from pathlib import Path
@@ -26,6 +29,9 @@ from .writing import Writer, Written, write
 
 _MARK = {"kept": "✓ kept    ", "replaced": "↺ replaced", "dropped": "✗ dropped "}
 WRITERS = ("claude", "openai", "groq", "ollama", "compatible")
+TOKEN_VARIABLE = "ANTIHALLUCINATION_TOKEN"
+MAX_BODY_VARIABLE = "ANTIHALLUCINATION_MAX_BODY"
+MIN_TOKEN_LENGTH = 16
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -60,6 +66,21 @@ def _parser() -> argparse.ArgumentParser:
     receipt = commands.add_parser("receipt", help="check a receipt and run its decision again")
     receipt.add_argument("file", help="the receipt's JSON file")
     receipt.add_argument("--data", help="the data file, to pass the sources it names")
+
+    service = commands.add_parser(
+        "serve",
+        help="serve the checks over HTTP: a REST API and MCP",
+        description=f"Serve the checks over HTTP. The token comes from {TOKEN_VARIABLE}: with it, "
+        "every request but GET /health needs 'Authorization: Bearer <token>'.",
+    )
+    service.add_argument("--host", default="127.0.0.1", help="where to listen (default 127.0.0.1: this machine only)")
+    service.add_argument("--port", type=int, default=8000, help="the port (default 8000)")
+    service.add_argument(
+        "--max-body", type=int, help=f"the largest request accepted, in bytes (default 262144, or {MAX_BODY_VARIABLE})"
+    )
+    service.add_argument(
+        "--no-auth", action="store_true", help="serve without a token beyond this machine: anyone who reaches it can use it"
+    )
     return parser
 
 
@@ -146,6 +167,8 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     if args.command == "receipt":
         return _receipt(args)
+    if args.command == "serve":
+        return _serve(args)
     try:
         data = load_data(args.data)
     except DataError as exc:
@@ -181,6 +204,40 @@ def main(argv: Sequence[str] | None = None) -> int:
     _show(result, as_json=args.json, written=written)
     _save(result, args.receipt)
     return 0 if result.ok else 1
+
+
+def _serve(args: argparse.Namespace) -> int:
+    """Run the HTTP service; refuse to open it beyond this machine without a token."""
+    try:
+        from .http_server import DEFAULT_MAX_BODY, LOCAL_HOSTS, serve
+    except ImportError:
+        print('Error: the service needs the server extra: pip install "antihallucination[server]"', file=sys.stderr)
+        return 2
+    token = os.environ.get(TOKEN_VARIABLE, "").strip() or None
+    if token is not None and len(token) < MIN_TOKEN_LENGTH:
+        print(f"Error: {TOKEN_VARIABLE} must be at least {MIN_TOKEN_LENGTH} characters long", file=sys.stderr)
+        return 2
+    if token is None and args.host not in LOCAL_HOSTS and not args.no_auth:
+        print(
+            f"Error: set {TOKEN_VARIABLE} to serve on {args.host}: without it, anyone who reaches the port "
+            "can use the service. Pass --no-auth to serve without a token anyway.",
+            file=sys.stderr,
+        )
+        return 2
+    max_body = args.max_body
+    if max_body is None:
+        configured = os.environ.get(MAX_BODY_VARIABLE, "").strip()
+        if configured and not configured.isdigit():
+            print(f"Error: {MAX_BODY_VARIABLE} must be a whole number of bytes", file=sys.stderr)
+            return 2
+        max_body = int(configured) if configured else DEFAULT_MAX_BODY
+    if max_body < 1:
+        print("Error: the largest request must be at least 1 byte", file=sys.stderr)
+        return 2
+    guard = "every request but /health needs the token" if token else "no token: open to whoever reaches it"
+    print(f"anti-hallucination on http://{args.host}:{args.port}: REST at /v1, MCP at /mcp; {guard}", file=sys.stderr)
+    serve(host=args.host, port=args.port, token=token, max_body=max_body)
+    return 0
 
 
 def _receipt(args: argparse.Namespace) -> int:

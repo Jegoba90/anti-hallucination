@@ -32,6 +32,10 @@ dependencies = ["httpx>=0.27"]
 claude = ["anthropic>=2.8.0"]
 # The MCP server, for Claude Desktop, Claude Code or any MCP client.
 mcp = ["mcp>=2.3.0", "typing_extensions>=4.12"]
+# The HTTP service (`antihallucination serve`): a REST API and MCP over HTTP.
+# mcp brings starlette and uvicorn today; named here so the service does not
+# depend on that.
+server = ["mcp>=2.3.0", "typing_extensions>=4.12", "starlette>=0.40", "uvicorn>=0.30"]
 dev = [
     "pytest>=8.0",
     "mypy>=1.10",
@@ -39,6 +43,8 @@ dev = [
     "ruff==0.14.9",
     "anthropic>=2.8.0",
     "mcp>=2.3.0",
+    "starlette>=0.40",
+    "uvicorn>=0.30",
 ]
 
 [project.scripts]

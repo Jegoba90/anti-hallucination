@@ -23,6 +23,7 @@
   <a href="#quick-start">Quick start</a> &nbsp;·&nbsp;
   <a href="#examples">Examples</a> &nbsp;·&nbsp;
   <a href="#use-with-mcp">MCP setup</a> &nbsp;·&nbsp;
+  <a href="#run-it-as-a-service">Service</a> &nbsp;·&nbsp;
   <a href="#what-it-checks">Checks</a> &nbsp;·&nbsp;
   <a href="https://github.com/Jegoba90/anti-hallucination/blob/main/CONTRIBUTING.md">Contribute</a>
 </p>
@@ -217,6 +218,56 @@ assistant is the arithmetic: a change between two figures goes in as
 `{"compute": "percent_change", "from": "...", "to": "..."}`, and the server
 computes it. Each receipt shows which figures were computed and which were
 supplied. Client and model privacy policies still apply.
+
+## Run it as a service
+
+For teams that would rather call an endpoint than add Python to their agent.
+One container serves the same checks two ways: a REST API for agents in any
+language, and MCP over HTTP for Claude Code and other MCP clients. It calls no
+model, keeps nothing between requests, and runs inside your own network.
+
+```bash
+docker run -d -p 8000:8000 -e ANTIHALLUCINATION_TOKEN=<a long random string> \
+  ghcr.io/jegoba90/anti-hallucination
+```
+
+The service ships with v0.3.0, and from then on each release publishes the
+image. `docker build -t anti-hallucination .` builds it from this repository.
+Without Docker, run `pip install "antihallucination[server]"` and then
+`antihallucination serve`.
+
+| Route | Body | Does |
+|---|---|---|
+| `POST /v1/compose` | `draft`, `data`, `locale`, `writer` | Fill a draft with placeholders and keep what passes |
+| `POST /v1/verify` | `text`, `data`, `locale`, `writer` | Check a text that already has its figures |
+| `POST /v1/prepare` | `brief`, `data`, `locale` | The placeholders and rules to hand a writer |
+| `POST /v1/receipt` | `receipt`, `data` | Verify a receipt and replay its decision |
+| `/mcp` | | The same four tools over MCP |
+| `GET /health` | | Status and version |
+
+`data` is the JSON of the command line's data file, and its `locale` is the
+default; `writer` names who wrote the text, for the receipt. Responses match
+the MCP tools' output.
+
+```bash
+curl -s localhost:8000/v1/verify \
+  -H "Authorization: Bearer $ANTIHALLUCINATION_TOKEN" -H "Content-Type: application/json" \
+  -d '{"text": "Sales grew 5% to 1,300 units.", "locale": "en", "data": {"facts": [
+        {"name": "sales", "value": 1250, "unit": "units", "subject": "sales"},
+        {"name": "sales_change", "value": -3.2, "unit": "%", "change": true, "subject": "sales"}]}}'
+```
+
+To connect Claude Code:
+
+```bash
+claude mcp add --transport http anti-hallucination http://your-host:8000/mcp \
+  --header "Authorization: Bearer <token>"
+```
+
+Every route except `/health` needs the token. Without
+`ANTIHALLUCINATION_TOKEN` the service only starts on `127.0.0.1`, so the
+container will not start without one. Requests over 256 KB are refused; set
+`ANTIHALLUCINATION_MAX_BODY` or `--max-body` to change the limit.
 
 ## Command line
 
