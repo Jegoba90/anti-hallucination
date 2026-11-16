@@ -66,15 +66,23 @@ def build_prompt(
     sources: list[Source],
     policy: Policy,
     locale: str,
+    *,
+    values_hidden: bool = True,
 ) -> tuple[str, str]:
-    """The system prompt and the user prompt for one draft."""
+    """The system prompt and the user prompt for one draft.
+
+    values_hidden is False when the writer has seen the figures anyway, as a
+    chat assistant has: the prompt then forbids typing them instead of saying
+    they are not shown.
+    """
     if locale not in _LANGUAGES:
         raise ValueError('the writer writes in "es" or "en"')
     lines = [f"Write a text in {_LANGUAGES[locale]} for this brief:", "<brief>", brief.strip(), "</brief>", ""]
     if facts or labels:
+        opening = "You are not shown the figures." if values_hidden else "Do not type any figure, even one you know."
         lines.append(
-            "You are not shown the figures. Put each one in the text through its placeholder, exactly "
-            "as listed below; Python replaces it with the figure and its unit, so never repeat the unit."
+            f"{opening} Put each one in the text through its placeholder, exactly as listed below; "
+            "Python replaces it with the figure and its unit, so never repeat the unit."
         )
         lines.append("<placeholders>")
         lines.extend(_placeholder_line(fact, locale) for fact in facts)

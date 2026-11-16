@@ -123,7 +123,9 @@ def _text(item: Mapping[str, object], key: str, where: str, *, required: bool = 
 
 
 def _number(value: object, where: str) -> Number:
-    if isinstance(value, bool) or not isinstance(value, (int, Decimal)):
+    # A file read here gives Decimal; data passed as an object (the MCP server)
+    # gives int or float. A float keeps its shortest form: -3.2 stays -3.2.
+    if isinstance(value, bool) or not isinstance(value, (int, float, Decimal)):
         raise DataError(f"{where} must be a number")
     return value
 
@@ -171,7 +173,7 @@ def _label(item: Mapping[str, object], where: str, facts: Mapping[str, Fact]) ->
         raise DataError(f"{where}.from names no fact: {source!r}")
     thresholds = item.get("thresholds")
     if not isinstance(thresholds, list) or not all(
-        isinstance(pair, list) and len(pair) == 2 and isinstance(pair[1], str) for pair in thresholds
+        isinstance(pair, (list, tuple)) and len(pair) == 2 and isinstance(pair[1], str) for pair in thresholds
     ):
         raise DataError(f"{where}.thresholds must be a list of [bound, text] pairs")
     pairs = [(_number(pair[0], f"{where}.thresholds"), str(pair[1])) for pair in thresholds]
