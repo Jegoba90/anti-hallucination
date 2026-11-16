@@ -1,0 +1,22 @@
+{
+  "locale": "en",
+  "facts": [
+    {"name": "open_tickets", "value": 14, "label": "tickets still open", "subject": "tickets"}
+  ],
+  "sources": [
+    {
+      "id": "t1",
+      "name": "Ticket 4821",
+      "title": "Checkout fails for EU cards",
+      "text": "Since Monday, 23 customers in Germany and France report that card payments fail at checkout with error 402. The payments team rolled back release 3.8.1 on Wednesday and the failures stopped.",
+      "fallback": "Ticket 4821: \"Checkout fails for EU cards\" [t1]."
+    },
+    {
+      "id": "t2",
+      "name": "Ticket 4830",
+      "title": "Invoices show the wrong VAT",
+      "text": "Two business customers in Spain received invoices with 21% VAT instead of the reverse charge. Finance is reissuing both invoices.",
+      "fallback": "Ticket 4830: \"Invoices show the wrong VAT\" [t2]."
+    }
+  ]
+}

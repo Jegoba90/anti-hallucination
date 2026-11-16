@@ -1,0 +1,1 @@
+En el {periodo}, las ventas cayeron {variacion_ventas:abs} hasta {ventas}, una {tendencia_ventas}. Se sumaron {clientes_nuevos} y el ticket medio fue de {ticket_medio}. Sin duda, el próximo trimestre será mejor.

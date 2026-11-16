@@ -1,0 +1,38 @@
+{
+  "recorded": "2026-11-16",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "data": "examples/sales/data.json",
+  "brief": "Resumen trimestral para el directorio, en tres oraciones.",
+  "note": "Drafts a real model returned to write(), sentence for sentence. Run 1 was asked before the anchoring rule existed; runs 2 to 4 after it. The expected actions and text are those the current rules give.",
+  "runs": [
+    {
+      "run": 1,
+      "prompt": "before the anchoring rule",
+      "draft": "En el {periodo}, se vendieron {ventas} y se registraron {clientes_nuevos} con un ticket medio de {ticket_medio}. La {tendencia_ventas} se reflejó en una caída de {variacion_ventas:abs} respecto al trimestre anterior. El desempeño general se mantiene dentro de los parámetros esperados.",
+      "actions": ["kept", "kept", "dropped"],
+      "text": "En el tercer trimestre de 2026, se vendieron 1.250 unidades y se registraron 48 clientes con un ticket medio de 86,40 USD. La caída leve se reflejó en una caída de 3,2 % respecto al trimestre anterior."
+    },
+    {
+      "run": 2,
+      "prompt": "with the anchoring rule",
+      "draft": "En el {periodo} las ventas fueron {ventas} y cayó {variacion_ventas:abs} respecto al trimestre anterior. Se registraron {clientes_nuevos} y el ticket medio se situó en {ticket_medio}. La tendencia de ventas se describió como {tendencia_ventas}.",
+      "actions": ["kept", "kept", "kept"],
+      "text": "En el tercer trimestre de 2026 las ventas fueron 1.250 unidades y cayó 3,2 % respecto al trimestre anterior. Se registraron 48 clientes y el ticket medio se situó en 86,40 USD. La tendencia de ventas se describió como caída leve."
+    },
+    {
+      "run": 3,
+      "prompt": "with the anchoring rule",
+      "draft": "En el {periodo} se registraron {ventas}. Las ventas mostraron una {tendencia_ventas} con una caída de {variacion_ventas:abs}. Se incorporaron {clientes_nuevos} y el ticket medio se situó en {ticket_medio}.",
+      "actions": ["kept", "kept", "kept"],
+      "text": "En el tercer trimestre de 2026 se registraron 1.250 unidades. Las ventas mostraron una caída leve con una caída de 3,2 %. Se incorporaron 48 clientes y el ticket medio se situó en 86,40 USD."
+    },
+    {
+      "run": 4,
+      "prompt": "with the anchoring rule, a verdict may carry the minus",
+      "draft": "En el {periodo} se registraron {ventas}. La {tendencia_ventas} se refleja en una caída de {variacion_ventas:abs} respecto al trimestre anterior. Se incorporaron {clientes_nuevos} y el ticket medio alcanzó {ticket_medio}.",
+      "actions": ["kept", "kept", "kept"],
+      "text": "En el tercer trimestre de 2026 se registraron 1.250 unidades. La caída leve se refleja en una caída de 3,2 % respecto al trimestre anterior. Se incorporaron 48 clientes y el ticket medio alcanzó 86,40 USD."
+    }
+  ]
+}

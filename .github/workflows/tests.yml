@@ -1,0 +1,82 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install with the development extras
+        run: pip install -e ".[dev]"
+
+      # No network and no API key: every test runs on fixtures and stand-ins.
+      - name: Run tests
+        run: pytest tests/ -v
+
+      - name: Check types
+        run: mypy .
+
+      - name: Lint
+        run: ruff check .
+
+  # Only what `pip install` brings. The Anthropic SDK is an extra, so the
+  # Claude writer's tests skip here and every other test must pass without it.
+  minimal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Install the package alone
+        run: pip install . pytest
+
+      - name: Run tests
+        run: pytest tests/ -q
+
+  # The wheel a user installs, run from outside the source tree: a module left
+  # out of the package or a missing command fails here and not on a user.
+  wheel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Build the wheel
+        run: pip wheel . --no-deps -w dist
+
+      - name: Install it in a clean environment
+        run: |
+          python -m venv /tmp/venv
+          /tmp/venv/bin/pip install dist/*.whl
+
+      - name: Run the command line from outside the repository
+        working-directory: /tmp
+        run: |
+          /tmp/venv/bin/python -c "import antihallucination; print(antihallucination.__version__, antihallucination.__file__)"
+          set +e
+          /tmp/venv/bin/antihallucination verify "$GITHUB_WORKSPACE/examples/saas/written_by_an_ai.txt" \
+            --data "$GITHUB_WORKSPACE/examples/saas/data.json"
+          status=$?
+          set -e
+          # 1: the example's invented figures were caught, as it is meant to show.
+          test "$status" -eq 1

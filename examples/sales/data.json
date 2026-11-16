@@ -1,0 +1,20 @@
+{
+  "locale": "es",
+  "facts": [
+    {"name": "ventas", "value": 1250, "unit": "unidades", "label": "unidades vendidas", "subject": "ventas"},
+    {"name": "variacion_ventas", "value": -3.2, "unit": "%", "decimals": 1, "change": true,
+     "subject": "ventas", "label": "variación contra el trimestre anterior"},
+    {"name": "clientes_nuevos", "value": 48, "unit": "clientes", "label": "clientes nuevos", "subject": "clientes"},
+    {"name": "ticket_medio", "value": 86.40, "unit": "USD", "decimals": 2, "label": "ticket medio", "subject": "ticket"}
+  ],
+  "labels": [
+    {"name": "periodo", "text": "tercer trimestre de 2026"},
+    {"name": "tendencia_ventas", "from": "variacion_ventas",
+     "thresholds": [[-5, "caída fuerte"], [-1, "caída leve"], [1, "estabilidad"], [5, "subida leve"]],
+     "otherwise": "subida fuerte"}
+  ],
+  "fallbacks": {
+    "ventas": "Las ventas fueron {ventas} ({variacion_ventas}).",
+    "clientes": "Se sumaron {clientes_nuevos} nuevos."
+  }
+}
