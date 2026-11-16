@@ -27,21 +27,29 @@ from .prompt import build_prompt
 from .receipt import ReceiptStatus, verify_receipt
 
 
-class FactInput(TypedDict):
-    """A figure the user's data holds. `value` in base units: 4200000, not 4.2 "millions"."""
+# "from" is a Python keyword, hence the functional form, here and in LabelInput.
+FactInput = TypedDict(
+    "FactInput",
+    {
+        "name": str,
+        "value": NotRequired[int | float],
+        "unit": NotRequired[str],
+        "decimals": NotRequired[int],
+        "label": NotRequired[str],
+        "subject": NotRequired[str | list[str]],
+        "change": NotRequired[bool],
+        "signed": NotRequired[bool],
+        "compact": NotRequired[bool],
+        "compute": NotRequired[Literal["percent_change", "difference"]],
+        "from": NotRequired[str],
+        "to": NotRequired[str],
+    },
+)
+FactInput.__doc__ = (
+    "A figure the user's data holds, with `value` in base units: 4200000, not 4.2 \"millions\". "
+    "Or a change the server computes: `compute`, `from` and `to` (two fact names), and no value."
+)
 
-    name: str
-    value: int | float
-    unit: NotRequired[str]
-    decimals: NotRequired[int]
-    label: NotRequired[str]
-    subject: NotRequired[str | list[str]]
-    change: NotRequired[bool]
-    signed: NotRequired[bool]
-    compact: NotRequired[bool]
-
-
-# "from" is a Python keyword, hence the functional form.
 LabelInput = TypedDict(
     "LabelInput",
     {
@@ -110,12 +118,17 @@ INSTRUCTIONS = """\
 Use these tools whenever you write a text that states figures from data the user gave you, \
 or check a text that does.
 
-To write: put each figure in `facts` (name, value in base units, unit; for a variation, \
-`change: true` and the `subject` it measures), each verdict the user's rules decided in \
-`labels`, and any document to summarize in `sources`. Call prepare_report for the placeholders \
-and the rules, write your draft with placeholders instead of figures, then call compose_report \
-and give the user its `text`. Tell the user which sentences were dropped or replaced and why: \
-the `sentences` field says it.
+To write: put each figure the user gave in `facts` (name, value in base units, unit, and the \
+`subject` it measures), each verdict the user's rules decided in `labels`, and any document to \
+summarize in `sources`. Call prepare_report for the placeholders and the rules, write your draft \
+with placeholders instead of figures, then call compose_report and give the user its `text`. \
+Tell the user which sentences were dropped or replaced and why: the `sentences` field says it.
+
+Never compute a figure yourself. For a change between two of the user's figures (a rise, a \
+fall, a gap), add a fact with `compute` ("percent_change" or "difference"), `from` and `to` (the \
+names of the two facts) and no value: the server computes it, and the receipt records it as \
+computed. Give a variation as `value` with `change: true` only when the user's data states that \
+variation itself.
 
 To check a text that already has its figures, call verify_text with the same data.
 
@@ -168,7 +181,8 @@ def prepare_report(brief: str, data: DataInput, locale: Literal["es", "en"] = "e
     Returns the placeholder for each figure and verdict, the shape Python will
     write each one in («N units»), which way each change went, and the rules.
     Write the draft with those placeholders, never typing a figure, then send
-    it to compose_report with the same data.
+    it to compose_report with the same data. A change between two facts goes
+    in as a fact with compute, from and to: the server computes it, not you.
     """
     parsed = _data(data)
     try:

@@ -19,7 +19,7 @@ from dataclasses import dataclass, replace
 from .checks import Policy
 from .core import Result, compose
 from .errors import WriterError
-from .facts import Fact, Label, Source
+from .facts import Fact, Label, Source, check_computed
 from .prompt import build_prompt, feedback
 
 Writer = Callable[[str, str], str]
@@ -84,6 +84,8 @@ def write(
     """
     if retries < 0:
         raise ValueError("retries cannot be negative")
+    # A computed fact that does not hold its value fails now, before a model is paid for.
+    check_computed({fact.name: fact for fact in facts})
     base = policy or Policy()
     allowed = replace(base, known_names=tuple(dict.fromkeys([*base.known_names, *_names_in(brief)])))
     system, prompt = build_prompt(brief, list(facts), list(labels), list(sources), allowed, locale)

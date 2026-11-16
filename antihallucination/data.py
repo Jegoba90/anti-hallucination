@@ -5,7 +5,10 @@
       "facts": [
         {"name": "ventas", "value": 1250, "unit": "unidades", "subject": "ventas"},
         {"name": "variacion_ventas", "value": -3.2, "unit": "%", "decimals": 1,
-         "change": true, "subject": "ventas"}
+         "change": true, "subject": "ventas"},
+        {"name": "ventas_anteriores", "value": 1291, "unit": "unidades", "subject": "ventas"},
+        {"name": "cambio_ventas", "compute": "difference",
+         "from": "ventas_anteriores", "to": "ventas"}
       ],
       "labels": [
         {"name": "periodo", "text": "tercer trimestre de 2026"},
@@ -21,16 +24,23 @@
 
 Numbers are read as exact decimals: -3.2 stays -3.2. A label with "from" is
 decided by its thresholds from that fact's value, the same as classify().
+
+A fact with "compute" ("percent_change" or "difference") has no value: it is
+computed from the facts named in "from" and "to", the same as
+percent_change() and difference(), and takes its unit from them: a "unit"
+given must be that one.
 """
 
 import json
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from decimal import Decimal
+from functools import partial
 from pathlib import Path
+from typing import NoReturn
 
 from .checks import Policy
-from .facts import Fact, Label, Number, Source, classify
+from .facts import COMPUTE, Fact, Label, Number, Source, classify, difference, percent_change
 
 _CHECKS = ("numbers", "names", "directions", "forecasts", "certainty", "causes", "anchored")
 
@@ -70,7 +80,7 @@ def parse_data(raw: Mapping[str, object]) -> Data:
     if unknown:
         raise DataError(f"unknown keys: {', '.join(sorted(unknown))}")
     try:
-        facts = tuple(_fact(item, f"facts[{index}]") for index, item in enumerate(_list(raw, "facts")))
+        facts = _facts(_list(raw, "facts"))
         by_name = {fact.name: fact for fact in facts}
         labels = tuple(_label(item, f"labels[{index}]", by_name) for index, item in enumerate(_list(raw, "labels")))
         sources = tuple(_source(item, f"sources[{index}]") for index, item in enumerate(_list(raw, "sources")))
@@ -130,8 +140,52 @@ def _number(value: object, where: str) -> Number:
     return value
 
 
-def _fact(item: Mapping[str, object], where: str) -> Fact:
+def _facts(items: list[dict[str, object]]) -> tuple[Fact, ...]:
+    """The facts in the order given; a computed one waits for the facts it is computed from."""
+    built: dict[int, Fact] = {}
+    pending = list(range(len(items)))
+    while pending:
+        ready = {fact.name: fact for fact in built.values()}
+        waiting = [
+            index
+            for index in pending
+            if "compute" in items[index] and not all(_names_one_of(items[index].get(key), ready) for key in ("from", "to"))
+        ]
+        for index in pending:
+            if index not in waiting:
+                built[index] = _fact(items[index], f"facts[{index}]", ready)
+        if len(waiting) == len(pending):
+            _unresolved(items, waiting[0])
+        pending = waiting
+    return tuple(built[index] for index in range(len(items)))
+
+
+def _names_one_of(value: object, facts: Mapping[str, Fact]) -> bool:
+    return isinstance(value, str) and value in facts
+
+
+def _unresolved(items: list[dict[str, object]], index: int) -> NoReturn:
+    """Why facts[index] cannot be computed: a name that is no fact, itself, or a loop."""
+    names = {item.get("name") for item in items}
+    for key in ("from", "to"):
+        value = items[index].get(key)
+        if not isinstance(value, str):
+            raise DataError(f"facts[{index}].{key} must be the name of a fact")
+        if value not in names:
+            raise DataError(f"facts[{index}].{key} names no fact: {value!r}")
+        if value == items[index].get("name"):
+            raise DataError(f"facts[{index}].{key}: a fact cannot be computed from itself")
+    raise DataError(f"facts[{index}] is computed from facts that are computed from it")
+
+
+def _fact(item: Mapping[str, object], where: str, ready: Mapping[str, Fact]) -> Fact:
     allowed = {"name", "value", "unit", "decimals", "label", "subject", "change", "signed", "compact"}
+    if "compute" in item:
+        allowed = (allowed - {"value"}) | {"compute", "from", "to"}
+        if "value" in item:
+            raise DataError(f"{where}.value: a computed fact takes no value; it is computed from its from and to facts")
+    elif "from" in item or "to" in item:
+        raise DataError(f'{where} has from and to but no compute ("percent_change" or "difference")')
     if set(item) - allowed:
         raise DataError(f"{where} has unknown keys: {', '.join(sorted(set(item) - allowed))}")
     subject = item.get("subject", [])
@@ -148,6 +202,32 @@ def _fact(item: Mapping[str, object], where: str) -> Fact:
         if not isinstance(value, bool):
             raise DataError(f"{where}.{flag} must be true or false")
         flags[flag] = value
+    if "compute" in item:
+        compute = item["compute"]
+        if compute not in COMPUTE:
+            raise DataError(f'{where}.compute must be "percent_change" or "difference"')
+        if item.get("change", True) is not True:
+            raise DataError(f"{where}.change: a computed fact is always a change")
+        build = partial(
+            percent_change if compute == "percent_change" else difference,
+            _text(item, "name", where, required=True),
+            ready[str(item["from"])],
+            ready[str(item["to"])],
+            label=_text(item, "label", where),
+            subject=tuple(str(word) for word in subject) or None,
+            signed=flags["signed"],
+            compact=flags["compact"],
+        )
+        try:
+            # No decimals given: the default of each, one for a percent change.
+            computed = build() if decimals is None else build(decimals=decimals)
+        except (TypeError, ValueError) as exc:
+            raise DataError(f"{where}: {exc}") from exc
+        # A unit may be repeated, as a model often does, but not changed.
+        unit = _text(item, "unit", where)
+        if "unit" in item and unit.strip() != computed.unit:
+            raise DataError(f"{where}.unit: this change is in «{computed.unit}», the unit its from and to facts give")
+        return computed
     try:
         return Fact(
             name=_text(item, "name", where, required=True),

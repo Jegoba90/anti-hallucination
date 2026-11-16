@@ -119,6 +119,9 @@ Your facts + rules → Draft with placeholders → Sentence checks → Text + re
 
 - **Facts** hold values your code computed. **Labels** hold verdicts your rules
   chose, such as “a slight decline”; `classify()` can choose them by threshold.
+- **Computed changes** come from two facts: `percent_change()` and
+  `difference()` compute them exactly, so neither you nor the writer does the
+  arithmetic. The receipt records them as computed, and from which facts.
 - **Sources** hold evidence a draft can cite with `[id]`. A citation provides
   context for the checks; it does not prove that the sentence follows from
   the source.
@@ -200,8 +203,11 @@ where you installed the extra; this may be `python3` or an absolute path.
 
 **The assistant supplies the data.** It may already have seen, calculated, or
 changed the values. The server checks the text against what it receives; it
-does not establish where those values came from. Client and model privacy
-policies still apply.
+does not establish where those values came from. What it can take off the
+assistant is the arithmetic: a change between two figures goes in as
+`{"compute": "percent_change", "from": "...", "to": "..."}`, and the server
+computes it. Each receipt shows which figures were computed and which were
+supplied. Client and model privacy policies still apply.
 
 ## Command line
 

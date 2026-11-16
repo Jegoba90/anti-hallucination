@@ -22,7 +22,8 @@ from enum import Enum
 from .facts import Fact, Label, Source
 
 # 0.2: the anchoring check, and its switch recorded in each receipt's policy.
-RECIPE = "antihallucination/0.2"
+# 0.3: each fact says whether it was given or computed here, and from what.
+RECIPE = "antihallucination/0.3"
 _OUTSIDE_DIGEST = frozenset({"digest", "created_at", "signature"})
 
 
@@ -49,6 +50,8 @@ def digest(body: Mapping[str, object]) -> str:
 
 
 def fact_record(fact: Fact) -> dict[str, object]:
+    """A fact as the receipt keeps it. `derived` is null for a figure you gave,
+    or how this package computed it: {"compute", "from", "to"}."""
     return {
         "name": fact.name,
         "value": canonical_number(fact.number),
@@ -59,6 +62,7 @@ def fact_record(fact: Fact) -> dict[str, object]:
         "change": fact.change,
         "signed": fact.signed,
         "compact": fact.compact,
+        "derived": fact.derived.to_dict() if fact.derived else None,
     }
 
 

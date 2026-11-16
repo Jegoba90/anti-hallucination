@@ -40,6 +40,9 @@ def _placeholder_line(fact: Fact, locale: str) -> str:
     about = fact.label or fact.name.replace("_", " ")
     subject = f" Subject: {', '.join(fact.subjects)}." if fact.subjects else ""
     line = f"{{{fact.name}}}: {about}.{subject} Python writes it like «{_shape(fact, locale)}»."
+    if fact.derived is not None:
+        what = "percent change" if fact.derived.compute == "percent_change" else "difference"
+        line += f" Python computed it: the {what} from {{{fact.derived.start}}} to {{{fact.derived.end}}}."
     value = fact.number
     if fact.change:
         if value > 0:

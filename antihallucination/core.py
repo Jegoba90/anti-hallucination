@@ -27,7 +27,7 @@ from .checks import (
     render_template,
     template_problems,
 )
-from .facts import Fact, Label, Source
+from .facts import Derivation, Fact, Label, Source, check_computed
 from .numbers import LOCALES
 from .receipt import (
     RECIPE,
@@ -280,6 +280,12 @@ def replay(receipt: Receipt | Mapping[str, object] | str, sources: Sequence[Sour
         recorded = {_text(item, "id"): _text(item, "sha256") for item in _items(data, "sources")}
     except (ValueError, TypeError, InvalidOperation) as exc:
         return ReplayCheck(ReplayStatus.UNREADABLE, f"the receipt cannot be rebuilt: {exc}")
+    try:
+        # A computed value edited after the fact, digest and all, is not what
+        # its two facts give: computing it again is the replay.
+        check_computed({fact.name: fact for fact in facts})
+    except ValueError as exc:
+        return ReplayCheck(ReplayStatus.DIFFERENT, str(exc))
 
     given = {source.id: source for source in sources}
     missing = [sid for sid in recorded if sid not in given]
@@ -321,6 +327,12 @@ def _fact(item: Mapping[str, object]) -> Fact:
     decimals = item.get("decimals")
     if decimals is not None and (isinstance(decimals, bool) or not isinstance(decimals, int)):
         raise ValueError("decimals must be an integer or null")
+    how = item.get("derived")
+    derived: Derivation | None = None
+    if how is not None:
+        if not isinstance(how, dict):
+            raise ValueError("derived must be an object or null")
+        derived = Derivation(_text(how, "compute"), _text(how, "from"), _text(how, "to"))
     return Fact(
         name=_text(item, "name"),
         value=Decimal(_text(item, "value")),
@@ -331,4 +343,5 @@ def _fact(item: Mapping[str, object]) -> Fact:
         change=item.get("change") is True,
         signed=item.get("signed") is True,
         compact=item.get("compact") is True,
+        derived=derived,
     )

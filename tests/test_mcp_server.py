@@ -95,6 +95,56 @@ def test_bad_data_comes_back_as_an_error_the_model_can_read() -> None:
     assert "facts[0]" in result.content[0].text
 
 
+_OCTOBER = {
+    "facts": [
+        {"name": "ventas_septiembre", "value": 1240, "unit": "unidades", "subject": "ventas"},
+        {"name": "ventas_octubre", "value": 1440, "unit": "unidades", "subject": "ventas"},
+        {"name": "variacion_ventas", "compute": "percent_change", "from": "ventas_septiembre", "to": "ventas_octubre"},
+    ]
+}
+
+
+def test_the_assistant_is_told_to_let_the_server_compute_changes() -> None:
+    async def run():
+        async with Client(server) as client:
+            return (await client.list_tools()).tools, client.instructions
+
+    tools, instructions = asyncio.run(run())
+    schema = json.dumps(next(tool for tool in tools if tool.name == "compose_report").input_schema)
+
+    assert instructions is not None and "Never compute a figure yourself" in instructions
+    for key in ('"compute"', '"from"', '"to"', '"percent_change"', '"difference"'):
+        assert key in schema
+
+
+def test_compose_report_computes_the_change_and_its_receipt_says_so() -> None:
+    draft = "Las ventas subieron {variacion_ventas}, hasta {ventas_octubre}."
+    result = _call("compose_report", {"draft": draft, "data": _OCTOBER, "locale": "es"})
+    report = result.structured_content
+
+    assert not result.is_error
+    assert report["text"] == "Las ventas subieron 16,1 %, hasta 1.440 unidades."
+    derived = {fact["name"]: fact["derived"] for fact in report["receipt"]["facts"]}
+    assert derived["ventas_octubre"] is None
+    assert derived["variacion_ventas"] == {
+        "compute": "percent_change",
+        "from": "ventas_septiembre",
+        "to": "ventas_octubre",
+    }
+    checked = _call("check_receipt", {"receipt": report["receipt"]}).structured_content
+    assert checked == {"digest": "verified", "replay": "reproduced", "reason": ""}
+
+
+def test_a_computed_fact_sent_with_a_value_is_refused() -> None:
+    data = json.loads(json.dumps(_OCTOBER))
+    data["facts"][2]["value"] = 16.1
+
+    result = _call("compose_report", {"draft": "Las ventas subieron {variacion_ventas}.", "data": data, "locale": "es"})
+
+    assert result.is_error
+    assert "takes no value" in result.content[0].text
+
+
 def test_a_receipt_from_the_server_verifies_and_replays() -> None:
     draft = (_SALES / "draft.txt").read_text(encoding="utf-8")
     receipt = _call("compose_report", {"draft": draft, "data": _data(), "locale": "es"}).structured_content[

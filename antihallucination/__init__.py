@@ -28,7 +28,7 @@ __version__ = "0.2.1"
 from .checks import Finding, Policy
 from .errors import WriterError
 from .core import Decision, ReplayCheck, ReplayStatus, Result, compose, replay, verify
-from .facts import Fact, Label, Source, classify
+from .facts import Derivation, Fact, Label, Source, classify, difference, percent_change
 from .receipt import RECIPE, Receipt, ReceiptCheck, ReceiptStatus, verify_receipt
 from .writing import Written, write
 
@@ -36,6 +36,7 @@ __all__ = [
     "RECIPE",
     "__version__",
     "Decision",
+    "Derivation",
     "Fact",
     "Finding",
     "Label",
@@ -51,6 +52,8 @@ __all__ = [
     "WriterError",
     "classify",
     "compose",
+    "difference",
+    "percent_change",
     "replay",
     "verify",
     "verify_receipt",

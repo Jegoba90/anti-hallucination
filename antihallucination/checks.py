@@ -25,7 +25,7 @@ from dataclasses import dataclass, field
 from decimal import Decimal
 
 from . import lexicon
-from .facts import Fact, Label, Source
+from .facts import Fact, Label, Source, check_computed
 from .numbers import Mention, backed_by_values, evidence_values, extract, match_fact
 from .text import MASK, clause_of, fold, lower, mask, words_before
 
@@ -146,6 +146,7 @@ class Context:
             if fact.name in self.facts:
                 raise ValueError(f"two facts are named {fact.name!r}")
             self.facts[fact.name] = fact
+        check_computed(self.facts)
         for label in labels:
             if not isinstance(label, Label):
                 raise TypeError("labels must be Label objects")

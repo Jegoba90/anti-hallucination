@@ -6,18 +6,25 @@
   «riesgo alto»). The writer may place it, never choose it.
 - A Source is a text the writer may summarize (a news note, a ticket, a page).
   A sentence that cites it may only state what it contains.
+
+A change between two of your facts can be computed here instead of by you or
+by the writer: percent_change() and difference() give a Fact that remembers
+where it came from, and the checks and the receipt hold it to that.
 """
 
 import math
 import re
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
-from decimal import ROUND_HALF_UP, Decimal
+from decimal import ROUND_HALF_EVEN, ROUND_HALF_UP, Context, Decimal
 
 _NAME_RE = re.compile(r"[A-Za-z_][A-Za-z0-9_]*")
 _SOURCE_ID_RE = re.compile(r"[A-Za-z0-9_.\-]+")
 _AUTO_DECIMALS_CAP = 6
 _PERCENT_UNITS = frozenset({"%", "pct", "percent", "por ciento"})
+COMPUTE = ("percent_change", "difference")
+# A fixed context, not the thread's: a replay must get the same digits anywhere.
+_EXACT = Context(prec=28, rounding=ROUND_HALF_EVEN)
 
 Number = int | float | Decimal
 
@@ -53,6 +60,30 @@ def _words(value: str | Sequence[str], what: str) -> tuple[str, ...]:
 
 
 @dataclass(frozen=True)
+class Derivation:
+    """How a fact was computed here: `compute` going from fact `start` to fact `end`.
+
+    compute: "percent_change", (end − start) / |start| × 100, or "difference",
+    end − start.
+    """
+
+    compute: str
+    start: str
+    end: str
+
+    def __post_init__(self) -> None:
+        if self.compute not in COMPUTE:
+            raise ValueError(f"compute must be one of {', '.join(COMPUTE)}, not {self.compute!r}")
+        _check_name("fact", self.start)
+        _check_name("fact", self.end)
+        if self.start == self.end:
+            raise ValueError("a change goes from one fact to another, not from a fact to itself")
+
+    def to_dict(self) -> dict[str, object]:
+        return {"compute": self.compute, "from": self.start, "to": self.end}
+
+
+@dataclass(frozen=True)
 class Fact:
     """A number your code computed: the only place a figure can come from.
 
@@ -67,6 +98,8 @@ class Fact:
               like «cayeron» or «rose» must agree with it
     signed:   write a plus sign before positive values
     compact:  write 4200000 as «4,2 millones» / «4.2 million»
+    derived:  set by percent_change() and difference(): the value was computed
+              here from two other facts, and is checked against them
     """
 
     name: str
@@ -78,6 +111,7 @@ class Fact:
     change: bool = False
     signed: bool = False
     compact: bool = False
+    derived: Derivation | None = None
 
     def __post_init__(self) -> None:
         _check_name("fact", self.name)
@@ -87,6 +121,13 @@ class Fact:
         ):
             raise ValueError("decimals must be an integer from 0 to 12")
         object.__setattr__(self, "subject", _words(self.subject, "a subject"))
+        if self.derived is not None:
+            if not isinstance(self.derived, Derivation):
+                raise TypeError("derived must be a Derivation")
+            if not self.change:
+                raise ValueError(f"fact {self.name!r} is computed as a change, so change must be True")
+            if self.name in (self.derived.start, self.derived.end):
+                raise ValueError(f"fact {self.name!r} cannot be computed from itself")
 
     @property
     def number(self) -> Decimal:
@@ -199,6 +240,132 @@ def classify(name: str, value: Number, thresholds: Sequence[tuple[Number, str]],
         lower = bound
     rule = f"{number} ≥ {lower}" if lower is not None else f"{number}"
     return Label(name, otherwise, rule)
+
+
+def computed_unit(compute: str, start: Fact) -> str:
+    """The unit of a computed change: «%» for a percent change; for a
+    difference, the unit of its facts, or «pp» (points) between percentages."""
+    if compute == "percent_change":
+        return "%"
+    return "pp" if start.is_percent else start.unit.strip()
+
+
+def computed_value(compute: str, start: Fact, end: Fact) -> Decimal:
+    """The change from `start` to `end`, or ValueError when it has no honest value.
+
+    A percent change divides by |start|, so its sign is always the direction:
+    from -100 to -50 is +50 %. Between two percentages it is refused: «fell
+    8 %» and «fell 0.2 points» are both read from 2.5 % → 2.3 %, so the only
+    change offered there is the difference, in points.
+    """
+    if start.unit.strip() != end.unit.strip():
+        raise ValueError(
+            f"{start.name} is in «{start.unit}» and {end.name} in «{end.unit}»: a change compares figures in one unit"
+        )
+    begin, finish = start.number, end.number
+    if compute == "difference":
+        return _EXACT.subtract(finish, begin)
+    if compute != "percent_change":
+        raise ValueError(f"compute must be one of {', '.join(COMPUTE)}, not {compute!r}")
+    if start.is_percent:
+        raise ValueError(
+            f"{start.name} and {end.name} are percentages: a percent change of a percentage reads two ways; "
+            "compute their difference, in points"
+        )
+    if begin == 0:
+        raise ValueError(f"{start.name} is 0: a percent change from zero has no value; compute the difference")
+    # copy_abs, not abs(): abs() rounds to the caller's decimal context.
+    return _EXACT.divide(_EXACT.multiply(_EXACT.subtract(finish, begin), 100), begin.copy_abs())
+
+
+def _computed(
+    compute: str,
+    name: str,
+    start: Fact,
+    end: Fact,
+    decimals: int | None,
+    label: str,
+    subject: str | Sequence[str] | None,
+    signed: bool,
+    compact: bool,
+) -> Fact:
+    if not isinstance(start, Fact) or not isinstance(end, Fact):
+        raise TypeError("a change is computed from two Fact objects")
+    return Fact(
+        name,
+        computed_value(compute, start, end),
+        unit=computed_unit(compute, start),
+        decimals=decimals,
+        label=label,
+        subject=_words(subject, "a subject") if subject is not None else (end.subjects or start.subjects),
+        change=True,
+        signed=signed,
+        compact=compact,
+        derived=Derivation(compute, start.name, end.name),
+    )
+
+
+def percent_change(
+    name: str,
+    start: Fact,
+    end: Fact,
+    *,
+    decimals: int | None = 1,
+    label: str = "",
+    subject: str | Sequence[str] | None = None,
+    signed: bool = False,
+    compact: bool = False,
+) -> Fact:
+    """The percent change from `start` to `end`, computed here and kept exact.
+
+    Nobody types it, neither you nor the writer, and the receipt records which
+    two facts it comes from. It measures what `end` measures unless you give a
+    subject; Python writes it with one decimal unless you say otherwise.
+
+        septiembre = Fact("ventas_septiembre", 1240, unit="unidades", subject="ventas")
+        octubre = Fact("ventas_octubre", 1440, unit="unidades", subject="ventas")
+        percent_change("variacion_ventas", septiembre, octubre)
+        → a change of 16.129… %, written «16,1 %»
+    """
+    return _computed("percent_change", name, start, end, decimals, label, subject, signed, compact)
+
+
+def difference(
+    name: str,
+    start: Fact,
+    end: Fact,
+    *,
+    decimals: int | None = None,
+    label: str = "",
+    subject: str | Sequence[str] | None = None,
+    signed: bool = False,
+    compact: bool = False,
+) -> Fact:
+    """`end` − `start`, computed here, in their unit; between percentages, in points («pp»).
+
+        difference("cambio_churn", Fact("churn_sep", 2.5, unit="%"), Fact("churn_oct", 2.3, unit="%"))
+        → a change of -0.2, written «-0,2 pp»
+    """
+    return _computed("difference", name, start, end, decimals, label, subject, signed, compact)
+
+
+def check_computed(facts: Mapping[str, Fact]) -> None:
+    """Each computed fact holds what its two facts give, or ValueError says which does not.
+
+    A fact that claims to be computed but carries another value, as a typed
+    figure or an edited receipt would, is refused here, before any check runs.
+    """
+    for fact in facts.values():
+        how = fact.derived
+        if how is None:
+            continue
+        missing = [name for name in (how.start, how.end) if name not in facts]
+        if missing:
+            raise ValueError(f"{fact.name} is computed from {', '.join(missing)}, which is not among the facts")
+        start, end = facts[how.start], facts[how.end]
+        what = how.compute.replace("_", " ")
+        if fact.unit != computed_unit(how.compute, start) or fact.number != computed_value(how.compute, start, end):
+            raise ValueError(f"{fact.name} does not hold the {what} from {start.name} to {end.name}")
 
 
 @dataclass(frozen=True)
