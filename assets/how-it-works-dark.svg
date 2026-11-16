@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="534" viewBox="0 0 980 534" role="img" aria-labelledby="title desc">
+  <title id="title">How anti-hallucination works</title>
+  <desc id="desc">The LLM writer chooses the words and nothing else: from your data it gets placeholders and rules, none of your figures, which go straight to Python. compose() checks the draft sentence by sentence, with no model: a sentence that passes is kept and Python writes its figures; one that fails is replaced by your fallback or dropped. With write(), a draft with failed sentences gets one retry with the reasons. Out come the text and a receipt with the inputs, the decisions and a SHA-256 digest that replay() can rerun. verify() runs the same checks on an existing text, such as a model's answer.</desc>
+  <!-- Same drawing as how-it-works.svg; only the palette in <style> differs. -->
+  <style>
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    .fg { fill: #f0f6fc; }
+    .muted { fill: #9198a1; }
+    .accent { fill: #4493f8; }
+    .h { font-size: 15px; font-weight: 600; }
+    .b { font-size: 13px; }
+    .m { font-size: 12.5px; }
+    .s { font-size: 12.5px; }
+    .strong { font-weight: 600; }
+    .box { fill: #151b23; stroke: #3d444d; stroke-width: 1; }
+    .outside { fill: none; stroke: #9198a1; stroke-width: 1.25; stroke-dasharray: 6 4; }
+    .line { fill: none; stroke: #9198a1; stroke-width: 1.5; }
+    .line-accent { fill: none; stroke: #4493f8; stroke-width: 2.5; }
+    .dashed { stroke-dasharray: 4 3; }
+    .head { fill: #9198a1; }
+    .head-accent { fill: #4493f8; }
+    .dot { fill: #9198a1; }
+    .rule { stroke: #3d444d; stroke-width: 1; }
+    .ok { fill: #3fb950; }
+    .warn { fill: #d29922; }
+    .bad { fill: #f85149; }
+    .cross { stroke: #f85149; stroke-width: 2; stroke-linecap: round; }
+  </style>
+  <!-- Your data -->
+  <rect class="box" x="10" y="10" width="190" height="376" rx="10"/>
+  <text class="sans fg h" x="26" y="38">Your data</text>
+  <text class="sans fg b strong" x="26" y="68">Facts</text>
+  <text class="mono muted m" x="26" y="88">sales</text>
+  <text class="mono accent m" x="184" y="88" text-anchor="end">1,250 units</text>
+  <text class="mono muted m" x="26" y="106">sales_change</text>
+  <text class="mono accent m" x="184" y="106" text-anchor="end">-3.2%</text>
+  <text class="sans fg b strong" x="26" y="150">Labels</text>
+  <text class="sans muted s" x="26" y="168">verdicts you decided</text>
+  <text class="sans fg b strong" x="26" y="210">Sources</text>
+  <text class="sans muted s" x="26" y="228">texts to cite</text>
+  <text class="sans fg b strong" x="26" y="270">Fallbacks</text>
+  <text class="sans muted s" x="26" y="288">sentences you wrote</text>
+  <text class="sans fg b strong" x="26" y="330">Rules</text>
+  <text class="sans muted s" x="26" y="348">which checks run</text>
+  <!-- To the writer: placeholders and rules, never a figure of yours -->
+  <line class="line" x1="200" y1="74" x2="353" y2="74"/>
+  <polygon class="head" points="360,74 352,70 352,78"/>
+  <text class="sans fg m" x="280" y="64" text-anchor="middle">placeholders + rules</text>
+  <text class="sans muted m" x="280" y="92" text-anchor="middle">none of your figures</text>
+  <!-- The writer: outside the layer, so dashed like the existing text -->
+  <rect class="outside" x="360" y="10" width="270" height="128" rx="10"/>
+  <text class="sans fg h" x="378" y="36">LLM writer</text>
+  <text class="sans muted s" x="378" y="54">chooses the words, nothing else</text>
+  <text class="mono fg m" x="378" y="84">Sales fell <tspan class="accent">{sales_change:abs}</tspan></text>
+  <text class="mono fg m" x="378" y="102">to <tspan class="accent">{sales}</tspan>.</text>
+  <text class="mono fg m" x="378" y="120">Next quarter will be better.</text>
+  <line class="line" x1="455" y1="138" x2="455" y2="183"/>
+  <polygon class="head" points="455,190 451,182 459,182"/>
+  <text class="mono fg m" x="443" y="168" text-anchor="end">compose(draft)</text>
+  <line class="line dashed" x1="535" y1="190" x2="535" y2="145"/>
+  <polygon class="head" points="535,138 531,146 539,146"/>
+  <text class="sans fg m" x="547" y="160">one retry, with the reasons</text>
+  <text class="sans muted s" x="547" y="177">in <tspan class="mono">write()</tspan></text>
+  <!-- Your figures go straight to Python -->
+  <line class="line-accent" x1="200" y1="288" x2="351" y2="288"/>
+  <polygon class="head-accent" points="360,288 350,283 350,293"/>
+  <text class="sans accent m strong" x="280" y="278" text-anchor="middle">your figures</text>
+  <text class="sans muted m" x="280" y="306" text-anchor="middle">straight to Python</text>
+  <!-- The checks -->
+  <rect class="box" x="360" y="190" width="270" height="196" rx="10"/>
+  <text class="sans fg h" x="378" y="216">Checks, per sentence</text>
+  <text class="sans muted s" x="378" y="235">Python only, no model</text>
+  <circle class="dot" cx="382" cy="258" r="2.5"/>
+  <text class="sans fg b" x="392" y="262">figures</text>
+  <circle class="dot" cx="382" cy="280" r="2.5"/>
+  <text class="sans fg b" x="392" y="284">signs and directions</text>
+  <circle class="dot" cx="382" cy="302" r="2.5"/>
+  <text class="sans fg b" x="392" y="306">names</text>
+  <circle class="dot" cx="382" cy="324" r="2.5"/>
+  <text class="sans fg b" x="392" y="328">forecasts, certainty, causes</text>
+  <circle class="dot" cx="382" cy="346" r="2.5"/>
+  <text class="sans fg b" x="392" y="350">data in every sentence</text>
+  <!-- A text written elsewhere, figures and all: verify() checks it the same way -->
+  <rect class="outside" x="360" y="438" width="270" height="88" rx="10"/>
+  <text class="sans fg h" x="378" y="464">Existing text</text>
+  <text class="sans muted s" x="378" y="482">a model's answer, a report</text>
+  <text class="mono fg m" x="378" y="508">Sales grew 5% to 1,300 units.</text>
+  <line class="line" x1="495" y1="438" x2="495" y2="393"/>
+  <polygon class="head" points="495,386 491,394 499,394"/>
+  <text class="mono fg m" x="507" y="416">verify(text)</text>
+  <!-- Each sentence: kept, replaced or dropped -->
+  <line class="line" x1="630" y1="222" x2="805" y2="222"/>
+  <polygon class="head" points="812,222 804,218 804,226"/>
+  <circle class="ok" cx="649" cy="209" r="4.5"/>
+  <text class="sans fg b strong" x="659" y="213">kept</text>
+  <text class="sans accent s" x="645" y="238">Python writes the figures</text>
+  <line class="line" x1="630" y1="274" x2="805" y2="274"/>
+  <polygon class="head" points="812,274 804,270 804,278"/>
+  <circle class="warn" cx="649" cy="261" r="4.5"/>
+  <text class="sans fg b strong" x="659" y="265">replaced</text>
+  <text class="sans muted s" x="645" y="290">by your fallback</text>
+  <line class="line" x1="630" y1="330" x2="700" y2="330"/>
+  <path class="cross" d="M704 324 L716 336 M716 324 L704 336"/>
+  <circle class="bad" cx="649" cy="317" r="4.5"/>
+  <text class="sans fg b strong" x="659" y="321">dropped</text>
+  <text class="sans muted s" x="645" y="346">“Next quarter…”</text>
+  <text class="sans muted s" x="645" y="362">is a forecast</text>
+  <!-- What comes out -->
+  <rect class="box" x="812" y="190" width="160" height="196" rx="10"/>
+  <text class="sans fg h" x="828" y="216">Text</text>
+  <text class="mono fg m" x="828" y="240">Sales fell <tspan class="accent">3.2%</tspan></text>
+  <text class="mono fg m" x="828" y="258">to <tspan class="accent">1,250 units</tspan>.</text>
+  <line class="rule" x1="812" y1="292" x2="972" y2="292"/>
+  <text class="sans fg h" x="828" y="316">Receipt</text>
+  <text class="sans muted s" x="828" y="336">inputs, decisions</text>
+  <text class="sans muted s" x="828" y="354">SHA-256 digest</text>
+  <text class="sans muted s" x="828" y="372"><tspan class="mono">replay()</tspan> reruns it</text>
+</svg>

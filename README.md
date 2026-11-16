@@ -113,9 +113,18 @@ also pass any function with the signature `(system, prompt) -> str`.
 
 ## How it works
 
-```text
-Your facts + rules → Draft with placeholders → Sentence checks → Text + receipt
-```
+The LLM only chooses the words: it writes placeholders instead of your figures,
+and Python checks each sentence of the draft and writes the figures into the
+sentences that pass. `verify()` runs the same checks on a text that already has
+its figures.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Jegoba90/anti-hallucination/main/assets/how-it-works-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Jegoba90/anti-hallucination/main/assets/how-it-works.svg">
+    <img src="https://raw.githubusercontent.com/Jegoba90/anti-hallucination/main/assets/how-it-works.svg" alt="The LLM writer chooses the words and nothing else: it gets placeholders and rules, none of your figures, which go straight to Python. compose() checks the draft sentence by sentence, with no model: a sentence that passes is kept and Python writes its figures; one that fails is replaced by your fallback or dropped. With write(), failed sentences get one retry with the reasons. Out come the text and a receipt. verify() runs the same checks on an existing text, such as a model's answer." width="100%">
+  </picture>
+</p>
 
 - **Facts** hold values your code computed. **Labels** hold verdicts your rules
   chose, such as “a slight decline”; `classify()` can choose them by threshold.
