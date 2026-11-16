@@ -16,13 +16,13 @@ repaired. Each decision is kept in a receipt you can verify and run again.
 Requires Python 3.11 or later.
 
 ```bash
-pip install git+https://github.com/Jegoba90/anti-hallucination
+pip install antihallucination
 
 # To let Claude write the drafts as well:
-pip install "antihallucination[claude] @ git+https://github.com/Jegoba90/anti-hallucination"
+pip install "antihallucination[claude]"
 
 # To use it from Claude Desktop, Claude Code or any MCP client:
-pip install "antihallucination[mcp] @ git+https://github.com/Jegoba90/anti-hallucination"
+pip install "antihallucination[mcp]"
 ```
 
 ## How it works
@@ -96,7 +96,7 @@ it shows that a receipt is internally consistent, not who issued it.
 
 ```python
 from antihallucination import write
-from antihallucination.writers import ClaudeWriter  # pip install "antihallucination[claude] @ ..."
+from antihallucination.writers import ClaudeWriter  # pip install "antihallucination[claude]"
 
 written = write("A two-sentence sales summary for the board.", facts, writer=ClaudeWriter(), locale="en")
 print(written.text)
@@ -126,7 +126,7 @@ antihallucination write --data examples/saas/data.json --brief "A short monthly 
 
 `python -m antihallucination` works the same. The data file holds the facts,
 labels, sources, fallbacks and known names; a label can be decided by
-thresholds from a fact. [`antihallucination/data.py`](antihallucination/data.py)
+thresholds from a fact. [`antihallucination/data.py`](https://github.com/Jegoba90/anti-hallucination/blob/main/antihallucination/data.py)
 documents its format. The exit status is 0 when every sentence passed, 1 when
 some failed, 2 when the input cannot be read and 3 when the writer failed.
 
@@ -175,10 +175,10 @@ saw them: it is that none of them reaches the text unless Python writes it.
 
 | Example | Language | What it shows |
 |---|---|---|
-| [`examples/saas/`](examples/saas) | English | Monthly SaaS metrics: invented figures and a forecast are replaced by your sentences |
-| [`examples/support/`](examples/support) | English | A summary of support tickets: each sentence may only state what the ticket it cites says |
-| [`examples/sales/`](examples/sales) | Spanish | A quarterly sales report, with a verdict decided by thresholds |
-| [`examples/sales_report.py`](examples/sales_report.py) | Spanish | The same report from Python, with both modes and the receipt |
+| [`examples/saas/`](https://github.com/Jegoba90/anti-hallucination/tree/main/examples/saas) | English | Monthly SaaS metrics: invented figures and a forecast are replaced by your sentences |
+| [`examples/support/`](https://github.com/Jegoba90/anti-hallucination/tree/main/examples/support) | English | A summary of support tickets: each sentence may only state what the ticket it cites says |
+| [`examples/sales/`](https://github.com/Jegoba90/anti-hallucination/tree/main/examples/sales) | Spanish | A quarterly sales report, with a verdict decided by thresholds |
+| [`examples/sales_report.py`](https://github.com/Jegoba90/anti-hallucination/blob/main/examples/sales_report.py) | Spanish | The same report from Python, with both modes and the receipt |
 
 Each folder has a `data.json`, a text written with figures typed in
 (`written_by_an_ai.txt`) and a draft with placeholders (`draft.txt`).
@@ -190,9 +190,9 @@ sales report. It typed no figure. In the first draft one sentence carried no
 data, «El desempeño general se mantiene dentro de los parámetros esperados», and
 passed every check; the rule that every sentence must carry data came from it,
 and the three drafts after it kept all their sentences. The drafts are kept in
-[`tests/fixtures/real_model/`](tests/fixtures/real_model) and judged on every
+[`tests/fixtures/real_model/`](https://github.com/Jegoba90/anti-hallucination/tree/main/tests/fixtures/real_model) and judged on every
 test run. Claude has not run against the live API yet. The record is in
-[`docs/pruebas-2026-11-16.md`](docs/pruebas-2026-11-16.md).
+[`docs/pruebas-2026-11-16.md`](https://github.com/Jegoba90/anti-hallucination/blob/main/docs/pruebas-2026-11-16.md).
 
 ## Where it comes from
 

@@ -1,6 +1,6 @@
 """The layer as an MCP server, for Claude Desktop, Claude Code or any MCP client.
 
-    pip install "antihallucination[mcp] @ git+https://github.com/Jegoba90/anti-hallucination"
+    pip install "antihallucination[mcp]"
     antihallucination-mcp            # or: python -m antihallucination.mcp_server
 
 The model in the client is the writer. It puts the user's figures in `facts`,
