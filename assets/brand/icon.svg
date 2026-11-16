@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Anti-Hallucination - language filter</title>
+  <desc id="desc">Three lines enter a rectangular filter and two emerge. Black mark on white.</desc>
+  <rect width="1024" height="1024" fill="#fff"/>
+  <path d="M248 0H464V96H724V160H464V216H724V280H464V408H248V348H0V284H248V236H0V172H248V124H0V60H248ZM304 56H408V352H304Z" transform="translate(128 295.602) scale(1.061)" fill="#000" fill-rule="evenodd"/>
+</svg>
