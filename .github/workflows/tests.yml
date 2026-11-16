@@ -80,3 +80,23 @@ jobs:
           set -e
           # 1: the example's invented figures were caught, as it is meant to show.
           test "$status" -eq 1
+
+      # The command an MCP client launches, from the installed wheel with the
+      # [mcp] extra, driven over stdio by the SDK's own client.
+      - name: Serve over MCP from the installed package
+        working-directory: /tmp
+        run: |
+          /tmp/venv/bin/pip install "antihallucination[mcp] @ file://$(ls $GITHUB_WORKSPACE/dist/*.whl)"
+          /tmp/venv/bin/python - <<'PY'
+          import asyncio
+          from mcp import Client, StdioServerParameters
+
+          async def main():
+              server = StdioServerParameters(command="/tmp/venv/bin/antihallucination-mcp")
+              async with Client(server) as client:
+                  tools = sorted(tool.name for tool in (await client.list_tools()).tools)
+                  print(tools)
+                  assert tools == ["check_receipt", "compose_report", "prepare_report", "verify_text"], tools
+
+          asyncio.run(asyncio.wait_for(main(), 60))
+          PY

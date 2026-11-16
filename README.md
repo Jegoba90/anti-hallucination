@@ -20,6 +20,9 @@ pip install git+https://github.com/Jegoba90/anti-hallucination
 
 # To let Claude write the drafts as well:
 pip install "antihallucination[claude] @ git+https://github.com/Jegoba90/anti-hallucination"
+
+# To use it from Claude Desktop, Claude Code or any MCP client:
+pip install "antihallucination[mcp] @ git+https://github.com/Jegoba90/anti-hallucination"
 ```
 
 ## How it works
@@ -126,6 +129,47 @@ labels, sources, fallbacks and known names; a label can be decided by
 thresholds from a fact. [`antihallucination/data.py`](antihallucination/data.py)
 documents its format. The exit status is 0 when every sentence passed, 1 when
 some failed, 2 when the input cannot be read and 3 when the writer failed.
+
+## Use it from Claude or any MCP client
+
+No code needed: an assistant that speaks MCP writes the text, and the layer
+writes every figure and checks every sentence before the text reaches you. The
+server calls no model and no network, so your data stays on your machine.
+
+Claude Code:
+
+```bash
+claude mcp add --transport stdio --scope user anti-hallucination -- python -m antihallucination.mcp_server
+```
+
+Claude Desktop, in `claude_desktop_config.json` (on Windows in
+`%APPDATA%\Claude\`, on macOS in `~/Library/Application Support/Claude/`):
+
+```json
+{
+  "mcpServers": {
+    "anti-hallucination": {
+      "command": "python",
+      "args": ["-m", "antihallucination.mcp_server"]
+    }
+  }
+}
+```
+
+Use the `python` you installed the package with (on macOS it may be
+`python3`). The installed `antihallucination-mcp` command starts the same
+server. Then give the assistant your figures and ask it to write with the
+anti-hallucination tools:
+
+| Tool | What it does |
+|---|---|
+| `prepare_report` | Gives the placeholders and the rules for a brief, without any figure |
+| `compose_report` | Fills a draft written with placeholders, keeps the sentences that pass, and returns the text, why each sentence went out or not, and a receipt |
+| `verify_text` | Checks a text that already has its figures |
+| `check_receipt` | Verifies a receipt and runs its decision again |
+
+The assistant has seen your figures, so here the guarantee is not that it never
+saw them: it is that none of them reaches the text unless Python writes it.
 
 ## Examples
 
