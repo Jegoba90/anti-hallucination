@@ -1,5 +1,13 @@
 # Anti-Hallucination
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/brand/logo.svg">
+    <img src="assets/brand/logo.svg" alt="Anti-Hallucination logo" width="560">
+  </picture>
+</p>
+
 **Your numbers decide; the AI only writes.**
 
 A Python layer for any text an AI writes from data: a sales report, a monthly
