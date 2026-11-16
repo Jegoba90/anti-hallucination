@@ -322,8 +322,7 @@ ruff check .
 
 ## Origin and license
 
-Extracted from the reporting engine behind [CryptoCapi](https://cryptocapi.com).
-The [original crypto agent](https://github.com/Jegoba90/anti-hallucination-crypto-agent)
-shows the approach in a market-news workflow.
+Extracted from the reporting engine behind [CryptoCapi](https://cryptocapi.com),
+where it checks the market reports a crypto agent writes.
 
 Released under the [MIT license](https://github.com/Jegoba90/anti-hallucination/blob/main/LICENSE).
