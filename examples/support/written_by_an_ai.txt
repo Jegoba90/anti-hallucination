@@ -1,0 +1,1 @@
+Card payments failed for 32 customers in Germany and France because of a bank outage [t1]. Two business customers in Spain received invoices with the wrong VAT [t2]. There are 14 open tickets.

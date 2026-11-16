@@ -1,0 +1,1 @@
+Card payments failed at checkout for 23 customers in Germany and France until the release was rolled back [t1]. Two business customers in Spain were invoiced with 21% VAT instead of the reverse charge [t2]. {open_tickets} remain open.

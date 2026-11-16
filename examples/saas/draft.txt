@@ -1,0 +1,1 @@
+In {month}, MRR reached {mrr}, {growth} of {mrr_change:signed} on the previous month. Churn fell {churn_change:abs} to {churn}, and {new_customers} new customers joined. The team expects the same next month.

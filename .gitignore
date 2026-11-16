@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tmp/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+.idea/
+.vscode/
+# Receipts you save while trying the command line.
+receipt*.json

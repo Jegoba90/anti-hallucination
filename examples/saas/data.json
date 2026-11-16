@@ -1,0 +1,23 @@
+{
+  "locale": "en",
+  "facts": [
+    {"name": "mrr", "value": 48200, "unit": "USD", "label": "monthly recurring revenue", "subject": ["MRR", "recurring revenue"]},
+    {"name": "mrr_change", "value": 6.1, "unit": "%", "decimals": 1, "change": true,
+     "label": "MRR change vs last month", "subject": ["MRR", "recurring revenue"]},
+    {"name": "churn", "value": 2.3, "unit": "%", "decimals": 1, "label": "monthly churn", "subject": "churn"},
+    {"name": "churn_change", "value": -0.4, "unit": "pp", "decimals": 1, "change": true,
+     "label": "churn change vs last month, in points", "subject": "churn"},
+    {"name": "new_customers", "value": 37, "label": "new customers", "subject": "customers"}
+  ],
+  "labels": [
+    {"name": "month", "text": "October 2026"},
+    {"name": "growth", "from": "mrr_change",
+     "thresholds": [[0, "a decline"], [3, "modest growth"], [10, "strong growth"]],
+     "otherwise": "very fast growth"}
+  ],
+  "fallbacks": {
+    "MRR": "MRR was {mrr} ({mrr_change:signed}).",
+    "churn": "Churn was {churn} ({churn_change}).",
+    "customers": "{new_customers} new customers joined."
+  }
+}
