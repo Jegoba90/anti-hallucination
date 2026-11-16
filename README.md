@@ -1,39 +1,58 @@
-# Anti-Hallucination
-
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logo-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/brand/logo.svg">
-    <img src="assets/brand/logo.svg" alt="Anti-Hallucination logo" width="560">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Jegoba90/anti-hallucination/main/assets/brand/header-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Jegoba90/anti-hallucination/main/assets/brand/header.svg">
+    <img src="https://raw.githubusercontent.com/Jegoba90/anti-hallucination/main/assets/brand/header.svg" alt="Anti-Hallucination" width="560">
   </picture>
 </p>
 
-**Your numbers decide; the AI only writes.**
+<p align="center">
+  <strong>Your numbers decide. The AI only writes.</strong><br>
+  Turn your data into AI-written reports with checked figures, sentence-level decisions, and receipts you can replay.
+</p>
 
-A Python layer for any text an AI writes from data: a sales report, a monthly
-metrics summary, a finance update, a summary of tickets or articles. Your code
-computes the figures and decides the verdicts. The AI writes with placeholders
-and never sees a value. Every sentence is checked against your data before it
-goes out; a sentence that fails is dropped or replaced by one you wrote, never
-repaired. Each decision is kept in a receipt you can verify and run again.
+<p align="center">
+  <a href="https://pypi.org/project/antihallucination/"><img src="https://img.shields.io/pypi/v/antihallucination?style=flat-square&amp;color=2563eb" alt="PyPI version"></a>
+  <a href="https://github.com/Jegoba90/anti-hallucination/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/Jegoba90/anti-hallucination/tests.yml?branch=main&amp;style=flat-square&amp;label=tests" alt="Tests"></a>
+  <a href="https://pypi.org/project/antihallucination/"><img src="https://img.shields.io/badge/python-3.11%2B-3776ab?style=flat-square" alt="Python 3.11 or newer"></a>
+  <a href="https://github.com/Jegoba90/anti-hallucination/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Jegoba90/anti-hallucination?style=flat-square" alt="MIT license"></a>
+  <a href="#scope-and-limitations"><img src="https://img.shields.io/badge/status-experimental-f59e0b?style=flat-square" alt="Status: experimental"></a>
+</p>
 
-*Experimental (v0.2). The checks use only the Python standard library.*
+<p align="center">
+  <a href="#quick-start">Quick start</a> &nbsp;·&nbsp;
+  <a href="#examples">Examples</a> &nbsp;·&nbsp;
+  <a href="#use-with-mcp">MCP setup</a> &nbsp;·&nbsp;
+  <a href="#what-it-checks">Checks</a> &nbsp;·&nbsp;
+  <a href="https://github.com/Jegoba90/anti-hallucination/blob/main/CONTRIBUTING.md">Contribute</a>
+</p>
 
-## Install
+## Reports built from your data
 
-Requires Python 3.11 or later.
+A sales summary should use the sales you measured. A support report should
+keep the customer counts in your tickets. Your code owns the figures and
+verdicts; Anti-Hallucination lets a writer put them into words, then checks
+each sentence before it goes out.
+
+| What you need | What you get |
+|---|---|
+| Keep figures under your control | Python fills `{placeholders}` from your facts instead of asking a model to type the values |
+| Check a draft you already have | `verify()` flags unsupported figures, conflicting directions, and other rule violations |
+| Decide what happens when a check fails | Drop the sentence or replace it with a fallback you supplied |
+| Explain the output | A decision for each sentence, plus a receipt you can verify and replay |
+| Fit your workflow | Python library, command line, and an MCP server; English and Spanish checks |
+
+Use it for sales reports, SaaS metrics, finance summaries, and support digests.
+The checks run locally and use the Python standard library. The package also
+installs `httpx` for optional calls to model providers.
+
+## Quick start
+
+**Python 3.11+** · The example below runs locally without an API key.
 
 ```bash
 pip install antihallucination
-
-# To let Claude write the drafts as well:
-pip install "antihallucination[claude]"
-
-# To use it from Claude Desktop, Claude Code or any MCP client:
-pip install "antihallucination[mcp]"
 ```
-
-## How it works
 
 ```python
 from antihallucination import Fact, compose, verify
@@ -43,115 +62,116 @@ facts = [
     Fact("sales_change", -3.2, unit="%", change=True, subject="sales"),
 ]
 
-# The writer (any LLM, or a person) writes placeholders; Python writes the figures.
+# The writer uses placeholders. Python fills the figures.
 draft = "Sales fell {sales_change:abs} to {sales}. Next quarter will be better."
 result = compose(draft, facts, locale="en")
 print(result.text)
 # Sales fell 3.2% to 1,250 units.
 
-# A text someone already wrote, figures typed in, checked against the same facts.
+# Check an existing draft against the same facts.
 report = verify("Sales grew 5% to 1,300 units.", facts, locale="en")
 print([(finding.check, finding.span) for finding in report.findings])
 # [('unbacked_number', '5%'), ('unbacked_number', '1,300'), ('direction_contradiction', 'grew')]
 ```
 
-The forecast in the draft was dropped. `result.decisions` says why, sentence by
-sentence, and `result.receipt` holds the inputs, each decision and a SHA-256
-digest.
+The forecast is dropped. The measured decline stays. In the second draft,
+both invented figures and the conflicting direction are flagged.
+`result.decisions` explains what happened to each sentence;
+`result.receipt` records the inputs and decisions with a SHA-256 digest.
 
-- `compose()` is for text you are about to publish: the writer uses
-  placeholders (`{sales}`, `{sales_change:abs}`, `{sales_change:signed}`) and
-  never types a figure.
-- `verify()` is for text someone already wrote: every figure must match one of
-  your facts at the precision written, or appear in a label or a source.
-- `Label` and `classify()` hold verdicts your rules decided ("a slight
-  decline"), so the writer places them instead of choosing them.
-- `Source` holds a text the writer may summarize. A sentence that cites it as
-  `[id]` may only state what that source says.
-- `fallbacks` hold sentences you wrote. When a sentence about the same subject
-  fails, yours goes out in its place.
+### Let a model write the draft
 
-## What it checks
+Install the Claude extra and set `ANTHROPIC_API_KEY`:
 
-| Check | `compose()` | `verify()` |
-|---|---|---|
-| Figures | The writer types none. A sentence that cites a source may copy that source's figures | Each figure is a fact rounded to the precision written, or appears in a label or a source |
-| Signs and directions | «fell» or «cayeron» must agree with the sign of the change; a move with no change or source behind it is flagged | Same |
-| Names | Each proper name must appear in your facts, labels, sources or `known_names` | Same |
-| Forecasts, certainty, causes | Dropped by default, from word lists in Spanish and English | Same |
-| Data in every sentence | A sentence must carry a placeholder or cite a source | A sentence must carry a figure or verdict from your data, a move checked against a change, or a citation |
+```bash
+pip install "antihallucination[claude]"
+```
 
-Figures are read the way their language writes them: «1.250» is a thousand two
-hundred and fifty in Spanish and one and a quarter in English, «1,2 millones»
-and «4bn» carry their scale, and «tres» or «twenty-five» are figures too.
-
-**What it can show:** no digit or numeric character (², ½, Ⅲ) in a composed
-text was typed by the writer; each comes from your facts, labels and fallbacks,
-or from the source its sentence cites. In a verified text, each figure written
-in digits matches a fact or appears in a label or source. Numbers written in
-words are caught from a list. Every sentence that goes out carries something
-from your data or cites a source, whatever its words: «performance remains
-within the expected parameters» carries nothing and is cut.
-
-**What it cannot show:** that your facts are right, or that a sentence carrying
-your data claims no more than it in words the lists do not contain («sales were
-{sales}, a solid result»). Word lists only catch the phrasings they hold;
-keeping verdicts in labels and figures in placeholders does not depend on them.
-A name that opens a sentence is not checked. The receipt's digest is unkeyed:
-it shows that a receipt is internally consistent, not who issued it.
-
-## Let a model write
+Using the `facts` from above:
 
 ```python
 from antihallucination import write
-from antihallucination.writers import ClaudeWriter  # pip install "antihallucination[claude]"
+from antihallucination.writers import ClaudeWriter
 
-written = write("A two-sentence sales summary for the board.", facts, writer=ClaudeWriter(), locale="en")
+written = write(
+    "A two-sentence sales summary for the board.",
+    facts,
+    writer=ClaudeWriter(),
+    locale="en",
+)
 print(written.text)
 ```
 
-The model is told each placeholder, what it measures, the shape Python will
-write («N units») and which way each change went. It is never shown a value.
-Its draft then goes through `compose()`. If a sentence fails, the model is asked
-again with the reasons, still without values; the attempt with fewer failed
-sentences goes out, and a sentence that still fails is dropped or replaced by
-your fallback.
+`write()` gives the writer placeholder names, formatting rules, and change
+directions while withholding the numeric values in `Fact.value`. It checks
+the draft and can ask for another attempt with the reasons a sentence failed.
+Source text, labels, and your brief can still contain numbers.
 
-`ClaudeWriter` runs `claude-opus-5-5` through the Anthropic SDK, with the
-server-side fallback on: if the model declines, the API runs the request again
-on another model. `OpenAICompatibleWriter.openai(model)`, `.groq(model)` and
-`.ollama(model)` cover OpenAI, Groq and local models. Any function that takes
-`(system, prompt)` and returns text is a writer too.
+Prefer another provider? `OpenAICompatibleWriter.openai(model)`,
+`.groq(model)`, and `.ollama(model)` use the same writing pipeline. You can
+also pass any function with the signature `(system, prompt) -> str`.
 
-## From the command line
+## How it works
 
-```bash
-antihallucination verify examples/saas/written_by_an_ai.txt --data examples/saas/data.json
-antihallucination compose examples/saas/draft.txt --data examples/saas/data.json --receipt receipt.json
-antihallucination receipt receipt.json --data examples/saas/data.json
-antihallucination write --data examples/saas/data.json --brief "A short monthly update for the team."
+```text
+Your facts + rules → Draft with placeholders → Sentence checks → Text + receipt
 ```
 
-`python -m antihallucination` works the same. The data file holds the facts,
-labels, sources, fallbacks and known names; a label can be decided by
-thresholds from a fact. [`antihallucination/data.py`](https://github.com/Jegoba90/anti-hallucination/blob/main/antihallucination/data.py)
-documents its format. The exit status is 0 when every sentence passed, 1 when
-some failed, 2 when the input cannot be read and 3 when the writer failed.
+- **Facts** hold values your code computed. **Labels** hold verdicts your rules
+  chose, such as “a slight decline”; `classify()` can choose them by threshold.
+- **Sources** hold evidence a draft can cite with `[id]`. A citation provides
+  context for the checks; it does not prove that the sentence follows from
+  the source.
+- **Fallbacks** are sentences you wrote. A failed sentence can be replaced by
+  a fallback for the same subject; otherwise it is dropped.
+- **Receipts** keep the inputs, decisions, and a digest so you can check their
+  consistency and replay the run.
 
-## Use it from Claude or any MCP client
+### What it checks
 
-No code needed: an assistant that speaks MCP writes the text, and the layer
-writes every figure and checks every sentence before the text reaches you. The
-server calls no model and no network, so your data stays on your machine.
+| Check | `compose()` — a draft with placeholders | `verify()` — existing text |
+|---|---|---|
+| Figures | Python fills placeholders; figures copied from a cited source are also allowed | Each figure must match a fact at the written precision, or occur in a label or permitted source |
+| Signs and directions | A word such as “fell” or “cayeron” must agree with the change; unsupported movement is flagged | Same |
+| Names | Checks proper names against facts, labels, sources, and `known_names` | Same |
+| Forecasts, certainty, causes | Flags phrases from English and Spanish word lists by default | Same |
+| Data in every sentence | Requires a placeholder, a checked direction, or a source citation | Requires a figure, a verdict from your data, a checked direction, or a citation |
 
-Claude Code:
+Number parsing follows the locale: `1.250` means a thousand two hundred and
+fifty in Spanish, while `1,250` means that in English. It also handles scales
+such as `1,2 millones` and `4bn`, and a vocabulary of numbers written in words.
+
+## Examples
+
+Each example includes a data file, a draft with placeholders, and a text
+written with figures. The test suite checks their expected outputs.
+
+| Example | What it demonstrates |
+|---|---|
+| [SaaS metrics](https://github.com/Jegoba90/anti-hallucination/tree/main/examples/saas) · English | Invented revenue figures, a cause, and a forecast are caught; supplied fallbacks keep the report useful |
+| [Support digest](https://github.com/Jegoba90/anti-hallucination/tree/main/examples/support) · English | A ticket summary changes 23 customers to 32 and invents a cause; checks catch both |
+| [Sales report](https://github.com/Jegoba90/anti-hallucination/tree/main/examples/sales) · Spanish | A draft claims growth while the supplied change is −3.2% |
+| [Python walkthrough](https://github.com/Jegoba90/anti-hallucination/blob/main/examples/sales_report.py) | Run both modes, inspect the decisions, and replay the receipt |
+
+## Use with MCP
+
+Use the same checks from Claude Code, Claude Desktop, or another MCP client.
+The server exposes four tools and makes no model or network calls itself.
+
+```bash
+pip install "antihallucination[mcp]"
+```
+
+**Claude Code:**
 
 ```bash
 claude mcp add --transport stdio --scope user anti-hallucination -- python -m antihallucination.mcp_server
 ```
 
-Claude Desktop, in `claude_desktop_config.json` (on Windows in
-`%APPDATA%\Claude\`, on macOS in `~/Library/Application Support/Claude/`):
+<details>
+<summary><strong>Claude Desktop configuration</strong></summary>
+
+Add this to `claude_desktop_config.json`:
 
 ```json
 {
@@ -164,58 +184,80 @@ Claude Desktop, in `claude_desktop_config.json` (on Windows in
 }
 ```
 
-Use the `python` you installed the package with (on macOS it may be
-`python3`). The installed `antihallucination-mcp` command starts the same
-server. Then give the assistant your figures and ask it to write with the
-anti-hallucination tools:
+The file is in `%APPDATA%\Claude\` on Windows and
+`~/Library/Application Support/Claude/` on macOS. Use the Python executable
+where you installed the extra; this may be `python3` or an absolute path.
+`antihallucination-mcp` launches the same server.
 
-| Tool | What it does |
+</details>
+
+| Tool | Purpose |
 |---|---|
-| `prepare_report` | Gives the placeholders and the rules for a brief, without any figure |
-| `compose_report` | Fills a draft written with placeholders, keeps the sentences that pass, and returns the text, why each sentence went out or not, and a receipt |
-| `verify_text` | Checks a text that already has its figures |
-| `check_receipt` | Verifies a receipt and runs its decision again |
+| `prepare_report` | Build the writing instructions with placeholders and rules |
+| `compose_report` | Fill the draft, run checks, and return text, decisions, and a receipt |
+| `verify_text` | Check an existing text against the supplied data |
+| `check_receipt` | Verify receipt consistency and replay its decisions |
 
-The assistant has seen your figures, so here the guarantee is not that it never
-saw them: it is that none of them reaches the text unless Python writes it.
+**The assistant supplies the data.** It may already have seen, calculated, or
+changed the values. The server checks the text against what it receives; it
+does not establish where those values came from. Client and model privacy
+policies still apply.
 
-## Examples
+## Command line
 
-| Example | Language | What it shows |
-|---|---|---|
-| [`examples/saas/`](https://github.com/Jegoba90/anti-hallucination/tree/main/examples/saas) | English | Monthly SaaS metrics: invented figures and a forecast are replaced by your sentences |
-| [`examples/support/`](https://github.com/Jegoba90/anti-hallucination/tree/main/examples/support) | English | A summary of support tickets: each sentence may only state what the ticket it cites says |
-| [`examples/sales/`](https://github.com/Jegoba90/anti-hallucination/tree/main/examples/sales) | Spanish | A quarterly sales report, with a verdict decided by thresholds |
-| [`examples/sales_report.py`](https://github.com/Jegoba90/anti-hallucination/blob/main/examples/sales_report.py) | Spanish | The same report from Python, with both modes and the receipt |
+```bash
+antihallucination verify examples/saas/written_by_an_ai.txt --data examples/saas/data.json
+antihallucination compose examples/saas/draft.txt --data examples/saas/data.json --receipt receipt.json
+antihallucination receipt receipt.json --data examples/saas/data.json
+antihallucination write --data examples/saas/data.json --brief "A short monthly update for the team."
+```
 
-Each folder has a `data.json`, a text written with figures typed in
-(`written_by_an_ai.txt`) and a draft with placeholders (`draft.txt`).
+`python -m antihallucination` works too. The data file holds facts, labels,
+sources, fallbacks, and known names; its format is documented in
+[`antihallucination/data.py`](https://github.com/Jegoba90/anti-hallucination/blob/main/antihallucination/data.py).
+Exit codes: `0` all sentences passed, `1` checks failed, `2` invalid input,
+`3` writer failure.
 
-## Tested with a real model
+## Scope and limitations
 
-On 2026-11-16 `openai/gpt-oss-120b`, on Groq, wrote four drafts of the Spanish
-sales report. It typed no figure. In the first draft one sentence carried no
-data, «El desempeño general se mantiene dentro de los parámetros esperados», and
-passed every check; the rule that every sentence must carry data came from it,
-and the three drafts after it kept all their sentences. The drafts are kept in
-[`tests/fixtures/real_model/`](https://github.com/Jegoba90/anti-hallucination/tree/main/tests/fixtures/real_model) and judged on every
-test run. Claude has not run against the live API yet. The record is in
-[`docs/pruebas-2026-11-16.md`](https://github.com/Jegoba90/anti-hallucination/blob/main/docs/pruebas-2026-11-16.md).
+**Experimental · v0.2.** This is a layer of explicit rules for text generated
+from supplied data. It is not a general factuality or semantic entailment
+checker.
 
-## Where it comes from
+- It does not establish that your facts are true or that your sources support
+  every possible paraphrase. A source citation alone is not proof.
+- Names, directions, forecasts, certainty, causes, and numbers written in
+  words use heuristics and word lists. Phrasings outside those rules can pass;
+  a name at the start of a sentence is not checked.
+- A sentence can carry a valid figure and still add an unsupported opinion.
+  Put verdicts in labels and keep human review where it matters.
+- A receipt's SHA-256 digest checks internal consistency. It is unkeyed and
+  does not authenticate the author or the origin of the data.
 
-This is the method of the engine behind [CryptoCapi](https://cryptocapi.com),
-where the model writes one line per news note and Python writes every market
-figure. [anti-hallucination-crypto-agent](https://github.com/Jegoba90/anti-hallucination-crypto-agent)
-shows that engine's output and seals in a terminal.
+The [test record](https://github.com/Jegoba90/anti-hallucination/blob/main/docs/pruebas-2026-11-16.md)
+includes real Groq drafts and a Claude Code MCP session, along with what has
+and has not been tested live. CI runs the tests on Python 3.11, 3.13, and 3.14,
+plus minimal-install and installed-wheel checks.
 
-## Development
+## Contributing
+
+Found a phrasing the checks miss? Have a report that needs a clearer decision?
+[Open an issue](https://github.com/Jegoba90/anti-hallucination/issues/new/choose)
+with a small example, or read the
+[contribution guide](https://github.com/Jegoba90/anti-hallucination/blob/main/CONTRIBUTING.md)
+to run the checks and submit a change.
 
 ```bash
 pip install -e ".[dev]"
-pytest
+pytest tests/ -v
 mypy .
 ruff check .
 ```
 
-MIT license.
+## Origin and license
+
+Extracted from the reporting engine behind [CryptoCapi](https://cryptocapi.com).
+The [original crypto agent](https://github.com/Jegoba90/anti-hallucination-crypto-agent)
+shows the approach in a market-news workflow.
+
+Released under the [MIT license](https://github.com/Jegoba90/anti-hallucination/blob/main/LICENSE).

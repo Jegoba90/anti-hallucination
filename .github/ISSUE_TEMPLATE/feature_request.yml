@@ -1,0 +1,23 @@
+name: Feature request
+description: Suggest an improvement and describe the problem it would solve.
+title: "[Feature]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What are you trying to do, and what gets in the way today?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Proposed behavior
+      description: Describe the result you would like. A small example of input and expected output helps.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Alternatives or additional context
+      description: Optional workarounds, related issues, or constraints. Use synthetic data and omit credentials or private information.

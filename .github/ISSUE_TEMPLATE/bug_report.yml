@@ -1,0 +1,45 @@
+name: Bug report
+description: Report unexpected behavior with a reproducible example.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share the smallest example that demonstrates the problem. Use synthetic data and remove API keys, credentials, and private information.
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      description: The installed antihallucination version.
+      placeholder: "For example: 0.2.0"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Python version and operating system; include the MCP client or writer if relevant.
+      placeholder: "For example: Python 3.13, Windows 11, Python API"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Include the command or code, input facts, and draft or text needed to reproduce the issue.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual behavior
+      description: What should happen, and what happened instead? For a check, identify the sentence or finding involved.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error output or additional context
+      description: Optional traceback, receipt excerpt, or related information. Remove sensitive data.
+      render: text
