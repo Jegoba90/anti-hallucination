@@ -11,9 +11,12 @@ has its figures. The server calls no model and no network: the data stays on
 the machine that runs it.
 """
 
-from typing import Literal, NotRequired, TypedDict
+from typing import Literal
 
 from mcp.server.mcpserver import MCPServer
+# pydantic builds the tools' schemas from these, and before Python 3.12 it
+# refuses typing.TypedDict: the CI caught it on 3.11.
+from typing_extensions import NotRequired, TypedDict
 from mcp.server.mcpserver.exceptions import ToolError
 from mcp.types import ToolAnnotations
 
