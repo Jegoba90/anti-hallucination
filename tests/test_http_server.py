@@ -146,6 +146,17 @@ class TestTheRestApi:
         assert response.status_code == 400
         assert "not valid JSON" in response.json()["error"]
 
+    @pytest.mark.parametrize("value", ["1e10000000", "1e-10000000", "0e-10000000"])
+    def test_a_value_with_a_huge_exponent_is_refused_in_a_few_bytes(self, client: TestClient, value: str) -> None:
+        # 64 bytes that used to come back as a 10 MB receipt, or as a 500.
+        body = '{"text":"x","data":{"facts":[{"name":"a","value":%s}]}}' % value
+
+        response = client.post("/v1/verify", content=body, headers={"Content-Type": "application/json"})
+
+        assert response.status_code == 400
+        assert "at most 40 digits" in response.json()["error"]
+        assert len(response.content) < 200
+
     def test_a_body_over_the_limit_is_refused(self) -> None:
         with TestClient(create_app(token=TOKEN, max_body=1000)) as small:
             small.headers["Authorization"] = f"Bearer {TOKEN}"

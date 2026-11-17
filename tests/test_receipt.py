@@ -26,7 +26,7 @@ from antihallucination import (
     verify,
     verify_receipt,
 )
-from antihallucination.receipt import canonical_number
+from antihallucination.receipt import canonical_number, digest
 
 FACTS = [
     Fact("ventas", 1250, unit="unidades", subject="ventas"),
@@ -128,3 +128,15 @@ class TestReplay:
 )
 def test_numbers_are_written_one_way(value: Decimal, expected: str) -> None:
     assert canonical_number(value) == expected
+
+
+def test_a_receipt_with_a_value_past_40_digits_is_not_rebuilt() -> None:
+    # The digest is unkeyed: whoever edits a receipt can compute it again.
+    receipt = _receipt()
+    receipt["facts"][0]["value"] = "1e-10000000"
+    receipt["digest"] = digest(receipt)
+
+    check = replay(receipt, SOURCES)
+
+    assert check.status is ReplayStatus.UNREADABLE
+    assert "at most 40 digits" in check.reason

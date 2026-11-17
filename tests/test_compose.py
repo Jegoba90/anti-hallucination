@@ -7,6 +7,7 @@ repaired. These pin what goes out, what does not and why.
 
 import re
 import sys
+from decimal import Decimal, localcontext
 from pathlib import Path
 
 import pytest
@@ -14,6 +15,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from antihallucination import Fact, Label, Policy, Source, classify, compose
+from antihallucination.receipt import canonical_number
 
 FACTS = [
     Fact("ventas", 1250, unit="unidades", label="ventas del trimestre", subject="ventas"),
@@ -289,3 +291,49 @@ def test_classify_records_the_rule_it_applied() -> None:
     assert (label.text, label.rule) == ("caída leve", "-5 ≤ -3.2 < -1")
     with pytest.raises(ValueError):
         classify("x", 1, [(5, "a"), (1, "b")], otherwise="c")
+
+
+class TestLongValues:
+    """A value takes at most 40 digits written out in full, and each one is written.
+
+    Found on 2026-11-17: a 64-byte request to the service with 1e-10000000
+    got back a 10 MB receipt, and 1e40 with 12 decimals failed while rounding,
+    as did any value past the 28 digits of Python's default decimal context.
+    """
+
+    @pytest.mark.parametrize(
+        "value",
+        [Decimal("1e40"), Decimal("1e-40"), Decimal("0e-40"), Decimal("1e-10000000"), Decimal("1e10000000"), 1e300],
+    )
+    def test_a_value_past_40_digits_is_refused(self, value: object) -> None:
+        with pytest.raises(ValueError, match="at most 40 digits"):
+            Fact("a", value)  # type: ignore[arg-type]
+
+    @pytest.mark.parametrize(
+        ("value", "written"),
+        [
+            (Decimal("1e39"), "1" + "0" * 39),
+            (Decimal("1e-39"), "0." + "0" * 38 + "1"),
+            (Decimal("0e10000000"), "0"),
+        ],
+    )
+    def test_a_value_up_to_40_digits_goes_into_the_receipt_in_full(self, value: Decimal, written: str) -> None:
+        assert canonical_number(Fact("a", value).number) == written
+
+    def test_every_digit_is_written_whatever_the_callers_context(self) -> None:
+        # 40 digits, written with 12 decimals: 52, past the default context's 28.
+        fact = Fact("a", Decimal("-123456789012345678901234567890.1234567891"), decimals=12)
+        expected = "123,456,789,012,345,678,901,234,567,890.123456789100"
+        with localcontext() as context:
+            context.prec = 4
+            shown = (fact.render("en"), fact.render("en", "abs"))
+
+        assert shown == ("-" + expected, expected)
+
+    def test_a_compact_figure_does_not_depend_on_the_callers_context(self) -> None:
+        fact = Fact("a", Decimal("1234567890123456789012345678901234567"), compact=True, decimals=3)
+        with localcontext() as context:
+            context.prec = 4
+            shown = fact.render("en")
+
+        assert shown == "1,234,567,890,123,456,789,012,345.679 trillion"

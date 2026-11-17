@@ -8,6 +8,7 @@ evidence.
 """
 
 import sys
+from decimal import Decimal
 from pathlib import Path
 
 import pytest
@@ -189,3 +190,21 @@ def test_the_sentence_opening_word_is_not_checked_as_a_name() -> None:
     result = verify("Acme sold 1,250 units.", [Fact("units", 1250)], locale="en")
 
     assert result.ok
+
+
+class TestLongFacts:
+    """A fact past 28 digits is compared digit by digit, not rounded first.
+
+    Before 2026-11-17 its absolute value was rounded to the caller's decimal
+    context, 28 digits by default, so a figure that differed after them passed.
+    """
+
+    DEBT = [Fact("deuda", Decimal("-1234567890123456789012345678901"), change=True, subject="deuda")]
+
+    def test_the_exact_figure_passes(self) -> None:
+        assert verify("La deuda cayó 1234567890123456789012345678901.", self.DEBT, locale="es").ok
+
+    def test_a_figure_that_differs_past_28_digits_is_found(self) -> None:
+        result = verify("La deuda cayó 1234567890123456789012345679000.", self.DEBT, locale="es")
+
+        assert _found(result) == [("unbacked_number", "1234567890123456789012345679000")]

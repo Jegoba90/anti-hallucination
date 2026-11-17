@@ -14,9 +14,12 @@ import re
 from bisect import bisect_right
 from dataclasses import dataclass
 from functools import lru_cache
-from decimal import Decimal, InvalidOperation
+from decimal import MAX_EMAX, MAX_PREC, MIN_EMIN, Context, Decimal, InvalidOperation
 
 LOCALES = ("es", "en", "auto")
+# Products and differences without rounding, whatever the caller's context:
+# a figure is compared digit by digit. Never divide in it: 1/3 has no end.
+_UNROUNDED = Context(prec=MAX_PREC, Emax=MAX_EMAX, Emin=MIN_EMIN)
 
 
 @dataclass(frozen=True)
@@ -235,7 +238,7 @@ def extract(text: str, locale: str = "auto") -> list[Mention]:
         exact_only = _significant(match.group("digits")) < 2
         readings = tuple(
             Reading(
-                value=value * scale,
+                value=_UNROUNDED.multiply(value, scale),
                 step=Decimal(1).scaleb(-decimals) * scale,
                 unscaled=value,
                 exact_only=exact_only,
@@ -289,7 +292,7 @@ def extract(text: str, locale: str = "auto") -> list[Mention]:
                     raw=match.group(0),
                     start=match.start(),
                     end=match.end(),
-                    readings=(Reading(value=base * scale, step=Decimal(scale), unscaled=base, exact_only=True),),
+                    readings=(Reading(value=_UNROUNDED.multiply(base, scale), step=Decimal(scale), unscaled=base, exact_only=True),),
                 )
             )
             spans.append((match.start(), match.end()))
@@ -330,9 +333,11 @@ def match_fact(mention: Mention, value: Decimal, percent: bool) -> str | None:
     found: str | None = None
     for reading in mention.readings:
         tolerance = Decimal(0) if reading.exact_only else reading.step / 2
-        written = -reading.value if mention.negative else reading.value
-        if abs(value - written) <= tolerance:
+        written = reading.value.copy_negate() if mention.negative else reading.value
+        # Unrounded: abs() and a subtraction in the caller's context would
+        # round a long figure to its 28 digits, and a wrong one could pass.
+        if _UNROUNDED.subtract(value, written).copy_abs() <= tolerance:
             return "exact"
-        if abs(abs(value) - reading.value) <= tolerance:
+        if _UNROUNDED.subtract(value.copy_abs(), reading.value).copy_abs() <= tolerance:
             found = found or ("sign" if mention.signed else "abs")
     return found

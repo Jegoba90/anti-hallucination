@@ -25,6 +25,11 @@ _PERCENT_UNITS = frozenset({"%", "pct", "percent", "por ciento"})
 COMPUTE = ("percent_change", "difference")
 # A fixed context, not the thread's: a replay must get the same digits anywhere.
 _EXACT = Context(prec=28, rounding=ROUND_HALF_EVEN)
+# A value takes at most this many digits written out in full, as the receipt
+# writes it: «1e-10000000» would be ten million. 1e39 and 1e-39 still fit.
+MAX_DIGITS = 40
+# Wide enough to write any such value exactly, with up to 12 decimals.
+_WIDE = Context(prec=80)
 
 Number = int | float | Decimal
 
@@ -43,7 +48,18 @@ def to_decimal(value: Number) -> Decimal:
         number = Decimal(value)
     if not number.is_finite():
         raise ValueError("a fact value must be finite")
+    if _plain_digits(number) > MAX_DIGITS:
+        raise ValueError(f"a fact value takes at most {MAX_DIGITS} digits written out in full, without an exponent")
     return number
+
+
+def _plain_digits(number: Decimal) -> int:
+    """How many digits a finite value takes written out in full: «0.001» takes 4."""
+    _, digits, exponent = number.as_tuple()
+    assert isinstance(exponent, int)  # a finite value's
+    if exponent >= 0:
+        return 1 if number.is_zero() else len(digits) + exponent
+    return max(len(digits) + exponent, 1) - exponent
 
 
 def _check_name(kind: str, name: str) -> None:
@@ -88,7 +104,8 @@ class Fact:
     """A number your code computed: the only place a figure can come from.
 
     name:     what the writer writes between braces: {ventas}
-    value:    the number, in base units (4200000, not 4.2 with "millions")
+    value:    the number, in base units (4200000, not 4.2 with "millions"),
+              at most MAX_DIGITS (40) digits written out in full
     unit:     written after the figure; "%" makes it a percentage
     decimals: how many decimals Python writes; None takes them from the value
     label:    a plain name for it, for people reading the receipt
@@ -155,9 +172,10 @@ class Fact:
         modifier "abs" drops the sign (the sentence carries it in words, as in
         «cayeron 3,2 %»); "signed" writes a plus sign before a positive value.
         """
-        value = abs(self.number) if modifier == "abs" else self.number
+        # copy_abs, not abs(): abs() rounds to the caller's decimal context.
+        value = self.number.copy_abs() if modifier == "abs" else self.number
         plus = modifier == "signed" or (self.signed and modifier != "abs")
-        if self.compact and abs(value) >= 10**6:
+        if self.compact and value.copy_abs() >= 10**6:
             figure = _compact(value, self.decimals, locale)
         else:
             figure = format_number(value, self.shown_decimals(), locale)
@@ -173,9 +191,8 @@ class Fact:
 
 def format_number(value: Decimal, decimals: int, locale: str) -> str:
     """«1.250,5» in Spanish, «1,250.5» in English; ROUND_HALF_UP."""
-    quantum = Decimal(1).scaleb(-decimals)
-    rounded = value.quantize(quantum, rounding=ROUND_HALF_UP)
-    text = f"{abs(rounded):,.{decimals}f}"
+    rounded = value.quantize(Decimal(1).scaleb(-decimals), rounding=ROUND_HALF_UP, context=_WIDE)
+    text = f"{rounded.copy_abs():,.{decimals}f}"
     if locale == "es":
         text = text.replace(",", "\0").replace(".", ",").replace("\0", ".")
     return ("-" if rounded < 0 else "") + text
@@ -183,7 +200,7 @@ def format_number(value: Decimal, decimals: int, locale: str) -> str:
 
 def _compact(value: Decimal, decimals: int | None, locale: str) -> str:
     """4200000 as «4,2 millones» or «4.2 million»."""
-    magnitude = abs(value)
+    magnitude = value.copy_abs()
     if magnitude >= 10**12:
         scale, es_one, es_many, en = 10**12, "billón", "billones", "trillion"
     elif magnitude >= 10**9:
@@ -191,7 +208,7 @@ def _compact(value: Decimal, decimals: int | None, locale: str) -> str:
     else:
         scale, es_one, es_many, en = 10**6, "millón", "millones", "million"
     places = 1 if decimals is None else decimals
-    shown = (value / scale).quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP)
+    shown = _WIDE.divide(value, scale).quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP, context=_WIDE)
     # «4,0 millones» reads «4 millones»: a coarser precision the fact still rounds to.
     figure = format_number(shown, 0 if shown == shown.to_integral_value() else places, locale)
     if locale == "es":

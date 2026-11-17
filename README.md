@@ -308,6 +308,11 @@ long can be stopped without stopping the others. A text that matches the data
 more than 200,000 times (say, one figure that stands for thousands of facts) is
 refused by the checks themselves, in the library too: `TooManyMatches`.
 
+A fact's value takes at most 40 digits written out in full: `1e39` and `1e-39`
+fit, `1e40` does not. The receipt writes every digit, so without this limit a
+64-byte request with `1e-10000000` would get a 10 MB answer. A longer value is
+refused with `400`, and with `ValueError` in the library.
+
 ## Command line
 
 ```bash

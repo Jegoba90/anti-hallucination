@@ -320,7 +320,7 @@ class Context:
             if len(number.as_tuple().digits) > _SHORT_NUMBER:
                 self._long_facts.append(position)
             else:
-                sized.append((abs(number), position))
+                sized.append((number.copy_abs(), position))
         sized.sort()
         self._sizes = [size for size, _ in sized]
         self._sized = [position for _, position in sized]
