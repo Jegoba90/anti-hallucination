@@ -11,6 +11,7 @@ quantity: it is checked as written, like a name.
 """
 
 import re
+from bisect import bisect_right
 from dataclasses import dataclass
 from functools import lru_cache
 from decimal import Decimal, InvalidOperation
@@ -183,12 +184,35 @@ def _glued_before(text: str, index: int) -> bool:
     return before in "-./" and index >= 2 and text[index - 2].isalpha()
 
 
+class _Taken:
+    """The spans already read as a figure, in order and never overlapping.
+
+    Each pattern below finds spans that do not overlap each other, so a span
+    only has to be free of what the patterns before it took; kept in order,
+    that takes a binary search instead of a pass over every span.
+    """
+
+    def __init__(self) -> None:
+        self._starts: list[int] = []
+        self._ends: list[int] = []
+
+    def free(self, start: int, end: int) -> bool:
+        index = bisect_right(self._ends, start)  # the first span that ends after `start`
+        return index == len(self._ends) or self._starts[index] >= end
+
+    def add(self, spans: list[tuple[int, int]]) -> None:
+        merged = sorted([*zip(self._starts, self._ends), *spans])
+        self._starts = [start for start, _ in merged]
+        self._ends = [end for _, end in merged]
+
+
 def extract(text: str, locale: str = "auto") -> list[Mention]:
     """Every figure in `text`, in order of appearance."""
     if locale not in LOCALES:
         raise ValueError(f"locale must be one of {LOCALES}, not {locale!r}")
     mentions: list[Mention] = []
-    taken: list[tuple[int, int]] = []
+    taken = _Taken()
+    spans: list[tuple[int, int]] = []
 
     for match in _NUMBER_RE.finditer(text):
         digits_start = match.start("digits")
@@ -229,21 +253,22 @@ def extract(text: str, locale: str = "auto") -> list[Mention]:
                 percent=bool(match.group("percent")),
             )
         )
-        taken.append((start, end))
+        spans.append((start, end))
+    taken.add(spans)
 
-    def free(start: int, end: int) -> bool:
-        return all(end <= a or start >= b for a, b in taken)
-
+    spans = []
     for match in _IDENTIFIER_RE.finditer(text):
-        if free(match.start(), match.end()):
+        if taken.free(match.start(), match.end()):
             mentions.append(
                 Mention(raw=match.group(0), start=match.start(), end=match.end(), readings=(), identifier=True)
             )
-            taken.append((match.start(), match.end()))
+            spans.append((match.start(), match.end()))
+    taken.add(spans)
 
     for pattern in _word_patterns(locale):
+        spans = []
         for match in pattern.finditer(text):
-            if not free(match.start(), match.end()):
+            if not taken.free(match.start(), match.end()):
                 continue
             groups = match.groupdict()
             if groups.get("tens"):
@@ -267,7 +292,8 @@ def extract(text: str, locale: str = "auto") -> list[Mention]:
                     readings=(Reading(value=base * scale, step=Decimal(scale), unscaled=base, exact_only=True),),
                 )
             )
-            taken.append((match.start(), match.end()))
+            spans.append((match.start(), match.end()))
+        taken.add(spans)
 
     return sorted(mentions, key=lambda mention: mention.start)
 

@@ -4,10 +4,14 @@ Every check works on one sentence at a time, because a sentence is what gets
 kept, dropped or replaced. Positions matter (a direction word belongs to the
 number nearest to it), so nothing here rewrites the text it splits: masking
 swaps a span for filler of the same length, and the offsets stay valid.
+
+Nothing here reads the text again for every word: a sentence of any length,
+with or without punctuation, costs about as much as reading it once.
 """
 
 import re
 import unicodedata
+from bisect import bisect_right
 
 # A run of this character hides a placeholder or a citation from the checks
 # without moving anything: it is not a letter, digit, space or punctuation the
@@ -44,8 +48,30 @@ _ABBREVIATIONS = frozenset(
         "dec", "ene", "abr", "dic",
     }
 )  # fmt: skip
-_BOUNDARY = re.compile(r"[.!?…]+[\"'»”’)\]]*(?=\s)")
+# A run of these marks ends a sentence when whitespace follows. The run is read
+# from its first mark and never given back: a line of ten thousand dots with no
+# space after them is read once, not once for every dot.
+_BOUNDARY = re.compile(r"(?<![.!?…])[.!?…]++[\"'»”’)\]]*+(?=\s)")
 _CITATION_ONLY = re.compile(r"^(?:\[[^\[\]]+\]\s*)+$")
+
+
+def _last_word(line: str, start: int, end: int) -> str:
+    """The last word of line[start:end] as str.split() cuts it, read from the end."""
+    stop = end
+    while stop > start and line[stop - 1].isspace():
+        stop -= 1
+    begin = stop
+    while begin > start and not line[begin - 1].isspace():
+        begin -= 1
+    return line[begin:stop]
+
+
+def _next_char(line: str, start: int) -> str:
+    """The first character from `start` on that is not whitespace, or ""."""
+    for index in range(start, len(line)):
+        if not line[index].isspace():
+            return line[index]
+    return ""
 
 
 def split_sentences(line: str) -> list[str]:
@@ -59,11 +85,9 @@ def split_sentences(line: str) -> list[str]:
     sentences: list[str] = []
     start = 0
     for match in _BOUNDARY.finditer(line):
-        before = line[start : match.start()].split()
-        last_word = fold(before[-1]).strip("(«\"'") if before else ""
-        rest = line[match.end() :].lstrip()
+        last_word = fold(_last_word(line, start, match.start())).strip("(«\"'")
         initial = len(last_word) == 1 and last_word.isalpha()
-        if last_word in _ABBREVIATIONS or initial or rest[:1].islower():
+        if last_word in _ABBREVIATIONS or initial or _next_char(line, match.end()).islower():
             continue
         sentence = line[start : match.end()].strip()
         if sentence:
@@ -91,21 +115,49 @@ _CLAUSE_BREAK = re.compile(
 )
 
 
-def clause_of(sentence: str, position: int) -> tuple[int, int]:
-    """The (start, end) of the clause that holds `position`."""
-    start, end = 0, len(sentence)
-    for match in _CLAUSE_BREAK.finditer(sentence):
-        if match.end() <= position:
-            start = match.end()
-        elif match.start() > position:
-            end = match.start()
-            break
-    return start, end
+class Clauses:
+    """The clauses of one sentence, found once and looked up for every position."""
+
+    def __init__(self, sentence: str) -> None:
+        self._starts: list[int] = []
+        self._ends: list[int] = []
+        for match in _CLAUSE_BREAK.finditer(sentence):
+            self._starts.append(match.start())
+            self._ends.append(match.end())
+        self._length = len(sentence)
+
+    def of(self, position: int) -> tuple[int, int]:
+        """The (start, end) of the clause that holds `position`.
+
+        It runs from the end of the last break that ends at or before
+        `position` to the start of the first break that starts after it, so
+        a position inside a break gets both clauses around that break.
+        """
+        before = bisect_right(self._ends, position)
+        after = bisect_right(self._starts, position)
+        start = self._ends[before - 1] if before else 0
+        end = self._starts[after] if after < len(self._starts) else self._length
+        return start, end
 
 
-def words_before(text: str, position: int, count: int) -> list[str]:
-    """The last `count` words before `position`, casefolded."""
-    return [word.casefold() for word in re.findall(r"[\w'’]+", text[:position])][-count:]
+_WORD = re.compile(r"[\w'’]+")
+
+
+def last_words(text: str, start: int, end: int, count: int) -> list[str]:
+    """The last `count` words of text[start:end], casefolded.
+
+    It reads back only as far as those words reach, so asking at every word of
+    a long sentence costs about as much as reading the sentence once.
+    """
+    reach = 64
+    while True:
+        low = max(start, end - reach)
+        words = _WORD.findall(text[low:end])
+        # The window may cut the first word it finds; with more than `count`
+        # words found, that one is not among the last `count`.
+        if low == start or len(words) > count:
+            return [word.casefold() for word in words[-count:]]
+        reach *= 4
 
 
 def lower(text: str) -> str:
