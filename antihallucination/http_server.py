@@ -37,7 +37,9 @@ from starlette.types import ASGIApp, Receive, Scope, Send
 from . import __version__
 from .mcp_server import run_check_receipt, run_compose, run_prepare, run_verify, server
 
-# 0.7 s of checks on one core at most (a 256 KB text is about 5,000 sentences).
+# The checks grow in line with the text (tests/test_long_texts.py holds them
+# to it): 256 KB of ordinary text, about 5,000 sentences, takes 0.7 s on one
+# core, and the slowest text known, 2.5 s.
 DEFAULT_MAX_BODY = 262_144
 LOCAL_HOSTS = frozenset({"127.0.0.1", "localhost", "::1"})
 
