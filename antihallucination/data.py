@@ -141,22 +141,41 @@ def _number(value: object, where: str) -> Number:
 
 
 def _facts(items: list[dict[str, object]]) -> tuple[Fact, ...]:
-    """The facts in the order given; a computed one waits for the facts it is computed from."""
+    """The facts in the order given; a computed one waits for the facts it is computed from.
+
+    They are built in rounds: first the facts given, then, each round, the
+    computed facts whose two facts were built in an earlier round, in the
+    order given. A round looks only at the facts the last one unblocked, so
+    a long chain listed backwards costs its length, not its length squared.
+    """
     built: dict[int, Fact] = {}
-    pending = list(range(len(items)))
-    while pending:
-        ready = {fact.name: fact for fact in built.values()}
-        waiting = [
+    ready: dict[str, Fact] = {}  # the facts built in earlier rounds, by name
+    unbuilt = set(range(len(items)))
+    waiting_on: dict[str, list[int]] = {}  # name -> the computed facts that need it
+    for index, item in enumerate(items):
+        if "compute" in item:
+            for key in ("from", "to"):
+                value = item.get(key)
+                if isinstance(value, str):
+                    waiting_on.setdefault(value, []).append(index)
+    this_round = [index for index, item in enumerate(items) if "compute" not in item]
+    while unbuilt:
+        if not this_round:
+            _unresolved(items, min(unbuilt))
+        for index in this_round:
+            built[index] = _fact(items[index], f"facts[{index}]", ready)
+        unbuilt.difference_update(this_round)
+        unblocked: set[int] = set()
+        for index in this_round:
+            name = built[index].name
+            if name not in ready:
+                unblocked.update(waiting_on.get(name, ()))
+            ready[name] = built[index]
+        this_round = sorted(
             index
-            for index in pending
-            if "compute" in items[index] and not all(_names_one_of(items[index].get(key), ready) for key in ("from", "to"))
-        ]
-        for index in pending:
-            if index not in waiting:
-                built[index] = _fact(items[index], f"facts[{index}]", ready)
-        if len(waiting) == len(pending):
-            _unresolved(items, waiting[0])
-        pending = waiting
+            for index in unblocked
+            if index in unbuilt and all(_names_one_of(items[index].get(key), ready) for key in ("from", "to"))
+        )
     return tuple(built[index] for index in range(len(items)))
 
 

@@ -11,9 +11,11 @@ has its figures. The server calls no model and no network: the data stays on
 the machine that runs it.
 """
 
-from collections.abc import Mapping
-from typing import Literal
+from collections.abc import Awaitable, Callable, Mapping
+from functools import partial
+from typing import Literal, Protocol, TypeVar
 
+import anyio
 from mcp.server.mcpserver import MCPServer
 # pydantic builds the tools' schemas from these, and before Python 3.12 it
 # refuses typing.TypedDict: the CI caught it on 3.11.
@@ -22,6 +24,7 @@ from mcp.server.mcpserver.exceptions import ToolError
 from mcp.types import ToolAnnotations
 
 from . import __version__
+from .checks import TooManyMatches
 from .core import ReplayStatus, Result, compose, replay, verify
 from .data import Data, DataError, parse_data
 from .prompt import build_prompt
@@ -139,12 +142,22 @@ _READ_ONLY = ToolAnnotations(
     read_only_hint=True, destructive_hint=False, idempotent_hint=True, open_world_hint=False
 )
 
-server = MCPServer(
-    name="anti-hallucination",
-    title="Anti-Hallucination",
-    version=__version__,
-    instructions=INSTRUCTIONS,
-)
+T = TypeVar("T")
+
+
+class Runner(Protocol):
+    """Runs one tool's work and gives back its result."""
+
+    def __call__(self, call: Callable[[], T]) -> Awaitable[T]: ...
+
+
+async def in_a_thread(call: Callable[[], T]) -> T:
+    """The stdio server's runner: off the event loop, as the SDK runs a plain tool."""
+    return await anyio.to_thread.run_sync(call)
+
+
+class TooMuchWork(ToolError):
+    """A request too large to check: past MAX_MATCHES, or past the service's time or memory limit."""
 
 
 def _data(raw: Mapping[str, object] | None) -> Data:
@@ -211,6 +224,8 @@ def run_compose(draft: str, data: Mapping[str, object], locale: str, *, writer: 
             locale=locale,
             writer=writer,
         )
+    except TooManyMatches as exc:
+        raise TooMuchWork(str(exc)) from exc
     except (ValueError, TypeError) as exc:
         raise ToolError(str(exc)) from exc
     return _report(result)
@@ -229,6 +244,8 @@ def run_verify(text: str, data: Mapping[str, object], locale: str, *, writer: st
             locale=locale,
             writer=writer,
         )
+    except TooManyMatches as exc:
+        raise TooMuchWork(str(exc)) from exc
     except (ValueError, TypeError) as exc:
         raise ToolError(str(exc)) from exc
     return _report(result)
@@ -243,54 +260,67 @@ def run_check_receipt(receipt: Mapping[str, object], data: Mapping[str, object] 
     return {"digest": check.status.value, "replay": again.status.value, "reason": reason}
 
 
-@server.tool(annotations=_READ_ONLY)
-def prepare_report(brief: str, data: DataInput, locale: Literal["es", "en"] = "en") -> PreparedOutput:
-    """Call first when you must write a text from the user's figures.
+def build_server(run: Runner = in_a_thread) -> MCPServer[object]:
+    """The MCP server and its four tools. `run` runs each tool's work: on a
+    thread for the stdio server; the HTTP service passes one that runs it in a
+    worker process with a time and a memory limit (http_server.py)."""
+    built = MCPServer(
+        name="anti-hallucination",
+        title="Anti-Hallucination",
+        version=__version__,
+        instructions=INSTRUCTIONS,
+    )
 
-    Returns the placeholder for each figure and verdict, the shape Python will
-    write each one in («N units»), which way each change went, and the rules.
-    Write the draft with those placeholders, never typing a figure, then send
-    it to compose_report with the same data. A change between two facts goes
-    in as a fact with compute, from and to: the server computes it, not you.
-    """
-    return run_prepare(brief, data, locale)
+    @built.tool(annotations=_READ_ONLY)
+    async def prepare_report(brief: str, data: DataInput, locale: Literal["es", "en"] = "en") -> PreparedOutput:
+        """Call first when you must write a text from the user's figures.
+
+        Returns the placeholder for each figure and verdict, the shape Python will
+        write each one in («N units»), which way each change went, and the rules.
+        Write the draft with those placeholders, never typing a figure, then send
+        it to compose_report with the same data. A change between two facts goes
+        in as a fact with compute, from and to: the server computes it, not you.
+        """
+        return await run(partial(run_prepare, brief, dict(data), locale))
+
+    @built.tool(annotations=_READ_ONLY)
+    async def compose_report(draft: str, data: DataInput, locale: Literal["es", "en"] = "en") -> ReportOutput:
+        """Fill a draft written with placeholders and keep only the sentences that pass.
+
+        Python writes every figure. A sentence that types a figure, contradicts a
+        change, names someone no source names, forecasts, claims certainty, states
+        a cause or carries no data is dropped, or replaced by the user's fallback.
+        Give the user `text`, and say what `sentences` reports as dropped.
+        """
+        return await run(partial(run_compose, draft, dict(data), locale, writer="mcp client"))
+
+    @built.tool(annotations=_READ_ONLY)
+    async def verify_text(
+        text: str, data: DataInput, locale: Literal["es", "en", "auto"] = "auto"
+    ) -> ReportOutput:
+        """Check a text that already has its figures against the user's data.
+
+        Each figure must match a fact at the precision written, or appear in a
+        label or source; directions, names, forecasts, certainty, causes and
+        sentences with no data are checked as in compose_report. locale decides
+        how «1.250» reads: "es" (1250), "en" (1.25) or "auto" (either).
+        """
+        return await run(partial(run_verify, text, dict(data), locale))
+
+    @built.tool(annotations=_READ_ONLY)
+    async def check_receipt(receipt: dict[str, object], data: DataInput | None = None) -> ReceiptCheckOutput:
+        """Check a receipt from compose_report or verify_text, and run its decision again.
+
+        The digest shows the receipt is internally consistent, not who issued it.
+        Sources are recorded by hash only: pass the same data to replay a decision
+        that used sources.
+        """
+        return await run(partial(run_check_receipt, receipt, dict(data) if data is not None else None))
+
+    return built
 
 
-@server.tool(annotations=_READ_ONLY)
-def compose_report(draft: str, data: DataInput, locale: Literal["es", "en"] = "en") -> ReportOutput:
-    """Fill a draft written with placeholders and keep only the sentences that pass.
-
-    Python writes every figure. A sentence that types a figure, contradicts a
-    change, names someone no source names, forecasts, claims certainty, states
-    a cause or carries no data is dropped, or replaced by the user's fallback.
-    Give the user `text`, and say what `sentences` reports as dropped.
-    """
-    return run_compose(draft, data, locale, writer="mcp client")
-
-
-@server.tool(annotations=_READ_ONLY)
-def verify_text(
-    text: str, data: DataInput, locale: Literal["es", "en", "auto"] = "auto"
-) -> ReportOutput:
-    """Check a text that already has its figures against the user's data.
-
-    Each figure must match a fact at the precision written, or appear in a
-    label or source; directions, names, forecasts, certainty, causes and
-    sentences with no data are checked as in compose_report. locale decides
-    how «1.250» reads: "es" (1250), "en" (1.25) or "auto" (either).
-    """
-    return run_verify(text, data, locale)
-
-
-@server.tool(annotations=_READ_ONLY)
-def check_receipt(receipt: dict[str, object], data: DataInput | None = None) -> ReceiptCheckOutput:
-    """Check a receipt from compose_report or verify_text, and run its decision again.
-
-    The digest shows the receipt is internally consistent, not who issued it.
-    Sources are recorded by hash only: pass the same data to replay a decision
-    that used sources.
-    """
-    return run_check_receipt(receipt, data)
+server = build_server()
 
 
 def main() -> None:

@@ -154,6 +154,32 @@ Number parsing follows the locale: `1.250` means a thousand two hundred and
 fifty in Spanish, while `1,250` means that in English. It also handles scales
 such as `1,2 millones` and `4bn`, and a vocabulary of numbers written in words.
 
+### Large inputs
+
+Checking time grows in line with the size of the text and the data together,
+for every kind of input found to be slow but one, at the end of this section.
+On the test machine, a 256 KB report of about 5,000 sentences takes 0.7 s, and
+the slowest text or mix of text and data found takes 1.1 s.
+
+When the text matches the data over and over, such as one figure that stands
+for thousands of facts, the work and the receipt would keep growing. The
+checks stop at 200,000 matches and raise `TooManyMatches`. The examples, made
+256 KB long, use at most 6,500.
+
+Two test files keep this from coming back: `tests/test_long_texts.py` and
+`tests/test_large_data.py` time 17 inputs that took from 6 to more than 25
+seconds before, and each must now finish within 3 seconds. The faster code was
+also compared with the code before it on tens of thousands of random texts and
+data sets, and gave the same receipt, digest included, for every one.
+`tools/compare_versions.py` repeats that comparison against any git ref, and
+`tools/timing.py` shows how each kind of input grows. The
+[test record](https://github.com/Jegoba90/anti-hallucination/blob/main/docs/pruebas-2026-11-16.md)
+has the numbers.
+
+One case is still slow in the library: data that gives thousands of facts the
+same subject, named in thousands of sentences (4,000 of each take 17 s). The
+service stops any request at its time limit.
+
 ## Examples
 
 Each example includes a data file, a draft with placeholders, and a text
@@ -266,8 +292,21 @@ claude mcp add --transport http anti-hallucination http://your-host:8000/mcp \
 
 Every route except `/health` needs the token. Without
 `ANTIHALLUCINATION_TOKEN` the service only starts on `127.0.0.1`, so the
-container will not start without one. Requests over 256 KB are refused; set
-`ANTIHALLUCINATION_MAX_BODY` or `--max-body` to change the limit.
+container will not start without one.
+
+Each request is limited, and one past a limit gets `413` while the service
+goes on:
+
+| Limit | Default | Set it with |
+|---|---|---|
+| Request size | 256 KB | `ANTIHALLUCINATION_MAX_BODY` or `--max-body` (bytes) |
+| Time to check it | 10 s | `ANTIHALLUCINATION_TIMEOUT` or `--timeout` (seconds) |
+| Memory to check it (Linux and macOS) | 1024 MB | `ANTIHALLUCINATION_MAX_MEMORY` or `--max-memory` (MB; `0` for none) |
+
+Each request's checks run in a worker process of their own, so one that runs
+long can be stopped without stopping the others. A text that matches the data
+more than 200,000 times (say, one figure that stands for thousands of facts) is
+refused by the checks themselves, in the library too: `TooManyMatches`.
 
 ## Command line
 

@@ -18,32 +18,93 @@ the text, for the receipt. Like the stdio server, the service calls no model:
 nobody who reaches it can spend a provider's tokens, and nothing leaves it.
 
 With a token, every route but /health needs `Authorization: Bearer <token>`.
-A request body over max_body bytes is refused before it is read in full.
+A request body over max_body bytes is refused before it is read in full. Each
+request's checks run in a worker process with a time limit and, on Linux and
+macOS, a memory limit: past either, the answer is 413 and the service goes on.
 """
 
 import hmac
 import json
+import math
+import os
 from collections.abc import Awaitable, Callable, Mapping, Sequence
 from decimal import Decimal
+from functools import partial
+from typing import TypeVar
 
+import anyio
+import anyio.to_process
 import uvicorn
 from mcp.server.mcpserver.exceptions import ToolError
-from starlette.concurrency import run_in_threadpool
 from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
 from starlette.routing import Route
 from starlette.types import ASGIApp, Receive, Scope, Send
 
 from . import __version__
-from .mcp_server import run_check_receipt, run_compose, run_prepare, run_verify, server
+from .mcp_server import TooMuchWork, build_server, run_check_receipt, run_compose, run_prepare, run_verify
+from .worker import TIMES_ITSELF, run_capped
 
-# The checks grow in line with the text (tests/test_long_texts.py holds them
-# to it): 256 KB of ordinary text, about 5,000 sentences, takes 0.7 s on one
-# core, and the slowest text known, 2.5 s.
+# The checks grow in line with the text and the data (tests/test_long_texts.py
+# and tests/test_large_data.py hold them to it): 256 KB of ordinary text, about
+# 5,000 sentences, takes 0.7 s on one core, and the slowest input known, 1.1 s.
+# A text that matches the data over and over is held by checks.MAX_MATCHES,
+# and anything else by the time and memory limits below.
 DEFAULT_MAX_BODY = 262_144
+DEFAULT_SECONDS = 10.0
+DEFAULT_MEMORY_MB = 1024
 LOCAL_HOSTS = frozenset({"127.0.0.1", "localhost", "::1"})
 
 Body = Mapping[str, object]
+T = TypeVar("T")
+
+
+class Limits:
+    """How long one request's checks may run and how much memory they may take.
+
+    The checks run in worker processes (anyio.to_process), as many at once as
+    `processes`. On Linux and macOS a timer in the worker stops checks past
+    the time limit, and a capped address space stops them past the memory
+    limit; a worker that still does not stop is killed. On Windows the
+    worker is killed at the time limit, its start included. Either way the
+    request gets TooMuchWork (413) and the service goes on. Waiting for a
+    free worker does not count against the time limit.
+    """
+
+    def __init__(
+        self, seconds: float = DEFAULT_SECONDS, memory_mb: int | None = DEFAULT_MEMORY_MB, processes: int | None = None
+    ) -> None:
+        if not math.isfinite(seconds) or seconds <= 0:
+            raise ValueError("the time limit must be a number of seconds more than 0")
+        if memory_mb is not None and memory_mb < 1:
+            raise ValueError("the memory limit must be at least 1 MB")
+        self.seconds = seconds
+        self.memory_mb = memory_mb
+        self.processes = processes or os.cpu_count() or 1
+        self._free: anyio.CapacityLimiter | None = None
+
+    async def run(self, call: Callable[[], T]) -> T:
+        if self._free is None:
+            self._free = anyio.CapacityLimiter(self.processes)
+        memory = self.memory_mb * 1024 * 1024 if self.memory_mb else None
+        async with self._free:
+            try:
+                # Where the worker times itself, this is only the backstop for
+                # a worker that does not stop: its start does not count.
+                with anyio.fail_after(self.seconds * 2 + 5 if TIMES_ITSELF else self.seconds):
+                    return await anyio.to_process.run_sync(run_capped, call, memory, self.seconds, cancellable=True)
+            except TimeoutError:
+                raise TooMuchWork(
+                    f"the checks took more than {self.seconds:g} s, this service's limit: check the text in parts"
+                ) from None
+            except MemoryError:
+                raise TooMuchWork(
+                    f"the checks needed more than {self.memory_mb} MB, this service's limit: check the text in parts"
+                ) from None
+            except anyio.BrokenWorkerProcess:
+                raise TooMuchWork(
+                    "the process checking it stopped, most likely out of memory: check the text in parts"
+                ) from None
 
 
 class _BadRequest(Exception):
@@ -90,29 +151,34 @@ def _locale(body: Body, data: Body, allowed: Sequence[str], default: str) -> str
     return str(value)
 
 
-def _prepare(body: Body) -> object:
+# Each route checks the request's shape here and gives back the work, which
+# runs in a worker process under the service's limits.
+Work = Callable[[], object]
+
+
+def _prepare(body: Body) -> Work:
     _fields(body, ("brief", "data"), ("locale",))
     data = _data(body)
-    return run_prepare(_text(body, "brief"), data, _locale(body, data, ("es", "en"), "en"))
+    return partial(run_prepare, _text(body, "brief"), data, _locale(body, data, ("es", "en"), "en"))
 
 
-def _compose(body: Body) -> object:
+def _compose(body: Body) -> Work:
     _fields(body, ("draft", "data"), ("locale", "writer"))
     data = _data(body)
     locale = _locale(body, data, ("es", "en"), "en")
-    return run_compose(_text(body, "draft"), data, locale, writer=_text(body, "writer", "http client"))
+    return partial(run_compose, _text(body, "draft"), data, locale, writer=_text(body, "writer", "http client"))
 
 
-def _verify(body: Body) -> object:
+def _verify(body: Body) -> Work:
     _fields(body, ("text", "data"), ("locale", "writer"))
     data = _data(body)
     locale = _locale(body, data, ("es", "en", "auto"), "auto")
-    return run_verify(_text(body, "text"), data, locale, writer=_text(body, "writer"))
+    return partial(run_verify, _text(body, "text"), data, locale, writer=_text(body, "writer"))
 
 
-def _receipt(body: Body) -> object:
+def _receipt(body: Body) -> Work:
     _fields(body, ("receipt",), ("data",))
-    return run_check_receipt(_object(body, "receipt") or {}, _object(body, "data"))
+    return partial(run_check_receipt, _object(body, "receipt") or {}, _object(body, "data"))
 
 
 async def _payload(request: Request) -> Body:
@@ -137,15 +203,18 @@ async def _payload(request: Request) -> Body:
     return {str(key): value for key, value in body.items()}
 
 
-def _endpoint(handler: Callable[[Body], object]) -> Callable[[Request], Awaitable[Response]]:
+def _endpoint(handler: Callable[[Body], Work]) -> Callable[[Request], Awaitable[Response]]:
     async def endpoint(request: Request) -> Response:
         try:
-            body = await _payload(request)
-            # The checks are plain CPU work: off the event loop, so /health and
-            # other requests still answer while a long text is being checked.
-            result = await run_in_threadpool(handler, body)
+            work = handler(await _payload(request))
+            # In a worker process: off the event loop, so /health and other
+            # requests still answer, and stopped if it runs past the limits.
+            limits: Limits = request.app.state.limits
+            result = await limits.run(work)
         except _BadRequest as exc:
             return JSONResponse({"error": exc.message}, status_code=exc.status)
+        except TooMuchWork as exc:
+            return JSONResponse({"error": str(exc)}, status_code=413)
         except ToolError as exc:
             return JSONResponse({"error": str(exc)}, status_code=400)
         return JSONResponse(result)
@@ -185,21 +254,26 @@ class TokenGate:
         await self.app(scope, receive, send)
 
 
-def create_app(*, token: str | None, max_body: int = DEFAULT_MAX_BODY, host: str = "127.0.0.1") -> ASGIApp:
+def create_app(
+    *, token: str | None, max_body: int = DEFAULT_MAX_BODY, host: str = "127.0.0.1", limits: Limits | None = None
+) -> ASGIApp:
     """The service as an ASGI app: the REST routes and /mcp, behind the token if there is one.
 
     host is where it will listen. On this machine only (127.0.0.1), the MCP
     route also refuses requests whose Host header is not local, against DNS
-    rebinding from a web page.
+    rebinding from a web page. limits bound each request's checks, on both
+    doors; by default, DEFAULT_SECONDS and DEFAULT_MEMORY_MB.
     """
     if max_body < 1:
         raise ValueError("max_body must be at least 1 byte")
+    limits = limits or Limits()
     # Stateless and plain JSON: any instance behind a load balancer can answer
     # any request, and no proxy has to keep a stream open.
-    app = server.streamable_http_app(
+    app = build_server(limits.run).streamable_http_app(
         stateless_http=True, json_response=True, max_request_body_size=max_body, host=host
     )
     app.state.max_body = max_body
+    app.state.limits = limits
     app.router.routes.extend(
         [
             Route("/health", _health, methods=["GET"]),
@@ -212,6 +286,9 @@ def create_app(*, token: str | None, max_body: int = DEFAULT_MAX_BODY, host: str
     return TokenGate(app, token) if token else app
 
 
-def serve(*, host: str, port: int, token: str | None, max_body: int = DEFAULT_MAX_BODY) -> None:
+def serve(
+    *, host: str, port: int, token: str | None, max_body: int = DEFAULT_MAX_BODY, limits: Limits | None = None
+) -> None:
     """Run the service until it is stopped."""
-    uvicorn.run(create_app(token=token, max_body=max_body, host=host), host=host, port=port, server_header=False)
+    app = create_app(token=token, max_body=max_body, host=host, limits=limits)
+    uvicorn.run(app, host=host, port=port, server_header=False)

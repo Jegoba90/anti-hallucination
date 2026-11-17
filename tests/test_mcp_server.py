@@ -88,6 +88,15 @@ def test_verify_text_finds_the_invented_figures() -> None:
     assert report["text"].startswith("Las ventas fueron 1.250 unidades (-3,2 %).")
 
 
+def test_a_text_that_matches_the_data_too_often_comes_back_as_an_error() -> None:
+    data = {"facts": [{"name": f"f{i}", "value": 7} for i in range(100)]}
+
+    result = _call("verify_text", {"text": "7. " * 3000, "data": data})
+
+    assert result.is_error
+    assert "more than 200,000 times" in result.content[0].text
+
+
 def test_bad_data_comes_back_as_an_error_the_model_can_read() -> None:
     result = _call("verify_text", {"text": "x", "data": {"facts": [{"name": "a b", "value": 1}]}})
 

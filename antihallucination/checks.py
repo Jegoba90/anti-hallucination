@@ -21,9 +21,11 @@ out. The checks, in the order they run:
 """
 
 import re
-from bisect import bisect_left
+from bisect import bisect_left, bisect_right
+from collections import Counter
 from dataclasses import dataclass, field
-from decimal import Decimal
+from decimal import Context as DecimalContext
+from decimal import Decimal, localcontext
 from functools import lru_cache
 
 from . import lexicon
@@ -114,14 +116,52 @@ class SentenceCheck:
     anchors: int = 0  # pieces of your data the sentence carries, for the anchoring check
 
 
+_RUN = re.compile(r"[a-z0-9]+")  # a word's letters, as the word matchers bound them
+_TOKEN = re.compile(r"[\w-]+")  # what an identifier is made of
+_WORD_RUN = re.compile(r"\w+")
+# Up to this many digits, a fact and a figure are bounded exactly by the fact
+# index: the difference match_fact takes fits the default decimal precision.
+_SHORT_NUMBER = 27
+_BOUNDS = DecimalContext(prec=80)
+Matchers = tuple[tuple[tuple[str, ...], str], ...]  # (the candidate's runs, the candidate)
+
+# How many facts the figures of one request may stand for, and verdicts its
+# sentences may quote, put together (see Context.spend). A long report stays
+# far below it: the examples made 256 KB long spend 1,300 to 6,500, and one
+# with 300 facts that share subjects and values and 60 verdicts, 95,000. A
+# figure that stands for thousands of facts, or a verdict repeated in
+# thousands of labels, does not.
+MAX_MATCHES = 200_000
+
+
+class TooManyMatches(ValueError):
+    """The text and the data match each other too many times to check in one request."""
+
+
+def _runs(folded: str) -> frozenset[str]:
+    """The runs of letters and digits of a folded text, each also without a final «s» or «es».
+
+    A word the matchers look for can only be in a text that holds every run
+    the word has (its last one perhaps plus «s» or «es»): set lookups rule
+    out most texts before any search runs.
+    """
+    runs: set[str] = set()
+    for run in _RUN.findall(folded):
+        runs.add(run)
+        if run.endswith("s"):
+            runs.add(run[:-1])
+            if run.endswith("es"):
+                runs.add(run[:-2])
+    return frozenset(runs)
+
+
 @lru_cache(maxsize=4096)
-def _word_matchers(word: str) -> tuple[re.Pattern[str], ...]:
-    """The patterns that find `word` (folded) as a whole word, plural or singular.
+def _word_matchers(word: str) -> Matchers:
+    """What finds `word` (folded) as a whole word, plural or singular: (runs, candidate) pairs.
 
     A word ending in «es» or «s» is also looked for without it, and a word
-    with dots also without them. Compiled once per word: a sentence is
-    checked against every subject and every name, and compiling each time
-    costs more than the search.
+    with dots also without them. A candidate is searched for only in a text
+    that holds every run of letters it has, and compiled only then.
     """
     if not word:
         return ()
@@ -130,18 +170,74 @@ def _word_matchers(word: str) -> tuple[re.Pattern[str], ...]:
         candidates.append(word[:-2])
     if word.endswith("s") and len(word) > 3:
         candidates.append(word[:-1])
-    matchers = [
-        re.compile(r"(?<![a-z0-9])" + re.escape(candidate) + r"(?:s|es)?(?![a-z0-9])")
-        for candidate in dict.fromkeys(candidates)
-    ]
+    matchers = [(tuple(_RUN.findall(candidate)), candidate) for candidate in dict.fromkeys(candidates)]
     if "." in word:
         matchers.extend(_word_matchers(word.replace(".", "")))
     return tuple(matchers)
 
 
-def _contains_word(haystack: str, matchers: tuple[re.Pattern[str], ...]) -> bool:
-    """Whether `haystack` (folded) holds the word those matchers look for."""
-    return any(matcher.search(haystack) for matcher in matchers)
+@lru_cache(maxsize=4096)
+def _word_pattern(candidate: str) -> re.Pattern[str]:
+    return re.compile(r"(?<![a-z0-9])" + re.escape(candidate) + r"(?:s|es)?(?![a-z0-9])")
+
+
+def _contains_word(haystack: str, runs: frozenset[str], matchers: Matchers) -> bool:
+    """Whether `haystack` (folded, with its _runs) holds the word those matchers look for.
+
+    A candidate found in a text leaves each of its runs there, whole (the
+    last one perhaps with «s» or «es», which _runs also strips): without
+    them all, there is nothing to search.
+    """
+    return any(
+        all(run in runs for run in candidate_runs) and _word_pattern(candidate).search(haystack) is not None
+        for candidate_runs, candidate in matchers
+    )
+
+
+class _Evidence:
+    """The sources a sentence may draw on, and what they hold, put together once.
+
+    Every sentence that cites nothing shares one of these for all your
+    sources; one that cites gets one for its citation. Each figure, move
+    word and name then asks it in about the time of a set lookup, however
+    many sources there are.
+    """
+
+    def __init__(self, ctx: "Context", sources: tuple[str, ...], *, everything: bool) -> None:
+        self.sources = sources
+        self.key = frozenset(sources)
+        self._ctx = ctx
+        self._everything = everything
+        self._values: frozenset[Decimal] | None = None
+        self._moves: frozenset[str] | None = None
+        self._tokens: frozenset[str] | None = None
+
+    @property
+    def values(self) -> frozenset[Decimal]:
+        """Every value these sources write."""
+        if self._values is None:
+            self._values = frozenset().union(*(self._ctx.source_values[sid] for sid in self.key))
+        return self._values
+
+    @property
+    def moves(self) -> frozenset[str]:
+        """Which ways («up», «down») these sources say something moved."""
+        if self._moves is None:
+            self._moves = frozenset().union(*(self._ctx.source_moves[sid] for sid in self.key))
+        return self._moves
+
+    @property
+    def tokens(self) -> frozenset[str]:
+        """Every token (letters, digits and dashes) these sources write, folded."""
+        if self._tokens is None:
+            self._tokens = frozenset().union(*(self._ctx.source_tokens[sid] for sid in self.key))
+        return self._tokens
+
+    def holding(self, run: str) -> list[str]:
+        """The sources that hold a run of letters (or that run with «s» or «es»)."""
+        if self._everything:
+            return self._ctx.sources_by_run.get(run, [])
+        return [sid for sid in self.sources if run in self._ctx.source_runs[sid]]
 
 
 class Context:
@@ -194,39 +290,178 @@ class Context:
         for sid, source in self.sources.items():
             lowered = lower(source.evidence)
             self.source_moves[sid] = frozenset(polarity for polarity, pattern in _MOVES if pattern.search(lowered))
+        self.label_minus = {
+            name: _carries_minus(lower(label.text), (0, len(label.text))) for name, label in self.labels.items()
+        }
+        self._backed: dict[tuple[str, str, frozenset[str]], bool] = {}
+        self._spent = 0
+
+        # Indexes, so that a sentence, a figure or a name looks only at the
+        # data it can match instead of at all of it. Each one rules out what
+        # cannot match and leaves the decision to the same check as before.
+        # Words: the runs of letters each text holds; identifiers: its tokens.
+        self._base_runs = _runs(self.base_evidence)
+        self.source_runs = {sid: _runs(text) for sid, text in self.source_evidence.items()}
+        self.sources_by_run: dict[str, list[str]] = {}
+        for sid, runs in self.source_runs.items():
+            for run in runs:
+                self.sources_by_run.setdefault(run, []).append(sid)
+        self._base_tokens = frozenset(_TOKEN.findall(self.base_evidence))
+        self.source_tokens = {sid: frozenset(_TOKEN.findall(text)) for sid, text in self.source_evidence.items()}
+        self._everything = _Evidence(self, tuple(self.sources), everything=True)
+        self._cited: dict[tuple[str, ...], _Evidence] = {}
+
+        # Facts by size: a figure looks only at those its readings can round to.
+        self._fact_list = list(self.facts.values())
+        sized: list[tuple[Decimal, int]] = []
+        self._long_facts: list[int] = []  # too many digits to bound: always looked at
+        for position, fact in enumerate(self._fact_list):
+            number = fact.number
+            if len(number.as_tuple().digits) > _SHORT_NUMBER:
+                self._long_facts.append(position)
+            else:
+                sized.append((abs(number), position))
+        sized.sort()
+        self._sizes = [size for size, _ in sized]
+        self._sized = [position for _, position in sized]
+
+        # Subjects by the first run of each word they are found by.
         self.subject_matchers = {
             name: tuple(matcher for word in fact.subjects for matcher in _word_matchers(fold(word)))
             for name, fact in self.facts.items()
         }
+        self._subject_names = list(self.subject_matchers)
+        self._subjects_by_run: dict[str, list[int]] = {}
+        self._subjects_anywhere: list[int] = []
+        # Each candidate is keyed by its rarest run among all your subjects:
+        # «metric 7» by «7», not by the «metric» every other subject shares.
+        frequency = Counter(
+            run for matchers in self.subject_matchers.values() for runs, _ in matchers for run in set(runs)
+        )
+        for position, matchers in enumerate(self.subject_matchers.values()):
+            if any(not runs for runs, _ in matchers):  # a word with no letters to key on
+                self._subjects_anywhere.append(position)
+                continue
+            for key in {min(runs, key=frequency.__getitem__) for runs, _ in matchers}:
+                self._subjects_by_run.setdefault(key, []).append(position)
+
+        # Verdicts by the first word they are quoted with.
         self.label_quotes: list[tuple[str, str, re.Pattern[str]]] = []
-        for name, label in self.labels.items():
+        self._quotes_by_word: dict[str, list[int]] = {}
+        self._quotes_anywhere: list[int] = []
+        for position, (name, label) in enumerate(self.labels.items()):
             phrase = lower(label.text.strip())
             self.label_quotes.append((name, phrase, re.compile(r"(?<!\w)" + re.escape(phrase) + r"(?!\w)")))
-        self.label_minus = {
-            name: _carries_minus(lower(label.text), (0, len(label.text))) for name, label in self.labels.items()
-        }
-        self._backed: dict[tuple[str, str, tuple[str, ...]], bool] = {}
+            first_word = _WORD_RUN.match(phrase)
+            if first_word:
+                self._quotes_by_word.setdefault(first_word.group(0), []).append(position)
+            else:
+                self._quotes_anywhere.append(position)
 
-    def evidence_for(self, cited: list[str]) -> list[str]:
+    def spend(self, amount: int) -> None:
+        """Count a fact a figure may stand for, or a verdict a sentence may quote; refuse past MAX_MATCHES.
+
+        The indexes make each figure and each quote look only at the data it
+        can match. What is left grows with how often the text matches your
+        data: thousands of facts with the same value make every figure stand
+        for all of them, and every decision list them. Counted here, that has
+        a ceiling, the same on every machine, and so does the receipt.
+        """
+        self._spent += amount
+        if self._spent > MAX_MATCHES:
+            raise TooManyMatches(
+                f"the text matches your data more than {MAX_MATCHES:,} times: a figure that stands for many "
+                "facts, a verdict repeated in many labels or a subject many facts share; check it in parts"
+            )
+
+    def evidence(self, cited: list[str]) -> _Evidence:
         """The sources a sentence may draw on: the ones it cites, or all of them."""
-        return cited if cited else list(self.sources)
+        if not cited:
+            return self._everything
+        key = tuple(cited)  # as long as the citation that wrote it
+        if key not in self._cited:
+            self._cited[key] = _Evidence(self, key, everything=False)
+        return self._cited[key]
 
-    def _evidence(self, sources: tuple[str, ...]) -> list[str]:
-        return [self.base_evidence, *(self.source_evidence[sid] for sid in sources)]
+    def facts_near(self, mention: Mention) -> list[Fact]:
+        """The facts a figure can stand for, in your order: those its readings can round to.
 
-    def name_backed(self, core: str, sources: tuple[str, ...]) -> bool:
-        """Whether a name (folded) is in your facts, labels, known names or these sources."""
-        key = ("name", core, sources)
+        A fact or a figure with too many digits to bound exactly is always
+        looked at; match_fact decides for each one, as it did for every fact.
+        """
+        if any(len(reading.value.as_tuple().digits) > _SHORT_NUMBER for reading in mention.readings):
+            self.spend(len(self._fact_list))
+            return self._fact_list
+        positions = set(self._long_facts)
+        for reading in mention.readings:
+            tolerance = Decimal(0) if reading.exact_only else reading.step / 2
+            with localcontext(_BOUNDS):  # exact for numbers this short
+                low, high = reading.value - tolerance, reading.value + tolerance
+            positions.update(self._sized[bisect_left(self._sizes, low) : bisect_right(self._sizes, high)])
+        self.spend(len(positions))
+        return [self._fact_list[position] for position in sorted(positions)]
+
+    def subjects_named(self, folded: str) -> list[str]:
+        """The facts (in your order) whose subject a folded stretch of text names."""
+        runs = _runs(folded)
+        positions = set(self._subjects_anywhere)
+        for run in runs:
+            positions.update(self._subjects_by_run.get(run, ()))
+        named: list[str] = []
+        for position in sorted(positions):
+            name = self._subject_names[position]
+            if _contains_word(folded, runs, self.subject_matchers[name]):
+                named.append(name)
+        return named
+
+    def quotes_in(self, lowered: str) -> list[tuple[str, str, re.Pattern[str]]]:
+        """Your verdicts (in your order) that a lowered sentence may quote: those whose first word it holds."""
+        positions = set(self._quotes_anywhere)
+        for word in set(_WORD_RUN.findall(lowered)):
+            positions.update(self._quotes_by_word.get(word, ()))
+        self.spend(len(positions))
+        return [self.label_quotes[position] for position in sorted(positions)]
+
+    def name_backed(self, core: str, evidence: _Evidence) -> bool:
+        """Whether a name (folded) is in your facts, labels, known names or these sources.
+
+        A source is searched only if it holds the first run of a word the name
+        is found by.
+        """
+        key = ("name", core, evidence.key)
         if key not in self._backed:
             matchers = _word_matchers(core)
-            self._backed[key] = any(_contains_word(text, matchers) for text in self._evidence(sources))
+            found = _contains_word(self.base_evidence, self._base_runs, matchers)
+            if not found:
+                # For each candidate, only the sources that hold its least held run.
+                holders: set[str] = set()
+                for runs, _ in matchers:
+                    if runs:
+                        fewest: list[str] = min((evidence.holding(run) for run in runs), key=len)
+                        holders.update(fewest)
+                    else:
+                        holders.update(evidence.sources)
+                found = any(
+                    _contains_word(self.source_evidence[sid], self.source_runs[sid], matchers) for sid in holders
+                )
+            self._backed[key] = found
         return self._backed[key]
 
-    def identifier_backed(self, raw: str, sources: tuple[str, ...]) -> bool:
-        """Whether an identifier («Q3», «COVID-19») is written in your data or these sources."""
-        key = ("identifier", raw, sources)
+    def identifier_backed(self, raw: str, evidence: _Evidence) -> bool:
+        """Whether an identifier («Q3», «COVID-19») is written in your data or these sources.
+
+        Bounded by anything that is not a letter, a digit or a dash, it can
+        only be one of a text's tokens, whole: a set lookup.
+        """
+        key = ("identifier", raw, evidence.key)
         if key not in self._backed:
-            self._backed[key] = any(_identifier_backed(raw, text) for text in self._evidence(sources))
+            folded = fold(raw)
+            if _TOKEN.fullmatch(folded):
+                found = folded in self._base_tokens or folded in evidence.tokens
+            else:
+                texts = [self.base_evidence, *(self.source_evidence[sid] for sid in evidence.sources)]
+                found = any(_identifier_backed(raw, text) for text in texts)
+            self._backed[key] = found
         return self._backed[key]
 
 
@@ -298,10 +533,7 @@ class _Subjects:
     def named(self, span: tuple[int, int]) -> list[str]:
         """The facts (in your order) whose subject masked[start:end] names."""
         if span not in self._found:
-            folded = fold(self._masked[span[0] : span[1]])
-            self._found[span] = [
-                name for name, matchers in self._ctx.subject_matchers.items() if _contains_word(folded, matchers)
-            ]
+            self._found[span] = self._ctx.subjects_named(fold(self._masked[span[0] : span[1]]))
         return self._found[span]
 
 
@@ -367,8 +599,9 @@ def _stray_numerals(masked: str, mentions: list[Mention]) -> list[str]:
     return runs
 
 
-def _check_figures(masked: str, ctx: Context, check: SentenceCheck, refs: list[_Reference], *, compose: bool) -> None:
-    sources = ctx.evidence_for(check.cited)
+def _check_figures(
+    masked: str, ctx: Context, evidence: _Evidence, check: SentenceCheck, refs: list[_Reference], *, compose: bool
+) -> None:
     mentions = extract(masked, ctx.locale)
     if compose:
         for run in _stray_numerals(masked, mentions):
@@ -397,7 +630,7 @@ def _check_figures(masked: str, ctx: Context, check: SentenceCheck, refs: list[_
                 else:
                     refs.extend(_Reference(name, mention.start, mention.raw, how) for name in names)
                 continue
-        if _backed_elsewhere(mention, ctx, sources, use_labels=not compose):
+        if _backed_elsewhere(mention, ctx, evidence, use_labels=not compose):
             check.anchors += 1
             continue
         where = "the cited source" if check.cited else "your facts, labels or sources"
@@ -407,7 +640,7 @@ def _check_figures(masked: str, ctx: Context, check: SentenceCheck, refs: list[_
 def _match_facts(mention: Mention, ctx: Context) -> tuple[str, list[str]] | None:
     """The facts a figure stands for: exact matches first, then sign-dropped, then opposite sign."""
     by_kind: dict[str, list[str]] = {"exact": [], "abs": [], "sign": []}
-    for fact in ctx.facts.values():
+    for fact in ctx.facts_near(mention):
         how = match_fact(mention, fact.number, fact.is_percent)
         if how is not None:
             by_kind[how].append(fact.name)
@@ -417,12 +650,12 @@ def _match_facts(mention: Mention, ctx: Context) -> tuple[str, list[str]] | None
     return None
 
 
-def _backed_elsewhere(mention: Mention, ctx: Context, sources: list[str], *, use_labels: bool) -> bool:
+def _backed_elsewhere(mention: Mention, ctx: Context, evidence: _Evidence, *, use_labels: bool) -> bool:
     if mention.identifier:
-        return ctx.identifier_backed(mention.raw, tuple(sources))
+        return ctx.identifier_backed(mention.raw, evidence)
     if use_labels and backed_by_values(mention, ctx.label_values):
         return True
-    return any(backed_by_values(mention, ctx.source_values[sid]) for sid in sources)
+    return backed_by_values(mention, evidence.values)
 
 
 def _nearest(refs: list[_Reference], starts: list[int], clause: tuple[int, int], position: int) -> _Reference | None:
@@ -454,6 +687,7 @@ def _check_directions(
     clauses: Clauses,
     subject_facts: _Subjects,
     ctx: Context,
+    evidence: _Evidence,
     check: SentenceCheck,
     refs: list[_Reference],
 ) -> None:
@@ -492,7 +726,7 @@ def _check_directions(
                 if one_way and not _agrees(polarity, negated, facts[0].number):
                     check.findings.append(_contradiction(word, polarity, negated, facts[0], ctx))
                 continue
-            if any(polarity in ctx.source_moves[sid] for sid in ctx.evidence_for(check.cited)):
+            if polarity in evidence.moves:
                 continue
             check.findings.append(
                 Finding("unbacked_direction", word, f"«{word}» claims a move that no change fact or source backs")
@@ -549,11 +783,12 @@ def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceChe
         # data and are not checked again as the writer's (the «caída» in them
         # is not a move the writer claimed).
         lowered_sentence = lower(sentence)
-        for name, phrase, quote in ctx.label_quotes:
+        for name, phrase, quote in ctx.quotes_in(lowered_sentence):
             if phrase not in lowered_sentence:
                 continue
             quoted = False
             for match in quote.finditer(lowered_sentence):
+                ctx.spend(1)
                 hidden.append(match.span())
                 verdicts.append((match.start(), name))
                 check.anchors += 1
@@ -562,8 +797,9 @@ def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceChe
                 check.labels.append(name)
 
     masked = mask(sentence, hidden)
+    evidence = ctx.evidence(check.cited)
     if ctx.policy.numbers:
-        _check_figures(masked, ctx, check, refs, compose=compose)
+        _check_figures(masked, ctx, evidence, check, refs, compose=compose)
 
     lowered = lower(masked)
     clauses = Clauses(masked)
@@ -571,6 +807,9 @@ def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceChe
     # reads «una caída leve de 3,2 %», with no second word for the fall.
     minus_verdicts = sorted(start for start, name in verdicts if ctx.label_minus[name])
     says_it_fell: dict[tuple[int, int], bool] = {}
+    # One finding per figure: a figure that stands for several negative facts
+    # names the first and counts the rest, instead of one finding for each.
+    dropped: dict[int, tuple[_Reference, int]] = {}
     for ref in refs:
         fact = ctx.facts[ref.fact]
         if ref.how != "abs" or fact.number >= 0:
@@ -579,25 +818,29 @@ def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceChe
         if clause not in says_it_fell:
             says_it_fell[clause] = _carries_minus(lowered, clause) or _any_within(minus_verdicts, clause)
         if not says_it_fell[clause]:
-            check.findings.append(
-                Finding(
-                    "sign_dropped",
-                    ref.span,
-                    f"{fact.name} is {_shown(fact, ctx)}, written without its minus sign and no word says it fell",
-                )
+            first, others = dropped.get(ref.start, (ref, -1))
+            dropped[ref.start] = (first, others + 1)
+    for ref, others in dropped.values():
+        fact = ctx.facts[ref.fact]
+        also = f" (so are {others} other facts this figure stands for)" if others else ""
+        check.findings.append(
+            Finding(
+                "sign_dropped",
+                ref.span,
+                f"{fact.name} is {_shown(fact, ctx)}{also}, written without its minus sign and no word says it fell",
             )
+        )
 
     subject_facts = _Subjects(masked, ctx)
     if ctx.policy.directions:
-        _check_directions(masked, lowered, clauses, subject_facts, ctx, check, refs)
+        _check_directions(masked, lowered, clauses, subject_facts, ctx, evidence, check, refs)
 
     if ctx.policy.names:
-        sources = tuple(ctx.evidence_for(check.cited))
         for name in _name_candidates(masked):
             core = fold(name).strip(_EDGE)
             if not core or core in lexicon.NOT_NAMES:
                 continue
-            if not ctx.name_backed(core, sources):
+            if not ctx.name_backed(core, evidence):
                 check.findings.append(
                     Finding("unbacked_name", name, f"«{name}» is not in your facts, labels, sources or known names")
                 )
@@ -624,11 +867,9 @@ def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceChe
         if ref.fact not in listed:
             listed.add(ref.fact)
             check.facts.append(ref.fact)
-    subjects: list[str] = []
+    subjects: dict[str, None] = {}  # in order, without repeats
     for name in [*check.facts, *subject_facts.named((0, len(masked)))]:
-        for word in ctx.facts[name].subjects:
-            if word not in subjects:
-                subjects.append(word)
-    check.subjects = subjects
+        subjects.update(dict.fromkeys(ctx.facts[name].subjects))
+    check.subjects = list(subjects)
     check.output = render_template(sentence, ctx) if compose else sentence
     return check

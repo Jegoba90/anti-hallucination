@@ -25,7 +25,7 @@ lexicon.py know how to catch.
 
 __version__ = "0.2.1"
 
-from .checks import Finding, Policy
+from .checks import MAX_MATCHES, Finding, Policy, TooManyMatches
 from .errors import WriterError
 from .core import Decision, ReplayCheck, ReplayStatus, Result, compose, replay, verify
 from .facts import Derivation, Fact, Label, Source, classify, difference, percent_change
@@ -33,6 +33,7 @@ from .receipt import RECIPE, Receipt, ReceiptCheck, ReceiptStatus, verify_receip
 from .writing import Written, write
 
 __all__ = [
+    "MAX_MATCHES",
     "RECIPE",
     "__version__",
     "Decision",
@@ -48,6 +49,7 @@ __all__ = [
     "ReplayStatus",
     "Result",
     "Source",
+    "TooManyMatches",
     "Written",
     "WriterError",
     "classify",

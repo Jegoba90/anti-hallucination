@@ -8,6 +8,7 @@ token and all. Skipped where the [server] extra is not installed.
 import asyncio
 import json
 import socket
+import subprocess
 import sys
 import threading
 import time
@@ -28,7 +29,7 @@ from starlette.testclient import TestClient  # noqa: E402
 
 from antihallucination import __version__  # noqa: E402
 from antihallucination.cli import main  # noqa: E402
-from antihallucination.http_server import create_app  # noqa: E402
+from antihallucination.http_server import Limits, create_app  # noqa: E402
 
 _ROOT = Path(__file__).resolve().parents[1]
 _SALES = _ROOT / "examples" / "sales"
@@ -153,6 +154,25 @@ class TestTheRestApi:
         assert response.status_code == 413
         assert "1000 bytes" in response.json()["error"]
 
+    def test_a_text_that_matches_the_data_too_often_is_refused(self, client: TestClient) -> None:
+        # Every «7» stands for all 100 facts: 300,000 matches, past MAX_MATCHES.
+        data = {"facts": [{"name": f"f{i}", "value": 7} for i in range(100)]}
+
+        response = client.post("/v1/verify", json={"text": "7. " * 3000, "data": data})
+
+        assert response.status_code == 413
+        assert "more than 200,000 times" in response.json()["error"]
+
+    def test_checks_past_the_time_limit_are_stopped_and_the_service_goes_on(self) -> None:
+        with TestClient(create_app(token=TOKEN, limits=Limits(seconds=0.001))) as hasty:
+            hasty.headers["Authorization"] = f"Bearer {TOKEN}"
+            response = hasty.post("/v1/verify", json={"text": "Revenue grew. " * 100, "data": {}})
+            health = hasty.get("/health")
+
+        assert response.status_code == 413
+        assert "took more than 0.001 s" in response.json()["error"]
+        assert health.status_code == 200
+
 
 def _free_port() -> int:
     with socket.socket() as probe:
@@ -198,6 +218,20 @@ def test_mcp_over_http_serves_the_tools_with_the_token(live_service: str) -> Non
     assert result.structured_content["text"] == COMPOSED
 
 
+def test_mcp_over_http_runs_under_the_same_limits(live_service: str) -> None:
+    data = {"facts": [{"name": f"f{i}", "value": 7} for i in range(100)]}
+
+    async def run():
+        async with httpx2.AsyncClient(headers={"Authorization": f"Bearer {TOKEN}"}) as http:
+            async with Client(streamable_http_client(f"{live_service}/mcp", http_client=http)) as mcp_client:
+                return await mcp_client.call_tool("verify_text", {"text": "7. " * 3000, "data": data})
+
+    result = asyncio.run(asyncio.wait_for(run(), timeout=60))
+
+    assert result.is_error
+    assert "more than 200,000 times" in result.content[0].text
+
+
 def test_mcp_over_http_refuses_a_client_without_the_token(live_service: str) -> None:
     async def run():
         async with httpx2.AsyncClient() as http:
@@ -233,3 +267,36 @@ class TestTheServeCommand:
 
         assert main(["serve"]) == 2
         assert "whole number of bytes" in capsys.readouterr().err
+
+    @pytest.mark.parametrize("flags", [["--timeout", "0"], ["--timeout", "nan"], ["--max-memory", "-1"]])
+    def test_a_limit_out_of_range_is_refused(
+        self, flags: list[str], monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+    ) -> None:
+        monkeypatch.delenv("ANTIHALLUCINATION_TOKEN", raising=False)
+
+        assert main(["serve", *flags]) == 2
+        assert "time limit must be more than 0 seconds" in capsys.readouterr().err
+
+    def test_a_memory_limit_that_is_not_a_number_is_refused(
+        self, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+    ) -> None:
+        monkeypatch.delenv("ANTIHALLUCINATION_TOKEN", raising=False)
+        monkeypatch.setenv("ANTIHALLUCINATION_MAX_MEMORY", "1GB")
+
+        assert main(["serve"]) == 2
+        assert "ANTIHALLUCINATION_MAX_MEMORY must be a whole number of MB" in capsys.readouterr().err
+
+
+@pytest.mark.skipif(sys.platform == "win32", reason="the memory limit needs the resource module")
+def test_the_worker_caps_its_memory() -> None:
+    # In a process of its own: the cap stays for the rest of the process.
+    code = (
+        "from antihallucination.worker import run_capped\n"
+        "try:\n"
+        "    run_capped(lambda: bytearray(800 * 1024 * 1024), 400 * 1024 * 1024)\n"
+        "except MemoryError:\n"
+        "    print('capped')\n"
+    )
+    done = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, timeout=60, cwd=_ROOT)
+
+    assert done.stdout.strip() == "capped", done.stderr

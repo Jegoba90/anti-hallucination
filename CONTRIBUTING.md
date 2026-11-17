@@ -36,6 +36,20 @@ test suite uses fixtures and stand-ins; it does not need an API key.
    ruff check .
    ```
 
+If the change is meant only to make the checks faster, show that it decides the
+same and grows the way it should:
+
+```bash
+python tools/compare_versions.py --ignore sign_dropped   # this checkout against HEAD
+python tools/timing.py                                   # time per shape as inputs double
+```
+
+`compare_versions.py` runs thousands of random texts and data sets through
+this checkout and through the package at a git ref, and compares every
+decision; `--ignore` leaves out a check whose findings a version changed on
+purpose. `timing.py` prints how check time grows for each kind of input that
+was once slow: about ×2 per doubling is linear.
+
 For number parsing, language rules, or sentence checks, include examples that
 should pass and examples that should fail. Cover Spanish and English where the
 rule applies to both. Keep calculations and verdicts in code and facts; do not

@@ -23,6 +23,7 @@ from .checks import (
     Context,
     Finding,
     Policy,
+    TooManyMatches,
     check_sentence,
     render_template,
     template_problems,
@@ -163,13 +164,16 @@ def _run(
 
     planned = [[(sentence, check_sentence(sentence, ctx, compose=mode == "compose")) for sentence in split_sentences(line)] for line in split_lines(text)]
     kept_facts = {name for line in planned for _, check in line if not check.findings for name in check.facts}
-    # Each fallback read once, not once per failed sentence: its subject as
-    # the checks compare it, and the facts it would give.
-    folded_subjects = {subject: fold(subject) for subject in templates}
+    # Each fallback read once, not once per failed sentence: the facts it would
+    # give, and which fallbacks each subject (as the checks compare it) calls.
     template_facts = {
         subject: {match.group(1) for match in PLACEHOLDER_RE.finditer(template)} & set(ctx.facts)
         for subject, template in templates.items()
     }
+    by_subject: dict[str, list[str]] = {}
+    for subject in templates:
+        by_subject.setdefault(fold(subject), []).append(subject)
+    template_order = {subject: index for index, subject in enumerate(templates)}
 
     used_templates: set[str] = set()
     used_sources: set[str] = set()
@@ -183,9 +187,11 @@ def _run(
             else:
                 inserted: list[str] = []
                 subjects = {fold(word) for word in check.subjects}
-                for subject, template in templates.items():
-                    if subject in used_templates or folded_subjects[subject] not in subjects:
+                called = {subject for word in subjects for subject in by_subject.get(word, ())}
+                for subject in sorted(called, key=template_order.__getitem__):
+                    if subject in used_templates:
                         continue
+                    template = templates[subject]
                     needs = template_facts[subject]
                     if needs and needs <= kept_facts:
                         continue  # every figure it would give is already out
@@ -304,7 +310,11 @@ def replay(receipt: Receipt | Mapping[str, object] | str, sources: Sequence[Sour
     ordered = [given[sid] for sid in recorded]
 
     run = compose if mode == "compose" else verify
-    again = run(text, facts, labels, ordered, fallbacks=fallbacks, policy=policy, locale=locale, writer=writer)
+    try:
+        again = run(text, facts, labels, ordered, fallbacks=fallbacks, policy=policy, locale=locale, writer=writer)
+    except TooManyMatches as exc:
+        # The decision cannot be made again within the limit this version keeps.
+        return ReplayCheck(ReplayStatus.DIFFERENT, str(exc))
     if again.receipt.digest == data.get("digest"):
         return ReplayCheck(ReplayStatus.REPRODUCED)
     return ReplayCheck(ReplayStatus.DIFFERENT, "the same inputs now give another receipt")

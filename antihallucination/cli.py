@@ -16,10 +16,12 @@ holds the ones that passed and your fallbacks), 2 the input could not be read,
 
 import argparse
 import json
+import math
 import os
 import sys
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 from pathlib import Path
+from typing import TypeVar
 
 from .core import Result, ReplayStatus, compose, replay, verify
 from .data import Data, DataError, load_data
@@ -29,8 +31,11 @@ from .writing import Writer, Written, write
 
 _MARK = {"kept": "✓ kept    ", "replaced": "↺ replaced", "dropped": "✗ dropped "}
 WRITERS = ("claude", "openai", "groq", "ollama", "compatible")
+N = TypeVar("N", int, float)
 TOKEN_VARIABLE = "ANTIHALLUCINATION_TOKEN"
 MAX_BODY_VARIABLE = "ANTIHALLUCINATION_MAX_BODY"
+TIMEOUT_VARIABLE = "ANTIHALLUCINATION_TIMEOUT"
+MAX_MEMORY_VARIABLE = "ANTIHALLUCINATION_MAX_MEMORY"
 MIN_TOKEN_LENGTH = 16
 
 
@@ -77,6 +82,17 @@ def _parser() -> argparse.ArgumentParser:
     service.add_argument("--port", type=int, default=8000, help="the port (default 8000)")
     service.add_argument(
         "--max-body", type=int, help=f"the largest request accepted, in bytes (default 262144, or {MAX_BODY_VARIABLE})"
+    )
+    service.add_argument(
+        "--timeout",
+        type=float,
+        help=f"the longest one request's checks may run, in seconds (default 10, or {TIMEOUT_VARIABLE})",
+    )
+    service.add_argument(
+        "--max-memory",
+        type=int,
+        help=f"the most memory one request's checks may take, in MB, on Linux and macOS (default 1024, or "
+        f"{MAX_MEMORY_VARIABLE}; 0 for no limit)",
     )
     service.add_argument(
         "--no-auth", action="store_true", help="serve without a token beyond this machine: anyone who reaches it can use it"
@@ -209,7 +225,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 def _serve(args: argparse.Namespace) -> int:
     """Run the HTTP service; refuse to open it beyond this machine without a token."""
     try:
-        from .http_server import DEFAULT_MAX_BODY, LOCAL_HOSTS, serve
+        from .http_server import DEFAULT_MAX_BODY, DEFAULT_MEMORY_MB, DEFAULT_SECONDS, LOCAL_HOSTS, Limits, serve
     except ImportError:
         print('Error: the service needs the server extra: pip install "antihallucination[server]"', file=sys.stderr)
         return 2
@@ -234,10 +250,32 @@ def _serve(args: argparse.Namespace) -> int:
     if max_body < 1:
         print("Error: the largest request must be at least 1 byte", file=sys.stderr)
         return 2
+    seconds = _setting(args.timeout, TIMEOUT_VARIABLE, DEFAULT_SECONDS, float, "a number of seconds")
+    memory = _setting(args.max_memory, MAX_MEMORY_VARIABLE, DEFAULT_MEMORY_MB, int, "a whole number of MB")
+    if seconds is None or memory is None:
+        return 2
+    if not math.isfinite(seconds) or seconds <= 0 or memory < 0:
+        print("Error: the time limit must be more than 0 seconds, and the memory limit 0 or more MB", file=sys.stderr)
+        return 2
+    limits = Limits(seconds=seconds, memory_mb=memory or None)
     guard = "every request but /health needs the token" if token else "no token: open to whoever reaches it"
     print(f"anti-hallucination on http://{args.host}:{args.port}: REST at /v1, MCP at /mcp; {guard}", file=sys.stderr)
-    serve(host=args.host, port=args.port, token=token, max_body=max_body)
+    serve(host=args.host, port=args.port, token=token, max_body=max_body, limits=limits)
     return 0
+
+
+def _setting(given: N | None, variable: str, default: N, kind: Callable[[str], N], what: str) -> N | None:
+    """A serve option: the flag, else its environment variable, else the default; None (and a message) if unreadable."""
+    if given is not None:
+        return given
+    configured = os.environ.get(variable, "").strip()
+    if not configured:
+        return default
+    try:
+        return kind(configured)
+    except ValueError:
+        print(f"Error: {variable} must be {what}", file=sys.stderr)
+        return None
 
 
 def _receipt(args: argparse.Namespace) -> int:
