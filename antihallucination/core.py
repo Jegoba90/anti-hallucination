@@ -163,6 +163,13 @@ def _run(
 
     planned = [[(sentence, check_sentence(sentence, ctx, compose=mode == "compose")) for sentence in split_sentences(line)] for line in split_lines(text)]
     kept_facts = {name for line in planned for _, check in line if not check.findings for name in check.facts}
+    # Each fallback read once, not once per failed sentence: its subject as
+    # the checks compare it, and the facts it would give.
+    folded_subjects = {subject: fold(subject) for subject in templates}
+    template_facts = {
+        subject: {match.group(1) for match in PLACEHOLDER_RE.finditer(template)} & set(ctx.facts)
+        for subject, template in templates.items()
+    }
 
     used_templates: set[str] = set()
     used_sources: set[str] = set()
@@ -177,9 +184,9 @@ def _run(
                 inserted: list[str] = []
                 subjects = {fold(word) for word in check.subjects}
                 for subject, template in templates.items():
-                    if subject in used_templates or fold(subject) not in subjects:
+                    if subject in used_templates or folded_subjects[subject] not in subjects:
                         continue
-                    needs = {match.group(1) for match in PLACEHOLDER_RE.finditer(template)} & set(ctx.facts)
+                    needs = template_facts[subject]
                     if needs and needs <= kept_facts:
                         continue  # every figure it would give is already out
                     used_templates.add(subject)

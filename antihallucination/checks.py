@@ -21,13 +21,15 @@ out. The checks, in the order they run:
 """
 
 import re
+from bisect import bisect_left
 from dataclasses import dataclass, field
 from decimal import Decimal
+from functools import lru_cache
 
 from . import lexicon
 from .facts import Fact, Label, Source, check_computed
 from .numbers import Mention, backed_by_values, evidence_values, extract, match_fact
-from .text import MASK, clause_of, fold, lower, mask, words_before
+from .text import MASK, Clauses, fold, last_words, lower, mask
 
 PLACEHOLDER_RE = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)(?::([A-Za-z_]+))?\}")
 CITATION_RE = re.compile(r"\[([A-Za-z0-9_.\-]+(?:\s*,\s*[A-Za-z0-9_.\-]+)*)\]")
@@ -35,6 +37,8 @@ MODIFIERS = frozenset({"abs", "signed"})
 _WORD_RE = re.compile(r"[^\W\d_][\w'’.\-&]*")
 _EDGE = ".,;:-'’\"«»“”()¿?¡!"
 _OPENERS = ":¿¡«\"“(—–-"
+_BEFORE_A_WORD = " " + MASK
+_MOVES = (("up", lexicon.UP), ("down", lexicon.DOWN))
 
 
 @dataclass(frozen=True)
@@ -110,21 +114,34 @@ class SentenceCheck:
     anchors: int = 0  # pieces of your data the sentence carries, for the anchoring check
 
 
-def _contains_word(haystack: str, word: str) -> bool:
-    """`word` (folded) in `haystack` (folded) as a whole word, plural or singular."""
+@lru_cache(maxsize=4096)
+def _word_matchers(word: str) -> tuple[re.Pattern[str], ...]:
+    """The patterns that find `word` (folded) as a whole word, plural or singular.
+
+    A word ending in «es» or «s» is also looked for without it, and a word
+    with dots also without them. Compiled once per word: a sentence is
+    checked against every subject and every name, and compiling each time
+    costs more than the search.
+    """
     if not word:
-        return False
-    candidates = {word}
+        return ()
+    candidates = [word]
     if word.endswith("es") and len(word) > 4:
-        candidates.add(word[:-2])
+        candidates.append(word[:-2])
     if word.endswith("s") and len(word) > 3:
-        candidates.add(word[:-1])
-    for candidate in candidates:
-        if re.search(r"(?<![a-z0-9])" + re.escape(candidate) + r"(?:s|es)?(?![a-z0-9])", haystack):
-            return True
+        candidates.append(word[:-1])
+    matchers = [
+        re.compile(r"(?<![a-z0-9])" + re.escape(candidate) + r"(?:s|es)?(?![a-z0-9])")
+        for candidate in dict.fromkeys(candidates)
+    ]
     if "." in word:
-        return _contains_word(haystack, word.replace(".", ""))
-    return False
+        matchers.extend(_word_matchers(word.replace(".", "")))
+    return tuple(matchers)
+
+
+def _contains_word(haystack: str, matchers: tuple[re.Pattern[str], ...]) -> bool:
+    """Whether `haystack` (folded) holds the word those matchers look for."""
+    return any(matcher.search(haystack) for matcher in matchers)
 
 
 class Context:
@@ -169,11 +186,48 @@ class Context:
         self.label_values = evidence_values("\n".join(label.text for label in labels))
         self.source_evidence = {sid: fold(source.evidence) for sid, source in self.sources.items()}
         self.source_values = {sid: evidence_values(source.evidence) for sid, source in self.sources.items()}
-        self.source_lower = {sid: lower(source.evidence) for sid, source in self.sources.items()}
+        # Read once here instead of once per sentence or per word: which way
+        # each source says something moved, what each fact's subject looks
+        # like, how each verdict reads when quoted, and whether a verdict's own
+        # words say the value fell («caída leve»).
+        self.source_moves: dict[str, frozenset[str]] = {}
+        for sid, source in self.sources.items():
+            lowered = lower(source.evidence)
+            self.source_moves[sid] = frozenset(polarity for polarity, pattern in _MOVES if pattern.search(lowered))
+        self.subject_matchers = {
+            name: tuple(matcher for word in fact.subjects for matcher in _word_matchers(fold(word)))
+            for name, fact in self.facts.items()
+        }
+        self.label_quotes: list[tuple[str, str, re.Pattern[str]]] = []
+        for name, label in self.labels.items():
+            phrase = lower(label.text.strip())
+            self.label_quotes.append((name, phrase, re.compile(r"(?<!\w)" + re.escape(phrase) + r"(?!\w)")))
+        self.label_minus = {
+            name: _carries_minus(lower(label.text), (0, len(label.text))) for name, label in self.labels.items()
+        }
+        self._backed: dict[tuple[str, str, tuple[str, ...]], bool] = {}
 
     def evidence_for(self, cited: list[str]) -> list[str]:
         """The sources a sentence may draw on: the ones it cites, or all of them."""
         return cited if cited else list(self.sources)
+
+    def _evidence(self, sources: tuple[str, ...]) -> list[str]:
+        return [self.base_evidence, *(self.source_evidence[sid] for sid in sources)]
+
+    def name_backed(self, core: str, sources: tuple[str, ...]) -> bool:
+        """Whether a name (folded) is in your facts, labels, known names or these sources."""
+        key = ("name", core, sources)
+        if key not in self._backed:
+            matchers = _word_matchers(core)
+            self._backed[key] = any(_contains_word(text, matchers) for text in self._evidence(sources))
+        return self._backed[key]
+
+    def identifier_backed(self, raw: str, sources: tuple[str, ...]) -> bool:
+        """Whether an identifier («Q3», «COVID-19») is written in your data or these sources."""
+        key = ("identifier", raw, sources)
+        if key not in self._backed:
+            self._backed[key] = any(_identifier_backed(raw, text) for text in self._evidence(sources))
+        return self._backed[key]
 
 
 def _shown(fact: Fact, ctx: Context) -> str:
@@ -213,7 +267,7 @@ def _identifier_backed(raw: str, evidence: str) -> bool:
 
 def _negated(text: str, clause_start: int, position: int) -> bool:
     """Whether a negator in the three words before `position` (same clause) turns the word around."""
-    words = words_before(text[clause_start:position], position - clause_start, 3)
+    words = last_words(text, clause_start, position, 3)
     for index, word in enumerate(words):
         if word in lexicon.NEGATORS:
             following = words[index + 1] if index + 1 < len(words) else ""
@@ -228,15 +282,27 @@ def _agrees(polarity: str, negated: bool, value: Decimal) -> bool:
     return value >= 0 if negated else value < 0
 
 
-def _subject_facts(window: str, ctx: Context, *, change_only: bool) -> list[str]:
-    folded = fold(window)
-    found: list[str] = []
-    for fact in ctx.facts.values():
-        if change_only and not fact.change:
-            continue
-        if any(_contains_word(folded, fold(word)) for word in fact.subjects):
-            found.append(fact.name)
-    return found
+class _Subjects:
+    """The facts whose subject a stretch of one sentence names, each stretch read once.
+
+    Every move word in a clause asks about the same clause, and every one
+    with no subject asks about the whole sentence: reading it again for each
+    word would make a long sentence cost its length times its words.
+    """
+
+    def __init__(self, masked: str, ctx: Context) -> None:
+        self._masked = masked
+        self._ctx = ctx
+        self._found: dict[tuple[int, int], list[str]] = {}
+
+    def named(self, span: tuple[int, int]) -> list[str]:
+        """The facts (in your order) whose subject masked[start:end] names."""
+        if span not in self._found:
+            folded = fold(self._masked[span[0] : span[1]])
+            self._found[span] = [
+                name for name, matchers in self._ctx.subject_matchers.items() if _contains_word(folded, matchers)
+            ]
+        return self._found[span]
 
 
 def _carries_minus(lowered: str, clause: tuple[int, int]) -> bool:
@@ -256,8 +322,7 @@ def _name_candidates(text: str) -> list[str]:
         token = match.group(0).rstrip(".")
         if any(ch.isdigit() for ch in token) or not any(ch.isupper() for ch in token):
             continue
-        before = text[: match.start()].rstrip(" " + MASK)
-        initial = not before or before[-1] in _OPENERS
+        initial = _opens_sentence(text, match.start())
         letters = [ch for ch in token if ch.isalpha()]
         acronym = len(letters) >= 2 and all(ch.isupper() for ch in letters)
         camel = any(ch.isupper() for ch in token[1:]) and not acronym
@@ -265,6 +330,18 @@ def _name_candidates(text: str) -> list[str]:
             continue
         candidates.append(token.strip(_EDGE))
     return candidates
+
+
+def _opens_sentence(text: str, start: int) -> bool:
+    """Whether the word at `start` comes first: after nothing, «:», «¿», «(»..., spaces and placeholders aside.
+
+    Read back from the word, not from the start of the sentence, so a long
+    sentence full of capitals is read once.
+    """
+    index = start
+    while index > 0 and text[index - 1] in _BEFORE_A_WORD:
+        index -= 1
+    return index == 0 or text[index - 1] in _OPENERS
 
 
 def _stray_numerals(masked: str, mentions: list[Mention]) -> list[str]:
@@ -342,42 +419,80 @@ def _match_facts(mention: Mention, ctx: Context) -> tuple[str, list[str]] | None
 
 def _backed_elsewhere(mention: Mention, ctx: Context, sources: list[str], *, use_labels: bool) -> bool:
     if mention.identifier:
-        evidence = [ctx.base_evidence, *(ctx.source_evidence[sid] for sid in sources)]
-        return any(_identifier_backed(mention.raw, text) for text in evidence)
+        return ctx.identifier_backed(mention.raw, tuple(sources))
     if use_labels and backed_by_values(mention, ctx.label_values):
         return True
     return any(backed_by_values(mention, ctx.source_values[sid]) for sid in sources)
 
 
-def _check_directions(masked: str, ctx: Context, check: SentenceCheck, refs: list[_Reference]) -> None:
-    lowered = lower(masked)
-    for polarity, pattern in (("up", lexicon.UP), ("down", lexicon.DOWN)):
+def _nearest(refs: list[_Reference], starts: list[int], clause: tuple[int, int], position: int) -> _Reference | None:
+    """The reference inside the clause closest to `position`; on a tie, the one written first.
+
+    refs are in the order of the text and `starts` holds where each one
+    starts, so the clause and the closest reference are binary searches.
+    """
+    low = bisect_left(starts, clause[0])
+    high = bisect_left(starts, clause[1])
+    if low == high:
+        return None
+    after = bisect_left(starts, position, low, high)  # the first that starts at or after `position`
+    if after == high or (after > low and position - starts[after - 1] <= starts[after] - position):
+        # The closest one starts before `position`: the first written at that start.
+        return refs[bisect_left(starts, starts[after - 1], low, high)]
+    return refs[after]
+
+
+def _any_within(starts: list[int], clause: tuple[int, int]) -> bool:
+    """Whether a position in `starts` (in order) falls inside the clause."""
+    index = bisect_left(starts, clause[0])
+    return index < len(starts) and starts[index] < clause[1]
+
+
+def _check_directions(
+    masked: str,
+    lowered: str,
+    clauses: Clauses,
+    subject_facts: _Subjects,
+    ctx: Context,
+    check: SentenceCheck,
+    refs: list[_Reference],
+) -> None:
+    changes = sorted((ref for ref in refs if ctx.facts[ref.fact].change), key=lambda ref: ref.start)
+    starts = [ref.start for ref in changes]
+    # What a move with no figure of its own is judged against, per clause:
+    # the changes it names (and whether they all point one way).
+    judged: dict[tuple[int, int], tuple[list[Fact], bool]] = {}
+    for polarity, pattern in _MOVES:
         for match in pattern.finditer(lowered):
-            clause = clause_of(masked, match.start())
+            clause = clauses.of(match.start())
             negated = _negated(lowered, clause[0], match.start())
             word = masked[match.start() : match.end()]
-            near = [r for r in refs if clause[0] <= r.start < clause[1] and ctx.facts[r.fact].change]
-            if near:
+            nearest = _nearest(changes, starts, clause, match.start())
+            if nearest is not None:
                 check.anchors += 1
-                fact = ctx.facts[min(near, key=lambda r: abs(r.start - match.start())).fact]
+                fact = ctx.facts[nearest.fact]
                 if not _agrees(polarity, negated, fact.number):
                     check.findings.append(_contradiction(word, polarity, negated, fact, ctx))
                 continue
-            # Which change the word talks about: one whose subject the clause
-            # names; if the clause names a subject with no change («el ticket
-            # subió»), nothing backs the move; if it names none, the sentence's.
-            clause_text = masked[clause[0] : clause[1]]
-            facts = [ctx.facts[name] for name in _subject_facts(clause_text, ctx, change_only=True)]
-            if not facts and not _subject_facts(clause_text, ctx, change_only=False):
-                facts = [ctx.facts[name] for name in _subject_facts(masked, ctx, change_only=True)]
+            if clause not in judged:
+                # Which change the word talks about: one whose subject the
+                # clause names; if the clause names a subject with no change
+                # («el ticket subió»), nothing backs the move; if it names
+                # none, the sentence's.
+                named = subject_facts.named(clause)
+                if not named:
+                    named = subject_facts.named((0, len(masked)))
+                facts = [ctx.facts[name] for name in named if ctx.facts[name].change]
+                # Two changes of that subject pointing different ways get no verdict.
+                one_way = len({(fact.number > 0) - (fact.number < 0) for fact in facts}) == 1
+                judged[clause] = (facts, one_way)
+            facts, one_way = judged[clause]
             if facts:
                 check.anchors += 1
-                # Two changes of that subject pointing different ways get no verdict.
-                directions = {(fact.number > 0) - (fact.number < 0) for fact in facts}
-                if len(directions) == 1 and not _agrees(polarity, negated, facts[0].number):
+                if one_way and not _agrees(polarity, negated, facts[0].number):
                     check.findings.append(_contradiction(word, polarity, negated, facts[0], ctx))
                 continue
-            if any(pattern.search(ctx.source_lower[sid]) for sid in ctx.evidence_for(check.cited)):
+            if any(polarity in ctx.source_moves[sid] for sid in ctx.evidence_for(check.cited)):
                 continue
             check.findings.append(
                 Finding("unbacked_direction", word, f"«{word}» claims a move that no change fact or source backs")
@@ -434,30 +549,36 @@ def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceChe
         # data and are not checked again as the writer's (the «caída» in them
         # is not a move the writer claimed).
         lowered_sentence = lower(sentence)
-        for label in ctx.labels.values():
-            phrase = lower(label.text.strip())
-            for match in re.finditer(r"(?<!\w)" + re.escape(phrase) + r"(?!\w)", lowered_sentence):
+        for name, phrase, quote in ctx.label_quotes:
+            if phrase not in lowered_sentence:
+                continue
+            quoted = False
+            for match in quote.finditer(lowered_sentence):
                 hidden.append(match.span())
-                verdicts.append((match.start(), label.name))
+                verdicts.append((match.start(), name))
                 check.anchors += 1
-                if label.name not in check.labels:
-                    check.labels.append(label.name)
+                quoted = True
+            if quoted:
+                check.labels.append(name)
 
     masked = mask(sentence, hidden)
     if ctx.policy.numbers:
         _check_figures(masked, ctx, check, refs, compose=compose)
 
     lowered = lower(masked)
+    clauses = Clauses(masked)
+    # Your verdict can carry the minus: «una {tendencia} de {variacion:abs}»
+    # reads «una caída leve de 3,2 %», with no second word for the fall.
+    minus_verdicts = sorted(start for start, name in verdicts if ctx.label_minus[name])
+    says_it_fell: dict[tuple[int, int], bool] = {}
     for ref in refs:
         fact = ctx.facts[ref.fact]
-        clause = clause_of(masked, ref.start)
-        # Your verdict can carry the minus: «una {tendencia} de {variacion:abs}»
-        # reads «una caída leve de 3,2 %», with no second word for the fall.
-        verdict_says_it = any(
-            clause[0] <= start < clause[1] and _carries_minus(lower(ctx.labels[name].text), (0, len(ctx.labels[name].text)))
-            for start, name in verdicts
-        )
-        if ref.how == "abs" and fact.number < 0 and not (_carries_minus(lowered, clause) or verdict_says_it):
+        if ref.how != "abs" or fact.number >= 0:
+            continue
+        clause = clauses.of(ref.start)
+        if clause not in says_it_fell:
+            says_it_fell[clause] = _carries_minus(lowered, clause) or _any_within(minus_verdicts, clause)
+        if not says_it_fell[clause]:
             check.findings.append(
                 Finding(
                     "sign_dropped",
@@ -466,16 +587,17 @@ def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceChe
                 )
             )
 
+    subject_facts = _Subjects(masked, ctx)
     if ctx.policy.directions:
-        _check_directions(masked, ctx, check, refs)
+        _check_directions(masked, lowered, clauses, subject_facts, ctx, check, refs)
 
     if ctx.policy.names:
-        evidence = [ctx.base_evidence, *(ctx.source_evidence[sid] for sid in ctx.evidence_for(check.cited))]
+        sources = tuple(ctx.evidence_for(check.cited))
         for name in _name_candidates(masked):
             core = fold(name).strip(_EDGE)
             if not core or core in lexicon.NOT_NAMES:
                 continue
-            if not any(_contains_word(text, core) for text in evidence):
+            if not ctx.name_backed(core, sources):
                 check.findings.append(
                     Finding("unbacked_name", name, f"«{name}» is not in your facts, labels, sources or known names")
                 )
@@ -497,11 +619,13 @@ def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceChe
             Finding("unanchored", sentence, "it carries none of your facts or labels and cites no source")
         )
 
+    listed = set(check.facts)  # a set beside the list: a figure can match many facts
     for ref in refs:
-        if ref.fact not in check.facts:
+        if ref.fact not in listed:
+            listed.add(ref.fact)
             check.facts.append(ref.fact)
     subjects: list[str] = []
-    for name in [*check.facts, *_subject_facts(masked, ctx, change_only=False)]:
+    for name in [*check.facts, *subject_facts.named((0, len(masked)))]:
         for word in ctx.facts[name].subjects:
             if word not in subjects:
                 subjects.append(word)
