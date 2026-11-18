@@ -18,6 +18,9 @@ the text, for the receipt. Like the stdio server, the service calls no model:
 nobody who reaches it can spend a provider's tokens, and nothing leaves it.
 
 With a token, every route but /health needs `Authorization: Bearer <token>`.
+A POST must say `Content-Type: application/json`. Listening on this machine
+only, the service also refuses a Host or Origin header that is not local, as
+the MCP route does, against DNS rebinding from a web page.
 A request body over max_body bytes is refused before it is read in full. Each
 request's checks run in a worker process with a time limit and, on Linux and
 macOS, a memory limit: past either, the answer is 413 and the service goes on.
@@ -27,6 +30,7 @@ import hmac
 import json
 import math
 import os
+import re
 from collections.abc import Awaitable, Callable, Mapping, Sequence
 from decimal import Decimal
 from functools import partial
@@ -54,6 +58,9 @@ DEFAULT_MAX_BODY = 262_144
 DEFAULT_SECONDS = 10.0
 DEFAULT_MEMORY_MB = 1024
 LOCAL_HOSTS = frozenset({"127.0.0.1", "localhost", "::1"})
+# The Host and Origin headers a local service accepts: the MCP SDK's own list.
+_LOCAL_HOST_HEADER = re.compile(r"(127\.0\.0\.1|localhost|\[::1\])(:\d+)?", re.IGNORECASE)
+_LOCAL_ORIGIN = re.compile(r"http://(127\.0\.0\.1|localhost|\[::1\])(:\d+)?", re.IGNORECASE)
 
 Body = Mapping[str, object]
 T = TypeVar("T")
@@ -203,9 +210,30 @@ async def _payload(request: Request) -> Body:
     return {str(key): value for key, value in body.items()}
 
 
+def _check_headers(request: Request) -> None:
+    """A JSON body, and on a local service, a local Host and Origin.
+
+    A web page can make a browser send a plain-text POST anywhere, and point
+    a name it controls at 127.0.0.1 (DNS rebinding). A JSON content type
+    needs the browser to ask first, which this service never allows, and the
+    Host header still carries the page's name.
+    """
+    content_type = request.headers.get("content-type", "")
+    if not content_type.lower().startswith("application/json"):
+        raise _BadRequest("send the body as JSON, with Content-Type: application/json", 415)
+    if not request.app.state.local:
+        return
+    if _LOCAL_HOST_HEADER.fullmatch(request.headers.get("host", "")) is None:
+        raise _BadRequest("this service runs on this machine only: the Host header must be local", 421)
+    origin = request.headers.get("origin")
+    if origin is not None and _LOCAL_ORIGIN.fullmatch(origin) is None:
+        raise _BadRequest("this service runs on this machine only: requests from web pages are refused", 403)
+
+
 def _endpoint(handler: Callable[[Body], Work]) -> Callable[[Request], Awaitable[Response]]:
     async def endpoint(request: Request) -> Response:
         try:
+            _check_headers(request)
             work = handler(await _payload(request))
             # In a worker process: off the event loop, so /health and other
             # requests still answer, and stopped if it runs past the limits.
@@ -217,6 +245,9 @@ def _endpoint(handler: Callable[[Body], Work]) -> Callable[[Request], Awaitable[
             return JSONResponse({"error": str(exc)}, status_code=413)
         except ToolError as exc:
             return JSONResponse({"error": str(exc)}, status_code=400)
+        except RecursionError:
+            # Reading the JSON, or handing it to the worker: either way, the body.
+            return JSONResponse({"error": "the body is nested too deeply"}, status_code=400)
         return JSONResponse(result)
 
     return endpoint
@@ -273,6 +304,7 @@ def create_app(
         stateless_http=True, json_response=True, max_request_body_size=max_body, host=host
     )
     app.state.max_body = max_body
+    app.state.local = host in LOCAL_HOSTS
     app.state.limits = limits
     app.router.routes.extend(
         [

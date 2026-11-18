@@ -34,6 +34,8 @@ from antihallucination.http_server import Limits, create_app  # noqa: E402
 _ROOT = Path(__file__).resolve().parents[1]
 _SALES = _ROOT / "examples" / "sales"
 TOKEN = "test-token-0123456789abcdef"
+# The address the client calls: the service listens on this machine unless a test says otherwise.
+LOCAL = "http://127.0.0.1:8000"
 TOOLS = ["check_receipt", "compose_report", "prepare_report", "verify_text"]
 COMPOSED = (
     "En el tercer trimestre de 2026, las ventas cayeron 3,2 % hasta 1.250 unidades, una caída leve. "
@@ -52,14 +54,14 @@ def _draft() -> str:
 
 @pytest.fixture
 def client() -> Iterator[TestClient]:
-    with TestClient(create_app(token=TOKEN)) as test_client:
+    with TestClient(create_app(token=TOKEN), base_url=LOCAL) as test_client:
         test_client.headers["Authorization"] = f"Bearer {TOKEN}"
         yield test_client
 
 
 class TestTheToken:
     def test_health_answers_without_it(self) -> None:
-        with TestClient(create_app(token=TOKEN)) as anonymous:
+        with TestClient(create_app(token=TOKEN), base_url=LOCAL) as anonymous:
             response = anonymous.get("/health")
 
         assert response.status_code == 200
@@ -68,7 +70,7 @@ class TestTheToken:
     @pytest.mark.parametrize("header", [None, "Bearer wrong-token-0123456789", TOKEN])
     def test_every_other_route_needs_it(self, header: str | None) -> None:
         headers = {"Authorization": header} if header else {}
-        with TestClient(create_app(token=TOKEN)) as anonymous:
+        with TestClient(create_app(token=TOKEN), base_url=LOCAL) as anonymous:
             for path in ("/v1/verify", "/v1/compose", "/mcp"):
                 response = anonymous.post(path, json={}, headers=headers)
 
@@ -76,7 +78,7 @@ class TestTheToken:
                 assert response.headers["www-authenticate"] == "Bearer"
 
     def test_without_a_token_the_routes_are_open(self) -> None:
-        with TestClient(create_app(token=None)) as anonymous:
+        with TestClient(create_app(token=None), base_url=LOCAL) as anonymous:
             response = anonymous.post("/v1/verify", json={"text": "x", "data": {}})
 
         assert response.status_code == 200
@@ -157,8 +159,27 @@ class TestTheRestApi:
         assert "at most 40 digits" in response.json()["error"]
         assert len(response.content) < 200
 
+    @pytest.mark.parametrize("route", ["/v1/verify", "/v1/receipt"])
+    def test_a_body_nested_too_deeply_is_refused(self, client: TestClient, route: str) -> None:
+        # 200 KB of brackets: past what json can read, which used to give 500.
+        body = '{"receipt": %s, "text": "x", "data": %s}' % ("[" * 50000 + "]" * 50000, "{}")
+
+        response = client.post(route, content=body, headers={"Content-Type": "application/json"})
+
+        assert response.status_code == 400
+        assert response.json() == {"error": "the body is nested too deeply"}
+
+    def test_a_body_that_does_not_say_it_is_json_is_refused(self, client: TestClient) -> None:
+        # A web page can make a browser send text/plain anywhere without asking first.
+        body = json.dumps({"text": "x", "data": {}})
+
+        response = client.post("/v1/verify", content=body, headers={"Content-Type": "text/plain"})
+
+        assert response.status_code == 415
+        assert "application/json" in response.json()["error"]
+
     def test_a_body_over_the_limit_is_refused(self) -> None:
-        with TestClient(create_app(token=TOKEN, max_body=1000)) as small:
+        with TestClient(create_app(token=TOKEN, max_body=1000), base_url=LOCAL) as small:
             small.headers["Authorization"] = f"Bearer {TOKEN}"
             response = small.post("/v1/verify", json={"text": "x" * 2000, "data": {}})
 
@@ -175,7 +196,7 @@ class TestTheRestApi:
         assert "more than 200,000 times" in response.json()["error"]
 
     def test_checks_past_the_time_limit_are_stopped_and_the_service_goes_on(self) -> None:
-        with TestClient(create_app(token=TOKEN, limits=Limits(seconds=0.001))) as hasty:
+        with TestClient(create_app(token=TOKEN, limits=Limits(seconds=0.001)), base_url=LOCAL) as hasty:
             hasty.headers["Authorization"] = f"Bearer {TOKEN}"
             response = hasty.post("/v1/verify", json={"text": "Revenue grew. " * 100, "data": {}})
             health = hasty.get("/health")
@@ -251,6 +272,68 @@ def test_mcp_over_http_refuses_a_client_without_the_token(live_service: str) -> 
     response = asyncio.run(asyncio.wait_for(run(), timeout=30))
 
     assert response.status_code == 401
+
+
+class TestOnThisMachine:
+    """A service on 127.0.0.1 answers only requests addressed to this machine.
+
+    A web page can point a name it controls at 127.0.0.1 (DNS rebinding), and
+    the browser then sends that name as the Host. The MCP route refuses it
+    through the MCP SDK; the REST routes refuse it the same way.
+    """
+
+    VERIFY = {"text": "x", "data": {}}
+
+    @pytest.mark.parametrize("host", ["127.0.0.1:8000", "localhost", "LOCALHOST:3000", "[::1]:8000"])
+    def test_a_local_host_is_served(self, host: str) -> None:
+        with TestClient(create_app(token=None), base_url=LOCAL) as local:
+            assert local.post("/v1/verify", json=self.VERIFY, headers={"Host": host}).status_code == 200
+
+    @pytest.mark.parametrize("host", ["evil.example", "evil.example:8000", "127.0.0.1.evil.example", "localhost.:8000"])
+    def test_another_host_is_refused(self, host: str) -> None:
+        with TestClient(create_app(token=None), base_url=LOCAL) as local:
+            response = local.post("/v1/verify", json=self.VERIFY, headers={"Host": host})
+
+        assert response.status_code == 421
+        assert "Host header must be local" in response.json()["error"]
+
+    @pytest.mark.parametrize(("origin", "status"), [("http://localhost:5173", 200), ("http://evil.example", 403), ("null", 403)])
+    def test_a_web_page_must_be_local_too(self, origin: str, status: int) -> None:
+        with TestClient(create_app(token=None), base_url=LOCAL) as local:
+            response = local.post("/v1/verify", json=self.VERIFY, headers={"Origin": origin})
+
+        assert response.status_code == status
+
+    def test_beyond_this_machine_any_host_is_served(self) -> None:
+        # Behind a proxy or a load balancer the Host is the company's own name; the token guards it.
+        with TestClient(create_app(token=TOKEN, host="0.0.0.0"), base_url="http://checks.example.com") as remote:
+            remote.headers["Authorization"] = f"Bearer {TOKEN}"
+            response = remote.post("/v1/verify", json=self.VERIFY, headers={"Origin": "https://app.example.com"})
+
+        assert response.status_code == 200
+
+    def test_the_mcp_route_refuses_a_body_nested_too_deeply(self, live_service: str) -> None:
+        headers = {"Authorization": f"Bearer {TOKEN}", "Accept": "application/json, text/event-stream"}
+        body = '{"jsonrpc": "2.0", "id": 1, "method": "ping", "params": %s}' % ("[" * 50000 + "]" * 50000)
+
+        async def run():
+            async with httpx2.AsyncClient(headers=headers) as http:
+                return await http.post(
+                    f"{live_service}/mcp", content=body, headers={"Content-Type": "application/json"}
+                )
+
+        response = asyncio.run(asyncio.wait_for(run(), timeout=30))
+
+        assert 400 <= response.status_code < 500
+
+    def test_the_mcp_route_refuses_another_host_too(self, live_service: str) -> None:
+        async def run():
+            async with httpx2.AsyncClient(headers={"Authorization": f"Bearer {TOKEN}", "Host": "evil.example"}) as http:
+                return await http.post(f"{live_service}/mcp", json={"jsonrpc": "2.0", "id": 1, "method": "ping"})
+
+        response = asyncio.run(asyncio.wait_for(run(), timeout=30))
+
+        assert response.status_code == 421
 
 
 class TestTheServeCommand:
