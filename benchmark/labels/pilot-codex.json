@@ -1,0 +1,3173 @@
+[
+  {
+    "item": "312c3ce4",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Los calificativos strong y concerning no tienen veredicto que los respalde."
+  },
+  {
+    "item": "312c3ce4",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Cantidad de usuarios y variación presentes en los datos."
+  },
+  {
+    "item": "312c3ce4",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment",
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Significantly agrega grado sin veredicto; la mejora del onboarding o de ventas como explicación no está documentada."
+  },
+  {
+    "item": "312c3ce4",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "El churn aumentó con las cifras indicadas; deterioro describe el empeoramiento de esa métrica."
+  },
+  {
+    "item": "312c3ce4",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Ambas variaciones y los niveles de NRR están dados; aligns with se lee como coexistencia, sin afirmar causalidad."
+  },
+  {
+    "item": "312c3ce4",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Slight friction y la valoración de eficiencia operativa no están en los datos."
+  },
+  {
+    "item": "312c3ce4",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation",
+      "invented_fact"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Recomienda seguimiento; no hay datos de adquisición de usuarios ni de una desaceleración temporal de la retención, sólo niveles y variaciones."
+  },
+  {
+    "item": "32998a50",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Precio actual, anterior y variación coinciden con los datos."
+  },
+  {
+    "item": "32998a50",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Volúmenes y variación coinciden con los datos."
+  },
+  {
+    "item": "32998a50",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Ligera califica el grado de la disminución sin veredicto para el interés abierto."
+  },
+  {
+    "item": "32998a50",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "wrong_figure"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Los datos dicen 1,7 puntos porcentuales, no 1,7 puntos básicos: cambia la unidad."
+  },
+  {
+    "item": "32998a50",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "wrong_attribution"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "El veredicto tendencia alcista pertenece a la variación de la tasa de financiamiento; la oración lo extiende al mercado. Revisar si en este contexto mercado sólo refiere a financiamiento."
+  },
+  {
+    "item": "32998a50",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Moderada expansión y leve cambio califican actividad comercial y apalancamiento sin veredictos que lo respalden."
+  },
+  {
+    "item": "32998a50",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Consolidación del precio y volumen ligeramente superior agregan valoraciones sin respaldo específico."
+  },
+  {
+    "item": "32998a50",
+    "sentence": 7,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay un veredicto de estabilidad del mercado cripto."
+  },
+  {
+    "item": "7ed33c6c",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Ingresos y variación coinciden."
+  },
+  {
+    "item": "7ed33c6c",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Unidades actuales, anteriores y variación coinciden."
+  },
+  {
+    "item": "7ed33c6c",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Pedidos y caída coinciden."
+  },
+  {
+    "item": "7ed33c6c",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": true,
+    "note": "Cifras y estabilidad están dadas. Marginal describe una variación pequeña compatible con ese veredicto; se marca dudosa por la frontera entre paráfrasis de estabilidad y calificativo de grado."
+  },
+  {
+    "item": "7ed33c6c",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Ticket promedio dado."
+  },
+  {
+    "item": "7ed33c6c",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Resume direcciones dadas y conserva el grado de estabilidad de los clientes nuevos."
+  },
+  {
+    "item": "6398e095",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Período, tickets y variación coinciden."
+  },
+  {
+    "item": "6398e095",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay tiempos anteriores para afirmar que la primera respuesta mejoró o que la resolución permaneció estable."
+  },
+  {
+    "item": "6398e095",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment",
+      "invented_fact"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Modestly/slight agregan grado sin veredicto; no se informa la complejidad de los casos escalados."
+  },
+  {
+    "item": "6398e095",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment",
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay backlog anterior para afirmar una reducción ni respaldo de su explicación mediante gestión eficaz de colas."
+  },
+  {
+    "item": "6398e095",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Paráfrasis fiel de Ticket 8374; la nota documenta los 11 reportes y la preparación de un arreglo."
+  },
+  {
+    "item": "6398e095",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Resume fielmente Ticket 7532."
+  },
+  {
+    "item": "6398e095",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment",
+      "recommendation"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Positive momentum no tiene veredicto y se recomienda vigilancia de escalaciones y problemas."
+  },
+  {
+    "item": "4593853d",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Caja y variación coinciden."
+  },
+  {
+    "item": "4593853d",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Ingresos y caída coinciden."
+  },
+  {
+    "item": "4593853d",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Empleados, variación y veredicto de estabilidad coinciden."
+  },
+  {
+    "item": "4593853d",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Margen operativo dado."
+  },
+  {
+    "item": "4593853d",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Ambos niveles de deuda aparecen redondeados a 3,3 mil millones en los datos y la reducción de 2,1 % también está explícita."
+  },
+  {
+    "item": "4593853d",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "EBITDA y caída coinciden."
+  },
+  {
+    "item": "a9326b4c",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Conversión actual, anterior y diferencia explícita coinciden."
+  },
+  {
+    "item": "a9326b4c",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "NRR y veredicto de subida leve coinciden."
+  },
+  {
+    "item": "a9326b4c",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Clientes nuevos y caída coinciden."
+  },
+  {
+    "item": "a9326b4c",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Se mantuvo implica estabilidad; no hay CAC anterior ni veredicto que la respalde."
+  },
+  {
+    "item": "a9326b4c",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Usuarios actuales, anteriores y variación coinciden."
+  },
+  {
+    "item": "a9326b4c",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Sólida retención y ligera contracción de conversión/clientes carecen de veredicto aplicable. Subida leve de NRR no justifica sólida retención."
+  },
+  {
+    "item": "fa48b171",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Plantillas y variación coinciden."
+  },
+  {
+    "item": "fa48b171",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "EBITDA y veredicto de subida fuerte coinciden."
+  },
+  {
+    "item": "fa48b171",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "La diferencia de 134 millones está explícitamente en los datos; no es un cálculo nuevo del informe."
+  },
+  {
+    "item": "fa48b171",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Ligera caída agrega un grado sin veredicto de ingresos. En torno a 1,3 mil millones sí concuerda con los niveles redondeados de ambos períodos."
+  },
+  {
+    "item": "fa48b171",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Ambos márgenes y la mejora de 0,4 pp están explícitos."
+  },
+  {
+    "item": "fa48b171",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Valora globalmente el desempeño financiero como mejorado y califica de ligera la disminución de ingresos sin veredicto específico."
+  },
+  {
+    "item": "2c8dbb81",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "Las cifras coinciden, pero respaldada por atribuye la facturación a los pedidos online sin que los datos vinculen ambas métricas. Revisar si respaldada se interpreta sólo como acompañada."
+  },
+  {
+    "item": "2c8dbb81",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Ligera y la valoración de un entorno de consumo menos dinámico exceden los datos de pedidos de la empresa."
+  },
+  {
+    "item": "2c8dbb81",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment",
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "Significativa agrega grado sin veredicto; el supuesto efecto compensatorio entre una caída de pedidos y otra del ticket no está documentado. Dudosa por la relación confusa entre dos descensos."
+  },
+  {
+    "item": "2c8dbb81",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Atribuye el incremento a una estrategia de adquisición y la considera efectiva sin respaldo."
+  },
+  {
+    "item": "2c8dbb81",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La mejora de satisfacción/control postventa no está documentada como explicación de la tasa de devoluciones; ligeramente agrega grado."
+  },
+  {
+    "item": "2c8dbb81",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment",
+      "unsupported_forecast"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay facturación anterior para afirmar retroceso de recaudación; base sólida y recuperación futura del impulso no están respaldadas."
+  },
+  {
+    "item": "2c8dbb81",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Recomienda venta cruzada y fidelización sin que los datos pidan esas acciones."
+  },
+  {
+    "item": "e1a3ae81",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Robust califica el margen operativo sin veredicto que lo respalde."
+  },
+  {
+    "item": "e1a3ae81",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Surged y strength of core earnings califican los resultados sin un veredicto de EBITDA."
+  },
+  {
+    "item": "e1a3ae81",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "wrong_attribution",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No se menciona una evaluación del directorio; stability es un veredicto sobre variación de caja, no sobre la estabilidad financiera global."
+  },
+  {
+    "item": "e1a3ae81",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment",
+      "invented_fact"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Manageable y strong cash position no están respaldados; no se proporciona flujo de caja operativo que permita justificar la valoración."
+  },
+  {
+    "item": "e1a3ae81",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La plantilla creció, pero no hay una trayectoria de contrataciones para afirmar aceleración ni iniciativas de crecimiento que expliquen la contratación."
+  },
+  {
+    "item": "e1a3ae81",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment",
+      "recommendation"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Solid profitability y cash resilience son valoraciones; recomienda vigilar controles de costos y sostenibilidad del margen."
+  },
+  {
+    "item": "e0996b73",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Período, tickets y variación coinciden."
+  },
+  {
+    "item": "e0996b73",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Remained strong agrega valoración y continuidad sin veredicto ni tiempos anteriores."
+  },
+  {
+    "item": "e0996b73",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Low open backlog no tiene respaldo; maintaining implica continuidad sin backlog anterior."
+  },
+  {
+    "item": "e0996b73",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Resume fielmente Ticket 8374."
+  },
+  {
+    "item": "e0996b73",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Resume fielmente Ticket 7532."
+  },
+  {
+    "item": "e0996b73",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No se documenta una estabilidad general de la operación ni que las intervenciones la produzcan."
+  },
+  {
+    "item": "eadf04c9",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Ingresos y caída intertrimestral coinciden con los datos."
+  },
+  {
+    "item": "eadf04c9",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Cifras y calificación sharp drop están respaldadas por el veredicto."
+  },
+  {
+    "item": "eadf04c9",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "El EBITDA de 1,8 mil millones figura en los datos; no se corrige aunque parezca extraño respecto de los ingresos."
+  },
+  {
+    "item": "eadf04c9",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La suba de caja es correcta, pero modest agrega un grado sin veredicto que lo respalde."
+  },
+  {
+    "item": "eadf04c9",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Cantidad actual, anterior y variación de empleados coinciden."
+  },
+  {
+    "item": "eadf04c9",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La baja de ingresos y margen y las subas de caja y empleados se deducen; slight growth agrega una calificación sin veredicto para estas subas."
+  },
+  {
+    "item": "b3350b61",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Período, ingresos y caída del 22,8 % coinciden."
+  },
+  {
+    "item": "b3350b61",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras son correctas, pero atribuye la baja del EBITDA al deterioro comercial sin que los datos establezcan esa relación."
+  },
+  {
+    "item": "b3350b61",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Los valores de caja son correctos; leve mejora califica la variación sin veredicto que lo respalde."
+  },
+  {
+    "item": "b3350b61",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "Ambos niveles de deuda redondean a 3,3 mil millones y la oración explicita la caída de 2,1 %: no invierte la dirección. Estable y marginal son valoraciones sin un veredicto de deuda; caso dudoso por la aproximación de los niveles."
+  },
+  {
+    "item": "b3350b61",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": true,
+    "note": "La plantilla, la variación y el veredicto de estabilidad coinciden. Modesto se interpreta como magnitud pequeña compatible con estabilidad; se marca la frontera de grado para revisión."
+  },
+  {
+    "item": "b3350b61",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment",
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay datos de costos que respalden su contención; fuerte caída y la interpretación de absorción del impacto por la rentabilidad no están respaldadas."
+  },
+  {
+    "item": "b3350b61",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Vulnerabilidad inherente, baja activación comercial y parámetros de sostenibilidad son evaluaciones no presentes en datos ni veredictos."
+  },
+  {
+    "item": "e52452c8",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras de unidades son correctas; contracción significativa y muy por debajo añaden magnitud valorativa sin veredicto para las ventas."
+  },
+  {
+    "item": "e52452c8",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": true,
+    "note": "Pedidos, conversión y variaciones coinciden. Se acepta mejora marginal como dirección positiva de 0,1 pp y magnitud pequeña compatible con el veredicto explícito de estabilidad; queda dudosa por esa frontera de grado."
+  },
+  {
+    "item": "e52452c8",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La baja del ticket no permite atribuirla a una ampliación de la base de clientes de menor valor, aunque se formule como posible."
+  },
+  {
+    "item": "e52452c8",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "wrong_direction",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "Las devoluciones aumentaron +0,9 pp; variación negativa invierte el signo. Notable carece de veredicto. Dudosa por si negativa pretendía expresar empeoramiento, en vez de signo numérico."
+  },
+  {
+    "item": "e52452c8",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La nota respalda las demoras de cuatro días y al operador, pero no relaciona las demoras con el aumento de devoluciones."
+  },
+  {
+    "item": "e52452c8",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": true,
+    "note": "Se acepta como inferencia temporal sin cálculo: el lanzamiento del 23 de marzo es posterior a los resultados de enero. Dudosa porque la nota no explicita el año ni una ausencia de efectos anticipatorios, y el informe cambia empezó por está programado."
+  },
+  {
+    "item": "e52452c8",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment",
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "La valoración de desafío y fuerte caída no tiene veredicto. La supuesta compensación insuficiente entre conversión y ventas no se establece en los datos; dudosa la frontera entre efecto causal y resumen de resultados coexistentes."
+  },
+  {
+    "item": "1d01b654",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Cifras y dirección del churn son correctas; modest y la evaluación del desempeño agregan calificaciones sin veredictos."
+  },
+  {
+    "item": "1d01b654",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Markedly califica el aumento sin veredicto y no hay información que lo atribuya a una mayor eficacia del onboarding."
+  },
+  {
+    "item": "1d01b654",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Sharply carece de veredicto y no se establece que el crecimiento de usuarios sostenga o cause las ganancias de conversión."
+  },
+  {
+    "item": "1d01b654",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "El CAC es correcto; edged higher añade grado y el aumento no permite concluir presiones específicas de gasto comercial o de marketing."
+  },
+  {
+    "item": "1d01b654",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La caída del NRR coincide, pero no prueba dificultades concretas de upselling y mitigación del churn."
+  },
+  {
+    "item": "1d01b654",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "recommendation",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Una variación frente al mes previo no prueba aceleración; no hay métrica de captación nueva. Exigir foco estratégico inmediato es una recomendación y evaluación añadidas."
+  },
+  {
+    "item": "41205f85",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Sólida expansión carece de veredicto; manteniendo el CAC implica continuidad sin dato anterior. Las cifras actuales son correctas."
+  },
+  {
+    "item": "41205f85",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La cifra de usuarios es correcta; penetración robusta en el mercado objetivo requiere información y criterios ausentes."
+  },
+  {
+    "item": "41205f85",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La conversión es correcta, pero no hay veredicto que permita juzgar la estrategia como eficaz."
+  },
+  {
+    "item": "41205f85",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "NRR de 123 % indica expansión de ingresos de la cartera; fuerte crecimiento añade un grado sin veredicto."
+  },
+  {
+    "item": "41205f85",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "La renovación de tres años y las 257 licencias añadidas están en la nota; se incorporan como parte del desempeño comercial."
+  },
+  {
+    "item": "41205f85",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_forecast",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Los datos no establecen una trayectoria sostenible de expansión futura."
+  },
+  {
+    "item": "41205f85",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_forecast",
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Pronostica meses favorables y los fundamenta en un supuesto equilibrio de eficiencia y lealtad que no está en los datos."
+  },
+  {
+    "item": "41205f85",
+    "sentence": 7,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "El valor para inversores y el respaldo a una hoja de ruta estratégica no se desprenden de las métricas ni de la nota."
+  },
+  {
+    "item": "84e4a33b",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Ingresos, período y variación coinciden."
+  },
+  {
+    "item": "84e4a33b",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No se establece que la venta de unidades sea el principal motor del aumento de ingresos; significant surge agrega un grado sin veredicto."
+  },
+  {
+    "item": "84e4a33b",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay ticket anterior que permita decir remained stable; tampoco datos que atribuyan el crecimiento a volumen en vez de precios."
+  },
+  {
+    "item": "84e4a33b",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Pedidos y caída son correctos; challenges y el supuesto cambio de conducta o preferencia de canal son interpretaciones explicativas sin respaldo."
+  },
+  {
+    "item": "84e4a33b",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": true,
+    "note": "Cifras y veredicto de estabilidad coinciden. Largely flat y negligible se aceptan como paráfrasis de ese grado pequeño; dudosa por el énfasis de negligible."
+  },
+  {
+    "item": "84e4a33b",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Propone ajustar estrategias de marketing sin que los datos lo pidan."
+  },
+  {
+    "item": "84e4a33b",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay dato de ventas físicas ni de demanda; strong y headwinds son calificaciones añadidas. La estabilidad de clientes sí tiene respaldo."
+  },
+  {
+    "item": "84e4a33b",
+    "sentence": 7,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Recomienda una prioridad a la gerencia y un objetivo de crecimiento por canales que los datos no solicitan."
+  },
+  {
+    "item": "4ee80298",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "El precio y caída coinciden; significant carece de veredicto. Closing añade que se trata de precio de cierre, precisión temporal no dada en Precio; dudosa por esa interpretación."
+  },
+  {
+    "item": "4ee80298",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras de ETH coinciden; strong momentum y surging califican la magnitud sin veredicto."
+  },
+  {
+    "item": "4ee80298",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "El volumen es correcto; remains active evalúa la actividad y su continuidad sin criterio ni volumen anterior."
+  },
+  {
+    "item": "4ee80298",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "El cambio de 20 a 15 está dado. Continue to deteriorate presupone una tendencia previa adicional; prevailing market fear agrega una lectura del índice no suministrada como veredicto."
+  },
+  {
+    "item": "4ee80298",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Interés abierto actual, anterior y variación coinciden."
+  },
+  {
+    "item": "4ee80298",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "El aumento del interés abierto respalda la continuidad de posiciones mientras cae BTC; no se atribuye una causa específica."
+  },
+  {
+    "item": "4ee80298",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "El calendario ubica la actualización en junio, fuera de la semana de octubre, pero no afirma que no tenga impacto en la revisión. Dudosa por posible lectura meramente editorial de la oración."
+  },
+  {
+    "item": "4ee80298",
+    "sentence": 7,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Clients should note recomienda una atención concreta; substantial califica la divergencia sin un veredicto dado."
+  },
+  {
+    "item": "61a23213",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Ticket actual, anterior y variación coinciden."
+  },
+  {
+    "item": "61a23213",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Tasa de devoluciones y descenso en puntos coinciden."
+  },
+  {
+    "item": "61a23213",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Pedidos actuales, anteriores y caída coinciden."
+  },
+  {
+    "item": "61a23213",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "La facturación está en los datos."
+  },
+  {
+    "item": "61a23213",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Clientes nuevos y aumento del 6,1 % coinciden."
+  },
+  {
+    "item": "61a23213",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las direcciones son compatibles con los datos; ligera califica la contracción de pedidos y ticket sin veredicto que lo respalde."
+  },
+  {
+    "item": "eba8ca7f",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Ingresos y unidades coinciden; sharp drop reproduce el veredicto de unidades."
+  },
+  {
+    "item": "eba8ca7f",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras y la magnitud de la baja de unidades están respaldadas, pero no la explicación por un cambio de conducta ni la conclusión sobre engagement digital."
+  },
+  {
+    "item": "eba8ca7f",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras y los detalles de campaña coinciden; no se establece que la campaña influyera en el ticket. Slightly califica su baja sin veredicto."
+  },
+  {
+    "item": "eba8ca7f",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La adquisición y caída son correctas; que la retención sea critical es una valoración no suministrada."
+  },
+  {
+    "item": "eba8ca7f",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La tasa y baja de devoluciones coinciden, pero no permiten explicar la mejora por mejor ajuste del producto o percepción de calidad."
+  },
+  {
+    "item": "eba8ca7f",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "recommendation",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Recomienda prioridades de análisis. No hay datos de tráfico online para llamarlo estable; los pedidos online son otra métrica."
+  },
+  {
+    "item": "eba8ca7f",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Propone una estrategia futura no solicitada y describe como steady el flujo de pedidos sin veredicto de estabilidad."
+  },
+  {
+    "item": "510b5e6d",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Período, tickets y disminución coinciden."
+  },
+  {
+    "item": "510b5e6d",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Tickets resueltos actuales, anteriores y variación coinciden."
+  },
+  {
+    "item": "510b5e6d",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "CSAT actual, anterior y aumento de un punto coinciden."
+  },
+  {
+    "item": "510b5e6d",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay tiempo de resolución anterior que respalde se mantuvo; el tiempo actual y los escalamientos sí son correctos."
+  },
+  {
+    "item": "510b5e6d",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Resume fielmente la nota del ticket 7791, incluida la fecha y el efecto de la reversión; no se corrige la cronología de la fuente."
+  },
+  {
+    "item": "510b5e6d",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Cantidad de reportes, Android, versión y parche coinciden con la nota del ticket 6485."
+  },
+  {
+    "item": "b45f12ec",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "El aumento fuerte del EBITDA está respaldado; atribuirle principalmente una rentabilidad sólida agrega causalidad y una valoración general no dadas."
+  },
+  {
+    "item": "b45f12ec",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras, incluida la variación de 134 millones, figuran en los datos. No consta que el EBITDA se reflejara directamente en el resultado neto."
+  },
+  {
+    "item": "b45f12ec",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment",
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "La contracción de 1,1 % sí está explícita: no se marca dirección equivocada. Estables/ligera no tienen veredicto y la optimización de costos no está documentada. Dudosa por la coincidencia de los niveles de ingresos redondeados."
+  },
+  {
+    "item": "b45f12ec",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "El margen mejoró 0,4 pp y sigue negativo, tal como dicen los datos. Juzgo que extenderlo a señales positivas de eficiencia operativa es una valoración adicional; podría aceptarse como paráfrasis de la mejora del margen."
+  },
+  {
+    "item": "b45f12ec",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La baja del número de empleados está dada, pero no se informa una reestructuración ni un veredicto de caída notable."
+  },
+  {
+    "item": "b45f12ec",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No consta que la reducción de personal fuera estratégica ni que sostuviera la rentabilidad. Tampoco se da un veredicto de estancamiento de ventas."
+  },
+  {
+    "item": "b45f12ec",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No se describe el enfoque de la gestión ni medidas de contención de gastos; máxima eficiencia es un juicio sin respaldo."
+  },
+  {
+    "item": "b45f12ec",
+    "sentence": 7,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Recomienda cómo debe interpretar los resultados la dirección y los califica como base favorable sin respaldo explícito."
+  },
+  {
+    "item": "c142233f",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "Las cifras y el período coinciden. Los datos dicen precio, sin identificarlo como precio de cierre de ninguna de las dos semanas."
+  },
+  {
+    "item": "c142233f",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Volúmenes y variación de 1,3 % expresamente dados."
+  },
+  {
+    "item": "c142233f",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Repite la tasa, los 1,7 pp y el veredicto de tendencia alcista. Se respeta el dato aunque resulte llamativa su magnitud."
+  },
+  {
+    "item": "c142233f",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras y la dirección son correctas; ligeramente agrega un grado sin veredicto que lo respalde."
+  },
+  {
+    "item": "c142233f",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No se da una reevaluación de posiciones como explicación de la caída del interés abierto; ligera es un calificativo sin veredicto."
+  },
+  {
+    "item": "c142233f",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Precios y financiación suben, pero no se califica el volumen de negociación como robusto."
+  },
+  {
+    "item": "c142233f",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation",
+      "unsupported_forecast"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "Recomienda vigilancia y anticipa un posible efecto sobre costos de posiciones apalancadas que no figura en los datos. Dudosa la frontera entre predicción y explicación general del financiamiento."
+  },
+  {
+    "item": "6d6f0ea9",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "El aumento de usuarios y las cifras son correctos. No hay veredicto de crecimiento significativo ni información que lo equipare a mayor interés por la plataforma."
+  },
+  {
+    "item": "6d6f0ea9",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "wrong_attribution",
+      "invented_fact"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "Los datos dan 579 clientes nuevos, no 579 contratos ni que todos sean de pago; clientes y contratos no son necesariamente equivalentes. Dudosa porque en este contexto SaaS podría tratarse de una paráfrasis comercial. En términos absolutos es impreciso para un porcentaje."
+  },
+  {
+    "item": "6d6f0ea9",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "La conversión cayó 1,5 puntos, de 5,5 % a 4,0 %, como indican los datos."
+  },
+  {
+    "item": "6d6f0ea9",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "Fortalecimiento de la calidad de ingresos es una valoración no dada. La variación del input es 1 pp, pero de 100 % a 101 % también hay exactamente 1 % de aumento relativo; no se etiqueta como cifra inequívocamente falsa. Dudosa por si el informe pretendía intercambiar % y pp."
+  },
+  {
+    "item": "6d6f0ea9",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment",
+      "unsupported_forecast"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay CAC anterior ni veredicto que respalden estable. Tampoco se aporta una previsión sobre la rentabilidad de corto plazo."
+  },
+  {
+    "item": "6d6f0ea9",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Subida leve del NRR sí está respaldada; que sea un contrapeso fundamental que mitiga la menor conversión agrega un efecto compensatorio y un juicio no dados."
+  },
+  {
+    "item": "6d6f0ea9",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment",
+      "invented_fact"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Los indicadores no prueban que una expansión orgánica compense la menor adquisición. Se valoran y vinculan métricas sin respaldo para esa compensación."
+  },
+  {
+    "item": "6d6f0ea9",
+    "sentence": 7,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Recomienda acciones a inversores y califica la base de usuarios como sólida sin veredicto que lo indique."
+  },
+  {
+    "item": "c8d4d7cd",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras son correctas, pero surged/leapt y extreme market optimism agregan magnitud y una interpretación de sentimiento no presentes en los veredictos."
+  },
+  {
+    "item": "c8d4d7cd",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Volumen, variación y veredicto de fuerte tendencia alcista expresamente dados."
+  },
+  {
+    "item": "c8d4d7cd",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Market share de capitalización expresa el significado de la dominancia de bitcoin; 43,5 % está dado. Settled at se interpreta como nivel alcanzado."
+  },
+  {
+    "item": "c8d4d7cd",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras y direcciones coinciden, pero robust gains califica la subida del ether sin un veredicto para esa métrica."
+  },
+  {
+    "item": "c8d4d7cd",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Reproduce fielmente la nota de Nimbex News."
+  },
+  {
+    "item": "c8d4d7cd",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La conclusión de pronounced bullish momentum generaliza una valoración que sólo se da para el volumen."
+  },
+  {
+    "item": "c8d4d7cd",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Recomienda una actitud a inversores y agrega una interpretación de apetito por riesgo que no se proporciona."
+  },
+  {
+    "item": "7f8e087d",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La estabilidad de tickets recibidos sí está respaldada. Desempeño sólido del área es una valoración adicional sin respaldo."
+  },
+  {
+    "item": "7f8e087d",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Los tiempos y variaciones coinciden. Prácticamente constante y ligera califican la primera respuesta sin un veredicto de estabilidad para esa métrica."
+  },
+  {
+    "item": "7f8e087d",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Coinciden el ticket, Android, versión 3.2.4, los 11 reportes y el parche en preparación."
+  },
+  {
+    "item": "7f8e087d",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Reproduce el caso de los seis clientes empresariales de Asunción y la reemisión de facturas por Finanzas."
+  },
+  {
+    "item": "7f8e087d",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las notas no indican que los incidentes tengan prioridad ni describen ese objetivo de gestión. Tendencia positiva de los indicadores es un juicio general añadido."
+  },
+  {
+    "item": "593d27c2",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La mejora y sus cifras coinciden; modest califica su grado sin veredicto."
+  },
+  {
+    "item": "593d27c2",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "La disminución de 0,6 % está dada, pero no hay veredicto que respalde essentially flat ni stable demand."
+  },
+  {
+    "item": "593d27c2",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "Las cifras y direcciones coinciden. La presión sobre la capacidad de atención es una explicación inferida del atraso, sin datos de capacidad. Dudosa la frontera entre explicación causal y juicio interpretativo."
+  },
+  {
+    "item": "593d27c2",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Se da el tiempo de resolución de 5,0 horas, pero no el anterior; remained steady no está respaldado."
+  },
+  {
+    "item": "593d27c2",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Resume ambos tickets con cifras, entidades, causas y acciones que aparecen en las notas."
+  },
+  {
+    "item": "593d27c2",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Recomienda prioridades para la próxima semana; slight califica además el empeoramiento de respuesta sin veredicto."
+  },
+  {
+    "item": "669655a3",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "wrong_figure"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Confunde 0,001 puntos porcentuales con 0,001 puntos básicos. Un punto porcentual equivale a 100 puntos básicos."
+  },
+  {
+    "item": "669655a3",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment",
+      "wrong_attribution"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Movimiento lateral describe la tasa de financiamiento, no la estabilidad de posiciones apalancadas. No se da una comparación anterior del interés abierto."
+  },
+  {
+    "item": "669655a3",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Los niveles y descenso del índice coinciden; significativo es una calificación de grado sin veredicto."
+  },
+  {
+    "item": "669655a3",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La subida y las cifras coinciden, pero modesto no tiene veredicto que lo respalde."
+  },
+  {
+    "item": "669655a3",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Se da 59,7 %, pero no un dato previo de dominancia ni un veredicto que permita se mantuvo alta."
+  },
+  {
+    "item": "669655a3",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Coincide con la nota de Orbita News."
+  },
+  {
+    "item": "669655a3",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Repite la actualización de Telar según la Agenda de redes. Se conserva la fecha de la nota sin corregirla por el período del informe."
+  },
+  {
+    "item": "669655a3",
+    "sentence": 7,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "neutral",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Cierre expositivo que presenta los elementos como panorama; no agrega una afirmación verificable ni una valoración de resultados."
+  },
+  {
+    "item": "b1d0ab3e",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Repite valores del margen, su variación y el veredicto de caída pronunciada."
+  },
+  {
+    "item": "b1d0ab3e",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "El EBITDA de 1,8 mil millones está dado, pero no se califica como robusto."
+  },
+  {
+    "item": "b1d0ab3e",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay información sobre menor demanda en segmentos clave ni presión competitiva que explique la caída de ingresos."
+  },
+  {
+    "item": "b1d0ab3e",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras de caja coinciden; modestly y su suficiencia como colchón para necesidades e iniciativas son valoraciones no dadas."
+  },
+  {
+    "item": "b1d0ab3e",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "El aumento de empleados está dado, pero no una inversión continuada en talento con objetivos de crecimiento que explique ese aumento."
+  },
+  {
+    "item": "b1d0ab3e",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No se informan medidas de gestión, objetivos de recuperación ni inversiones específicas; strong cash position es un juicio añadido."
+  },
+  {
+    "item": "e724dc69",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "CSAT aumentó los dos puntos dados hasta 68 %. Positive shift describe la dirección favorable de la satisfacción, sin agregar un grado de mejora."
+  },
+  {
+    "item": "e724dc69",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "La cifra y la caída de 0,6 % están explícitas, por lo que no se invierte la dirección. Remained stable y slight no tienen veredicto; dudosa por el sentido aproximado de estabilidad en un cambio pequeño."
+  },
+  {
+    "item": "e724dc69",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No se aporta tiempo de resolución previo para held steady; marginally también califica el aumento de primera respuesta sin veredicto."
+  },
+  {
+    "item": "e724dc69",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "El aumento del backlog está dado, pero significant concern agrega una valoración no proporcionada."
+  },
+  {
+    "item": "e724dc69",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay veredicto de estabilidad de tickets ni datos que respalden restricciones de capacidad como explicación del backlog."
+  },
+  {
+    "item": "e724dc69",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "wrong_attribution"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "La nota dice cinco clientes empresariales (business customers), no clientes del sector financiero (finance customers). Dudosa si finance se usó de forma imprecisa como referencia al área que reemite las facturas."
+  },
+  {
+    "item": "e724dc69",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "La demora de hasta ocho horas, la limitación del proveedor y el cambio a un proveedor de respaldo constan en la nota."
+  },
+  {
+    "item": "e724dc69",
+    "sentence": 7,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Recomienda priorizar la reducción del backlog y mantener la satisfacción; los datos no piden esas acciones."
+  },
+  {
+    "item": "da7857fa",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No se aporta una comparación histórica para one of the strongest days ni un veredicto de magnitud sobre precio y sentimiento."
+  },
+  {
+    "item": "da7857fa",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Precios y variaciones coinciden. Que ether suba más que bitcoin se deduce comparando los porcentajes dados, sin cálculo nuevo."
+  },
+  {
+    "item": "da7857fa",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Los números del índice son correctos; dramatic y extreme greed son interpretaciones sin veredicto o umbral proporcionado."
+  },
+  {
+    "item": "da7857fa",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La fuerte tendencia alcista del volumen está en los datos, pero no se atribuye a analistas ni se informa que analistas la hayan descrito."
+  },
+  {
+    "item": "da7857fa",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La tasa negativa coincide. Sharp y la conclusión de que futuros no estaban sobreapalancados son valoraciones no dadas."
+  },
+  {
+    "item": "da7857fa",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay dominancia previa para remains steady ni datos de apetito por riesgo del conjunto de altcoins."
+  },
+  {
+    "item": "da7857fa",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La pausa de retiros coincide con la nota. No se informa su efecto sobre el sentimiento ni un optimismo generalizado; brief también califica el incidente."
+  },
+  {
+    "item": "da7857fa",
+    "sentence": 7,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_forecast",
+      "recommendation",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Anticipa persistencia de momentum, aconseja cautela y añade valoraciones de volumen y sentimiento que no se proporcionan."
+  },
+  {
+    "item": "873b17b9",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La pérdida está respaldada; «strong operational performance» es una valoración sin veredicto."
+  },
+  {
+    "item": "873b17b9",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras coinciden; «significant» agrega un grado sin veredicto."
+  },
+  {
+    "item": "873b17b9",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay margen anterior que respalde «maintained», ni veredicto que respalde «robust»."
+  },
+  {
+    "item": "873b17b9",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Cifras y veredicto de estabilidad de caja coinciden."
+  },
+  {
+    "item": "873b17b9",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No se proporciona un criterio que permita calificar el balance como manejable."
+  },
+  {
+    "item": "873b17b9",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Plantilla, valor anterior y variación coinciden."
+  },
+  {
+    "item": "873b17b9",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "El aumento de plantilla no demuestra inversiones continuadas en capacidad operativa ni presencia de mercado."
+  },
+  {
+    "item": "7d4b1cce",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Conversión, churn y variación en puntos coinciden."
+  },
+  {
+    "item": "7d4b1cce",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Usuarios, descenso y mes previo se deducen del período y los datos."
+  },
+  {
+    "item": "7d4b1cce",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "«Edged higher» caracteriza como pequeño el aumento sin un veredicto que lo califique."
+  },
+  {
+    "item": "7d4b1cce",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "La renovación y las 104 licencias están en la nota; su efecto sobre la cartera de ingresos recurrentes no está especificado."
+  },
+  {
+    "item": "7d4b1cce",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Fecha, versión y funcionalidades coinciden con las notas de la versión."
+  },
+  {
+    "item": "7d4b1cce",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Atribuye la expansión a los desarrollos enumerados y la califica de modesta; también califica de leve la suba del churn sin veredicto."
+  },
+  {
+    "item": "e8d80891",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Tickets recibidos, dato anterior y variación coinciden."
+  },
+  {
+    "item": "e8d80891",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras coinciden, pero «ligeramente» agrega un grado sin veredicto."
+  },
+  {
+    "item": "e8d80891",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Resolver más tickets no demuestra por sí solo una mayor eficacia del equipo."
+  },
+  {
+    "item": "e8d80891",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La disminución de escalamientos no demuestra una mejor gestión en primera línea."
+  },
+  {
+    "item": "e8d80891",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay tiempo previo que respalde «se mantuvo» ni parámetros esperados en los datos."
+  },
+  {
+    "item": "e8d80891",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Reproduce la nota, incluso su secuencia de días; no se corrige la fuente."
+  },
+  {
+    "item": "e8d80891",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "wrong_attribution"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "La nota informa 39 reportes, no 39 usuarios distintos; podrían existir varios reportes de una misma persona."
+  },
+  {
+    "item": "7054183b",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Período, unidades e ingresos coinciden."
+  },
+  {
+    "item": "7054183b",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "La caída y el calificativo sharp drop están explícitos en datos y veredicto."
+  },
+  {
+    "item": "7054183b",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "«Modestly» no cuenta con un veredicto de magnitud; las cifras y direcciones sí coinciden."
+  },
+  {
+    "item": "7054183b",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "La tasa de devoluciones y su disminución en puntos coinciden; improved expresa la dirección favorable."
+  },
+  {
+    "item": "7054183b",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La nota no atribuye el aumento de pedidos a la campaña ni lo califica de modesto."
+  },
+  {
+    "item": "7054183b",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "Que las ventas hayan bajado no demuestra qué efecto tuvo la campaña ni cuánto pudo compensar."
+  },
+  {
+    "item": "06a1c5ae",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "Los datos no identifican un precio de cierre ni volumen spot; no hay volumen previo para remained ni veredictos para sharply/robust."
+  },
+  {
+    "item": "06a1c5ae",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay veredicto para modestly ni información sobre intenciones de operadores apalancados."
+  },
+  {
+    "item": "06a1c5ae",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment",
+      "recommendation"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No se aporta umbral de miedo extremo ni respaldo para presentar una oportunidad de compra."
+  },
+  {
+    "item": "06a1c5ae",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La fortaleza del ecosistema y el traslado de capital desde bitcoin hacia altcoins no se desprenden de las cotizaciones."
+  },
+  {
+    "item": "06a1c5ae",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "recommendation"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La divergencia de precios no demuestra una tendencia de reasignación de capital; además aconseja vigilarla."
+  },
+  {
+    "item": "06a1c5ae",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_forecast",
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Pronostica un piso de riesgo y volatilidad persistente, vinculándolos al sentimiento y a reacciones futuras; low point añade una valoración sin respaldo."
+  },
+  {
+    "item": "06a1c5ae",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_forecast"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La actualización y su fecha están en la nota; sus posibles efectos en liquidez y red no."
+  },
+  {
+    "item": "3d1d3787",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Cantidad resuelta, valor previo y porcentaje coinciden."
+  },
+  {
+    "item": "3d1d3787",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Cifras y veredicto de estabilidad coinciden."
+  },
+  {
+    "item": "3d1d3787",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "El tiempo disminuye según los datos; mejoró expresa esa dirección favorable sin agregar magnitud."
+  },
+  {
+    "item": "3d1d3787",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras coinciden, pero ligero no tiene un veredicto que lo respalde."
+  },
+  {
+    "item": "3d1d3787",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Resume fielmente el ticket 8144."
+  },
+  {
+    "item": "3d1d3787",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Resume fielmente el ticket 6721."
+  },
+  {
+    "item": "3d1d3787",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "La reemisión por Finanzas está en la nota."
+  },
+  {
+    "item": "3d1d3787",
+    "sentence": 7,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Leve no tiene veredicto; además generaliza los cambios como una mejora de eficiencia del área."
+  },
+  {
+    "item": "5b9fba92",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay CAC anterior que respalde manteniendo."
+  },
+  {
+    "item": "5b9fba92",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": true,
+    "note": "La cifra de usuarios describe la escala sin calificarla explícitamente como grande o pequeña; caso limítrofe por el matiz valorativo de evidenciando."
+  },
+  {
+    "item": "5b9fba92",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La cifra coincide, pero buena adopción es una valoración sin respaldo."
+  },
+  {
+    "item": "5b9fba92",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "NRR superior a 100 % respalda expansión neta de ingresos de la base existente; orgánico añade una naturaleza de crecimiento que los datos no explicitan. Dudosa porque podría usarse simplemente como paráfrasis de expansión de esa base."
+  },
+  {
+    "item": "5b9fba92",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Renovación, duración y licencias coinciden con la nota."
+  },
+  {
+    "item": "5b9fba92",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Sólido y sostenible no figuran en los datos ni en un veredicto."
+  },
+  {
+    "item": "0ae2c6ef",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Las cifras coinciden; strong y significant no cuentan con veredicto."
+  },
+  {
+    "item": "0ae2c6ef",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La nota no atribuye el crecimiento de MRR a la renovación ni la califica de major strategic win."
+  },
+  {
+    "item": "0ae2c6ef",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Los datos no describen un cambio hacia cuentas de mayor valor; top-line success añade una valoración."
+  },
+  {
+    "item": "0ae2c6ef",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "recommendation"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Consequently agrega una relación causal no documentada; warrants close monitoring recomienda una acción."
+  },
+  {
+    "item": "0ae2c6ef",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_cause",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Stable/modest no tienen veredicto; no se aportan datos de inflación del gasto de marketing que expliquen o contextualicen el CAC."
+  },
+  {
+    "item": "0ae2c6ef",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment",
+      "unsupported_cause"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay conversión anterior, datos sobre descuentos ni veredicto de eficiencia constante o crecimiento sostenible. También afirma sin respaldo que esa eficiencia sostiene el crecimiento."
+  },
+  {
+    "item": "0ae2c6ef",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_forecast"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "La nota dice un panel nuevo, no un panel mejorado; anticipa efectos en retención y usuarios. Recent en un informe de mayo con una versión de junio también plantea una duda temporal."
+  },
+  {
+    "item": "0ae2c6ef",
+    "sentence": 7,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Recomienda priorizar la retención para conseguir estabilidad a largo plazo y califica la trayectoria de ingresos de favorable sin un veredicto que la evalúe."
+  },
+  {
+    "item": "bb31c6fd",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Tasa, aumento y unidad de puntos coinciden."
+  },
+  {
+    "item": "bb31c6fd",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Todas las cifras y direcciones coinciden."
+  },
+  {
+    "item": "bb31c6fd",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": true,
+    "note": "Las cifras y el veredicto estable coinciden. Se acepta ligera mejora como dirección positiva de 0,1 pp compatible con una magnitud pequeña de estabilidad; dudosa por la frontera entre dirección y grado del veredicto."
+  },
+  {
+    "item": "bb31c6fd",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Duración, lugar y causa de las demoras coinciden con la nota."
+  },
+  {
+    "item": "bb31c6fd",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Nombre, fecha, lugares y descuento coinciden con la nota; se conserva la fecha de la fuente aunque sea posterior al período."
+  },
+  {
+    "item": "bb31c6fd",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Indica cómo deberían usarse las observaciones para planificar acciones futuras."
+  },
+  {
+    "item": "d4390ded",
+    "sentence": 0,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Cifras y veredicto de movimiento lateral coinciden; ligeramente es compatible con ese veredicto."
+  },
+  {
+    "item": "d4390ded",
+    "sentence": 1,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "Los valores 77, 61 y −16 están dados. Mayor nerviosismo interpreta la escala del índice, que no se define en los datos ni se acompaña de un veredicto; dudosa porque la definición usual del índice permitiría esa lectura."
+  },
+  {
+    "item": "d4390ded",
+    "sentence": 2,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "invented_fact",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": true,
+    "note": "La cotización previa no está identificada como cierre; tampoco hay dominancia previa que respalde se mantuvo."
+  },
+  {
+    "item": "d4390ded",
+    "sentence": 3,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "No hay comparación que respalde continúan ni veredicto que califique las posiciones como significativas."
+  },
+  {
+    "item": "d4390ded",
+    "sentence": 4,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "contradicts_source",
+      "unsupported_forecast"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "La nota dice activará el 5 de mayo, no anunciará la activación ese día; el posible efecto en procesamiento no figura."
+  },
+  {
+    "item": "d4390ded",
+    "sentence": 5,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "correct",
+    "types": [],
+    "computed": false,
+    "doubtful": false,
+    "note": "Activo, duración, día y motivo de suspensión coinciden con la nota."
+  },
+  {
+    "item": "d4390ded",
+    "sentence": 6,
+    "labeler": "codex-ai-2026-11-18",
+    "verdict": "error",
+    "types": [
+      "recommendation",
+      "unsupported_judgment"
+    ],
+    "computed": false,
+    "doubtful": false,
+    "note": "Recomienda mantenerse atento y califica esa conducta de clave sin respaldo."
+  }
+]

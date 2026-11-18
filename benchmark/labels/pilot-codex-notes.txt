@@ -1,0 +1,2955 @@
+REVISIÓN CIEGA DEL PILOTO — 40 INFORMES / 273 ORACIONES
+Revisor: Codex (asistente de IA), con revisión por bloques y una segunda lectura de consistencia.
+Fecha y zona horaria: America/Buenos_Aires.
+Inicio medido: 18/11/26, 11:45:18. Fin: 18/11/26, 11:57:03.
+Tiempo total aproximado, incluida recuperación del material, revisión y preparación: 11 min 45 s.
+
+ALCANCE Y FUENTE
+Enlace solicitado: https://claude.ai/artifact/6CTPxVRmYGfKpWPbFty4pg
+Fuente efectivamente revisada: benchmark/labeling/pilot.json, el paquete anonimizado local.
+Paquete: pilot; fecha de creación: 2026-11-18T14:27:04+00:00.
+SHA-256 del paquete: e8354f0b754d47cd0584708ff30832e56786fd551a181af4b29cbd3c884d7da3.
+El paquete coincide con los 40 informes y 273 oraciones indicados por el usuario. No se pudo cotejar íntegramente con el contenido remoto ni guardar etiquetas en Claude; este archivo contiene la revisión local completa.
+No se abrieron benchmark/texts/ ni archivos terminados en -keys.json. No se consultaron etiquetas de otra persona ni decisiones de la capa.
+Se aplicaron las instrucciones del usuario por encima de excepciones adicionales de la guía local. Las incoherencias del input no se corrigieron al juzgar los informes.
+Este resultado queda separado de las etiquetas existentes: no se modificó benchmark/labels ni se calcularon métricas de acuerdo o rendimiento.
+
+RESULTADO DE COBERTURA
+Informes: 40/40. Oraciones: 273/273. Correctas: 95. Neutrales: 1. Errores: 177.
+Dudosas: 34 (son una marca adicional). Cifras calculadas: 0.
+La ausencia de la marca calculada significa que no se identificó una oración enteramente correcta con una cifra nueva calculada fuera de los datos.
+La numeración legible de informes y oraciones empieza en 1. El JSON adjunto usa índices de oración desde 0, como el evaluador.
+
+CASOS DUDOSOS PARA REPASAR
+- Informe 02, oración 5, ID 32998a50: Error. El veredicto tendencia alcista pertenece a la variación de la tasa de financiamiento; la oración lo extiende al mercado. Revisar si en este contexto mercado sólo refiere a financiamiento.
+- Informe 03, oración 4, ID 7ed33c6c: Correcta. Cifras y estabilidad están dadas. Marginal describe una variación pequeña compatible con ese veredicto; se marca dudosa por la frontera entre paráfrasis de estabilidad y calificativo de grado.
+- Informe 08, oración 1, ID 2c8dbb81: Error. Las cifras coinciden, pero respaldada por atribuye la facturación a los pedidos online sin que los datos vinculen ambas métricas. Revisar si respaldada se interpreta sólo como acompañada.
+- Informe 08, oración 3, ID 2c8dbb81: Error. Significativa agrega grado sin veredicto; el supuesto efecto compensatorio entre una caída de pedidos y otra del ticket no está documentado. Dudosa por la relación confusa entre dos descensos.
+- Informe 12, oración 4, ID b3350b61: Error. Ambos niveles de deuda redondean a 3,3 mil millones y la oración explicita la caída de 2,1 %: no invierte la dirección. Estable y marginal son valoraciones sin un veredicto de deuda; caso dudoso por la aproximación de los niveles.
+- Informe 12, oración 5, ID b3350b61: Correcta. La plantilla, la variación y el veredicto de estabilidad coinciden. Modesto se interpreta como magnitud pequeña compatible con estabilidad; se marca la frontera de grado para revisión.
+- Informe 13, oración 2, ID e52452c8: Correcta. Pedidos, conversión y variaciones coinciden. Se acepta mejora marginal como dirección positiva de 0,1 pp y magnitud pequeña compatible con el veredicto explícito de estabilidad; queda dudosa por esa frontera de grado.
+- Informe 13, oración 4, ID e52452c8: Error. Las devoluciones aumentaron +0,9 pp; variación negativa invierte el signo. Notable carece de veredicto. Dudosa por si negativa pretendía expresar empeoramiento, en vez de signo numérico.
+- Informe 13, oración 6, ID e52452c8: Correcta. Se acepta como inferencia temporal sin cálculo: el lanzamiento del 23 de marzo es posterior a los resultados de enero. Dudosa porque la nota no explicita el año ni una ausencia de efectos anticipatorios, y el informe cambia empezó por está programado.
+- Informe 13, oración 7, ID e52452c8: Error. La valoración de desafío y fuerte caída no tiene veredicto. La supuesta compensación insuficiente entre conversión y ventas no se establece en los datos; dudosa la frontera entre efecto causal y resumen de resultados coexistentes.
+- Informe 16, oración 5, ID 84e4a33b: Correcta. Cifras y veredicto de estabilidad coinciden. Largely flat y negligible se aceptan como paráfrasis de ese grado pequeño; dudosa por el énfasis de negligible.
+- Informe 17, oración 1, ID 4ee80298: Error. El precio y caída coinciden; significant carece de veredicto. Closing añade que se trata de precio de cierre, precisión temporal no dada en Precio; dudosa por esa interpretación.
+- Informe 17, oración 4, ID 4ee80298: Error. El cambio de 20 a 15 está dado. Continue to deteriorate presupone una tendencia previa adicional; prevailing market fear agrega una lectura del índice no suministrada como veredicto.
+- Informe 17, oración 7, ID 4ee80298: Error. El calendario ubica la actualización en junio, fuera de la semana de octubre, pero no afirma que no tenga impacto en la revisión. Dudosa por posible lectura meramente editorial de la oración.
+- Informe 21, oración 3, ID b45f12ec: Error. La contracción de 1,1 % sí está explícita: no se marca dirección equivocada. Estables/ligera no tienen veredicto y la optimización de costos no está documentada. Dudosa por la coincidencia de los niveles de ingresos redondeados.
+- Informe 21, oración 4, ID b45f12ec: Error. El margen mejoró 0,4 pp y sigue negativo, tal como dicen los datos. Juzgo que extenderlo a señales positivas de eficiencia operativa es una valoración adicional; podría aceptarse como paráfrasis de la mejora del margen.
+- Informe 22, oración 1, ID c142233f: Error. Las cifras y el período coinciden. Los datos dicen precio, sin identificarlo como precio de cierre de ninguna de las dos semanas.
+- Informe 22, oración 7, ID c142233f: Error. Recomienda vigilancia y anticipa un posible efecto sobre costos de posiciones apalancadas que no figura en los datos. Dudosa la frontera entre predicción y explicación general del financiamiento.
+- Informe 23, oración 2, ID 6d6f0ea9: Error. Los datos dan 579 clientes nuevos, no 579 contratos ni que todos sean de pago; clientes y contratos no son necesariamente equivalentes. Dudosa porque en este contexto SaaS podría tratarse de una paráfrasis comercial. En términos absolutos es impreciso para un porcentaje.
+- Informe 23, oración 4, ID 6d6f0ea9: Error. Fortalecimiento de la calidad de ingresos es una valoración no dada. La variación del input es 1 pp, pero de 100 % a 101 % también hay exactamente 1 % de aumento relativo; no se etiqueta como cifra inequívocamente falsa. Dudosa por si el informe pretendía intercambiar % y pp.
+- Informe 26, oración 2, ID 593d27c2: Error. La disminución de 0,6 % está dada, pero no hay veredicto que respalde essentially flat ni stable demand.
+- Informe 26, oración 3, ID 593d27c2: Error. Las cifras y direcciones coinciden. La presión sobre la capacidad de atención es una explicación inferida del atraso, sin datos de capacidad. Dudosa la frontera entre explicación causal y juicio interpretativo.
+- Informe 29, oración 2, ID e724dc69: Error. La cifra y la caída de 0,6 % están explícitas, por lo que no se invierte la dirección. Remained stable y slight no tienen veredicto; dudosa por el sentido aproximado de estabilidad en un cambio pequeño.
+- Informe 29, oración 6, ID e724dc69: Error. La nota dice cinco clientes empresariales (business customers), no clientes del sector financiero (finance customers). Dudosa si finance se usó de forma imprecisa como referencia al área que reemite las facturas.
+- Informe 32, oración 4, ID 7d4b1cce: Error. La renovación y las 104 licencias están en la nota; su efecto sobre la cartera de ingresos recurrentes no está especificado.
+- Informe 33, oración 7, ID e8d80891: Error. La nota informa 39 reportes, no 39 usuarios distintos; podrían existir varios reportes de una misma persona.
+- Informe 34, oración 6, ID 7054183b: Error. Que las ventas hayan bajado no demuestra qué efecto tuvo la campaña ni cuánto pudo compensar.
+- Informe 35, oración 1, ID 06a1c5ae: Error. Los datos no identifican un precio de cierre ni volumen spot; no hay volumen previo para remained ni veredictos para sharply/robust.
+- Informe 37, oración 2, ID 5b9fba92: Correcta. La cifra de usuarios describe la escala sin calificarla explícitamente como grande o pequeña; caso limítrofe por el matiz valorativo de evidenciando.
+- Informe 37, oración 4, ID 5b9fba92: Error. NRR superior a 100 % respalda expansión neta de ingresos de la base existente; orgánico añade una naturaleza de crecimiento que los datos no explicitan. Dudosa porque podría usarse simplemente como paráfrasis de expansión de esa base.
+- Informe 38, oración 7, ID 0ae2c6ef: Error. La nota dice un panel nuevo, no un panel mejorado; anticipa efectos en retención y usuarios. Recent en un informe de mayo con una versión de junio también plantea una duda temporal.
+- Informe 39, oración 3, ID bb31c6fd: Correcta. Las cifras y el veredicto estable coinciden. Se acepta ligera mejora como dirección positiva de 0,1 pp compatible con una magnitud pequeña de estabilidad; dudosa por la frontera entre dirección y grado del veredicto.
+- Informe 40, oración 2, ID d4390ded: Error. Los valores 77, 61 y −16 están dados. Mayor nerviosismo interpreta la escala del índice, que no se define en los datos ni se acompaña de un veredicto; dudosa porque la definición usual del índice permitiría esa lectura.
+- Informe 40, oración 3, ID d4390ded: Error. La cotización previa no está identificada como cierre; tampoco hay dominancia previa que respalde se mantuvo.
+
+DECISIONES DE CONSISTENCIA
+- Con un veredicto explícito de estabilidad, se aceptó una variación marginal/ligera compatible con ese grado y se marcó la frontera como dudosa. Sin veredicto, esos calificativos se marcaron como juicio sin respaldo.
+- Si la oración explicita una caída, una descripción aproximada de estabilidad no se etiquetó adicionalmente como dirección equivocada; el calificativo puede seguir siendo un juicio sin respaldo.
+- Precio no identifica por sí mismo un precio de cierre: ese agregado se marcó como hecho inventado y dudoso.
+- Se aceptó como dudosa la inferencia temporal de una campaña posterior al período. No se aceptó que un evento anterior careciera necesariamente de impacto posterior.
+- En el caso particular de NRR de 100 % a 101 %, 1 % de variación relativa es matemáticamente correcto; se dejó dudosa la intención de intercambiar % y pp. La oración sigue siendo Error por otra valoración sin respaldo.
+
+ETIQUETAS COMPLETAS
+
+================================================================================
+INFORME 01 — ID 312c3ce4
+Brightloom | January 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Monthly churn: 0.9%
+- Monthly churn in the previous month: 0.5%
+- Change in monthly churn vs the previous month, in percentage points: 0.4 pp
+- Trial-to-paid conversion: 7.5%
+- Trial-to-paid conversion in the previous month: 5.9%
+- Change in trial-to-paid conversion vs the previous month, in percentage points: 1.6 pp
+- Active users: 106,796 users
+- Change in active users vs the previous month: 14.0%
+- Customer acquisition cost (CAC): 173 GBP
+- Customer acquisition cost (CAC) in the previous month: 170 GBP
+- Change in customer acquisition cost (CAC) vs the previous month: 1.8%
+- Net revenue retention (NRR): 90%
+- Net revenue retention (NRR) in the previous month: 94%
+- Change in net revenue retention (NRR) vs the previous month, in percentage points: -4 pp
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Brightloom's January 2026 performance reflects a mixed trajectory, marked by strong growth in active users but concerning trends in retention and churn.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Los calificativos strong y concerning no tienen veredicto que los respalde.
+
+Oración 2 (índice JSON 1)
+The platform experienced a 14.0% month-over-month increase in active users, reaching a total of 106,796.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Cantidad de usuarios y variación presentes en los datos.
+
+Oración 3 (índice JSON 2)
+On the positive side, trial-to-paid conversion improved significantly by 1.6 percentage points to 7.5%, indicating more effective onboarding or sales efforts.
+Veredicto: Error
+Tipos: Juicio sin respaldo; Causa sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Significantly agrega grado sin veredicto; la mejora del onboarding o de ventas como explicación no está documentada.
+
+Oración 4 (índice JSON 3)
+However, monthly churn rose by 0.4 percentage points to 0.9%, representing a deterioration from the previous month's 0.5%.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: El churn aumentó con las cifras indicadas; deterioro describe el empeoramiento de esa métrica.
+
+Oración 5 (índice JSON 4)
+This rise in churn aligns with a 4 percentage point decline in Net Revenue Retention (NRR), which fell to 90% from 94% in the prior period.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Ambas variaciones y los niveles de NRR están dados; aligns with se lee como coexistencia, sin afirmar causalidad.
+
+Oración 6 (índice JSON 5)
+Operational efficiency also showed slight friction, as Customer Acquisition Cost (CAC) increased by 1.8% to GBP 173 from GBP 170.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Slight friction y la valoración de eficiencia operativa no están en los datos.
+
+Oración 7 (índice JSON 6)
+While user acquisition and conversion metrics improved, leadership should closely monitor the deceleration in revenue retention and the rising cost of acquiring customers.
+Veredicto: Error
+Tipos: Recomendación; Hecho inventado
+Cifra calculada: No | Dudosa: No
+Nota: Recomienda seguimiento; no hay datos de adquisición de usuarios ni de una desaceleración temporal de la retención, sólo niveles y variaciones.
+
+================================================================================
+INFORME 02 — ID 32998a50
+Informe Andino de Mercados | la semana del 3 al 9 de noviembre de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Precio de bitcoin (BTC): 52.319 USD
+- Precio de bitcoin (BTC) en la semana anterior: 51.372 USD
+- Variación del precio de bitcoin (BTC) respecto de la semana anterior: 1,8 %
+- Volumen operado en 24 horas: 141,6 mil millones USD
+- Volumen operado en 24 horas en la semana anterior: 139,7 mil millones USD
+- Variación del volumen operado en 24 horas respecto de la semana anterior: 1,3 %
+- Tasa de financiamiento promedio: 0,023 %
+- Variación de la tasa de financiamiento promedio respecto de la semana anterior, en puntos: 1,7 pp
+- Interés abierto en futuros: 29,9 mil millones USD
+- Interés abierto en futuros en la semana anterior: 30 mil millones USD
+- Variación del interés abierto en futuros respecto de la semana anterior: -0,3 %
+VEREDICTOS RECIBIDOS
+- variación de la tasa de financiamiento promedio respecto de la semana anterior, en puntos: tendencia alcista
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Durante la semana del 3 al 9 de noviembre de 2026, el precio de Bitcoin se situó en 52.319 dólares, lo que representa una variación de 1,8 % frente a los 51.372 dólares registrados en la semana anterior.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Precio actual, anterior y variación coinciden con los datos.
+
+Oración 2 (índice JSON 1)
+El volumen operado en 24 horas alcanzó los 141,6 mil millones de dólares, mostrando un incremento del 1,3 % respecto a los 139,7 mil millones de dólares de la semana previa.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Volúmenes y variación coinciden con los datos.
+
+Oración 3 (índice JSON 2)
+En materia de derivados, el interés abierto en futuros experimentó una ligera disminución del 0,3 %, pasando de 30 mil millones de dólares a 29,9 mil millones de dólares.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Ligera califica el grado de la disminución sin veredicto para el interés abierto.
+
+Oración 4 (índice JSON 3)
+Por su parte, la tasa de financiamiento promedio se ubicó en 0,023 %, tras registrar un aumento de 1,7 puntos básicos en comparación con el período inmediato anterior.
+Veredicto: Error
+Tipos: Cifra equivocada
+Cifra calculada: No | Dudosa: No
+Nota: Los datos dicen 1,7 puntos porcentuales, no 1,7 puntos básicos: cambia la unidad.
+
+Oración 5 (índice JSON 4)
+Este incremento en la tasa de financiamiento promedia refleja una tendencia alcista en el mercado.
+Veredicto: Error
+Tipos: Atribución equivocada
+Cifra calculada: No | Dudosa: Sí
+Nota: El veredicto tendencia alcista pertenece a la variación de la tasa de financiamiento; la oración lo extiende al mercado. Revisar si en este contexto mercado sólo refiere a financiamiento.
+
+Oración 6 (índice JSON 5)
+Estos indicadores sugieren una moderada expansión de la actividad comercial y un leve cambio en las condiciones de apalancamiento durante el periodo analizado.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Moderada expansión y leve cambio califican actividad comercial y apalancamiento sin veredictos que lo respalden.
+
+Oración 7 (índice JSON 6)
+En conjunto, los datos muestran una consolidación del precio con un volumen ligeramente superior y un financiamiento más costoso que en la semana anterior.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Consolidación del precio y volumen ligeramente superior agregan valoraciones sin respaldo específico.
+
+Oración 8 (índice JSON 7)
+La evolución de estas métricas durante la semana del 3 al 9 de noviembre de 2026 permite observar un comportamiento estable en el mercado cripto.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay un veredicto de estabilidad del mercado cripto.
+
+================================================================================
+INFORME 03 — ID 7ed33c6c
+Copperline | Q1 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Revenue: 20.9 million EUR
+- Change in revenue vs the previous quarter: 4.1%
+- Units sold: 1,938 units
+- Units sold in the previous quarter: 1,679 units
+- Change in units sold vs the previous quarter: 15.4%
+- Online orders: 5,488 orders
+- Change in online orders vs the previous quarter: -14.6%
+- New customers: 647 customers
+- New customers in the previous quarter: 650 customers
+- Change in new customers vs the previous quarter: -0.5%
+- Average order value: 121.96 EUR
+VEREDICTOS RECIBIDOS
+- change in new customers vs the previous quarter: stability
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+In Q1 2026 Copperline generated revenue of €20.9 million, representing a 4.1 % increase over the prior quarter.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Ingresos y variación coinciden.
+
+Oración 2 (índice JSON 1)
+Units sold rose to 1,938, up 15.4 % from 1,679 units in the previous quarter.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Unidades actuales, anteriores y variación coinciden.
+
+Oración 3 (índice JSON 2)
+Online orders totaled 5,488, a decline of 14.6 % versus the prior quarter.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Pedidos y caída coinciden.
+
+Oración 4 (índice JSON 3)
+The company attracted 647 new customers, a marginal 0.5 % decrease that the data characterises as stable.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: Sí
+Nota: Cifras y estabilidad están dadas. Marginal describe una variación pequeña compatible con ese veredicto; se marca dudosa por la frontera entre paráfrasis de estabilidad y calificativo de grado.
+
+Oración 5 (índice JSON 4)
+The average order value was €121.96.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Ticket promedio dado.
+
+Oración 6 (índice JSON 5)
+Overall, the quarter delivered growth in revenue and unit volume while online order volume fell and new‑customer acquisition remained essentially unchanged.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Resume direcciones dadas y conserva el grado de estabilidad de los clientes nuevos.
+
+================================================================================
+INFORME 04 — ID 6398e095
+Marlow Supply | the week of October 15–21, 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Tickets resolved: 12,476 tickets
+- Change in tickets resolved vs the previous week: 5.1%
+- First response time: 3.3 h
+- Average resolution time: 28.1 h
+- Escalations: 69
+- Escalations in the previous week: 67
+- Change in escalations vs the previous week: 3.0%
+- Open backlog: 31 tickets
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- s1 | Ticket 8374 | The app does not sync: Android users report that the app has not synced orders since version 6.14.3. There are 11 reports and the mobile team is preparing a fix.
+- s2 | Ticket 7532 | Invoices show the wrong tax: 6 business customers in Portland received invoices with the wrong tax. Finance is reissuing them.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+During the week of October 15–21, 2026, the support team resolved 12,476 tickets, representing a 5.1 % increase over the prior week.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Período, tickets y variación coinciden.
+
+Oración 2 (índice JSON 1)
+The average first‑response time improved to 3.3 hours, while the average resolution time remained steady at 28.1 hours.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay tiempos anteriores para afirmar que la primera respuesta mejoró o que la resolución permaneció estable.
+
+Oración 3 (índice JSON 2)
+Escalations rose modestly to 69, a 3.0 % increase from 67 the week before, indicating a slight uptick in complex cases.
+Veredicto: Error
+Tipos: Juicio sin respaldo; Hecho inventado
+Cifra calculada: No | Dudosa: No
+Nota: Modestly/slight agregan grado sin veredicto; no se informa la complejidad de los casos escalados.
+
+Oración 4 (índice JSON 3)
+The open backlog was reduced to 31 tickets, reflecting effective queue management.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo; Causa sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay backlog anterior para afirmar una reducción ni respaldo de su explicación mediante gestión eficaz de colas.
+
+Oración 5 (índice JSON 4)
+Notably, Ticket 8374 highlighted a syncing issue affecting Android users since version 6.14.3, with 11 reports pending a fix from the mobile team.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Paráfrasis fiel de Ticket 8374; la nota documenta los 11 reportes y la preparación de un arreglo.
+
+Oración 6 (índice JSON 5)
+Additionally, Ticket 7532 involved six Portland business customers receiving invoices with incorrect tax, and the finance department is currently reissuing the affected invoices.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Resume fielmente Ticket 7532.
+
+Oración 7 (índice JSON 6)
+Overall, the team’s performance metrics show positive momentum, though the rise in escalations and the identified technical issues should be monitored closely to maintain service quality.
+Veredicto: Error
+Tipos: Juicio sin respaldo; Recomendación
+Cifra calculada: No | Dudosa: No
+Nota: Positive momentum no tiene veredicto y se recomienda vigilancia de escalaciones y problemas.
+
+================================================================================
+INFORME 05 — ID 4593853d
+Arkadia | el segundo trimestre de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Caja y equivalentes: 90,6 millones USD
+- Caja y equivalentes en el trimestre anterior: 89,9 millones USD
+- Variación de la caja y equivalentes respecto del trimestre anterior: 0,8 %
+- Ingresos: 4,2 mil millones USD
+- Ingresos en el trimestre anterior: 5,4 mil millones USD
+- Variación de los ingresos respecto del trimestre anterior: -22,8 %
+- Empleados: 3.857 empleados
+- Empleados en el trimestre anterior: 3.835 empleados
+- Variación de los empleados respecto del trimestre anterior: 0,6 %
+- Margen operativo: 3,2 %
+- Deuda neta: 3,3 mil millones USD
+- Deuda neta en el trimestre anterior: 3,3 mil millones USD
+- Variación de la deuda neta respecto del trimestre anterior: -2,1 %
+- EBITDA: 908,6 millones USD
+- Variación del EBITDA respecto del trimestre anterior: -2,6 %
+VEREDICTOS RECIBIDOS
+- variación de los empleados respecto del trimestre anterior: estabilidad
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Durante el segundo trimestre de 2026, Arkadia reportó caja y equivalentes de 90,6 millones USD, lo que representa un incremento del 0,8 % respecto al trimestre anterior.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Caja y variación coinciden.
+
+Oración 2 (índice JSON 1)
+Los ingresos descendieron a 4,2 mil millones USD, una caída del 22,8 % frente al periodo previo.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Ingresos y caída coinciden.
+
+Oración 3 (índice JSON 2)
+El número de empleados alcanzó los 3 857, con una variación positiva del 0,6 % y se mantiene en una situación de estabilidad.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Empleados, variación y veredicto de estabilidad coinciden.
+
+Oración 4 (índice JSON 3)
+El margen operativo se situó en 3,2 %.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Margen operativo dado.
+
+Oración 5 (índice JSON 4)
+La deuda neta permaneció en torno a los 3,3 mil millones USD, reduciéndose un 2,1 % respecto al trimestre anterior.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Ambos niveles de deuda aparecen redondeados a 3,3 mil millones en los datos y la reducción de 2,1 % también está explícita.
+
+Oración 6 (índice JSON 5)
+Finalmente, el EBITDA fue de 908,6 millones USD, lo que equivale a una disminución del 2,6 % comparado con el trimestre previo.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: EBITDA y caída coinciden.
+
+================================================================================
+INFORME 06 — ID a9326b4c
+Tallo | enero de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Conversión de prueba a pago: 4,0 %
+- Conversión de prueba a pago en el mes anterior: 5,5 %
+- Variación de la conversión de prueba a pago respecto del mes anterior, en puntos: -1,5 pp
+- Retención neta de ingresos (NRR): 101 %
+- Retención neta de ingresos (NRR) en el mes anterior: 100 %
+- Variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos: 1 pp
+- Clientes nuevos: 579 clientes
+- Variación de los clientes nuevos respecto del mes anterior: -8,9 %
+- Costo de adquisición de clientes (CAC): 689 EUR
+- Usuarios activos: 83.662 usuarios
+- Usuarios activos en el mes anterior: 78.642 usuarios
+- Variación de los usuarios activos respecto del mes anterior: 6,4 %
+VEREDICTOS RECIBIDOS
+- variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos: subida leve
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+En enero de 2026 la conversión de prueba a pago se ubicó en 4,0 %, lo que implica una disminución de 1,5 pp respecto al mes anterior, cuando fue del 5,5 %.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Conversión actual, anterior y diferencia explícita coinciden.
+
+Oración 2 (índice JSON 1)
+La retención neta de ingresos alcanzó el 101 %, mejorando en 1 pp frente al 100 % del período previo, lo que constituye una subida leve.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: NRR y veredicto de subida leve coinciden.
+
+Oración 3 (índice JSON 2)
+Se incorporaron 579 clientes nuevos, una caída del 8,9 % respecto al mes anterior.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Clientes nuevos y caída coinciden.
+
+Oración 4 (índice JSON 3)
+El costo de adquisición de clientes se mantuvo en 689 EUR.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Se mantuvo implica estabilidad; no hay CAC anterior ni veredicto que la respalde.
+
+Oración 5 (índice JSON 4)
+La base de usuarios activos creció a 83 662, lo que representa un incremento del 6,4 % sobre los 78 642 del mes anterior.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Usuarios actuales, anteriores y variación coinciden.
+
+Oración 6 (índice JSON 5)
+En conjunto, los indicadores muestran una expansión de la actividad de los usuarios y una sólida retención, pese a la ligera contracción en la conversión y en la captación de nuevos clientes.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Sólida retención y ligera contracción de conversión/clientes carecen de veredicto aplicable. Subida leve de NRR no justifica sólida retención.
+
+================================================================================
+INFORME 07 — ID fa48b171
+Pampa Digital | el segundo trimestre de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Empleados: 15.627 empleados
+- Empleados en el trimestre anterior: 18.595 empleados
+- Variación de los empleados respecto del trimestre anterior: -16,0 %
+- EBITDA: 64 millones USD
+- EBITDA en el trimestre anterior: 58,1 millones USD
+- Variación del EBITDA respecto del trimestre anterior: 10,2 %
+- Resultado neto: 462,8 millones USD
+- Resultado neto en el trimestre anterior: 328,7 millones USD
+- Variación del resultado neto respecto del trimestre anterior: 134 millones USD
+- Ingresos: 1,3 mil millones USD
+- Ingresos en el trimestre anterior: 1,3 mil millones USD
+- Variación de los ingresos respecto del trimestre anterior: -1,1 %
+- Margen operativo: -1,1 %
+- Margen operativo en el trimestre anterior: -1,5 %
+- Variación del margen operativo respecto del trimestre anterior, en puntos: 0,4 pp
+VEREDICTOS RECIBIDOS
+- variación del EBITDA respecto del trimestre anterior: subida fuerte
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+En el segundo trimestre de 2026, Pampa Digital reportó una plantilla de 15.627 empleados, lo que representa una reducción del 16,0 % frente al trimestre anterior de 18.595 empleados.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Plantillas y variación coinciden.
+
+Oración 2 (índice JSON 1)
+El EBITDA alcanzó los 64 millones USD, incrementándose un 10,2 % respecto a los 58,1 millones USD del periodo previo, lo que se califica como una subida fuerte.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: EBITDA y veredicto de subida fuerte coinciden.
+
+Oración 3 (índice JSON 2)
+El resultado neto fue de 462,8 millones USD, superior en 134 millones USD al trimestre anterior, que había sido de 328,7 millones USD.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: La diferencia de 134 millones está explícitamente en los datos; no es un cálculo nuevo del informe.
+
+Oración 4 (índice JSON 3)
+Los ingresos se mantuvieron en torno a 1,3 mil millones USD, con una ligera caída del 1,1 % respecto al trimestre anterior.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Ligera caída agrega un grado sin veredicto de ingresos. En torno a 1,3 mil millones sí concuerda con los niveles redondeados de ambos períodos.
+
+Oración 5 (índice JSON 4)
+El margen operativo mejoró a -1,1 % desde -1,5 % en el periodo anterior, lo que equivale a una mejora de 0,4 puntos porcentuales.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Ambos márgenes y la mejora de 0,4 pp están explícitos.
+
+Oración 6 (índice JSON 5)
+En conjunto, los indicadores muestran un desempeño financiero mejorado pese a la reducción de personal y a la ligera disminución de los ingresos.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Valora globalmente el desempeño financiero como mejorado y califica de ligera la disminución de ingresos sin veredicto específico.
+
+================================================================================
+INFORME 08 — ID 2c8dbb81
+Corvina Labs | marzo de 2026
+Control de acuerdo indicado en el paquete: Sí.
+
+DATOS RECIBIDOS
+- Ticket promedio: 15,14 USD
+- Ticket promedio en el mes anterior: 17,08 USD
+- Variación del ticket promedio respecto del mes anterior: -11,4 %
+- Tasa de devoluciones: 8,2 %
+- Tasa de devoluciones en el mes anterior: 8,5 %
+- Variación de la tasa de devoluciones respecto del mes anterior, en puntos: -0,3 pp
+- Pedidos online: 47.992 pedidos
+- Pedidos online en el mes anterior: 48.748 pedidos
+- Variación de los pedidos online respecto del mes anterior: -1,6 %
+- Facturación: 5,5 millones USD
+- Clientes nuevos: 61 clientes
+- Variación de los clientes nuevos respecto del mes anterior: 6,1 %
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Los resultados de Corvina Labs en marzo de 2026 muestran una facturación total de 5,5 millones de dólares, respaldada por el volumen de 47.992 pedidos online.
+Veredicto: Error
+Tipos: Causa sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: Las cifras coinciden, pero respaldada por atribuye la facturación a los pedidos online sin que los datos vinculen ambas métricas. Revisar si respaldada se interpreta sólo como acompañada.
+
+Oración 2 (índice JSON 1)
+Sin embargo, se observa una ligera contracción del 1,6 % en el número de pedidos respecto al mes anterior, lo que refleja un entorno de consumo algo menos dinámico.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Ligera y la valoración de un entorno de consumo menos dinámico exceden los datos de pedidos de la empresa.
+
+Oración 3 (índice JSON 2)
+Este descenso en el volumen no fue suficiente para compensar la caída significativa en el ticket promedio, que bajó un 11,4 % al situarse en 15,14 dólares frente a los 17,08 dólares de febrero.
+Veredicto: Error
+Tipos: Juicio sin respaldo; Causa sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: Significativa agrega grado sin veredicto; el supuesto efecto compensatorio entre una caída de pedidos y otra del ticket no está documentado. Dudosa por la relación confusa entre dos descensos.
+
+Oración 4 (índice JSON 3)
+Como contrapartida positiva, el equipo comercial logró captar 61 clientes nuevos, lo que representa un crecimiento del 6,1 % sobre la base anterior, señalando una estrategia de adquisición efectiva.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Atribuye el incremento a una estrategia de adquisición y la considera efectiva sin respaldo.
+
+Oración 5 (índice JSON 4)
+Por su parte, la tasa de devoluciones mejoró ligeramente al situarse en el 8,2 %, bajando 0,3 puntos porcentuales respecto al mes previo, lo que indica una mejor satisfacción o control postventa.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La mejora de satisfacción/control postventa no está documentada como explicación de la tasa de devoluciones; ligeramente agrega grado.
+
+Oración 6 (índice JSON 5)
+En conjunto, aunque los indicadores de recaudación y volumen mostraron un retroceso, la expansión de la cartera de clientes ofrece una base sólida para recuperar el impulso comercial en los próximos meses.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo; Predicción sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay facturación anterior para afirmar retroceso de recaudación; base sólida y recuperación futura del impulso no están respaldadas.
+
+Oración 7 (índice JSON 6)
+Se recomienda al equipo centrarse en estrategias de venta cruzada y fidelización para revertir la caída del ticket promedio y capitalizar el nuevo crecimiento en clientes.
+Veredicto: Error
+Tipos: Recomendación
+Cifra calculada: No | Dudosa: No
+Nota: Recomienda venta cruzada y fidelización sin que los datos pidan esas acciones.
+
+================================================================================
+INFORME 09 — ID e1a3ae81
+Kestrel Goods | Q3 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Net income: -3.1 million USD
+- EBITDA: 292.9 million USD
+- EBITDA in the previous quarter: 198.9 million USD
+- Change in EBITDA vs the previous quarter: 47.2%
+- Cash and equivalents: 1.6 billion USD
+- Change in cash and equivalents vs the previous quarter: 1.9%
+- Net debt: 1.1 billion USD
+- Operating margin: 23.5%
+- Employees: 14,842 employees
+- Employees in the previous quarter: 13,139 employees
+- Change in employees vs the previous quarter: 13.0%
+VEREDICTOS RECIBIDOS
+- change in cash and equivalents vs the previous quarter: stability
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Kestrel Goods delivered a mixed performance in Q3 2026, posting a net loss of $3.1 million despite a robust operating margin of 23.5 percent.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Robust califica el margen operativo sin veredicto que lo respalde.
+
+Oración 2 (índice JSON 1)
+EBITDA surged to $292.9 million, a 47.2 percent increase over the prior quarter’s $198.9 million, underscoring the strength of core earnings.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Surged y strength of core earnings califican los resultados sin un veredicto de EBITDA.
+
+Oración 3 (índice JSON 2)
+Cash and equivalents rose modestly to $1.6 billion, reflecting a 1.9 percent change that the board has judged to indicate overall financial stability.
+Veredicto: Error
+Tipos: Hecho inventado; Atribución equivocada; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No se menciona una evaluación del directorio; stability es un veredicto sobre variación de caja, no sobre la estabilidad financiera global.
+
+Oración 4 (índice JSON 3)
+Net debt stood at $1.1 billion, a level that remains manageable given the strong cash position and operating cash flow.
+Veredicto: Error
+Tipos: Juicio sin respaldo; Hecho inventado
+Cifra calculada: No | Dudosa: No
+Nota: Manageable y strong cash position no están respaldados; no se proporciona flujo de caja operativo que permita justificar la valoración.
+
+Oración 5 (índice JSON 4)
+The workforce expanded to 14,842 employees, a 13.0 percent rise from the previous quarter, signaling accelerated hiring to support growth initiatives.
+Veredicto: Error
+Tipos: Hecho inventado; Causa sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La plantilla creció, pero no hay una trayectoria de contrataciones para afirmar aceleración ni iniciativas de crecimiento que expliquen la contratación.
+
+Oración 6 (índice JSON 5)
+Overall, the quarter highlighted solid profitability metrics and cash resilience, though the negative net income warrants monitoring of cost controls and margin sustainability.
+Veredicto: Error
+Tipos: Juicio sin respaldo; Recomendación
+Cifra calculada: No | Dudosa: No
+Nota: Solid profitability y cash resilience son valoraciones; recomienda vigilar controles de costos y sostenibilidad del margen.
+
+================================================================================
+INFORME 10 — ID e0996b73
+Marlow Supply | the week of October 15–21, 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Tickets resolved: 12,476 tickets
+- Change in tickets resolved vs the previous week: 5.1%
+- First response time: 3.3 h
+- Average resolution time: 28.1 h
+- Escalations: 69
+- Escalations in the previous week: 67
+- Change in escalations vs the previous week: 3.0%
+- Open backlog: 31 tickets
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- s1 | Ticket 8374 | The app does not sync: Android users report that the app has not synced orders since version 6.14.3. There are 11 reports and the mobile team is preparing a fix.
+- s2 | Ticket 7532 | Invoices show the wrong tax: 6 business customers in Portland received invoices with the wrong tax. Finance is reissuing them.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Marlow Supply's support team resolved 12,476 tickets during the week of October 15–21, 2026, representing a 5.1% increase over the previous week.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Período, tickets y variación coinciden.
+
+Oración 2 (índice JSON 1)
+Performance remained strong with a first response time of 3.3 hours and an average resolution time of 28.1 hours.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Remained strong agrega valoración y continuidad sin veredicto ni tiempos anteriores.
+
+Oración 3 (índice JSON 2)
+The team managed 69 escalations, a 3.0% rise from the 67 recorded in the prior period, while maintaining a low open backlog of 31 tickets.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Low open backlog no tiene respaldo; maintaining implica continuidad sin backlog anterior.
+
+Oración 4 (índice JSON 3)
+Specific issues included Ticket 8374, where 11 reports indicated Android users had not synced orders since version 6.14.3 as the mobile team prepares a fix.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Resume fielmente Ticket 8374.
+
+Oración 5 (índice JSON 4)
+Additionally, Ticket 7532 involved six business customers in Portland receiving invoices with incorrect tax, which Finance is currently reissuing.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Resume fielmente Ticket 7532.
+
+Oración 6 (índice JSON 5)
+These targeted interventions support the overall stability of the support operation during the review period.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No se documenta una estabilidad general de la operación ni que las intervenciones la produzcan.
+
+================================================================================
+INFORME 11 — ID eadf04c9
+Lanternly | Q1 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Operating margin: 27.8%
+- Operating margin in the previous quarter: 30.1%
+- Change in operating margin vs the previous quarter, in percentage points: -2.3 pp
+- EBITDA: 1.8 billion USD
+- Cash and equivalents: 127.6 million USD
+- Cash and equivalents in the previous quarter: 124.6 million USD
+- Change in cash and equivalents vs the previous quarter: 2.4%
+- Revenue: 368.8 million USD
+- Change in revenue vs the previous quarter: -16.7%
+- Employees: 1,916 employees
+- Employees in the previous quarter: 1,877 employees
+- Change in employees vs the previous quarter: 2.1%
+VEREDICTOS RECIBIDOS
+- change in operating margin vs the previous quarter, in percentage points: a sharp drop
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Lanternly reported Q1 2026 revenue of $368.8 million, representing a 16.7% decline compared to the previous quarter.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Ingresos y caída intertrimestral coinciden con los datos.
+
+Oración 2 (índice JSON 1)
+The operating margin decreased by 2.3 percentage points to 27.8%, a sharp drop from the 30.1% recorded in the prior period.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Cifras y calificación sharp drop están respaldadas por el veredicto.
+
+Oración 3 (índice JSON 2)
+Despite the margin compression, the company generated $1.8 billion in EBITDA.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: El EBITDA de 1,8 mil millones figura en los datos; no se corrige aunque parezca extraño respecto de los ingresos.
+
+Oración 4 (índice JSON 3)
+Cash and equivalents saw a modest 2.4% increase, rising from $124.6 million to $127.6 million.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La suba de caja es correcta, pero modest agrega un grado sin veredicto que lo respalde.
+
+Oración 5 (índice JSON 4)
+The workforce expanded by 2.1% during the quarter, growing from 1,877 to 1,916 employees.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Cantidad actual, anterior y variación de empleados coinciden.
+
+Oración 6 (índice JSON 5)
+These figures indicate a period of reduced top-line performance and lower profitability relative to the previous quarter, even as cash reserves and headcount showed slight growth.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La baja de ingresos y margen y las subas de caja y empleados se deducen; slight growth agrega una calificación sin veredicto para estas subas.
+
+================================================================================
+INFORME 12 — ID b3350b61
+Arkadia | el segundo trimestre de 2026
+Control de acuerdo indicado en el paquete: Sí.
+
+DATOS RECIBIDOS
+- Caja y equivalentes: 90,6 millones USD
+- Caja y equivalentes en el trimestre anterior: 89,9 millones USD
+- Variación de la caja y equivalentes respecto del trimestre anterior: 0,8 %
+- Ingresos: 4,2 mil millones USD
+- Ingresos en el trimestre anterior: 5,4 mil millones USD
+- Variación de los ingresos respecto del trimestre anterior: -22,8 %
+- Empleados: 3.857 empleados
+- Empleados en el trimestre anterior: 3.835 empleados
+- Variación de los empleados respecto del trimestre anterior: 0,6 %
+- Margen operativo: 3,2 %
+- Deuda neta: 3,3 mil millones USD
+- Deuda neta en el trimestre anterior: 3,3 mil millones USD
+- Variación de la deuda neta respecto del trimestre anterior: -2,1 %
+- EBITDA: 908,6 millones USD
+- Variación del EBITDA respecto del trimestre anterior: -2,6 %
+VEREDICTOS RECIBIDOS
+- variación de los empleados respecto del trimestre anterior: estabilidad
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Durante el segundo trimestre de 2026, Arkadia registró una contracción de sus ingresos al descender a 4,2 mil millones de dólares, lo que representa una caída del 22,8 % en comparación con el periodo anterior.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Período, ingresos y caída del 22,8 % coinciden.
+
+Oración 2 (índice JSON 1)
+Este deterioro comercial se reflejó en un EBITDA de 908,6 millones de dólares, que acumuló una disminución del 2,6 % intertrimestral, mientras que el margen operativo se situó en el 3,2 %.
+Veredicto: Error
+Tipos: Causa sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras son correctas, pero atribuye la baja del EBITDA al deterioro comercial sin que los datos establezcan esa relación.
+
+Oración 3 (índice JSON 2)
+A pesar de la presión sobre las ventas, la posición de liquidez de la compañía pasó a ser de 90,6 millones de dólares, mostrando una leve mejora del 0,8 % frente a los 89,9 millones de dólares del trimestre previo.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Los valores de caja son correctos; leve mejora califica la variación sin veredicto que lo respalde.
+
+Oración 4 (índice JSON 3)
+En cuanto a la estructura financiera, la deuda neta se mantuvo estable en torno a los 3,3 mil millones de dólares, con una variación negativa marginal del 2,1 % respecto al cierre anterior.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: Ambos niveles de deuda redondean a 3,3 mil millones y la oración explicita la caída de 2,1 %: no invierte la dirección. Estable y marginal son valoraciones sin un veredicto de deuda; caso dudoso por la aproximación de los niveles.
+
+Oración 5 (índice JSON 4)
+La plantilla de la empresa alcanzó las 3.857 personas, un incremento modesto del 0,6 % que denota una clara estabilidad en la base de empleados.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: Sí
+Nota: La plantilla, la variación y el veredicto de estabilidad coinciden. Modesto se interpreta como magnitud pequeña compatible con estabilidad; se marca la frontera de grado para revisión.
+
+Oración 6 (índice JSON 5)
+La combinación de una fuerte caída en las entradas con una contención de los costos sugiere que la rentabilidad operativa ha absorbido parte del impacto negativo en los ingresos.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo; Causa sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay datos de costos que respalden su contención; fuerte caída y la interpretación de absorción del impacto por la rentabilidad no están respaldadas.
+
+Oración 7 (índice JSON 6)
+En suma, el desempeño financiero del trimestre revela una vulnerabilidad inherente a la baja activación comercial, aunque la estructura de capital y la liquidez se mantienen en parámetros de sostenibilidad.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Vulnerabilidad inherente, baja activación comercial y parámetros de sostenibilidad son evaluaciones no presentes en datos ni veredictos.
+
+================================================================================
+INFORME 13 — ID e52452c8
+Corvina Labs | enero de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Tasa de devoluciones: 2,8 %
+- Tasa de devoluciones en el mes anterior: 1,9 %
+- Variación de la tasa de devoluciones respecto del mes anterior, en puntos: 0,9 pp
+- Pedidos online: 1.702 pedidos
+- Pedidos online en el mes anterior: 1.879 pedidos
+- Variación de los pedidos online respecto del mes anterior: -9,4 %
+- Unidades vendidas: 18.726 unidades
+- Unidades vendidas en el mes anterior: 30.092 unidades
+- Variación de las unidades vendidas respecto del mes anterior: -37,8 %
+- Ticket promedio: 99,92 USD
+- Ticket promedio en el mes anterior: 113,05 USD
+- Variación del ticket promedio respecto del mes anterior: -11,6 %
+- Conversión web: 1,2 %
+- Conversión web en el mes anterior: 1,1 %
+- Variación de la conversión web respecto del mes anterior, en puntos: 0,1 pp
+VEREDICTOS RECIBIDOS
+- variación de la conversión web respecto del mes anterior, en puntos: estabilidad
+NOTAS RECIBIDAS
+- s1 | Informe de logística | Demoras en entregas: Durante 4 días hubo demoras en las entregas a Rosario por un problema con el operador Envíos Delta.
+- s2 | Nota del equipo comercial | Campaña de temporada: La campaña «Días Calientes» empezó el 23 de marzo en Rosario y Medellín, con descuentos de hasta 40 % en la categoría hogar.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+El desempeño comercial de Corvina Labs en enero de 2026 se caracterizó por una contracción significativa en el volumen de negocio, con una caída del 37,8 % en las unidades vendidas que alcanzó las 18.726, muy por debajo de las 30.092 del mes anterior.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras de unidades son correctas; contracción significativa y muy por debajo añaden magnitud valorativa sin veredicto para las ventas.
+
+Oración 2 (índice JSON 1)
+Esta reducción en el volumen se acompañó de una disminución del 9,4 % en los pedidos online, que cerraron el período en 1.702 transacciones, aunque destacó una mejora marginal en la tasa de conversión web, que se estabilizó al subir 0,1 puntos porcentuales hasta el 1,2 %.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: Sí
+Nota: Pedidos, conversión y variaciones coinciden. Se acepta mejora marginal como dirección positiva de 0,1 pp y magnitud pequeña compatible con el veredicto explícito de estabilidad; queda dudosa por esa frontera de grado.
+
+Oración 3 (índice JSON 2)
+El ticket promedio también experimentó una baja del 11,6 %, situándose en 99,92 dólares, lo que refleja una posible ampliación de la base de clientes de menor valor sin compensar la pérdida de volumen.
+Veredicto: Error
+Tipos: Causa sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La baja del ticket no permite atribuirla a una ampliación de la base de clientes de menor valor, aunque se formule como posible.
+
+Oración 4 (índice JSON 3)
+En paralelo, la tasa de devoluciones se incrementó de manera notable, pasando del 1,9 % al 2,8 %, lo que implica una variación negativa de 0,9 puntos porcentuales.
+Veredicto: Error
+Tipos: Dirección equivocada; Juicio sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: Las devoluciones aumentaron +0,9 pp; variación negativa invierte el signo. Notable carece de veredicto. Dudosa por si negativa pretendía expresar empeoramiento, en vez de signo numérico.
+
+Oración 5 (índice JSON 4)
+Este aumento en las devoluciones podría estar relacionado con las demoras logísticas a Rosario causadas por el operador Envíos Delta, que afectaron la experiencia del cliente durante cuatro días.
+Veredicto: Error
+Tipos: Causa sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La nota respalda las demoras de cuatro días y al operador, pero no relaciona las demoras con el aumento de devoluciones.
+
+Oración 6 (índice JSON 5)
+Es importante aclarar que la campaña «Días Calientes» no influyó en estos resultados, ya que su lanzamiento está programado para el 23 de marzo, posterior al período analizado.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: Sí
+Nota: Se acepta como inferencia temporal sin cálculo: el lanzamiento del 23 de marzo es posterior a los resultados de enero. Dudosa porque la nota no explicita el año ni una ausencia de efectos anticipatorios, y el informe cambia empezó por está programado.
+
+Oración 7 (índice JSON 6)
+En conclusión, la empresa enfrenta un desafío dual de recuperación de volumen y control de calidad en la entrega, dado que la mejora en la conversión no fue suficiente para contrarrestar la fuerte caída en ventas.
+Veredicto: Error
+Tipos: Juicio sin respaldo; Causa sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: La valoración de desafío y fuerte caída no tiene veredicto. La supuesta compensación insuficiente entre conversión y ventas no se establece en los datos; dudosa la frontera entre efecto causal y resumen de resultados coexistentes.
+
+================================================================================
+INFORME 14 — ID 1d01b654
+Brightloom | January 2026
+Control de acuerdo indicado en el paquete: Sí.
+
+DATOS RECIBIDOS
+- Monthly churn: 0.9%
+- Monthly churn in the previous month: 0.5%
+- Change in monthly churn vs the previous month, in percentage points: 0.4 pp
+- Trial-to-paid conversion: 7.5%
+- Trial-to-paid conversion in the previous month: 5.9%
+- Change in trial-to-paid conversion vs the previous month, in percentage points: 1.6 pp
+- Active users: 106,796 users
+- Change in active users vs the previous month: 14.0%
+- Customer acquisition cost (CAC): 173 GBP
+- Customer acquisition cost (CAC) in the previous month: 170 GBP
+- Change in customer acquisition cost (CAC) vs the previous month: 1.8%
+- Net revenue retention (NRR): 90%
+- Net revenue retention (NRR) in the previous month: 94%
+- Change in net revenue retention (NRR) vs the previous month, in percentage points: -4 pp
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+January 2026 showed mixed performance for Brightloom, with monthly churn rising to 0.9%—a 0.4‑percentage‑point increase over December’s 0.5% rate—indicating a modest uptick in customer attrition.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Cifras y dirección del churn son correctas; modest y la evaluación del desempeño agregan calificaciones sin veredictos.
+
+Oración 2 (índice JSON 1)
+On a positive note, trial‑to‑paid conversion improved markedly to 7.5%, up 1.6 percentage points from the prior month and reflecting stronger onboarding effectiveness.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Markedly califica el aumento sin veredicto y no hay información que lo atribuya a una mayor eficacia del onboarding.
+
+Oración 3 (índice JSON 2)
+Active user count expanded sharply to 106,796, representing a 14 percent month‑over‑month growth that underpins the conversion gains.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Sharply carece de veredicto y no se establece que el crecimiento de usuarios sostenga o cause las ganancias de conversión.
+
+Oración 4 (índice JSON 3)
+However, the cost of acquiring new customers edged higher to £173, a 1.8 percent increase from December’s £170, suggesting rising marketing or sales expense pressures.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: El CAC es correcto; edged higher añade grado y el aumento no permite concluir presiones específicas de gasto comercial o de marketing.
+
+Oración 5 (índice JSON 4)
+Net revenue retention slipped to 90% from 94% in the previous month, a 4‑percentage‑point decline that signals challenges in upselling and churn mitigation.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La caída del NRR coincide, pero no prueba dificultades concretas de upselling y mitigación del churn.
+
+Oración 6 (índice JSON 5)
+Overall, while user acquisition and conversion are accelerating, the concurrent rise in churn, CAC, and the dip in NRR highlight areas that require immediate strategic focus.
+Veredicto: Error
+Tipos: Hecho inventado; Recomendación; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Una variación frente al mes previo no prueba aceleración; no hay métrica de captación nueva. Exigir foco estratégico inmediato es una recomendación y evaluación añadidas.
+
+================================================================================
+INFORME 15 — ID 41205f85
+Lumbre | marzo de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Clientes nuevos: 8 clientes
+- Costo de adquisición de clientes (CAC): 606 USD
+- Usuarios activos: 215.160 usuarios
+- Conversión de prueba a pago: 21,3 %
+- Retención neta de ingresos (NRR): 123 %
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- s1 | Nota de éxito del cliente | Renovación: Clínicas Moreno renovó su contrato por 3 años y sumó 257 licencias.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+En marzo de 2026, Lumbre registró una sólida expansión comercial con la incorporación de 8 nuevos clientes, manteniendo un costo de adquisición de 606 USD.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Sólida expansión carece de veredicto; manteniendo el CAC implica continuidad sin dato anterior. Las cifras actuales son correctas.
+
+Oración 2 (índice JSON 1)
+Nuestra base de usuarios activos alcanzó los 215.160, reflejando una penetración robusta en el mercado objetivo.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La cifra de usuarios es correcta; penetración robusta en el mercado objetivo requiere información y criterios ausentes.
+
+Oración 3 (índice JSON 2)
+La estrategia de conversión mostró resultados eficaces, logrando que el 21,3 % de los usuarios de prueba migraran a planes de pago.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La conversión es correcta, pero no hay veredicto que permita juzgar la estrategia como eficaz.
+
+Oración 4 (índice JSON 3)
+Destaca particularmente la retención neta de ingresos (NRR) del 123 %, lo que demuestra un fuerte crecimiento dentro de nuestra cartera actual de clientes.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: NRR de 123 % indica expansión de ingresos de la cartera; fuerte crecimiento añade un grado sin veredicto.
+
+Oración 5 (índice JSON 4)
+Este desempeño comercial se ve reforzado por la renovación de tres años de Clínicas Moreno, quien además amplió su licencia en 257 unidades.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: La renovación de tres años y las 257 licencias añadidas están en la nota; se incorporan como parte del desempeño comercial.
+
+Oración 6 (índice JSON 5)
+Esta combinación de nuevas adquisiciones y crecimiento interno posiciona a la empresa en una trayectoria de expansión sostenible.
+Veredicto: Error
+Tipos: Predicción sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Los datos no establecen una trayectoria sostenible de expansión futura.
+
+Oración 7 (índice JSON 6)
+La proyección para los próximos meses es favorable, dado el equilibrio entre la eficiencia en la captación y la lealtad de la base instalada.
+Veredicto: Error
+Tipos: Predicción sin respaldo; Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Pronostica meses favorables y los fundamenta en un supuesto equilibrio de eficiencia y lealtad que no está en los datos.
+
+Oración 8 (índice JSON 7)
+Confiamos en que estas métricas consolidan el valor para nuestros inversores y respaldan la continuidad de nuestra hoja de ruta estratégica.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: El valor para inversores y el respaldo a una hoja de ruta estratégica no se desprenden de las métricas ni de la nota.
+
+================================================================================
+INFORME 16 — ID 84e4a33b
+Copperline | Q1 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Revenue: 20.9 million EUR
+- Change in revenue vs the previous quarter: 4.1%
+- Units sold: 1,938 units
+- Units sold in the previous quarter: 1,679 units
+- Change in units sold vs the previous quarter: 15.4%
+- Online orders: 5,488 orders
+- Change in online orders vs the previous quarter: -14.6%
+- New customers: 647 customers
+- New customers in the previous quarter: 650 customers
+- Change in new customers vs the previous quarter: -0.5%
+- Average order value: 121.96 EUR
+VEREDICTOS RECIBIDOS
+- change in new customers vs the previous quarter: stability
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Copperline concluded Q1 2026 with total revenue of 20.9 million EUR, marking a 4.1% increase quarter-over-quarter.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Ingresos, período y variación coinciden.
+
+Oración 2 (índice JSON 1)
+This financial growth was primarily driven by a significant 15.4% surge in unit sales, which rose to 1,938 units from the previous quarter's 1,679.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No se establece que la venta de unidades sea el principal motor del aumento de ingresos; significant surge agrega un grado sin veredicto.
+
+Oración 3 (índice JSON 2)
+Although revenue expanded, the average order value remained stable at 121.96 EUR, indicating that the growth was volume-led rather than price-driven.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay ticket anterior que permita decir remained stable; tampoco datos que atribuyan el crecimiento a volumen en vez de precios.
+
+Oración 4 (índice JSON 3)
+In contrast, the digital channel faced challenges, as online orders declined by 14.6% to 5,488, suggesting a potential shift in customer purchasing behavior or channel preference.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Pedidos y caída son correctos; challenges y el supuesto cambio de conducta o preferencia de canal son interpretaciones explicativas sin respaldo.
+
+Oración 5 (índice JSON 4)
+Customer acquisition remained largely flat, with 647 new customers joining the base, representing a negligible 0.5% decrease compared to the prior period.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: Sí
+Nota: Cifras y veredicto de estabilidad coinciden. Largely flat y negligible se aceptan como paráfrasis de ese grado pequeño; dudosa por el énfasis de negligible.
+
+Oración 6 (índice JSON 5)
+This stability in new customer acquisition highlights the need for adjusted marketing strategies to renew growth momentum in that specific area.
+Veredicto: Error
+Tipos: Recomendación
+Cifra calculada: No | Dudosa: No
+Nota: Propone ajustar estrategias de marketing sin que los datos lo pidan.
+
+Oración 7 (índice JSON 6)
+Overall, the quarter demonstrated strong product demand and physical sales performance, despite headwinds in the online sector and stagnant customer expansion.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay dato de ventas físicas ni de demanda; strong y headwinds son calificaciones añadidas. La estabilidad de clientes sí tiene respaldo.
+
+Oración 8 (índice JSON 7)
+Management should focus on understanding the decline in online orders to ensure balanced growth across all channels in the upcoming quarters.
+Veredicto: Error
+Tipos: Recomendación
+Cifra calculada: No | Dudosa: No
+Nota: Recomienda una prioridad a la gerencia y un objetivo de crecimiento por canales que los datos no solicitan.
+
+================================================================================
+INFORME 17 — ID 4ee80298
+Satstack Desk | the week of October 10–16, 2026
+Control de acuerdo indicado en el paquete: Sí.
+
+DATOS RECIBIDOS
+- Bitcoin (BTC) price: 25,158 USD
+- Bitcoin (BTC) price in the previous week: 29,493 USD
+- Change in bitcoin (BTC) price vs the previous week: -14.7%
+- 24-hour trading volume: 97.7 billion USD
+- Futures open interest: 67.3 billion USD
+- Futures open interest in the previous week: 64.7 billion USD
+- Change in futures open interest vs the previous week: 4.0%
+- Fear and greed index: 15
+- Fear and greed index in the previous week: 20
+- Change in fear and greed index vs the previous week: -5
+- Ether (ETH) price: 3,664 USD
+- Ether (ETH) price in the previous week: 3,139 USD
+- Change in ether (ETH) price vs the previous week: 16.7%
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- s1 | Network calendar | Network upgrade: The Telar network will activate the Beacon upgrade on June 5.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+For the week of October 10–16, 2026, Bitcoin experienced a significant decline of 14.7 per cent, closing at $25,158, down from the previous week’s $29,493.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: El precio y caída coinciden; significant carece de veredicto. Closing añade que se trata de precio de cierre, precisión temporal no dada en Precio; dudosa por esa interpretación.
+
+Oración 2 (índice JSON 1)
+Conversly, Ether demonstrated strong momentum, surging 16.7 per cent to reach $3,664 from $3,139 in the prior period.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras de ETH coinciden; strong momentum y surging califican la magnitud sin veredicto.
+
+Oración 3 (índice JSON 2)
+Despite the headline weakness in Bitcoin, the broader market remains active, with 24-hour trading volume reaching $97.7 billion.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: El volumen es correcto; remains active evalúa la actividad y su continuidad sin criterio ni volumen anterior.
+
+Oración 4 (índice JSON 3)
+Sentiment indicators continue to deteriorate, as the Fear and Greed Index dropped five points to 15, deepening the prevailing market fear from the previous reading of 20.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: El cambio de 20 a 15 está dado. Continue to deteriorate presupone una tendencia previa adicional; prevailing market fear agrega una lectura del índice no suministrada como veredicto.
+
+Oración 5 (índice JSON 4)
+In the derivatives space, futures open interest expanded by 4.0 per cent to $67.3 billion, up from $64.7 billion in the previous week.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Interés abierto actual, anterior y variación coinciden.
+
+Oración 6 (índice JSON 5)
+This divergence in open interest suggests continued positioning activity even as spot prices for Bitcoin trend lower.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: El aumento del interés abierto respalda la continuidad de posiciones mientras cae BTC; no se atribuye una causa específica.
+
+Oración 7 (índice JSON 6)
+No specific catalysts or external events from the provided network calendar impact this specific weekly review.
+Veredicto: Error
+Tipos: Causa sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: El calendario ubica la actualización en junio, fuera de la semana de octubre, pero no afirma que no tenga impacto en la revisión. Dudosa por posible lectura meramente editorial de la oración.
+
+Oración 8 (índice JSON 7)
+Clients should note this substantial week-over-week divergence between Bitcoin and Ether performance.
+Veredicto: Error
+Tipos: Recomendación; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Clients should note recomienda una atención concreta; substantial califica la divergencia sin un veredicto dado.
+
+================================================================================
+INFORME 18 — ID 61a23213
+Corvina Labs | marzo de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Ticket promedio: 15,14 USD
+- Ticket promedio en el mes anterior: 17,08 USD
+- Variación del ticket promedio respecto del mes anterior: -11,4 %
+- Tasa de devoluciones: 8,2 %
+- Tasa de devoluciones en el mes anterior: 8,5 %
+- Variación de la tasa de devoluciones respecto del mes anterior, en puntos: -0,3 pp
+- Pedidos online: 47.992 pedidos
+- Pedidos online en el mes anterior: 48.748 pedidos
+- Variación de los pedidos online respecto del mes anterior: -1,6 %
+- Facturación: 5,5 millones USD
+- Clientes nuevos: 61 clientes
+- Variación de los clientes nuevos respecto del mes anterior: 6,1 %
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+En marzo de 2026 el ticket promedio fue de 15,14 USD, lo que representa una variación negativa del 11,4 % respecto al mes anterior, cuando fue de 17,08 USD.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Ticket actual, anterior y variación coinciden.
+
+Oración 2 (índice JSON 1)
+La tasa de devoluciones se situó en 8,2 %, disminuyendo 0,3 puntos porcentuales frente al 8,5 % del mes previo.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Tasa de devoluciones y descenso en puntos coinciden.
+
+Oración 3 (índice JSON 2)
+Los pedidos online alcanzaron los 47 992, evidenciando una caída del 1,6 % frente a los 48 748 del mes anterior.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Pedidos actuales, anteriores y caída coinciden.
+
+Oración 4 (índice JSON 3)
+La facturación total del periodo fue de 5,5 millones de USD.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: La facturación está en los datos.
+
+Oración 5 (índice JSON 4)
+Se registraron 61 clientes nuevos, lo que supone un aumento del 6,1 % respecto al mes anterior.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Clientes nuevos y aumento del 6,1 % coinciden.
+
+Oración 6 (índice JSON 5)
+En conjunto, los indicadores muestran una ligera contracción en el volumen de ventas y en el ticket medio, mientras que la captación de nuevos clientes y la reducción de devoluciones mejoraron.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las direcciones son compatibles con los datos; ligera califica la contracción de pedidos y ticket sin veredicto que lo respalde.
+
+================================================================================
+INFORME 19 — ID eba8ca7f
+Kestrel Goods | Q1 2026
+Control de acuerdo indicado en el paquete: Sí.
+
+DATOS RECIBIDOS
+- Units sold: 33,623 units
+- Change in units sold vs the previous quarter: -19.9%
+- Revenue: 10 million EUR
+- Online orders: 37,225 orders
+- Online orders in the previous quarter: 36,537 orders
+- Change in online orders vs the previous quarter: 1.9%
+- New customers: 506 customers
+- New customers in the previous quarter: 539 customers
+- Change in new customers vs the previous quarter: -6.1%
+- Average order value: 50.43 EUR
+- Average order value in the previous quarter: 51.35 EUR
+- Change in average order value vs the previous quarter: -1.8%
+- Return rate: 5.8%
+- Change in return rate vs the previous quarter, in percentage points: -1.9 pp
+VEREDICTOS RECIBIDOS
+- change in units sold vs the previous quarter: a sharp drop
+NOTAS RECIBIDAS
+- s1 | Sales team note | Seasonal campaign: The Spring Reset campaign started on January 3 in Bristol and Portland, with discounts of up to 40% on home goods.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Kestrel Goods concluded Q1 2026 with total revenue of 10 million EUR, despite a sharp 19.9% drop in unit sales to 33,623 compared to the previous quarter.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Ingresos y unidades coinciden; sharp drop reproduce el veredicto de unidades.
+
+Oración 2 (índice JSON 1)
+This significant decline in volume contrasts with a 1.9% increase in online orders, which totaled 37,225, suggesting a shift in customer purchasing behavior rather than a loss of digital engagement.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras y la magnitud de la baja de unidades están respaldadas, pero no la explicación por un cambio de conducta ni la conclusión sobre engagement digital.
+
+Oración 3 (índice JSON 2)
+The average order value dipped slightly by 1.8% to 50.43 EUR, likely influenced by the Spring Reset campaign that launched in January with discounts of up to 40% on home goods in Bristol and Portland.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras y los detalles de campaña coinciden; no se establece que la campaña influyera en el ticket. Slightly califica su baja sin veredicto.
+
+Oración 4 (índice JSON 3)
+New customer acquisition also slowed, down 6.1% from the prior quarter, resulting in 506 new customers while retention efforts remain critical.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La adquisición y caída son correctas; que la retención sea critical es una valoración no suministrada.
+
+Oración 5 (índice JSON 4)
+On a positive note, the return rate improved by 1.9 percentage points to 5.8%, indicating better product fit or quality perception despite the lower average spend per order.
+Veredicto: Error
+Tipos: Causa sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La tasa y baja de devoluciones coinciden, pero no permiten explicar la mejora por mejor ajuste del producto o percepción de calidad.
+
+Oración 6 (índice JSON 5)
+The team should prioritize analyzing why unit sales fell so sharply despite stable online traffic, potentially focusing on overall demand drivers beyond promotional discounts.
+Veredicto: Error
+Tipos: Hecho inventado; Recomendación; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Recomienda prioridades de análisis. No hay datos de tráfico online para llamarlo estable; los pedidos online son otra métrica.
+
+Oración 7 (índice JSON 6)
+Upcoming strategies should aim to convert the steady online order flow into higher unit volumes without further eroding average order value.
+Veredicto: Error
+Tipos: Recomendación; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Propone una estrategia futura no solicitada y describe como steady el flujo de pedidos sin veredicto de estabilidad.
+
+================================================================================
+INFORME 20 — ID 510b5e6d
+Pampa Digital | la semana del 6 al 12 de noviembre de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Tickets recibidos: 4.095 tickets
+- Tickets recibidos en la semana anterior: 4.237 tickets
+- Variación de los tickets recibidos respecto de la semana anterior: -3,4 %
+- Satisfacción del cliente (CSAT): 88 %
+- Satisfacción del cliente (CSAT) en la semana anterior: 87 %
+- Variación de la satisfacción del cliente (CSAT) respecto de la semana anterior, en puntos: 1 pp
+- Tickets resueltos: 12.316 tickets
+- Tickets resueltos en la semana anterior: 11.271 tickets
+- Variación de los tickets resueltos respecto de la semana anterior: 9,3 %
+- Escalamientos: 2
+- Variación de los escalamientos respecto de la semana anterior: -14,8 %
+- Tiempo medio de resolución: 31,6 h
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- s1 | Ticket 7791 | Falla el pago con tarjeta: Desde el martes, 39 clientes de Mendoza reportan que el pago con tarjeta falla con el error 402. El equipo de pagos revirtió la versión 5.4.1 el lunes y las fallas se detuvieron.
+- s2 | Ticket 6485 | La app no sincroniza: Usuarios de Android reportan que la app no sincroniza los pedidos desde la versión 5.4.1. Hay 39 reportes y el equipo móvil prepara un parche.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Durante la semana del 6 al 12 de noviembre de 2026, el área de soporte de Pampa Digital recibió 4.095 tickets, lo que representó una disminución del 3,4 % en comparación con los 4.237 tickets de la semana anterior.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Período, tickets y disminución coinciden.
+
+Oración 2 (índice JSON 1)
+Pese a esta reducción en la afluencia, el equipo logró resolver un total de 12.316 tickets, incrementando este indicador en un 9,3 % respecto a los 11.271 resueltos previamente.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Tickets resueltos actuales, anteriores y variación coinciden.
+
+Oración 3 (índice JSON 2)
+La satisfacción del cliente (CSAT) mejoró de 87 % a 88 %, lo que supone una variación positiva de 1 punto porcentual.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: CSAT actual, anterior y aumento de un punto coinciden.
+
+Oración 4 (índice JSON 3)
+El tiempo medio de resolución se mantuvo en 31,6 horas, mientras que los escalamientos descendieron a 2 casos, una baja del 14,8 % frente al período previo.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay tiempo de resolución anterior que respalde se mantuvo; el tiempo actual y los escalamientos sí son correctos.
+
+Oración 5 (índice JSON 4)
+Entre los incidentes relevantes, el ticket 7791 documentó fallos en pagos con tarjeta (error 402) reportados por 39 clientes de Mendoza, los cuales cesaron tras revertir la versión 5.4.1 el lunes.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Resume fielmente la nota del ticket 7791, incluida la fecha y el efecto de la reversión; no se corrige la cronología de la fuente.
+
+Oración 6 (índice JSON 5)
+En paralelo, el ticket 6485 registró 39 reportes de usuarios de Android sobre la falta de sincronización de pedidos desde la misma versión, para la cual el equipo móvil prepara un parche.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Cantidad de reportes, Android, versión y parche coinciden con la nota del ticket 6485.
+
+================================================================================
+INFORME 21 — ID b45f12ec
+Pampa Digital | el segundo trimestre de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Empleados: 15.627 empleados
+- Empleados en el trimestre anterior: 18.595 empleados
+- Variación de los empleados respecto del trimestre anterior: -16,0 %
+- EBITDA: 64 millones USD
+- EBITDA en el trimestre anterior: 58,1 millones USD
+- Variación del EBITDA respecto del trimestre anterior: 10,2 %
+- Resultado neto: 462,8 millones USD
+- Resultado neto en el trimestre anterior: 328,7 millones USD
+- Variación del resultado neto respecto del trimestre anterior: 134 millones USD
+- Ingresos: 1,3 mil millones USD
+- Ingresos en el trimestre anterior: 1,3 mil millones USD
+- Variación de los ingresos respecto del trimestre anterior: -1,1 %
+- Margen operativo: -1,1 %
+- Margen operativo en el trimestre anterior: -1,5 %
+- Variación del margen operativo respecto del trimestre anterior, en puntos: 0,4 pp
+VEREDICTOS RECIBIDOS
+- variación del EBITDA respecto del trimestre anterior: subida fuerte
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+El segundo trimestre de 2026 para Pampa Digital se caracterizó por un crecimiento sólido de la rentabilidad, impulsado principalmente por una mejora significativa en el EBITDA, que alcanzó los 64 millones de dólares, un aumento fuerte del 10,2 % intertrimestral.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: El aumento fuerte del EBITDA está respaldado; atribuirle principalmente una rentabilidad sólida agrega causalidad y una valoración general no dadas.
+
+Oración 2 (índice JSON 1)
+Este incremento se reflejó directamente en el resultado neto, que saltó de 328,7 a 462,8 millones de dólares, registrando una ganancia adicional de 134 millones de dólares respecto al período anterior.
+Veredicto: Error
+Tipos: Causa sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras, incluida la variación de 134 millones, figuran en los datos. No consta que el EBITDA se reflejara directamente en el resultado neto.
+
+Oración 3 (índice JSON 2)
+A pesar de esta expansión de las ganancias, los ingresos se mantuvieron estables en 1,3 mil millones de dólares, con una ligera contracción del 1,1 % que sugiere una optimización en la estructura de costos.
+Veredicto: Error
+Tipos: Juicio sin respaldo; Causa sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: La contracción de 1,1 % sí está explícita: no se marca dirección equivocada. Estables/ligera no tienen veredicto y la optimización de costos no está documentada. Dudosa por la coincidencia de los niveles de ingresos redondeados.
+
+Oración 4 (índice JSON 3)
+La eficiencia operativa también mostró señales positivas, ya que el margen operativo se redujo la pérdida de -1,5 % a -1,1 %, representando una mejora de 0,4 puntos porcentuales.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: El margen mejoró 0,4 pp y sigue negativo, tal como dicen los datos. Juzgo que extenderlo a señales positivas de eficiencia operativa es una valoración adicional; podría aceptarse como paráfrasis de la mejora del margen.
+
+Oración 5 (índice JSON 4)
+En paralelo, la empresa realizó una reestructura de su plantilla laboral, reduciendo la fuerza de trabajo en un 16,0 % hasta los 15.627 empleados, una caída notable respecto a los 18.595 del trimestre previo.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La baja del número de empleados está dada, pero no se informa una reestructuración ni un veredicto de caída notable.
+
+Oración 6 (índice JSON 5)
+Esta reducción estratégica de personal parece haber contribuido a sostener la rentabilidad a pesar de la estagnación en las ventas.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No consta que la reducción de personal fuera estratégica ni que sostuviera la rentabilidad. Tampoco se da un veredicto de estancamiento de ventas.
+
+Oración 7 (índice JSON 6)
+En conjunto, los indicadores financieros del trimestre reflejan una gestión enfocada en la máxima eficiencia operativa y la contenida de gastos.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No se describe el enfoque de la gestión ni medidas de contención de gastos; máxima eficiencia es un juicio sin respaldo.
+
+Oración 8 (índice JSON 7)
+La dirección debe considerar estos resultados como una base favorable para mantener la trayectoria de mejora en los períodos venideros.
+Veredicto: Error
+Tipos: Recomendación; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Recomienda cómo debe interpretar los resultados la dirección y los califica como base favorable sin respaldo explícito.
+
+================================================================================
+INFORME 22 — ID c142233f
+Informe Andino de Mercados | la semana del 3 al 9 de noviembre de 2026
+Control de acuerdo indicado en el paquete: Sí.
+
+DATOS RECIBIDOS
+- Precio de bitcoin (BTC): 52.319 USD
+- Precio de bitcoin (BTC) en la semana anterior: 51.372 USD
+- Variación del precio de bitcoin (BTC) respecto de la semana anterior: 1,8 %
+- Volumen operado en 24 horas: 141,6 mil millones USD
+- Volumen operado en 24 horas en la semana anterior: 139,7 mil millones USD
+- Variación del volumen operado en 24 horas respecto de la semana anterior: 1,3 %
+- Tasa de financiamiento promedio: 0,023 %
+- Variación de la tasa de financiamiento promedio respecto de la semana anterior, en puntos: 1,7 pp
+- Interés abierto en futuros: 29,9 mil millones USD
+- Interés abierto en futuros en la semana anterior: 30 mil millones USD
+- Variación del interés abierto en futuros respecto de la semana anterior: -0,3 %
+VEREDICTOS RECIBIDOS
+- variación de la tasa de financiamiento promedio respecto de la semana anterior, en puntos: tendencia alcista
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Durante la semana del 3 al 9 de noviembre de 2026, el precio de Bitcoin (BTC) cerró en 52 319 USD, lo que representa un incremento del 1,8 % respecto a la semana anterior, cuyo cierre fue de 51 372 USD.
+Veredicto: Error
+Tipos: Hecho inventado
+Cifra calculada: No | Dudosa: Sí
+Nota: Las cifras y el período coinciden. Los datos dicen precio, sin identificarlo como precio de cierre de ninguna de las dos semanas.
+
+Oración 2 (índice JSON 1)
+El volumen operado en las últimas 24 horas alcanzó los 141,6 mil millones de USD, superando en un 1,3 % al nivel de la semana previa (139,7 mil millones).
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Volúmenes y variación de 1,3 % expresamente dados.
+
+Oración 3 (índice JSON 2)
+La tasa de financiamiento promedio se situó en 0,023 %, con una variación positiva de 1,7 puntos porcentuales, indicando una tendencia alcista en los costos de financiación.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Repite la tasa, los 1,7 pp y el veredicto de tendencia alcista. Se respeta el dato aunque resulte llamativa su magnitud.
+
+Oración 4 (índice JSON 3)
+El interés abierto en futuros disminuyó ligeramente a 29,9 mil millones de USD, un retroceso del 0,3 % frente a los 30 mil millones de la semana anterior.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras y la dirección son correctas; ligeramente agrega un grado sin veredicto que lo respalde.
+
+Oración 5 (índice JSON 4)
+Estas cifras sugieren un mercado con mayor actividad y precios en alza, mientras que la ligera caída del interés abierto señala una posible re‑evaluación de posiciones por parte de los traders.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No se da una reevaluación de posiciones como explicación de la caída del interés abierto; ligera es un calificativo sin veredicto.
+
+Oración 6 (índice JSON 5)
+En conjunto, el entorno muestra una combinación de impulso alcista en precios y financiación, acompañada de un volumen de negociación robusto.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Precios y financiación suben, pero no se califica el volumen de negociación como robusto.
+
+Oración 7 (índice JSON 6)
+Se recomienda a los clientes mantener una vigilancia estrecha del comportamiento de la tasa de financiamiento, dado que su tendencia alcista puede afectar los costos de mantenimiento de posiciones apalancadas.
+Veredicto: Error
+Tipos: Recomendación; Predicción sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: Recomienda vigilancia y anticipa un posible efecto sobre costos de posiciones apalancadas que no figura en los datos. Dudosa la frontera entre predicción y explicación general del financiamiento.
+
+================================================================================
+INFORME 23 — ID 6d6f0ea9
+Tallo | enero de 2026
+Control de acuerdo indicado en el paquete: Sí.
+
+DATOS RECIBIDOS
+- Conversión de prueba a pago: 4,0 %
+- Conversión de prueba a pago en el mes anterior: 5,5 %
+- Variación de la conversión de prueba a pago respecto del mes anterior, en puntos: -1,5 pp
+- Retención neta de ingresos (NRR): 101 %
+- Retención neta de ingresos (NRR) en el mes anterior: 100 %
+- Variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos: 1 pp
+- Clientes nuevos: 579 clientes
+- Variación de los clientes nuevos respecto del mes anterior: -8,9 %
+- Costo de adquisición de clientes (CAC): 689 EUR
+- Usuarios activos: 83.662 usuarios
+- Usuarios activos en el mes anterior: 78.642 usuarios
+- Variación de los usuarios activos respecto del mes anterior: 6,4 %
+VEREDICTOS RECIBIDOS
+- variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos: subida leve
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Durante enero de 2026, Tallo ha registrado un crecimiento significativo en su base de usuarios activos, que se ha incrementado un 6,4 % hasta alcanzar los 83.662 perfiles, reflejando un mayor interés por la plataforma.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: El aumento de usuarios y las cifras son correctos. No hay veredicto de crecimiento significativo ni información que lo equipare a mayor interés por la plataforma.
+
+Oración 2 (índice JSON 1)
+Sin embargo, este aumento de volumen no se ha traducido inmediatamente en nuevas altas de clientes de pago, cuyas cifras han descendido un 8,9 % en términos absolutos, situándose en 579 nuevos contratos.
+Veredicto: Error
+Tipos: Atribución equivocada; Hecho inventado
+Cifra calculada: No | Dudosa: Sí
+Nota: Los datos dan 579 clientes nuevos, no 579 contratos ni que todos sean de pago; clientes y contratos no son necesariamente equivalentes. Dudosa porque en este contexto SaaS podría tratarse de una paráfrasis comercial. En términos absolutos es impreciso para un porcentaje.
+
+Oración 3 (índice JSON 2)
+Esta tendencia a la baja en la adquisición se ha visto acompañada por una caída en la tasa de conversión de prueba a pago, que ha retrocedido 1,5 puntos porcentuales hasta el 4,0 %, descontando la eficiencia previa del 5,5 % del mes anterior.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: La conversión cayó 1,5 puntos, de 5,5 % a 4,0 %, como indican los datos.
+
+Oración 4 (índice JSON 3)
+A pesar de estos desafíos en la captación inicial, la calidad de los ingresos se ha fortalecida, ya que la Retención Neta de Ingresos (NRR) ha experimentado una subida leve del 1 %, pasando del 100 % al 101 %, lo que indica una expansión positiva dentro del portafolio existente.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: Fortalecimiento de la calidad de ingresos es una valoración no dada. La variación del input es 1 pp, pero de 100 % a 101 % también hay exactamente 1 % de aumento relativo; no se etiqueta como cifra inequívocamente falsa. Dudosa por si el informe pretendía intercambiar % y pp.
+
+Oración 5 (índice JSON 4)
+El Costo de Adquisición de Clientes (CAC) se ha mantenido estable en 689 EUR, aunque la efectiva reducción en el volumen de nuevos pagos podría presionar la rentabilidad operativa a corto plazo.
+Veredicto: Error
+Tipos: Juicio sin respaldo; Predicción sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay CAC anterior ni veredicto que respalden estable. Tampoco se aporta una previsión sobre la rentabilidad de corto plazo.
+
+Oración 6 (índice JSON 5)
+La subida leve en el NRR actúa como un contrapeso fundamental que mitiga el impacto negativo de la menor conversión entrante, sugiriendo que los clientes actuales están aumentando su gasto.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Subida leve del NRR sí está respaldada; que sea un contrapeso fundamental que mitiga la menor conversión agrega un efecto compensatorio y un juicio no dados.
+
+Oración 7 (índice JSON 6)
+En conjunto, estos indicadores muestran una dinámica mixta donde la expansión orgánica compensa parcialmente la desaceleración en la adquisición de nuevo negocio.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo; Hecho inventado
+Cifra calculada: No | Dudosa: No
+Nota: Los indicadores no prueban que una expansión orgánica compense la menor adquisición. Se valoran y vinculan métricas sin respaldo para esa compensación.
+
+Oración 8 (índice JSON 7)
+Los inversores deben vigilar cómo evoluciona la eficiencia comercial para revertir la caída en la conversión, aprovechando la sólida base de usuarios activos como palanca de crecimiento futura.
+Veredicto: Error
+Tipos: Recomendación; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Recomienda acciones a inversores y califica la base de usuarios como sólida sin veredicto que lo indique.
+
+================================================================================
+INFORME 24 — ID c8d4d7cd
+Satstack Desk | November 14, 2026
+Control de acuerdo indicado en el paquete: Sí.
+
+DATOS RECIBIDOS
+- Bitcoin (BTC) price: 110,582 USD
+- Bitcoin (BTC) price in the previous day: 102,541 USD
+- Change in bitcoin (BTC) price vs the previous day: 7.8%
+- Fear and greed index: 89
+- Fear and greed index in the previous day: 54
+- Change in fear and greed index vs the previous day: 35
+- 24-hour trading volume: 30.4 billion USD
+- 24-hour trading volume in the previous day: 21.6 billion USD
+- Change in 24-hour trading volume vs the previous day: 40.6%
+- Bitcoin dominance: 43.5%
+- Ether (ETH) price: 8,631 USD
+- Ether (ETH) price in the previous day: 7,392 USD
+- Change in ether (ETH) price vs the previous day: 16.8%
+- Average funding rate: -0.018%
+- Change in average funding rate vs the previous day, in percentage points: -2.0 pp
+VEREDICTOS RECIBIDOS
+- change in 24-hour trading volume vs the previous day: a strong uptrend
+NOTAS RECIBIDAS
+- s1 | Nimbex News | Withdrawals paused: The Nimbex exchange paused ETH withdrawals for 3 hours on Monday for maintenance.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+On November 14, 2026 Bitcoin surged to $110,582, a 7.8 % rise from the prior day, while the Fear & Greed Index leapt to 89, up 35 points, reflecting extreme market optimism.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras son correctas, pero surged/leapt y extreme market optimism agregan magnitud y una interpretación de sentimiento no presentes en los veredictos.
+
+Oración 2 (índice JSON 1)
+The 24‑hour trading volume accelerated to $30.4 billion, a 40.6 % increase over the previous day, and is judged to be in a strong uptrend.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Volumen, variación y veredicto de fuerte tendencia alcista expresamente dados.
+
+Oración 3 (índice JSON 2)
+Bitcoin’s market share settled at 43.5 % of total crypto capitalisation.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Market share de capitalización expresa el significado de la dominancia de bitcoin; 43,5 % está dado. Settled at se interpreta como nivel alcanzado.
+
+Oración 4 (índice JSON 3)
+Ether also posted robust gains, climbing 16.8 % to $8,631, even as the average funding rate slipped to –0.018 %, down 2.0 percentage points from yesterday.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras y direcciones coinciden, pero robust gains califica la subida del ether sin un veredicto para esa métrica.
+
+Oración 5 (índice JSON 4)
+Nimbex News reported that the Nimbex exchange paused ETH withdrawals for three hours on Monday for maintenance.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Reproduce fielmente la nota de Nimbex News.
+
+Oración 6 (índice JSON 5)
+The combined price advances and heightened trading activity suggest a pronounced bullish momentum across the leading assets.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La conclusión de pronounced bullish momentum generaliza una valoración que sólo se da para el volumen.
+
+Oración 7 (índice JSON 6)
+Investors should remain aware that the elevated Fear & Greed reading may signal heightened risk appetite.
+Veredicto: Error
+Tipos: Recomendación; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Recomienda una actitud a inversores y agrega una interpretación de apetito por riesgo que no se proporciona.
+
+================================================================================
+INFORME 25 — ID 7f8e087d
+Pampa Digital | septiembre de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Tiempo medio de resolución: 5,7 h
+- Variación del tiempo medio de resolución respecto del mes anterior: -3,6 %
+- Tickets resueltos: 10.700 tickets
+- Tickets resueltos en el mes anterior: 10.229 tickets
+- Variación de los tickets resueltos respecto del mes anterior: 4,6 %
+- Tiempo de primera respuesta: 16,3 h
+- Tiempo de primera respuesta en el mes anterior: 16,2 h
+- Variación del tiempo de primera respuesta respecto del mes anterior: 0,6 %
+- Tickets recibidos: 15.362 tickets
+- Tickets recibidos en el mes anterior: 15.148 tickets
+- Variación de los tickets recibidos respecto del mes anterior: 1,4 %
+VEREDICTOS RECIBIDOS
+- variación de los tickets recibidos respecto del mes anterior: estabilidad
+NOTAS RECIBIDAS
+- s1 | Ticket 8144 | La app no sincroniza: Usuarios de Android reportan que la app no sincroniza los pedidos desde la versión 3.2.4. Hay 11 reportes y el equipo móvil prepara un parche.
+- s2 | Ticket 6721 | Facturas con el impuesto equivocado: 6 clientes empresa de Asunción recibieron facturas con el impuesto equivocado. Finanzas está emitiendo las facturas de nuevo.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+En septiembre de 2026 el área de soporte de Pampa Digital mantuvo un desempeño sólido, resolviendo 10 700 tickets, lo que representa un aumento del 4,6 % frente al mes anterior, pese a que el volumen de tickets recibidos creció modestamente en un 1,4 % y se mantuvo estable.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La estabilidad de tickets recibidos sí está respaldada. Desempeño sólido del área es una valoración adicional sin respaldo.
+
+Oración 2 (índice JSON 1)
+El tiempo medio de resolución descendió a 5,7 horas, mejorando un 3,6 % respecto al mes previo, mientras que el tiempo de primera respuesta se mantuvo prácticamente constante en 16,3 horas, con una ligera variación del 0,6 %.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Los tiempos y variaciones coinciden. Prácticamente constante y ligera califican la primera respuesta sin un veredicto de estabilidad para esa métrica.
+
+Oración 3 (índice JSON 2)
+Entre los casos destacados, el ticket 8144 denunció que la app Android no sincroniza los pedidos desde la versión 3.2.4; el equipo móvil ya identificó 11 reportes y está trabajando en un parche.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Coinciden el ticket, Android, versión 3.2.4, los 11 reportes y el parche en preparación.
+
+Oración 4 (índice JSON 3)
+Asimismo, el ticket 6721 reportó que 6 clientes empresariales de Asunción recibieron facturas con el impuesto equivocado; el área de Finanzas está reemitiendo esas facturas corregidas.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Reproduce el caso de los seis clientes empresariales de Asunción y la reemisión de facturas por Finanzas.
+
+Oración 5 (índice JSON 4)
+Estos incidentes se están gestionando con prioridad para evitar que impacten la tendencia positiva observada en los indicadores clave del soporte.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las notas no indican que los incidentes tengan prioridad ni describen ese objetivo de gestión. Tendencia positiva de los indicadores es un juicio general añadido.
+
+================================================================================
+INFORME 26 — ID 593d27c2
+Ashgrove | the week of November 4–10, 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Customer satisfaction (CSAT): 68%
+- Customer satisfaction (CSAT) in the previous week: 66%
+- Change in customer satisfaction (CSAT) vs the previous week, in percentage points: 2 pp
+- Tickets received: 1,287 tickets
+- Tickets received in the previous week: 1,295 tickets
+- Change in tickets received vs the previous week: -0.6%
+- First response time: 5.2 h
+- First response time in the previous week: 5.1 h
+- Change in first response time vs the previous week: 2.0%
+- Open backlog: 261 tickets
+- Open backlog in the previous week: 221 tickets
+- Change in open backlog vs the previous week: 18.1%
+- Average resolution time: 5.0 h
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- s1 | Ticket 4282 | Invoices show the wrong tax: 5 business customers in Tampa received invoices with the wrong tax. Finance is reissuing them.
+- s2 | Ticket 7311 | Delayed emails: Confirmation emails arrive up to 8 hours late because the email provider throttled sending. Traffic was moved to a backup provider.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Support performance for the week of November 4–10 showed a modest improvement in customer satisfaction, rising to 68 % from 66 % the prior week—a 2‑point gain.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La mejora y sus cifras coinciden; modest califica su grado sin veredicto.
+
+Oración 2 (índice JSON 1)
+Ticket volume was essentially flat, with 1,287 tickets received, down 0.6 % from the previous week, indicating stable demand.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: La disminución de 0,6 % está dada, pero no hay veredicto que respalde essentially flat ni stable demand.
+
+Oración 3 (índice JSON 2)
+However, first‑response time slipped to 5.2 hours, a 2 % increase over last week’s 5.1 hours, and the open backlog expanded by 18.1 % to 261 tickets, suggesting pressure on handling capacity.
+Veredicto: Error
+Tipos: Causa sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: Las cifras y direcciones coinciden. La presión sobre la capacidad de atención es una explicación inferida del atraso, sin datos de capacidad. Dudosa la frontera entre explicación causal y juicio interpretativo.
+
+Oración 4 (índice JSON 3)
+Average resolution time remained steady at 5.0 hours.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Se da el tiempo de resolución de 5,0 horas, pero no el anterior; remained steady no está respaldado.
+
+Oración 5 (índice JSON 4)
+Notable incidents included Ticket 4282, where five business customers in Tampa received invoices with the wrong tax and finance is reissuing them, and Ticket 7311, where confirmation emails were delayed up to eight hours due to email‑provider throttling, prompting a switch to a backup provider.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Resume ambos tickets con cifras, entidades, causas y acciones que aparecen en las notas.
+
+Oración 6 (índice JSON 5)
+Addressing the growing backlog and the slight slowdown in response times should be priorities for the coming week.
+Veredicto: Error
+Tipos: Recomendación; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Recomienda prioridades para la próxima semana; slight califica además el empeoramiento de respuesta sin veredicto.
+
+================================================================================
+INFORME 27 — ID 669655a3
+Mesa Pampa Trading | el 3 de noviembre de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Tasa de financiamiento promedio: 0,045 %
+- Tasa de financiamiento promedio en el día anterior: 0,044 %
+- Variación de la tasa de financiamiento promedio respecto del día anterior, en puntos: 0,001 pp
+- Índice de miedo y codicia: 61
+- Índice de miedo y codicia en el día anterior: 77
+- Variación del índice de miedo y codicia respecto del día anterior: -16
+- Precio de ether (ETH): 4.170 USD
+- Precio de ether (ETH) en el día anterior: 4.155 USD
+- Variación del precio de ether (ETH) respecto del día anterior: 0,4 %
+- Dominancia de bitcoin: 59,7 %
+- Interés abierto en futuros: 5,1 mil millones USD
+VEREDICTOS RECIBIDOS
+- variación de la tasa de financiamiento promedio respecto del día anterior, en puntos: movimiento lateral
+NOTAS RECIBIDAS
+- s1 | Agenda de redes | Actualización de red: La red Telar activará la actualización «Faro» el 5 de mayo.
+- s2 | Orbita News | Retiros suspendidos: El exchange Orbita suspendió los retiros de ETH durante 6 horas el viernes por mantenimiento.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+El 3 de noviembre de 2026, la tasa de financiamiento promedio se ubicó en 0,045 %, lo que representa un leve incremento de 0,001 puntos básicos respecto a la jornada anterior.
+Veredicto: Error
+Tipos: Cifra equivocada
+Cifra calculada: No | Dudosa: No
+Nota: Confunde 0,001 puntos porcentuales con 0,001 puntos básicos. Un punto porcentual equivale a 100 puntos básicos.
+
+Oración 2 (índice JSON 1)
+Este cambio es caracterizado como un movimiento lateral, sugiriendo una estabilidad en las posiciones apalancadas que mantienen un interés abierto en futuros de 5,1 mil millones de dólares.
+Veredicto: Error
+Tipos: Juicio sin respaldo; Atribución equivocada
+Cifra calculada: No | Dudosa: No
+Nota: Movimiento lateral describe la tasa de financiamiento, no la estabilidad de posiciones apalancadas. No se da una comparación anterior del interés abierto.
+
+Oración 3 (índice JSON 2)
+El sentimiento del mercado mostró un ajustamiento significativo, ya que el índice de miedo y codicia descendió 16 puntos hasta situarse en 61, desde el 77 registrado previamente.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Los niveles y descenso del índice coinciden; significativo es una calificación de grado sin veredicto.
+
+Oración 4 (índice JSON 3)
+En el plano de precios, el ether operó a 4.170 USD, un modesto adelanto del 0,4 % frente a la cotización de 4.155 USD del día anterior.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La subida y las cifras coinciden, pero modesto no tiene veredicto que lo respalde.
+
+Oración 5 (índice JSON 4)
+La dominancia de bitcoin se mantuvo alta al alcanzar el 59,7 %, marcando la estructura del mercado.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Se da 59,7 %, pero no un dato previo de dominancia ni un veredicto que permita se mantuvo alta.
+
+Oración 6 (índice JSON 5)
+En cuanto a eventos operativos, el exchange Orbita suspendió los retiros de ETH durante seis horas el viernes por mantenimiento.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Coincide con la nota de Orbita News.
+
+Oración 7 (índice JSON 6)
+Asimismo, se informa que la red Telar activará la actualización «Faro» el 5 de mayo.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Repite la actualización de Telar según la Agenda de redes. Se conserva la fecha de la nota sin corregirla por el período del informe.
+
+Oración 8 (índice JSON 7)
+Estos elementos configuran el panorama actual para los clientes de Mesa Pampa Trading.
+Veredicto: Neutral
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Cierre expositivo que presenta los elementos como panorama; no agrega una afirmación verificable ni una valoración de resultados.
+
+================================================================================
+INFORME 28 — ID b1d0ab3e
+Lanternly | Q1 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Operating margin: 27.8%
+- Operating margin in the previous quarter: 30.1%
+- Change in operating margin vs the previous quarter, in percentage points: -2.3 pp
+- EBITDA: 1.8 billion USD
+- Cash and equivalents: 127.6 million USD
+- Cash and equivalents in the previous quarter: 124.6 million USD
+- Change in cash and equivalents vs the previous quarter: 2.4%
+- Revenue: 368.8 million USD
+- Change in revenue vs the previous quarter: -16.7%
+- Employees: 1,916 employees
+- Employees in the previous quarter: 1,877 employees
+- Change in employees vs the previous quarter: 2.1%
+VEREDICTOS RECIBIDOS
+- change in operating margin vs the previous quarter, in percentage points: a sharp drop
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Lanternly delivered an operating margin of 27.8% in Q1 2026, representing a sharp drop of 2.3 percentage points from the prior quarter’s 30.1%.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Repite valores del margen, su variación y el veredicto de caída pronunciada.
+
+Oración 2 (índice JSON 1)
+Despite the margin contraction, the company generated robust EBITDA of $1.8 billion, underscoring the underlying profitability of its core operations.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: El EBITDA de 1,8 mil millones está dado, pero no se califica como robusto.
+
+Oración 3 (índice JSON 2)
+Revenue declined to $368.8 million, a 16.7% decrease quarter‑over‑quarter, reflecting slower demand in key segments and heightened competitive pressure.
+Veredicto: Error
+Tipos: Causa sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay información sobre menor demanda en segmentos clave ni presión competitiva que explique la caída de ingresos.
+
+Oración 4 (índice JSON 3)
+Cash and equivalents modestly rose to $127.6 million, up 2.4% from $124.6 million, providing a modest cushion for working‑capital needs and strategic initiatives.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras de caja coinciden; modestly y su suficiencia como colchón para necesidades e iniciativas son valoraciones no dadas.
+
+Oración 5 (índice JSON 4)
+The workforce expanded to 1,916 employees, a 2.1% increase over the previous quarter, signaling continued investment in talent to support growth objectives.
+Veredicto: Error
+Tipos: Hecho inventado; Causa sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: El aumento de empleados está dado, pero no una inversión continuada en talento con objetivos de crecimiento que explique ese aumento.
+
+Oración 6 (índice JSON 5)
+Management is focusing on cost‑optimization and revenue‑recovery measures to restore margin stability while leveraging the strong cash position to fund targeted investments.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No se informan medidas de gestión, objetivos de recuperación ni inversiones específicas; strong cash position es un juicio añadido.
+
+================================================================================
+INFORME 29 — ID e724dc69
+Ashgrove | the week of November 4–10, 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Customer satisfaction (CSAT): 68%
+- Customer satisfaction (CSAT) in the previous week: 66%
+- Change in customer satisfaction (CSAT) vs the previous week, in percentage points: 2 pp
+- Tickets received: 1,287 tickets
+- Tickets received in the previous week: 1,295 tickets
+- Change in tickets received vs the previous week: -0.6%
+- First response time: 5.2 h
+- First response time in the previous week: 5.1 h
+- Change in first response time vs the previous week: 2.0%
+- Open backlog: 261 tickets
+- Open backlog in the previous week: 221 tickets
+- Change in open backlog vs the previous week: 18.1%
+- Average resolution time: 5.0 h
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- s1 | Ticket 4282 | Invoices show the wrong tax: 5 business customers in Tampa received invoices with the wrong tax. Finance is reissuing them.
+- s2 | Ticket 7311 | Delayed emails: Confirmation emails arrive up to 8 hours late because the email provider throttled sending. Traffic was moved to a backup provider.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Customer satisfaction improved by 2 percentage points to 68% for the week of November 4–10, 2026, marking a positive shift from the previous week's score.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: CSAT aumentó los dos puntos dados hasta 68 %. Positive shift describe la dirección favorable de la satisfacción, sin agregar un grado de mejora.
+
+Oración 2 (índice JSON 1)
+The total volume of tickets received remained stable at 1,287, representing a slight decrease of 0.6% compared to the prior period.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: La cifra y la caída de 0,6 % están explícitas, por lo que no se invierte la dirección. Remained stable y slight no tienen veredicto; dudosa por el sentido aproximado de estabilidad en un cambio pequeño.
+
+Oración 3 (índice JSON 2)
+While first response time increased marginally to 5.2 hours, a 2.0% change from the previous week's 5.1 hours, the average resolution time held steady at 5.0 hours.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No se aporta tiempo de resolución previo para held steady; marginally también califica el aumento de primera respuesta sin veredicto.
+
+Oración 4 (índice JSON 3)
+A significant concern is the 18.1% increase in open backlog, which rose from 221 to 261 tickets, indicating a growing accumulation of unresolved issues.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: El aumento del backlog está dado, pero significant concern agrega una valoración no proporcionada.
+
+Oración 5 (índice JSON 4)
+This backlog growth occurred despite the stable ticket intake, suggesting potential capacity constraints within the support team.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay veredicto de estabilidad de tickets ni datos que respalden restricciones de capacidad como explicación del backlog.
+
+Oración 6 (índice JSON 5)
+Specific incidents included five finance customers in Tampa receiving invoices with incorrect tax calculations, for which Finance is currently reissuing the documents.
+Veredicto: Error
+Tipos: Atribución equivocada
+Cifra calculada: No | Dudosa: Sí
+Nota: La nota dice cinco clientes empresariales (business customers), no clientes del sector financiero (finance customers). Dudosa si finance se usó de forma imprecisa como referencia al área que reemite las facturas.
+
+Oración 7 (índice JSON 6)
+Additionally, confirmation emails experienced delays of up to eight hours due to provider throttling, prompting a traffic shift to a backup provider to restore service.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: La demora de hasta ocho horas, la limitación del proveedor y el cambio a un proveedor de respaldo constan en la nota.
+
+Oración 8 (índice JSON 7)
+Operations managers should prioritize reducing the expanding backlog while maintaining the improved satisfaction levels.
+Veredicto: Error
+Tipos: Recomendación
+Cifra calculada: No | Dudosa: No
+Nota: Recomienda priorizar la reducción del backlog y mantener la satisfacción; los datos no piden esas acciones.
+
+================================================================================
+INFORME 30 — ID da7857fa
+Satstack Desk | November 14, 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Bitcoin (BTC) price: 110,582 USD
+- Bitcoin (BTC) price in the previous day: 102,541 USD
+- Change in bitcoin (BTC) price vs the previous day: 7.8%
+- Fear and greed index: 89
+- Fear and greed index in the previous day: 54
+- Change in fear and greed index vs the previous day: 35
+- 24-hour trading volume: 30.4 billion USD
+- 24-hour trading volume in the previous day: 21.6 billion USD
+- Change in 24-hour trading volume vs the previous day: 40.6%
+- Bitcoin dominance: 43.5%
+- Ether (ETH) price: 8,631 USD
+- Ether (ETH) price in the previous day: 7,392 USD
+- Change in ether (ETH) price vs the previous day: 16.8%
+- Average funding rate: -0.018%
+- Change in average funding rate vs the previous day, in percentage points: -2.0 pp
+VEREDICTOS RECIBIDOS
+- change in 24-hour trading volume vs the previous day: a strong uptrend
+NOTAS RECIBIDAS
+- s1 | Nimbex News | Withdrawals paused: The Nimbex exchange paused ETH withdrawals for 3 hours on Monday for maintenance.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+On November 14, 2026, the crypto market experienced a significant surge in both price and sentiment, marking one of the strongest days for subscribers to track.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No se aporta una comparación histórica para one of the strongest days ni un veredicto de magnitud sobre precio y sentimiento.
+
+Oración 2 (índice JSON 1)
+Bitcoin climbed 7.8% to $110,582, while Ether outperformed with a 16.8% gain to reach $8,631.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Precios y variaciones coinciden. Que ether suba más que bitcoin se deduce comparando los porcentajes dados, sin cálculo nuevo.
+
+Oración 3 (índice JSON 2)
+This bullish momentum was accompanied by a dramatic shift in market psychology, as the Fear and Greed Index jumped 35 points to 89, indicating extreme greed among investors.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Los números del índice son correctos; dramatic y extreme greed son interpretaciones sin veredicto o umbral proporcionado.
+
+Oración 4 (índice JSON 3)
+Trading activity intensified substantially, with 24-hour volume rising 40.6% to $30.4 billion, a trend analysts describe as a strong uptrend in market participation.
+Veredicto: Error
+Tipos: Hecho inventado
+Cifra calculada: No | Dudosa: No
+Nota: La fuerte tendencia alcista del volumen está en los datos, pero no se atribuye a analistas ni se informa que analistas la hayan descrito.
+
+Oración 5 (índice JSON 4)
+Notably, despite the sharp price increases, the average funding rate fell to -0.018%, suggesting that futures markets were not overleveraged for the rally.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La tasa negativa coincide. Sharp y la conclusión de que futuros no estaban sobreapalancados son valoraciones no dadas.
+
+Oración 6 (índice JSON 5)
+Bitcoin’s dominance remains steady at 43.5%, though the outsized gain in Ethereum hints at a broadening of risk appetite across altcoins.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay dominancia previa para remains steady ni datos de apetito por riesgo del conjunto de altcoins.
+
+Oración 7 (índice JSON 6)
+A brief operational hiccup occurred when the Nimbex exchange paused ETH withdrawals for three hours on Monday for maintenance, but this did not appear to douse the widespread optimism.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La pausa de retiros coincide con la nota. No se informa su efecto sobre el sentimiento ni un optimismo generalizado; brief también califica el incidente.
+
+Oración 8 (índice JSON 7)
+The combination of high volume and elevated sentiment suggests that momentum may persist, although investors should remain mindful of the rapid pace of recent gains.
+Veredicto: Error
+Tipos: Predicción sin respaldo; Recomendación; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Anticipa persistencia de momentum, aconseja cautela y añade valoraciones de volumen y sentimiento que no se proporcionan.
+
+================================================================================
+INFORME 31 — ID 873b17b9
+Kestrel Goods | Q3 2026
+Control de acuerdo indicado en el paquete: Sí.
+
+DATOS RECIBIDOS
+- Net income: -3.1 million USD
+- EBITDA: 292.9 million USD
+- EBITDA in the previous quarter: 198.9 million USD
+- Change in EBITDA vs the previous quarter: 47.2%
+- Cash and equivalents: 1.6 billion USD
+- Change in cash and equivalents vs the previous quarter: 1.9%
+- Net debt: 1.1 billion USD
+- Operating margin: 23.5%
+- Employees: 14,842 employees
+- Employees in the previous quarter: 13,139 employees
+- Change in employees vs the previous quarter: 13.0%
+VEREDICTOS RECIBIDOS
+- change in cash and equivalents vs the previous quarter: stability
+NOTAS RECIBIDAS
+- Ninguna.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Kestrel Goods reported a net loss of 3.1 million USD for the third quarter of 2026, despite strong operational performance.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La pérdida está respaldada; «strong operational performance» es una valoración sin veredicto.
+
+Oración 2 (índice JSON 1)
+EBITDA reached 292.9 million USD, representing a significant 47.2% increase from the previous quarter's 198.9 million USD.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras coinciden; «significant» agrega un grado sin veredicto.
+
+Oración 3 (índice JSON 2)
+The company maintained an operating margin of 23.5%, indicating robust core business profitability.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay margen anterior que respalde «maintained», ni veredicto que respalde «robust».
+
+Oración 4 (índice JSON 3)
+Cash and equivalents stood at 1.6 billion USD, reflecting a 1.9% increase compared to the prior quarter, which signifies stability in liquidity.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Cifras y veredicto de estabilidad de caja coinciden.
+
+Oración 5 (índice JSON 4)
+With net debt of 1.1 billion USD, the balance sheet remains manageable relative to cash reserves.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No se proporciona un criterio que permita calificar el balance como manejable.
+
+Oración 6 (índice JSON 5)
+Headcount expanded by 13.0% to 14,842 employees, up from 13,139 in the previous period.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Plantilla, valor anterior y variación coinciden.
+
+Oración 7 (índice JSON 6)
+This workforce growth suggests continued investment in operational capacity and market presence.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: El aumento de plantilla no demuestra inversiones continuadas en capacidad operativa ni presencia de mercado.
+
+================================================================================
+INFORME 32 — ID 7d4b1cce
+Marlow Supply | May 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Trial-to-paid conversion: 5.7%
+- Monthly churn: 1.4%
+- Monthly churn in the previous month: 1.1%
+- Change in monthly churn vs the previous month, in percentage points: 0.3 pp
+- Active users: 314 users
+- Active users in the previous month: 338 users
+- Change in active users vs the previous month: -7.1%
+- Customer acquisition cost (CAC): 1,199 USD
+- Change in customer acquisition cost (CAC) vs the previous month: 1.1%
+- Monthly recurring revenue (MRR): 159,554 USD
+- Monthly recurring revenue (MRR) in the previous month: 146,037 USD
+- Change in monthly recurring revenue (MRR) vs the previous month: 9.3%
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- s1 | Customer success note | Renewal: Avalon Schools renewed its contract for 3 years and added 104 seats.
+- s2 | Release notes | Version 4.11.2: Version 4.11.2, released on June 7, added single sign-on and a new usage dashboard.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+In May 2026 Marlow Supply’s trial‑to‑paid conversion stood at 5.7%, while monthly churn rose to 1.4%, a 0.3‑percentage‑point increase from the prior month’s 1.1% rate.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Conversión, churn y variación en puntos coinciden.
+
+Oración 2 (índice JSON 1)
+The active user base declined to 314, representing a 7.1% drop from the 338 users recorded in April.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Usuarios, descenso y mes previo se deducen del período y los datos.
+
+Oración 3 (índice JSON 2)
+Customer acquisition cost edged higher to $1,199, up 1.1% month‑over‑month, as monthly recurring revenue grew to $159,554, a 9.3% increase over the previous $146,037.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: «Edged higher» caracteriza como pequeño el aumento sin un veredicto que lo califique.
+
+Oración 4 (índice JSON 3)
+Avalon Schools renewed its contract for three years and added 104 seats, reinforcing the pipeline of recurring revenue.
+Veredicto: Error
+Tipos: Causa sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: La renovación y las 104 licencias están en la nota; su efecto sobre la cartera de ingresos recurrentes no está especificado.
+
+Oración 5 (índice JSON 4)
+The product team released Version 4.11.2 on June 7, which introduced single sign‑on and a new usage dashboard.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Fecha, versión y funcionalidades coinciden con las notas de la versión.
+
+Oración 6 (índice JSON 5)
+These developments together support a modest revenue expansion despite the dip in active users and a slight uptick in churn.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Atribuye la expansión a los desarrollos enumerados y la califica de modesta; también califica de leve la suba del churn sin veredicto.
+
+================================================================================
+INFORME 33 — ID e8d80891
+Pampa Digital | la semana del 6 al 12 de noviembre de 2026
+Control de acuerdo indicado en el paquete: Sí.
+
+DATOS RECIBIDOS
+- Tickets recibidos: 4.095 tickets
+- Tickets recibidos en la semana anterior: 4.237 tickets
+- Variación de los tickets recibidos respecto de la semana anterior: -3,4 %
+- Satisfacción del cliente (CSAT): 88 %
+- Satisfacción del cliente (CSAT) en la semana anterior: 87 %
+- Variación de la satisfacción del cliente (CSAT) respecto de la semana anterior, en puntos: 1 pp
+- Tickets resueltos: 12.316 tickets
+- Tickets resueltos en la semana anterior: 11.271 tickets
+- Variación de los tickets resueltos respecto de la semana anterior: 9,3 %
+- Escalamientos: 2
+- Variación de los escalamientos respecto de la semana anterior: -14,8 %
+- Tiempo medio de resolución: 31,6 h
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- s1 | Ticket 7791 | Falla el pago con tarjeta: Desde el martes, 39 clientes de Mendoza reportan que el pago con tarjeta falla con el error 402. El equipo de pagos revirtió la versión 5.4.1 el lunes y las fallas se detuvieron.
+- s2 | Ticket 6485 | La app no sincroniza: Usuarios de Android reportan que la app no sincroniza los pedidos desde la versión 5.4.1. Hay 39 reportes y el equipo móvil prepara un parche.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Durante la semana del 6 al 12 de noviembre de 2026 el área de soporte recibió 4 095 tickets, lo que representa una caída del 3,4 % respecto a la semana anterior (4 237 tickets).
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Tickets recibidos, dato anterior y variación coinciden.
+
+Oración 2 (índice JSON 1)
+La satisfacción del cliente (CSAT) mejoró ligeramente, alcanzando el 88 % frente al 87 % previo, con un aumento de 1 punto porcentual.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras coinciden, pero «ligeramente» agrega un grado sin veredicto.
+
+Oración 3 (índice JSON 2)
+Se resolvieron 12 316 tickets, un crecimiento del 9,3 % frente a los 11 271 de la semana pasada, lo que indica una mayor eficacia del equipo.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Resolver más tickets no demuestra por sí solo una mayor eficacia del equipo.
+
+Oración 4 (índice JSON 3)
+Los escalamientos se redujeron a 2, una disminución del 14,8 % respecto a la semana anterior, reflejando una mejor gestión en primera línea.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La disminución de escalamientos no demuestra una mejor gestión en primera línea.
+
+Oración 5 (índice JSON 4)
+El tiempo medio de resolución se mantuvo en 31,6 horas, dentro de los parámetros esperados para nuestra operación.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay tiempo previo que respalde «se mantuvo» ni parámetros esperados en los datos.
+
+Oración 6 (índice JSON 5)
+En el caso del ticket 7791, 39 clientes de Mendoza reportaron fallas de pago con tarjeta (error 402) desde el martes; el equipo de pagos revirtió la versión 5.4.1 el lunes y la incidencia se detuvo.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Reproduce la nota, incluso su secuencia de días; no se corrige la fuente.
+
+Oración 7 (índice JSON 6)
+Por otro lado, el ticket 6485 indica que 39 usuarios de Android experimentaron problemas de sincronización de pedidos con la versión 5.4.1; el equipo móvil está preparando un parche para corregir la anomalía.
+Veredicto: Error
+Tipos: Atribución equivocada
+Cifra calculada: No | Dudosa: Sí
+Nota: La nota informa 39 reportes, no 39 usuarios distintos; podrían existir varios reportes de una misma persona.
+
+================================================================================
+INFORME 34 — ID 7054183b
+Kestrel Goods | Q1 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Units sold: 33,623 units
+- Change in units sold vs the previous quarter: -19.9%
+- Revenue: 10 million EUR
+- Online orders: 37,225 orders
+- Online orders in the previous quarter: 36,537 orders
+- Change in online orders vs the previous quarter: 1.9%
+- New customers: 506 customers
+- New customers in the previous quarter: 539 customers
+- Change in new customers vs the previous quarter: -6.1%
+- Average order value: 50.43 EUR
+- Average order value in the previous quarter: 51.35 EUR
+- Change in average order value vs the previous quarter: -1.8%
+- Return rate: 5.8%
+- Change in return rate vs the previous quarter, in percentage points: -1.9 pp
+VEREDICTOS RECIBIDOS
+- change in units sold vs the previous quarter: a sharp drop
+NOTAS RECIBIDAS
+- s1 | Sales team note | Seasonal campaign: The Spring Reset campaign started on January 3 in Bristol and Portland, with discounts of up to 40% on home goods.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+In Q1 2026 Kestrel Goods sold 33,623 units, generating revenue of €10 million.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Período, unidades e ingresos coinciden.
+
+Oración 2 (índice JSON 1)
+This represents a sharp drop of 19.9 % in units sold compared with the previous quarter.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: La caída y el calificativo sharp drop están explícitos en datos y veredicto.
+
+Oración 3 (índice JSON 2)
+Online orders increased modestly by 1.9 % to 37,225, while new customers fell by 6.1 % to 506 and the average order value slipped to €50.43, a 1.8 % decline.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: «Modestly» no cuenta con un veredicto de magnitud; las cifras y direcciones sí coinciden.
+
+Oración 4 (índice JSON 3)
+The return rate improved, decreasing to 5.8 %, which is 1.9 percentage points lower than the prior quarter.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: La tasa de devoluciones y su disminución en puntos coinciden; improved expresa la dirección favorable.
+
+Oración 5 (índice JSON 4)
+The Spring Reset campaign, launched on 3 January in Bristol and Portland with discounts of up to 40 % on home goods, contributed to the modest rise in online orders.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La nota no atribuye el aumento de pedidos a la campaña ni lo califica de modesto.
+
+Oración 6 (índice JSON 5)
+Nevertheless, the overall unit‑sale decline and lower customer acquisition indicate that the campaign was not sufficient to offset the broader downward trend.
+Veredicto: Error
+Tipos: Causa sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: Que las ventas hayan bajado no demuestra qué efecto tuvo la campaña ni cuánto pudo compensar.
+
+================================================================================
+INFORME 35 — ID 06a1c5ae
+Satstack Desk | the week of October 10–16, 2026
+Control de acuerdo indicado en el paquete: Sí.
+
+DATOS RECIBIDOS
+- Bitcoin (BTC) price: 25,158 USD
+- Bitcoin (BTC) price in the previous week: 29,493 USD
+- Change in bitcoin (BTC) price vs the previous week: -14.7%
+- 24-hour trading volume: 97.7 billion USD
+- Futures open interest: 67.3 billion USD
+- Futures open interest in the previous week: 64.7 billion USD
+- Change in futures open interest vs the previous week: 4.0%
+- Fear and greed index: 15
+- Fear and greed index in the previous week: 20
+- Change in fear and greed index vs the previous week: -5
+- Ether (ETH) price: 3,664 USD
+- Ether (ETH) price in the previous week: 3,139 USD
+- Change in ether (ETH) price vs the previous week: 16.7%
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- s1 | Network calendar | Network upgrade: The Telar network will activate the Beacon upgrade on June 5.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+Bitcoin fell sharply this week, closing at $25,158, a 14.7% decline from the prior week’s $29,493 level, while 24‑hour spot trading volume remained robust at $97.7 billion.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: Los datos no identifican un precio de cierre ni volumen spot; no hay volumen previo para remained ni veredictos para sharply/robust.
+
+Oración 2 (índice JSON 1)
+Despite the price drop, futures open interest rose modestly by 4.0% to $67.3 billion, suggesting that leveraged participants are still positioning for further moves.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay veredicto para modestly ni información sobre intenciones de operadores apalancados.
+
+Oración 3 (índice JSON 2)
+The Fear & Greed Index slipped to 15 from 20, indicating extreme fear in the market and a potential buying opportunity for risk‑tolerant investors.
+Veredicto: Error
+Tipos: Juicio sin respaldo; Recomendación
+Cifra calculada: No | Dudosa: No
+Nota: No se aporta umbral de miedo extremo ni respaldo para presentar una oportunidad de compra.
+
+Oración 4 (índice JSON 3)
+Ether outperformed, gaining 16.7% to $3,664, reflecting continued strength in the smart‑contract ecosystem and a possible shift of capital from Bitcoin to altcoins.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La fortaleza del ecosistema y el traslado de capital desde bitcoin hacia altcoins no se desprenden de las cotizaciones.
+
+Oración 5 (índice JSON 4)
+The divergence between Bitcoin’s weakness and Ether’s rally underscores a reallocation trend that traders should monitor closely.
+Veredicto: Error
+Tipos: Hecho inventado; Recomendación
+Cifra calculada: No | Dudosa: No
+Nota: La divergencia de precios no demuestra una tendencia de reasignación de capital; además aconseja vigilarla.
+
+Oración 6 (índice JSON 5)
+With sentiment at a low point, downside risk may be capped, but volatility is likely to persist as market participants react to the price correction.
+Veredicto: Error
+Tipos: Predicción sin respaldo; Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Pronostica un piso de riesgo y volatilidad persistente, vinculándolos al sentimiento y a reacciones futuras; low point añade una valoración sin respaldo.
+
+Oración 7 (índice JSON 6)
+Finally, note that the Telar network’s Beacon upgrade is scheduled for activation on June 5, a development that could introduce additional liquidity and network effects later in the year.
+Veredicto: Error
+Tipos: Predicción sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La actualización y su fecha están en la nota; sus posibles efectos en liquidez y red no.
+
+================================================================================
+INFORME 36 — ID 3d1d3787
+Pampa Digital | septiembre de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Tiempo medio de resolución: 5,7 h
+- Variación del tiempo medio de resolución respecto del mes anterior: -3,6 %
+- Tickets resueltos: 10.700 tickets
+- Tickets resueltos en el mes anterior: 10.229 tickets
+- Variación de los tickets resueltos respecto del mes anterior: 4,6 %
+- Tiempo de primera respuesta: 16,3 h
+- Tiempo de primera respuesta en el mes anterior: 16,2 h
+- Variación del tiempo de primera respuesta respecto del mes anterior: 0,6 %
+- Tickets recibidos: 15.362 tickets
+- Tickets recibidos en el mes anterior: 15.148 tickets
+- Variación de los tickets recibidos respecto del mes anterior: 1,4 %
+VEREDICTOS RECIBIDOS
+- variación de los tickets recibidos respecto del mes anterior: estabilidad
+NOTAS RECIBIDAS
+- s1 | Ticket 8144 | La app no sincroniza: Usuarios de Android reportan que la app no sincroniza los pedidos desde la versión 3.2.4. Hay 11 reportes y el equipo móvil prepara un parche.
+- s2 | Ticket 6721 | Facturas con el impuesto equivocado: 6 clientes empresa de Asunción recibieron facturas con el impuesto equivocado. Finanzas está emitiendo las facturas de nuevo.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+En septiembre de 2026, el equipo de soporte de Pampa Digital resolvió 10.700 tickets, una cifra que representa un aumento del 4,6% respecto a los 10.229 gestionados el mes anterior.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Cantidad resuelta, valor previo y porcentaje coinciden.
+
+Oración 2 (índice JSON 1)
+La cantidad total de tickets recibidos fue de 15.362, lo que supone un incremento del 1,4% en comparación con los 15.148 del período previo, una variación que se considera estabilidad.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Cifras y veredicto de estabilidad coinciden.
+
+Oración 3 (índice JSON 2)
+El tiempo medio de resolución mejoró al situarse en 5,7 horas, reflejando una disminución del 3,6% frente al mes anterior.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: El tiempo disminuye según los datos; mejoró expresa esa dirección favorable sin agregar magnitud.
+
+Oración 4 (índice JSON 3)
+No obstante, el tiempo de primera respuesta experimentó un ligero aumento del 0,6%, pasando de 16,2 a 16,3 horas.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras coinciden, pero ligero no tiene un veredicto que lo respalde.
+
+Oración 5 (índice JSON 4)
+Entre los incidentes destacados, el ticket 8144 reportó que la app no sincroniza pedidos en Android desde la versión 3.2.4, acumulando 11 reportes mientras el equipo móvil prepara un parche.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Resume fielmente el ticket 8144.
+
+Oración 6 (índice JSON 5)
+Por su parte, el ticket 6721 señaló que seis clientes empresa de Asunción recibieron facturas con el impuesto equivocado.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Resume fielmente el ticket 6721.
+
+Oración 7 (índice JSON 6)
+En este último caso, el área de Finanzas se encuentra emitiendo nuevamente las facturas afectadas.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: La reemisión por Finanzas está en la nota.
+
+Oración 8 (índice JSON 7)
+El desempeño general del área muestra una mejora en la eficiencia de resolución a pesar de un leve aumento en los tiempos de contacto inicial.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Leve no tiene veredicto; además generaliza los cambios como una mejora de eficiencia del área.
+
+================================================================================
+INFORME 37 — ID 5b9fba92
+Lumbre | marzo de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Clientes nuevos: 8 clientes
+- Costo de adquisición de clientes (CAC): 606 USD
+- Usuarios activos: 215.160 usuarios
+- Conversión de prueba a pago: 21,3 %
+- Retención neta de ingresos (NRR): 123 %
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- s1 | Nota de éxito del cliente | Renovación: Clínicas Moreno renovó su contrato por 3 años y sumó 257 licencias.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+En marzo de 2026, Lumbre incorporó 8 clientes nuevos, manteniendo un costo de adquisición de clientes de 606 USD.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay CAC anterior que respalde manteniendo.
+
+Oración 2 (índice JSON 1)
+La base de usuarios activos alcanzó los 215 160, evidenciando la escala de la plataforma.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: Sí
+Nota: La cifra de usuarios describe la escala sin calificarla explícitamente como grande o pequeña; caso limítrofe por el matiz valorativo de evidenciando.
+
+Oración 3 (índice JSON 2)
+La tasa de conversión de pruebas a suscripciones pagas se situó en 21,3 %, reflejando una buena adopción del producto.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La cifra coincide, pero buena adopción es una valoración sin respaldo.
+
+Oración 4 (índice JSON 3)
+El índice de retención neta de ingresos (NRR) superó el 100 %, alcanzando un 123 %, lo que indica crecimiento orgánico en los ingresos existentes.
+Veredicto: Error
+Tipos: Hecho inventado
+Cifra calculada: No | Dudosa: Sí
+Nota: NRR superior a 100 % respalda expansión neta de ingresos de la base existente; orgánico añade una naturaleza de crecimiento que los datos no explicitan. Dudosa porque podría usarse simplemente como paráfrasis de expansión de esa base.
+
+Oración 5 (índice JSON 4)
+Además, la cuenta de Clínicas Moreno renovó su contrato por tres años, añadiendo 257 licencias al portafolio.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Renovación, duración y licencias coinciden con la nota.
+
+Oración 6 (índice JSON 5)
+Estos indicadores combinados demuestran un desempeño sólido y sostenible para Lumbre en el periodo reportado.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Sólido y sostenible no figuran en los datos ni en un veredicto.
+
+================================================================================
+INFORME 38 — ID 0ae2c6ef
+Marlow Supply | May 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Trial-to-paid conversion: 5.7%
+- Monthly churn: 1.4%
+- Monthly churn in the previous month: 1.1%
+- Change in monthly churn vs the previous month, in percentage points: 0.3 pp
+- Active users: 314 users
+- Active users in the previous month: 338 users
+- Change in active users vs the previous month: -7.1%
+- Customer acquisition cost (CAC): 1,199 USD
+- Change in customer acquisition cost (CAC) vs the previous month: 1.1%
+- Monthly recurring revenue (MRR): 159,554 USD
+- Monthly recurring revenue (MRR) in the previous month: 146,037 USD
+- Change in monthly recurring revenue (MRR) vs the previous month: 9.3%
+VEREDICTOS RECIBIDOS
+- Ninguno.
+NOTAS RECIBIDAS
+- s1 | Customer success note | Renewal: Avalon Schools renewed its contract for 3 years and added 104 seats.
+- s2 | Release notes | Version 4.11.2: Version 4.11.2, released on June 7, added single sign-on and a new usage dashboard.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+May 2026 delivered strong revenue growth for Marlow Supply, with Monthly Recurring Revenue (MRR) increasing by 9.3% to $159,554, a significant jump from the previous month's $146,037.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Las cifras coinciden; strong y significant no cuentan con veredicto.
+
+Oración 2 (índice JSON 1)
+This financial expansion was bolstered by a major strategic win, as Avalon Schools committed to a three-year contract renewal while expanding their footprint by 104 additional seats.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La nota no atribuye el crecimiento de MRR a la renovación ni la califica de major strategic win.
+
+Oración 3 (índice JSON 2)
+Despite this top-line success, the user base contracted by 7.1%, leaving 314 active users compared to 338 in April, which suggests a shift toward higher-value accounts rather than broad net addition.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Los datos no describen un cambio hacia cuentas de mayor valor; top-line success añade una valoración.
+
+Oración 4 (índice JSON 3)
+Consequently, monthly churn rose from 1.1% to 1.4%, marking a 0.3 percentage point increase that warrants close monitoring to protect the customer base.
+Veredicto: Error
+Tipos: Causa sin respaldo; Recomendación
+Cifra calculada: No | Dudosa: No
+Nota: Consequently agrega una relación causal no documentada; warrants close monitoring recomienda una acción.
+
+Oración 5 (índice JSON 4)
+On the acquisition front, Customer Acquisition Cost (CAC) remained relatively stable at $1,199, reflecting a modest 1.1% month-over-month increase that aligns with typical inflationary pressures in marketing spend.
+Veredicto: Error
+Tipos: Causa sin respaldo; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Stable/modest no tienen veredicto; no se aportan datos de inflación del gasto de marketing que expliquen o contextualicen el CAC.
+
+Oración 6 (índice JSON 5)
+The trial-to-paid conversion rate stood at 5.7%, indicating a consistent pipeline efficiency that supports sustainable growth without excessive discounting.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo; Causa sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay conversión anterior, datos sobre descuentos ni veredicto de eficiencia constante o crecimiento sostenible. También afirma sin respaldo que esa eficiencia sostiene el crecimiento.
+
+Oración 7 (índice JSON 6)
+Looking ahead, the recent release of Version 4.11.2, which introduced single sign-on and an enhanced usage dashboard, is poised to improve product stickiness and potentially reverse the trend in user count.
+Veredicto: Error
+Tipos: Hecho inventado; Predicción sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: La nota dice un panel nuevo, no un panel mejorado; anticipa efectos en retención y usuarios. Recent en un informe de mayo con una versión de junio también plantea una duda temporal.
+
+Oración 8 (índice JSON 7)
+In summary, while the revenue trajectory is favorable, management must prioritize retention efforts to offset the rising churn and ensure long-term stability.
+Veredicto: Error
+Tipos: Recomendación; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Recomienda priorizar la retención para conseguir estabilidad a largo plazo y califica la trayectoria de ingresos de favorable sin un veredicto que la evalúe.
+
+================================================================================
+INFORME 39 — ID bb31c6fd
+Corvina Labs | enero de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Tasa de devoluciones: 2,8 %
+- Tasa de devoluciones en el mes anterior: 1,9 %
+- Variación de la tasa de devoluciones respecto del mes anterior, en puntos: 0,9 pp
+- Pedidos online: 1.702 pedidos
+- Pedidos online en el mes anterior: 1.879 pedidos
+- Variación de los pedidos online respecto del mes anterior: -9,4 %
+- Unidades vendidas: 18.726 unidades
+- Unidades vendidas en el mes anterior: 30.092 unidades
+- Variación de las unidades vendidas respecto del mes anterior: -37,8 %
+- Ticket promedio: 99,92 USD
+- Ticket promedio en el mes anterior: 113,05 USD
+- Variación del ticket promedio respecto del mes anterior: -11,6 %
+- Conversión web: 1,2 %
+- Conversión web en el mes anterior: 1,1 %
+- Variación de la conversión web respecto del mes anterior, en puntos: 0,1 pp
+VEREDICTOS RECIBIDOS
+- variación de la conversión web respecto del mes anterior, en puntos: estabilidad
+NOTAS RECIBIDAS
+- s1 | Informe de logística | Demoras en entregas: Durante 4 días hubo demoras en las entregas a Rosario por un problema con el operador Envíos Delta.
+- s2 | Nota del equipo comercial | Campaña de temporada: La campaña «Días Calientes» empezó el 23 de marzo en Rosario y Medellín, con descuentos de hasta 40 % en la categoría hogar.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+En enero de 2026 la tasa de devoluciones de Corvina Labs se situó en 2,8 %, lo que representa un incremento de 0,9 pp respecto al mes anterior.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Tasa, aumento y unidad de puntos coinciden.
+
+Oración 2 (índice JSON 1)
+Los pedidos online descendieron 9,4 % y alcanzaron los 1.702, mientras que las unidades vendidas bajaron 37,8 % hasta 18.726, acompañadas de una reducción del ticket promedio de 11,6 % (99,92 USD).
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Todas las cifras y direcciones coinciden.
+
+Oración 3 (índice JSON 2)
+La conversión web mostró una ligera mejora, situándose en 1,2 % (variación de 0,1 pp) y se califica como estable.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: Sí
+Nota: Las cifras y el veredicto estable coinciden. Se acepta ligera mejora como dirección positiva de 0,1 pp compatible con una magnitud pequeña de estabilidad; dudosa por la frontera entre dirección y grado del veredicto.
+
+Oración 4 (índice JSON 3)
+Durante cuatro días se registraron demoras en las entregas a Rosario por un problema con el operador Envíos Delta.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Duración, lugar y causa de las demoras coinciden con la nota.
+
+Oración 5 (índice JSON 4)
+El equipo comercial informó que la campaña de temporada «Días Calientes», con descuentos de hasta 40 % en la categoría hogar, se lanzó el 23 de marzo en Rosario y Medellín.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Nombre, fecha, lugares y descuento coinciden con la nota; se conserva la fecha de la fuente aunque sea posterior al período.
+
+Oración 6 (índice JSON 5)
+Estas observaciones deben considerarse al planificar ajustes operativos y de marketing para los próximos períodos.
+Veredicto: Error
+Tipos: Recomendación
+Cifra calculada: No | Dudosa: No
+Nota: Indica cómo deberían usarse las observaciones para planificar acciones futuras.
+
+================================================================================
+INFORME 40 — ID d4390ded
+Mesa Pampa Trading | el 3 de noviembre de 2026
+Control de acuerdo indicado en el paquete: No.
+
+DATOS RECIBIDOS
+- Tasa de financiamiento promedio: 0,045 %
+- Tasa de financiamiento promedio en el día anterior: 0,044 %
+- Variación de la tasa de financiamiento promedio respecto del día anterior, en puntos: 0,001 pp
+- Índice de miedo y codicia: 61
+- Índice de miedo y codicia en el día anterior: 77
+- Variación del índice de miedo y codicia respecto del día anterior: -16
+- Precio de ether (ETH): 4.170 USD
+- Precio de ether (ETH) en el día anterior: 4.155 USD
+- Variación del precio de ether (ETH) respecto del día anterior: 0,4 %
+- Dominancia de bitcoin: 59,7 %
+- Interés abierto en futuros: 5,1 mil millones USD
+VEREDICTOS RECIBIDOS
+- variación de la tasa de financiamiento promedio respecto del día anterior, en puntos: movimiento lateral
+NOTAS RECIBIDAS
+- s1 | Agenda de redes | Actualización de red: La red Telar activará la actualización «Faro» el 5 de mayo.
+- s2 | Orbita News | Retiros suspendidos: El exchange Orbita suspendió los retiros de ETH durante 6 horas el viernes por mantenimiento.
+ORACIONES Y RESULTADOS
+
+Oración 1 (índice JSON 0)
+El 3 de noviembre de 2026 la tasa de financiamiento promedio se ubicó en 0,045 %, ligeramente superior a los 0,044 % del día anterior, reflejando un movimiento lateral con un incremento de 0,001 puntos porcentuales.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Cifras y veredicto de movimiento lateral coinciden; ligeramente es compatible con ese veredicto.
+
+Oración 2 (índice JSON 1)
+El índice de miedo y codicia cayó a 61, frente a 77 del día previo, una variación de –16 que indica un mayor nerviosismo entre los participantes del mercado.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: Los valores 77, 61 y −16 están dados. Mayor nerviosismo interpreta la escala del índice, que no se define en los datos ni se acompaña de un veredicto; dudosa porque la definición usual del índice permitiría esa lectura.
+
+Oración 3 (índice JSON 2)
+Ether (ETH) cotizó a 4.170 USD, un avance del 0,4 % respecto al cierre anterior, mientras la dominancia de Bitcoin se mantuvo en torno al 59,7 %.
+Veredicto: Error
+Tipos: Hecho inventado; Juicio sin respaldo
+Cifra calculada: No | Dudosa: Sí
+Nota: La cotización previa no está identificada como cierre; tampoco hay dominancia previa que respalde se mantuvo.
+
+Oración 4 (índice JSON 3)
+El interés abierto en contratos de futuros alcanzó los 5,1 mil millones de USD, señal de que los traders continúan manteniendo posiciones significativas.
+Veredicto: Error
+Tipos: Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: No hay comparación que respalde continúan ni veredicto que califique las posiciones como significativas.
+
+Oración 5 (índice JSON 4)
+En el ámbito de infraestructura, la red Telar anunciará la activación de la actualización «Faro» el próximo 5 de mayo, lo que podría mejorar la capacidad de procesamiento.
+Veredicto: Error
+Tipos: Contradice una fuente; Predicción sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: La nota dice activará el 5 de mayo, no anunciará la activación ese día; el posible efecto en procesamiento no figura.
+
+Oración 6 (índice JSON 5)
+Por otro lado, el exchange Orbita suspendió los retiros de ETH durante seis horas el viernes para realizar tareas de mantenimiento.
+Veredicto: Correcta
+Tipos: —
+Cifra calculada: No | Dudosa: No
+Nota: Activo, duración, día y motivo de suspensión coinciden con la nota.
+
+Oración 7 (índice JSON 6)
+Mantenerse atento a estos eventos será clave para gestionar el riesgo y aprovechar oportunidades en el mercado cripto.
+Veredicto: Error
+Tipos: Recomendación; Juicio sin respaldo
+Cifra calculada: No | Dudosa: No
+Nota: Recomienda mantenerse atento y califica esa conducta de clave sin respaldo.
