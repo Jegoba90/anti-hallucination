@@ -13,10 +13,16 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# The package from this checkout, with the [server] extra; the sources go once installed.
+# Debian's fixes published since the base image was built. Each release
+# builds the image again, so it gets the ones published since the last.
+RUN apt-get update     && apt-get upgrade -y     && rm -rf /var/lib/apt/lists/*
+
+# The package from this checkout, with the [server] extra; the sources go once
+# installed, and so does pip: the service installs nothing, and the packages
+# pip vendors (urllib3, msgpack, setuptools' pkg_resources) carry known CVEs.
 COPY pyproject.toml README.md LICENSE /tmp/src/
 COPY antihallucination /tmp/src/antihallucination
-RUN pip install "/tmp/src[server]" && rm -rf /tmp/src
+RUN pip install "/tmp/src[server]"     && rm -rf /tmp/src     && pip uninstall -y pip
 
 RUN useradd --system --no-create-home --uid 10001 service
 USER service
