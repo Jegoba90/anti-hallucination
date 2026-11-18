@@ -29,6 +29,7 @@ from starlette.testclient import TestClient  # noqa: E402
 
 from antihallucination import __version__  # noqa: E402
 from antihallucination.cli import main  # noqa: E402
+from antihallucination import http_server  # noqa: E402
 from antihallucination.http_server import Limits, create_app  # noqa: E402
 
 _ROOT = Path(__file__).resolve().parents[1]
@@ -160,11 +161,24 @@ class TestTheRestApi:
         assert len(response.content) < 200
 
     @pytest.mark.parametrize("route", ["/v1/verify", "/v1/receipt"])
-    def test_a_body_nested_too_deeply_is_refused(self, client: TestClient, route: str) -> None:
-        # 200 KB of brackets: past what json can read, which used to give 500.
-        body = '{"receipt": %s, "text": "x", "data": %s}' % ("[" * 50000 + "]" * 50000, "{}")
+    def test_a_body_nested_too_deeply_is_not_a_server_error(self, client: TestClient, route: str) -> None:
+        # 200 KB of brackets used to give 500. Whether json can read them depends
+        # on the platform's stack: if not, «nested too deeply»; if so, the key.
+        body = '{"x": %s}' % ("[" * 100000 + "]" * 100000)
 
         response = client.post(route, content=body, headers={"Content-Type": "application/json"})
+
+        assert response.status_code == 400
+
+    def test_running_out_of_stack_is_a_bad_request(self, client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+        class TooDeep:
+            @staticmethod
+            def loads(*args: object, **kwargs: object) -> object:
+                raise RecursionError("maximum recursion depth exceeded")
+
+        monkeypatch.setattr(http_server, "json", TooDeep)
+
+        response = client.post("/v1/verify", json={"text": "x", "data": {}})
 
         assert response.status_code == 400
         assert response.json() == {"error": "the body is nested too deeply"}
