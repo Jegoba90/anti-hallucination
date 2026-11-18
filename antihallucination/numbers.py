@@ -6,15 +6,17 @@ is a thousand two hundred and fifty in one and one and a quarter in the other.
 Each figure becomes the set of readings it can have, with the precision it was
 written to, and a reading matches a fact when the fact rounds to it.
 
-A token that glues digits to letters («Q3», «COVID-19», «5G») is not a
-quantity: it is checked as written, like a name.
+A token that glues digits to letters («Q3», «COVID-19», «5G»), or digits that
+cannot be a number («3.2.4», a version), is not a quantity: it is checked as
+written, like a name. Thousands may also be grouped with the typographic
+spaces (narrow, no-break or thin: «83 662»), never with a plain space.
 """
 
 import re
 from bisect import bisect_right
 from dataclasses import dataclass
 from functools import lru_cache
-from decimal import MAX_EMAX, MAX_PREC, MIN_EMIN, Context, Decimal, InvalidOperation
+from decimal import MAX_EMAX, MAX_PREC, MIN_EMIN, ROUND_HALF_UP, Context, Decimal, InvalidOperation
 
 LOCALES = ("es", "en", "auto")
 # Products and differences without rounding, whatever the caller's context:
@@ -68,9 +70,12 @@ _SCALE_SUFFIXES: dict[str, int] = {
 # millions: the false friend reads as what each language says, as it should.
 
 _SCALE_WORD_RE = "|".join(pattern for pattern, _ in _SCALE_WORDS)
+# The spaces typography groups thousands with: narrow no-break, no-break, thin.
+_GROUP_SPACES = "\u202f\u00a0\u2009"
 _NUMBER_RE = re.compile(
     r"(?P<sign>[-+−])?"
-    r"(?P<digits>\d+(?:[.,]\d+)*)"
+    # A group of three, and no fourth digit: «3 2026» is two figures, both checked.
+    r"(?P<digits>\d{1,3}(?:[" + _GROUP_SPACES + r"]\d{3})+(?!\d)(?:[.,]\d+)?|\d+(?:[.,]\d+)*)"
     r"(?:(?P<suffix>MM|mn|bn|tn|[kKMBT])(?![^\W_])"
     r"|\s?(?P<scale>(?i:" + _SCALE_WORD_RE + r"))(?![^\W_]))?"
     r"(?P<percent>\s?(?:%|(?i:por\s+ciento|percent|pct)\b))?"
@@ -138,11 +143,15 @@ def _scale_of(word: str) -> int:
 
 def _significant(digits: str) -> int:
     """Digits written, leading zeros aside: «0,05» has one, «1.250» four."""
-    return len(re.sub(r"[.,]", "", digits).lstrip("0"))
+    return len(re.sub(r"[.,\s]", "", digits).lstrip("0"))
 
 
 def _digit_readings(digits: str, locale: str) -> list[tuple[Decimal, int]]:
     """(value, decimals written) for each way `digits` can be read."""
+    if any(space in digits for space in _GROUP_SPACES):
+        # Spaces group the thousands, so a mark after them is the decimal one.
+        head, _, tail = re.sub(r"\s", "", digits).replace(",", ".").partition(".")
+        return [(Decimal(f"{head}.{tail}" if tail else head), len(tail))]
     dots, commas = digits.count("."), digits.count(",")
     try:
         if not dots and not commas:
@@ -245,6 +254,12 @@ def extract(text: str, locale: str = "auto") -> list[Mention]:
             )
             for value, decimals in _digit_readings(match.group("digits"), locale)
         )
+        if not readings:  # «3.2.4»: no number reads that way, so it is written like a name
+            mentions.append(
+                Mention(raw=match.group("digits"), start=digits_start, end=match.end("digits"), readings=(), identifier=True)
+            )
+            spans.append((start, end))
+            continue
         mentions.append(
             Mention(
                 raw=text[start:end].strip(),
@@ -321,23 +336,35 @@ def backed_by_values(mention: Mention, values: frozenset[Decimal]) -> bool:
     return any(reading.value in values for reading in mention.readings)
 
 
-def match_fact(mention: Mention, value: Decimal, percent: bool) -> str | None:
+def match_fact(mention: Mention, value: Decimal, percent: bool, decimals: int | None = None) -> str | None:
     """How a figure matches a fact, rounding the fact to the written precision.
 
     "exact": same value and sign. "abs": the text dropped the sign of a negative
     fact, which a word like «cayeron» may carry. "sign": the text wrote the
     opposite sign. None: another number.
+
+    decimals: how many decimals Python writes the fact with. A figure written
+    to exactly that precision is the fact as Python writes it, even with one
+    significant digit: 0.76 % written with one decimal is «0,8 %».
     """
     if mention.identifier or (mention.percent and not percent):
         return None
     found: str | None = None
     for reading in mention.readings:
         tolerance = Decimal(0) if reading.exact_only else reading.step / 2
+        target = value
+        if (
+            reading.exact_only
+            and decimals is not None
+            and reading.value == reading.unscaled
+            and reading.step == Decimal(1).scaleb(-decimals)
+        ):
+            target = value.quantize(reading.step, rounding=ROUND_HALF_UP, context=_UNROUNDED)
         written = reading.value.copy_negate() if mention.negative else reading.value
         # Unrounded: abs() and a subtraction in the caller's context would
         # round a long figure to its 28 digits, and a wrong one could pass.
-        if _UNROUNDED.subtract(value, written).copy_abs() <= tolerance:
+        if _UNROUNDED.subtract(target, written).copy_abs() <= tolerance:
             return "exact"
-        if _UNROUNDED.subtract(value.copy_abs(), reading.value).copy_abs() <= tolerance:
+        if _UNROUNDED.subtract(target.copy_abs(), reading.value).copy_abs() <= tolerance:
             found = found or ("sign" if mention.signed else "abs")
     return found

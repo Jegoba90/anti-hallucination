@@ -18,8 +18,8 @@ import re
 # position into a move.
 UP = re.compile(
     r"\b(?:"
-    r"sub(?:e|en|i[oó]|ieron|ida|idas|iendo)|crec(?:e|en|i[oó]|ieron|imiento|imientos|iendo)"
-    r"|aument(?:a|an|[oó]|aron|os|ando)|increment(?:a|an|[oó]|aron|os|ando)"
+    r"sub(?:e|en|i[oó]|ieron|ida|idas|ido|iendo)|crec(?:e|en|i[oó]|ieron|ido|imiento|imientos|iendo)"
+    r"|aument(?:a|an|[oó]|aron|ado|os|ando|[aá]ndose)|increment(?:a|an|[oó]|aron|ado|os|ando|[aá]ndose)"
     r"|repunt(?:a|an|[oó]|aron|e|es)|trep(?:a|an|[oó]|aron)|duplic(?:a|an|[oó]|aron)"
     r"|triplic(?:a|an|[oó]|aron)|al\s+alza|alzas?|se\s+dispar(?:a|an|[oó]|aron)"
     r"|ris(?:e|es|ing)|rose|risen|increas(?:e|es|ed|ing)|gr(?:ew|ow|ows|owing|own|owth)"
@@ -30,10 +30,10 @@ UP = re.compile(
 )
 DOWN = re.compile(
     r"\b(?:"
-    r"baj(?:ó|aron|an|ando|ada|adas)|a\s+la\s+baja|ca(?:e|en|y[oó]|yeron|[ií]da|[ií]das|yendo)"
-    r"|descend(?:i[oó]|ieron|iendo)|desciend(?:e|en)|descensos?"
-    r"|dismin(?:uye|uyen|uy[oó]|uyeron|uci[oó]n|uciones|uyendo)"
-    r"|redu(?:ce|cen|jo|jeron|cci[oó]n|cciones|ciendo)|retroced(?:e|en|i[oó]|ieron|iendo)|retrocesos?"
+    r"baj(?:ó|aron|an|ando|ado|ada|adas)|a\s+la\s+baja|ca(?:e|en|y[oó]|yeron|[ií]do|[ií]da|[ií]das|yendo)"
+    r"|descend(?:i[oó]|ieron|ido|iendo)|desciend(?:e|en)|descensos?"
+    r"|dismin(?:uye|uyen|uy[oó]|uyeron|uido|uci[oó]n|uciones|uyendo)"
+    r"|redu(?:ce|cen|jo|jeron|cci[oó]n|cciones|ciendo|ci[eé]ndose)|retroced(?:e|en|i[oó]|ieron|ido|iendo)|retrocesos?"
     r"|desplom(?:a|an|[oó]|aron|e|es)|merm(?:a|an|[oó]|aron|as)|contraj(?:o|eron)|contracci[oó]n"
     r"|hund(?:e|en|i[oó]|ieron)|perd(?:i[oó]|ieron)"
     r"|f(?:all|alls|ell|allen|alling)|decreas(?:e|es|ed|ing)|declin(?:e|es|ed|ing)"

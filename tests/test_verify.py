@@ -208,3 +208,93 @@ class TestLongFacts:
         result = verify("La deuda cayó 1234567890123456789012345679000.", self.DEBT, locale="es")
 
         assert _found(result) == [("unbacked_number", "1234567890123456789012345679000")]
+
+
+class TestFiguresAsModelsWriteThem:
+    """Correct sentences the checks cut for how a figure was written.
+
+    Found in the evaluation's pilot on 2026-11-18, in reports by gpt-oss-120b
+    and qwen3.8-27b: 19 correct sentences cut, every one for one of these.
+    """
+
+    def test_thousands_grouped_with_a_narrow_space(self) -> None:
+        facts = [Fact("usuarios", 83662, unit="usuarios", subject="usuarios")]
+
+        assert verify("La base de usuarios activos llegó a 83 662.", facts, locale="es").ok
+
+    def test_a_version_a_source_wrote(self) -> None:
+        sources = [Source("s1", "Los pedidos no sincronizan desde la versión 3.2.4. Hay 11 reportes.", name="Ticket 8144")]
+        text = "El ticket 8144 reporta 11 casos de pedidos que no sincronizan desde la versión 3.2.4."
+
+        assert ("unbacked_number", "3.2.4") not in _found(verify(text, sources=sources, locale="es"))
+
+    def test_a_version_nobody_wrote_is_still_found(self) -> None:
+        sources = [Source("s1", "Los pedidos no sincronizan desde la versión 3.2.4.", name="Ticket 8144")]
+
+        result = verify("Los pedidos no sincronizan desde la versión 3.2.5.", sources=sources, locale="es")
+
+        assert ("unbacked_number", "3.2.5") in _found(result)
+
+    def test_a_figure_in_what_a_fact_measures(self) -> None:
+        facts = [Fact("volumen", 141_600_000_000, unit="USD", label="volumen operado en 24 horas", subject="volumen")]
+
+        assert verify("El volumen operado en 24 horas fue de 141,6 mil millones de USD.", facts, locale="es").ok
+        assert verify("The 24-hour trading volume was 141.6 billion USD.", facts, locale="en").ok is False  # «horas» ≠ «hour»
+        # The name backs the figure with its word, not the same digits elsewhere.
+        assert ("unbacked_number", "24") in _found(verify("El volumen fue de 24 mil millones de USD en 24 días.", facts, locale="es"))
+        assert ("unbacked_number", "24 %") in _found(verify("El volumen subió 24 %.", facts, locale="es"))
+
+    def test_a_computed_change_as_python_writes_it(self) -> None:
+        from antihallucination import percent_change
+
+        before = Fact("caja_anterior", 89_924_000, unit="USD", subject="caja")
+        after = Fact("caja", 90_607_000, unit="USD", subject="caja")
+        change = percent_change("variacion_caja", before, after, decimals=1)  # 0.7595… %, written «0,8 %»
+
+        result = verify("La caja creció 0,8 %.", [before, after, change], locale="es")
+
+        assert change.render("es") == "0,8 %"
+        assert result.ok
+
+
+class TestWordsAsModelsWriteThem:
+    """More correct sentences cut in the evaluation's pilot (2026-11-18), for a word the lists lacked."""
+
+    CONVERSION = [
+        Fact("conversion_anterior", 5.5, unit="%", decimals=1, subject="conversión"),
+        Fact("conversion", 4.0, unit="%", decimals=1, subject="conversión"),
+    ]
+
+    @pytest.mark.parametrize("verb", ["ha retrocedido", "ha caído", "ha bajado", "ha disminuido", "ha descendido"])
+    def test_a_participle_carries_the_fall(self, verb: str) -> None:
+        from antihallucination import difference
+
+        facts = [*self.CONVERSION, difference("variacion_conversion", *self.CONVERSION, decimals=1)]
+
+        assert verify(f"La conversión {verb} 1,5 puntos porcentuales, hasta el 4,0 %.", facts, locale="es").ok
+
+    def test_a_gerund_with_se_carries_the_fall(self) -> None:
+        from antihallucination import percent_change
+
+        before, after = Fact("deuda_anterior", 3_374_000_000, unit="USD", subject="deuda"), Fact("deuda", 3_303_000_000, unit="USD", subject="deuda")
+        facts = [before, after, percent_change("variacion_deuda", before, after, decimals=1)]
+
+        assert verify("La deuda neta cerró en 3.303 millones de USD, reduciéndose un 2,1 %.", facts, locale="es").ok
+
+    def test_a_participle_that_reads_as_an_adjective_is_not_a_move(self) -> None:
+        facts = [Fact("clientes", 12, unit="clientes", subject="clientes")]
+
+        result = verify("Un número reducido de clientes, 12, pidió la baja.", facts, locale="es")
+
+        assert not {"unbacked_direction", "direction_contradiction", "sign_dropped"} & {f.check for f in result.findings}
+
+    def test_a_known_name_in_the_possessive(self) -> None:
+        facts = [Fact("tickets", 12476, unit="tickets", subject="tickets")]
+        policy = Policy(known_names=("Marlow Supply",))
+
+        assert verify("Marlow Supply's support team resolved 12,476 tickets.", facts, policy=policy, locale="en").ok
+        assert verify("Marlow Supply’s support team resolved 12,476 tickets.", facts, policy=policy, locale="en").ok
+        # A name nobody gave is still found in the possessive (the first word of a sentence is never checked).
+        assert ("unbacked_name", "Goods") in _found(
+            verify("Kestrel Goods' support team resolved 12,476 tickets.", facts, policy=policy, locale="en")
+        )

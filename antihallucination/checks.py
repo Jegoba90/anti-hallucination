@@ -280,6 +280,11 @@ class Context:
         self.base_evidence = fold("\n".join(base))
         # Evidence is read both ways: a source may be in another language than the text.
         self.label_values = evidence_values("\n".join(label.text for label in labels))
+        # A figure in what a fact measures, with the word beside it: «24 horas» in
+        # «volumen operado en 24 horas». The figure alone is not backed by it.
+        self.measured = frozenset(
+            pair for fact in facts for text in (fact.label, *fact.subjects) for pair in _number_pairs(text)
+        )
         self.source_evidence = {sid: fold(source.evidence) for sid, source in self.sources.items()}
         self.source_values = {sid: evidence_values(source.evidence) for sid, source in self.sources.items()}
         # Read once here instead of once per sentence or per word: which way
@@ -394,7 +399,9 @@ class Context:
             return self._fact_list
         positions = set(self._long_facts)
         for reading in mention.readings:
-            tolerance = Decimal(0) if reading.exact_only else reading.step / 2
+            # Half a step even for one significant digit: a fact Python writes
+            # at that precision may match it, and match_fact decides.
+            tolerance = reading.step / 2
             with localcontext(_BOUNDS):  # exact for numbers this short
                 low, high = reading.value - tolerance, reading.value + tolerance
             positions.update(self._sized[bisect_left(self._sizes, low) : bisect_right(self._sizes, high)])
@@ -547,6 +554,9 @@ def _carries_minus(lowered: str, clause: tuple[int, int]) -> bool:
     return lexicon.NEGATIVE_NOUNS.search(segment) is not None
 
 
+_POSSESSIVE = re.compile(r"['’]s?$")
+
+
 def _name_candidates(text: str) -> list[str]:
     """Capitalized words that are not just the first word of a sentence."""
     candidates: list[str] = []
@@ -630,18 +640,46 @@ def _check_figures(
                 else:
                     refs.extend(_Reference(name, mention.start, mention.raw, how) for name in names)
                 continue
-        if _backed_elsewhere(mention, ctx, evidence, use_labels=not compose):
+        if _backed_elsewhere(mention, ctx, evidence, use_labels=not compose) or (
+            not compose and _measured(mention, masked, ctx)
+        ):
             check.anchors += 1
             continue
         where = "the cited source" if check.cited else "your facts, labels or sources"
         check.findings.append(Finding("unbacked_number", mention.raw, f"«{mention.raw}» is not in {where}"))
 
 
+_PAIR_NUMBER = re.compile(r"\d+(?:[.,]\d+)*")
+_WORD_AFTER = re.compile(r"[\s‑-]*([^\W\d_]+)")  # «24 horas», «24-hour», «24‑hour»
+
+
+def _pairs(text: str, start: int, end: int, digits: str) -> set[str]:
+    """The figure with the word right after it, folded: what it counts («24 horas»)."""
+    after = _WORD_AFTER.match(text[end : end + 40])
+    return {fold(f"{digits} {after.group(1)}")} if after else set()
+
+
+def _number_pairs(text: str) -> set[str]:
+    """Every figure in a fact's name with the word after it: «24 horas» in «volumen operado en 24 horas»."""
+    return {pair for match in _PAIR_NUMBER.finditer(text) for pair in _pairs(text, match.start(), match.end(), match.group(0))}
+
+
+def _measured(mention: Mention, masked: str, ctx: Context) -> bool:
+    """Whether a plain figure is written as part of what a fact measures: «24 horas», «24-hour»."""
+    if mention.percent or mention.identifier or not ctx.measured:
+        return False
+    found = _PAIR_NUMBER.search(mention.raw)
+    if found is None:
+        return False
+    start = mention.start + found.start()
+    return not _pairs(masked, start, start + len(found.group(0)), found.group(0)).isdisjoint(ctx.measured)
+
+
 def _match_facts(mention: Mention, ctx: Context) -> tuple[str, list[str]] | None:
     """The facts a figure stands for: exact matches first, then sign-dropped, then opposite sign."""
     by_kind: dict[str, list[str]] = {"exact": [], "abs": [], "sign": []}
     for fact in ctx.facts_near(mention):
-        how = match_fact(mention, fact.number, fact.is_percent)
+        how = match_fact(mention, fact.number, fact.is_percent, fact.shown_decimals())
         if how is not None:
             by_kind[how].append(fact.name)
     for kind in ("exact", "abs", "sign"):
@@ -837,7 +875,8 @@ def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceChe
 
     if ctx.policy.names:
         for name in _name_candidates(masked):
-            core = fold(name).strip(_EDGE)
+            # «Marlow Supply's» names Marlow Supply: the possessive is not part of the name.
+            core = _POSSESSIVE.sub("", fold(name)).strip(_EDGE)
             if not core or core in lexicon.NOT_NAMES:
                 continue
             if not ctx.name_backed(core, evidence):

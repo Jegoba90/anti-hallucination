@@ -53,6 +53,25 @@ class TestSeparators:
     def test_a_malformed_group_has_no_reading(self) -> None:
         assert _one("1,2,3").readings == ()
 
+    @pytest.mark.parametrize("space", [" ", " ", " "])
+    def test_typographic_spaces_group_thousands(self, space: str) -> None:
+        """gpt-oss writes «83 662» with a narrow no-break space (the evaluation's pilot, 2026-11-18)."""
+        assert _values(f"83{space}662", "es") == [Decimal("83662")]
+        assert _values(f"1{space}234,5", "es") == [Decimal("1234.5")]
+        assert _values(f"1{space}234.5", "en") == [Decimal("1234.5")]
+
+    def test_a_plain_space_never_joins_two_figures(self) -> None:
+        assert [mention.raw for mention in extract("entre 83 662 usuarios", "es")] == ["83", "662"]
+
+    def test_a_group_followed_by_a_digit_is_two_figures_both_checked(self) -> None:
+        """«3 2026» once read as «3 202» plus a stray «6», and neither figure was checked."""
+        assert [mention.raw for mention in extract("bajó 3 2026 en", "es")] == ["3", "2026"]
+
+    def test_digits_no_number_reads_are_written_like_a_name(self) -> None:
+        """A version, «3.2.4», is checked as written: it must appear in the data or a source."""
+        mention = _one("desde la versión 3.2.4, acumulando")
+        assert (mention.raw, mention.identifier, mention.readings) == ("3.2.4", True, ())
+
 
 class TestScales:
     def test_scale_words_and_suffixes(self) -> None:
@@ -132,6 +151,14 @@ class TestMatchingAFact:
         assert match_fact(_one("3 %"), Decimal("2.9"), percent=True) is None
         assert match_fact(_one("3 %"), Decimal("3"), percent=True) == "exact"
         assert match_fact(_one("tres", "es"), Decimal("3.2"), percent=False) is None
+
+    def test_the_fact_as_python_writes_it_matches_even_with_one_significant_digit(self) -> None:
+        """0.76 % written with one decimal is «0,8 %»: a model that copies it is not rounding a target."""
+        assert match_fact(_one("0,8 %", "es"), Decimal("0.76"), percent=True, decimals=1) == "exact"
+        assert match_fact(_one("0,5 %", "es"), Decimal("-0.46"), percent=True, decimals=1) == "abs"
+        assert match_fact(_one("0,8 %", "es"), Decimal("0.76"), percent=True) is None  # how Python writes it unknown
+        assert match_fact(_one("3 %"), Decimal("2.9"), percent=True, decimals=1) is None  # Python writes «2,9 %»
+        assert match_fact(_one("0,7 %", "es"), Decimal("0.76"), percent=True, decimals=1) is None
 
     def test_signs(self) -> None:
         assert match_fact(_one("-3,2 %", "es"), Decimal("-3.2"), percent=True) == "exact"
