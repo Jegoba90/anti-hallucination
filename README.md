@@ -257,8 +257,7 @@ export ANTIHALLUCINATION_TOKEN=$(openssl rand -hex 32)
 docker run -d -p 8000:8000 -e ANTIHALLUCINATION_TOKEN ghcr.io/jegoba90/anti-hallucination
 ```
 
-The service ships with v0.3.0, and from then on each release publishes the
-image. `docker build -t anti-hallucination .` builds it from this repository.
+The service ships from v0.3.0 on, and each release publishes the image. `docker build -t anti-hallucination .` builds it from this repository.
 Without Docker, run `pip install "antihallucination[server]"` and then
 `antihallucination serve`.
 
@@ -345,7 +344,7 @@ Exit codes: `0` all sentences passed, `1` checks failed, `2` invalid input,
 
 ## Scope and limitations
 
-**Experimental · v0.2.** This is a layer of explicit rules for text generated
+**Experimental · v0.3.** This is a layer of explicit rules for text generated
 from supplied data. It is not a general factuality or semantic entailment
 checker.
 
