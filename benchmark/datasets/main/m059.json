@@ -1,0 +1,203 @@
+{
+  "id": "m059",
+  "split": "test",
+  "domain": "crypto",
+  "locale": "en",
+  "brief": {
+    "company": "Blockwise Weekly",
+    "audience": "the subscribers",
+    "topic": "the crypto market",
+    "period": "November 12, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "btc_price",
+        "value": 55119,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "btc_price_previous",
+        "value": 60955,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price in the previous day",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "btc_price_change",
+        "compute": "percent_change",
+        "from": "btc_price_previous",
+        "to": "btc_price",
+        "label": "change in bitcoin (BTC) price vs the previous day",
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance",
+        "value": 66.1,
+        "unit": "%",
+        "label": "bitcoin dominance",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_previous",
+        "value": 65.4,
+        "unit": "%",
+        "label": "bitcoin dominance in the previous day",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_change",
+        "compute": "difference",
+        "from": "btc_dominance_previous",
+        "to": "btc_dominance",
+        "label": "change in bitcoin dominance vs the previous day, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "volume_24h",
+        "value": 9307999573,
+        "unit": "USD",
+        "label": "24-hour trading volume",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "volume_24h_previous",
+        "value": 8130455643,
+        "unit": "USD",
+        "label": "24-hour trading volume in the previous day",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "volume_24h_change",
+        "compute": "percent_change",
+        "from": "volume_24h_previous",
+        "to": "volume_24h",
+        "label": "change in 24-hour trading volume vs the previous day",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "funding_rate",
+        "value": 0.003,
+        "unit": "%",
+        "label": "average funding rate",
+        "subject": [
+          "funding"
+        ],
+        "decimals": 3
+      },
+      {
+        "name": "funding_rate_change",
+        "value": -1.8,
+        "unit": "pp",
+        "change": true,
+        "label": "change in average funding rate vs the previous day, in percentage points",
+        "subject": [
+          "funding"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "fear_greed",
+        "value": 24,
+        "unit": "",
+        "label": "fear and greed index",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_previous",
+        "value": 26,
+        "unit": "",
+        "label": "fear and greed index in the previous day",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_change",
+        "compute": "difference",
+        "from": "fear_greed_previous",
+        "to": "fear_greed",
+        "label": "change in fear and greed index vs the previous day",
+        "decimals": 0
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "November 12, 2026"
+      },
+      {
+        "name": "fear_greed_trend",
+        "from": "fear_greed_change",
+        "thresholds": [
+          [
+            -15,
+            "a strong downtrend"
+          ],
+          [
+            -5,
+            "a downtrend"
+          ],
+          [
+            5,
+            "sideways movement"
+          ],
+          [
+            15,
+            "an uptrend"
+          ]
+        ],
+        "otherwise": "a strong uptrend"
+      }
+    ],
+    "known_names": [
+      "Blockwise Weekly"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Orbita News",
+        "title": "Withdrawals paused",
+        "text": "The Orbita exchange paused ETH withdrawals for 3 hours on Wednesday for maintenance."
+      },
+      {
+        "id": "s2",
+        "name": "Network calendar",
+        "title": "Network upgrade",
+        "text": "The Lumen network will activate the Beacon upgrade on June 19."
+      }
+    ]
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "id": "m081",
+  "split": "test",
+  "domain": "support",
+  "locale": "es",
+  "brief": {
+    "company": "Ventisca",
+    "audience": "la gerencia de operaciones",
+    "topic": "el desempeño del área de soporte",
+    "period": "la semana del 10 al 16 de octubre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "escalamientos",
+        "value": 170,
+        "unit": "",
+        "label": "escalamientos",
+        "subject": [
+          "escalamientos"
+        ]
+      },
+      {
+        "name": "variacion_escalamientos",
+        "value": -7.8,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los escalamientos respecto de la semana anterior",
+        "subject": [
+          "escalamientos"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tickets_recibidos",
+        "value": 3130,
+        "unit": "tickets",
+        "label": "tickets recibidos",
+        "subject": [
+          "tickets recibidos",
+          "recibidos"
+        ]
+      },
+      {
+        "name": "tickets_recibidos_anterior",
+        "value": 3080,
+        "unit": "tickets",
+        "label": "tickets recibidos en la semana anterior",
+        "subject": [
+          "tickets recibidos",
+          "recibidos"
+        ]
+      },
+      {
+        "name": "variacion_tickets_recibidos",
+        "compute": "percent_change",
+        "from": "tickets_recibidos_anterior",
+        "to": "tickets_recibidos",
+        "label": "variación de los tickets recibidos respecto de la semana anterior",
+        "decimals": 1
+      },
+      {
+        "name": "csat",
+        "value": 89,
+        "unit": "%",
+        "label": "satisfacción del cliente (CSAT)",
+        "subject": [
+          "satisfacción",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_anterior",
+        "value": 91,
+        "unit": "%",
+        "label": "satisfacción del cliente (CSAT) en la semana anterior",
+        "subject": [
+          "satisfacción",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "variacion_csat",
+        "compute": "difference",
+        "from": "csat_anterior",
+        "to": "csat",
+        "label": "variación de la satisfacción del cliente (CSAT) respecto de la semana anterior, en puntos",
+        "decimals": 0
+      },
+      {
+        "name": "pendientes",
+        "value": 229,
+        "unit": "tickets",
+        "label": "tickets pendientes",
+        "subject": [
+          "pendientes",
+          "backlog"
+        ]
+      },
+      {
+        "name": "pendientes_anterior",
+        "value": 225,
+        "unit": "tickets",
+        "label": "tickets pendientes en la semana anterior",
+        "subject": [
+          "pendientes",
+          "backlog"
+        ]
+      },
+      {
+        "name": "variacion_pendientes",
+        "compute": "percent_change",
+        "from": "pendientes_anterior",
+        "to": "pendientes",
+        "label": "variación de los tickets pendientes respecto de la semana anterior",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "la semana del 10 al 16 de octubre de 2026"
+      }
+    ],
+    "known_names": [
+      "Ventisca"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 7115",
+        "title": "Facturas con el impuesto equivocado",
+        "text": "2 clientes empresa de Córdoba recibieron facturas con el impuesto equivocado. Finanzas está emitiendo las facturas de nuevo."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 7304",
+        "title": "La app no sincroniza",
+        "text": "Usuarios de Android reportan que la app no sincroniza los pedidos desde la versión 5.12.3. Hay 3 reportes y el equipo móvil prepara un parche."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "dataset": "m001",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para el equipo comercial de Cardón sobre los resultados de ventas en enero de 2026, a partir de estos datos.\n\nEmpresa: Cardón\nPeríodo: enero de 2026\n\nDatos:\n- Pedidos online: 29.897 pedidos\n- Pedidos online en el mes anterior: 27.822 pedidos\n- Variación de los pedidos online respecto del mes anterior: 7,5 %\n- Facturación: 14,2 millones USD\n- Facturación en el mes anterior: 13,1 millones USD\n- Variación de la facturación respecto del mes anterior: 8,6 %\n- Unidades vendidas: 1.016 unidades\n- Tasa de devoluciones: 7,3 %\n- Tasa de devoluciones en el mes anterior: 6,9 %\n- Variación de la tasa de devoluciones respecto del mes anterior, en puntos: 0,4 pp\n- Veredicto sobre la variación de los pedidos online respecto del mes anterior: subida leve\n\nNotas para el informe:\n[s1] Nota del equipo comercial, «Campaña de temporada»: La campaña «Primavera 360» empezó el 6 de mayo en Córdoba y Guadalajara, con descuentos de hasta 20 % en la categoría hogar.\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En enero de 2026 Cardón registró 29 897 pedidos online, lo que representa una subida leve del 7,5 % respecto al mes anterior (27 822 pedidos). La facturación alcanzó los 14,2 millones USD, incrementándose un 8,6 % frente a los 13,1 millones de USD del mes previo. En total se vendieron 1 016 unidades, aunque la tasa de devoluciones se elevó a 7,3 %, un aumento de 0,4 puntos porcentuales respecto al 6,9 % de febrero. Estos indicadores reflejan un desempeño positivo en la demanda y la capacidad de conversión online, pese al ligero aumento de devoluciones que deberá monitorizarse. La campaña «Primavera 360», lanzada el 6 de mayo en Córdoba y Guadalajara con descuentos de hasta el 20 % en la categoría hogar, podría reforzar aún más estos resultados en los próximos meses. Se recomienda mantener la estrategia de precios y seguir optimizando el proceso de post‑venta para contener la tasa de devoluciones.",
+  "text": "En enero de 2026 Cardón registró 29 897 pedidos online, lo que representa una subida leve del 7,5 % respecto al mes anterior (27 822 pedidos). La facturación alcanzó los 14,2 millones USD, incrementándose un 8,6 % frente a los 13,1 millones de USD del mes previo. En total se vendieron 1 016 unidades, aunque la tasa de devoluciones se elevó a 7,3 %, un aumento de 0,4 puntos porcentuales respecto al 6,9 % de febrero. Estos indicadores reflejan un desempeño positivo en la demanda y la capacidad de conversión online, pese al ligero aumento de devoluciones que deberá monitorizarse. La campaña «Primavera 360», lanzada el 6 de mayo en Córdoba y Guadalajara con descuentos de hasta el 20 % en la categoría hogar, podría reforzar aún más estos resultados en los próximos meses. Se recomienda mantener la estrategia de precios y seguir optimizando el proceso de post‑venta para contener la tasa de devoluciones.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.243214947,
+    "prompt_tokens": 378,
+    "prompt_time": 0.016522773,
+    "completion_tokens": 408,
+    "completion_time": 0.859120821,
+    "total_tokens": 786,
+    "total_time": 0.875643594,
+    "completion_tokens_details": {
+      "reasoning_tokens": 167
+    }
+  },
+  "seconds": 1.24,
+  "created_at": "2026-11-18T14:32:38+00:00"
+}

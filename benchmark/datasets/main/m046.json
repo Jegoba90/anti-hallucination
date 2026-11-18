@@ -1,0 +1,201 @@
+{
+  "id": "m046",
+  "split": "test",
+  "domain": "saas",
+  "locale": "en",
+  "brief": {
+    "company": "Brightloom",
+    "audience": "the leadership team",
+    "topic": "business metrics",
+    "period": "April 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "trial_conversion",
+        "value": 22.4,
+        "unit": "%",
+        "label": "trial-to-paid conversion",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "trial_conversion_previous",
+        "value": 20.3,
+        "unit": "%",
+        "label": "trial-to-paid conversion in the previous month",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "trial_conversion_change",
+        "compute": "difference",
+        "from": "trial_conversion_previous",
+        "to": "trial_conversion",
+        "label": "change in trial-to-paid conversion vs the previous month, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "churn",
+        "value": 1.8,
+        "unit": "%",
+        "label": "monthly churn",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_previous",
+        "value": 1.7,
+        "unit": "%",
+        "label": "monthly churn in the previous month",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_change",
+        "compute": "difference",
+        "from": "churn_previous",
+        "to": "churn",
+        "label": "change in monthly churn vs the previous month, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "cac",
+        "value": 46,
+        "unit": "GBP",
+        "label": "customer acquisition cost (CAC)",
+        "subject": [
+          "CAC",
+          "acquisition cost"
+        ]
+      },
+      {
+        "name": "cac_previous",
+        "value": 44,
+        "unit": "GBP",
+        "label": "customer acquisition cost (CAC) in the previous month",
+        "subject": [
+          "CAC",
+          "acquisition cost"
+        ]
+      },
+      {
+        "name": "cac_change",
+        "compute": "percent_change",
+        "from": "cac_previous",
+        "to": "cac",
+        "label": "change in customer acquisition cost (CAC) vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 103,
+        "unit": "%",
+        "label": "net revenue retention (NRR)",
+        "subject": [
+          "NRR",
+          "retention"
+        ]
+      },
+      {
+        "name": "nrr_previous",
+        "value": 100,
+        "unit": "%",
+        "label": "net revenue retention (NRR) in the previous month",
+        "subject": [
+          "NRR",
+          "retention"
+        ]
+      },
+      {
+        "name": "nrr_change",
+        "compute": "difference",
+        "from": "nrr_previous",
+        "to": "nrr",
+        "label": "change in net revenue retention (NRR) vs the previous month, in percentage points",
+        "decimals": 0
+      },
+      {
+        "name": "mrr",
+        "value": 153460,
+        "unit": "GBP",
+        "label": "monthly recurring revenue (MRR)",
+        "subject": [
+          "MRR",
+          "recurring revenue"
+        ]
+      },
+      {
+        "name": "mrr_previous",
+        "value": 150254,
+        "unit": "GBP",
+        "label": "monthly recurring revenue (MRR) in the previous month",
+        "subject": [
+          "MRR",
+          "recurring revenue"
+        ]
+      },
+      {
+        "name": "mrr_change",
+        "compute": "percent_change",
+        "from": "mrr_previous",
+        "to": "mrr",
+        "label": "change in monthly recurring revenue (MRR) vs the previous month",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "April 2026"
+      },
+      {
+        "name": "nrr_trend",
+        "from": "nrr_change",
+        "thresholds": [
+          [
+            -2,
+            "a sharp drop"
+          ],
+          [
+            -0.3,
+            "a mild drop"
+          ],
+          [
+            0.3,
+            "stability"
+          ],
+          [
+            2,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Brightloom"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Customer success note",
+        "title": "Renewal",
+        "text": "Avalon Schools renewed its contract for 3 years and added 158 seats."
+      }
+    ]
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "id": "m062",
+  "split": "test",
+  "domain": "crypto",
+  "locale": "en",
+  "brief": {
+    "company": "Blockwise Weekly",
+    "audience": "the trading desk clients",
+    "topic": "the crypto market",
+    "period": "the week of October 7–13, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "btc_dominance",
+        "value": 67.7,
+        "unit": "%",
+        "label": "bitcoin dominance",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_previous",
+        "value": 67.6,
+        "unit": "%",
+        "label": "bitcoin dominance in the previous week",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_change",
+        "compute": "difference",
+        "from": "btc_dominance_previous",
+        "to": "btc_dominance",
+        "label": "change in bitcoin dominance vs the previous week, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "volume_24h",
+        "value": 114841265568,
+        "unit": "USD",
+        "label": "24-hour trading volume",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "volume_24h_previous",
+        "value": 107875206182,
+        "unit": "USD",
+        "label": "24-hour trading volume in the previous week",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "volume_24h_change",
+        "compute": "percent_change",
+        "from": "volume_24h_previous",
+        "to": "volume_24h",
+        "label": "change in 24-hour trading volume vs the previous week",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "btc_price",
+        "value": 25029,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "btc_price_change",
+        "value": 1.5,
+        "unit": "%",
+        "change": true,
+        "label": "change in bitcoin (BTC) price vs the previous week",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "open_interest",
+        "value": 39308574532,
+        "unit": "USD",
+        "label": "futures open interest",
+        "subject": [
+          "open interest"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest_previous",
+        "value": 37161440895,
+        "unit": "USD",
+        "label": "futures open interest in the previous week",
+        "subject": [
+          "open interest"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest_change",
+        "compute": "percent_change",
+        "from": "open_interest_previous",
+        "to": "open_interest",
+        "label": "change in futures open interest vs the previous week",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "eth_price",
+        "value": 2422,
+        "unit": "USD",
+        "label": "ether (ETH) price",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "eth_price_previous",
+        "value": 2001,
+        "unit": "USD",
+        "label": "ether (ETH) price in the previous week",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "eth_price_change",
+        "compute": "percent_change",
+        "from": "eth_price_previous",
+        "to": "eth_price",
+        "label": "change in ether (ETH) price vs the previous week",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "the week of October 7–13, 2026"
+      },
+      {
+        "name": "eth_price_trend",
+        "from": "eth_price_change",
+        "thresholds": [
+          [
+            -10,
+            "a strong downtrend"
+          ],
+          [
+            -2,
+            "a downtrend"
+          ],
+          [
+            2,
+            "sideways movement"
+          ],
+          [
+            10,
+            "an uptrend"
+          ]
+        ],
+        "otherwise": "a strong uptrend"
+      }
+    ],
+    "known_names": [
+      "Blockwise Weekly"
+    ]
+  }
+}

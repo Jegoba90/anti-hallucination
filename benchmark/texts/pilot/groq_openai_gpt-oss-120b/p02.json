@@ -1,0 +1,26 @@
+{
+  "dataset": "p02",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para los inversores de Tallo sobre las métricas del negocio en enero de 2026, a partir de estos datos.\n\nEmpresa: Tallo\nPeríodo: enero de 2026\n\nDatos:\n- Conversión de prueba a pago: 4,0 %\n- Conversión de prueba a pago en el mes anterior: 5,5 %\n- Variación de la conversión de prueba a pago respecto del mes anterior, en puntos: -1,5 pp\n- Retención neta de ingresos (NRR): 101 %\n- Retención neta de ingresos (NRR) en el mes anterior: 100 %\n- Variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos: 1 pp\n- Clientes nuevos: 579 clientes\n- Variación de los clientes nuevos respecto del mes anterior: -8,9 %\n- Costo de adquisición de clientes (CAC): 689 EUR\n- Usuarios activos: 83.662 usuarios\n- Usuarios activos en el mes anterior: 78.642 usuarios\n- Variación de los usuarios activos respecto del mes anterior: 6,4 %\n- Veredicto sobre la variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos: subida leve\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En enero de 2026 la conversión de prueba a pago se ubicó en 4,0 %, lo que implica una disminución de 1,5 pp respecto al mes anterior, cuando fue del 5,5 %. La retención neta de ingresos alcanzó el 101 %, mejorando en 1 pp frente al 100 % del período previo, lo que constituye una subida leve. Se incorporaron 579 clientes nuevos, una caída del 8,9 % respecto al mes anterior. El costo de adquisición de clientes se mantuvo en 689 EUR. La base de usuarios activos creció a 83 662, lo que representa un incremento del 6,4 % sobre los 78 642 del mes anterior. En conjunto, los indicadores muestran una expansión de la actividad de los usuarios y una sólida retención, pese a la ligera contracción en la conversión y en la captación de nuevos clientes.",
+  "text": "En enero de 2026 la conversión de prueba a pago se ubicó en 4,0 %, lo que implica una disminución de 1,5 pp respecto al mes anterior, cuando fue del 5,5 %. La retención neta de ingresos alcanzó el 101 %, mejorando en 1 pp frente al 100 % del período previo, lo que constituye una subida leve. Se incorporaron 579 clientes nuevos, una caída del 8,9 % respecto al mes anterior. El costo de adquisición de clientes se mantuvo en 689 EUR. La base de usuarios activos creció a 83 662, lo que representa un incremento del 6,4 % sobre los 78 642 del mes anterior. En conjunto, los indicadores muestran una expansión de la actividad de los usuarios y una sólida retención, pese a la ligera contracción en la conversión y en la captación de nuevos clientes.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 2.219520706,
+    "prompt_tokens": 411,
+    "prompt_time": 0.020096537,
+    "completion_tokens": 672,
+    "completion_time": 1.423942681,
+    "total_tokens": 1083,
+    "total_time": 1.444039218,
+    "completion_tokens_details": {
+      "reasoning_tokens": 464
+    }
+  },
+  "seconds": 3.76,
+  "created_at": "2026-11-18T14:21:16+00:00"
+}

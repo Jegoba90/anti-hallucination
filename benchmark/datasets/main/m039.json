@@ -1,0 +1,190 @@
+{
+  "id": "m039",
+  "split": "test",
+  "domain": "finance",
+  "locale": "en",
+  "brief": {
+    "company": "Brightloom",
+    "audience": "the board",
+    "topic": "financial results",
+    "period": "Q2 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "ebitda",
+        "value": 671988165,
+        "unit": "GBP",
+        "label": "EBITDA",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ebitda_previous",
+        "value": 676645081,
+        "unit": "GBP",
+        "label": "EBITDA in the previous quarter",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ebitda_change",
+        "compute": "percent_change",
+        "from": "ebitda_previous",
+        "to": "ebitda",
+        "label": "change in EBITDA vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "net_income",
+        "value": 387331382,
+        "unit": "GBP",
+        "label": "net income",
+        "subject": [
+          "net income",
+          "profit"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_income_previous",
+        "value": 539131732,
+        "unit": "GBP",
+        "label": "net income in the previous quarter",
+        "subject": [
+          "net income",
+          "profit"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_income_change",
+        "compute": "difference",
+        "from": "net_income_previous",
+        "to": "net_income",
+        "label": "change in net income vs the previous quarter",
+        "decimals": 0,
+        "compact": true
+      },
+      {
+        "name": "cash",
+        "value": 17832780,
+        "unit": "GBP",
+        "label": "cash and equivalents",
+        "subject": [
+          "cash"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash_change",
+        "value": 22.3,
+        "unit": "%",
+        "change": true,
+        "label": "change in cash and equivalents vs the previous quarter",
+        "subject": [
+          "cash"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin",
+        "value": -4.7,
+        "unit": "%",
+        "label": "operating margin",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_previous",
+        "value": -8.0,
+        "unit": "%",
+        "label": "operating margin in the previous quarter",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_change",
+        "compute": "difference",
+        "from": "operating_margin_previous",
+        "to": "operating_margin",
+        "label": "change in operating margin vs the previous quarter, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "employees",
+        "value": 12588,
+        "unit": "employees",
+        "label": "employees",
+        "subject": [
+          "employees",
+          "headcount"
+        ]
+      },
+      {
+        "name": "employees_previous",
+        "value": 12749,
+        "unit": "employees",
+        "label": "employees in the previous quarter",
+        "subject": [
+          "employees",
+          "headcount"
+        ]
+      },
+      {
+        "name": "employees_change",
+        "compute": "percent_change",
+        "from": "employees_previous",
+        "to": "employees",
+        "label": "change in employees vs the previous quarter",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "Q2 2026"
+      },
+      {
+        "name": "ebitda_trend",
+        "from": "ebitda_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Brightloom"
+    ]
+  }
+}

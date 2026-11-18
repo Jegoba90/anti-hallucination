@@ -1,0 +1,175 @@
+{
+  "id": "m097",
+  "split": "test",
+  "domain": "support",
+  "locale": "es",
+  "brief": {
+    "company": "Lumbre",
+    "audience": "la gerencia de operaciones",
+    "topic": "el desempeño del área de soporte",
+    "period": "la semana del 21 al 27 de octubre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "tickets_resueltos",
+        "value": 226,
+        "unit": "tickets",
+        "label": "tickets resueltos",
+        "subject": [
+          "tickets resueltos",
+          "resueltos"
+        ]
+      },
+      {
+        "name": "tickets_resueltos_anterior",
+        "value": 249,
+        "unit": "tickets",
+        "label": "tickets resueltos en la semana anterior",
+        "subject": [
+          "tickets resueltos",
+          "resueltos"
+        ]
+      },
+      {
+        "name": "variacion_tickets_resueltos",
+        "compute": "percent_change",
+        "from": "tickets_resueltos_anterior",
+        "to": "tickets_resueltos",
+        "label": "variación de los tickets resueltos respecto de la semana anterior",
+        "decimals": 1
+      },
+      {
+        "name": "csat",
+        "value": 68,
+        "unit": "%",
+        "label": "satisfacción del cliente (CSAT)",
+        "subject": [
+          "satisfacción",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_anterior",
+        "value": 70,
+        "unit": "%",
+        "label": "satisfacción del cliente (CSAT) en la semana anterior",
+        "subject": [
+          "satisfacción",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "variacion_csat",
+        "compute": "difference",
+        "from": "csat_anterior",
+        "to": "csat",
+        "label": "variación de la satisfacción del cliente (CSAT) respecto de la semana anterior, en puntos",
+        "decimals": 0
+      },
+      {
+        "name": "tiempo_resolucion",
+        "value": 44.9,
+        "unit": "h",
+        "label": "tiempo medio de resolución",
+        "subject": [
+          "resolución"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "pendientes",
+        "value": 742,
+        "unit": "tickets",
+        "label": "tickets pendientes",
+        "subject": [
+          "pendientes",
+          "backlog"
+        ]
+      },
+      {
+        "name": "variacion_pendientes",
+        "value": 6.0,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los tickets pendientes respecto de la semana anterior",
+        "subject": [
+          "pendientes",
+          "backlog"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "escalamientos",
+        "value": 1,
+        "unit": "",
+        "label": "escalamientos",
+        "subject": [
+          "escalamientos"
+        ]
+      },
+      {
+        "name": "variacion_escalamientos",
+        "value": 8.0,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los escalamientos respecto de la semana anterior",
+        "subject": [
+          "escalamientos"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "la semana del 21 al 27 de octubre de 2026"
+      },
+      {
+        "name": "tendencia_tickets_resueltos",
+        "from": "variacion_tickets_resueltos",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Lumbre"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 4802",
+        "title": "Falla el pago con tarjeta",
+        "text": "Desde el jueves, 49 clientes de Córdoba reportan que el pago con tarjeta falla con el error 402. El equipo de pagos revirtió la versión 6.3.5 el lunes y las fallas se detuvieron."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 8997",
+        "title": "Facturas con el impuesto equivocado",
+        "text": "2 clientes empresa de Córdoba recibieron facturas con el impuesto equivocado. Finanzas está emitiendo las facturas de nuevo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "dataset": "p16",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for management at Copperline on sales results for Q1 2026, based on this data.\n\nCompany: Copperline\nPeriod: Q1 2026\n\nData:\n- Revenue: 20.9 million EUR\n- Change in revenue vs the previous quarter: 4.1%\n- Units sold: 1,938 units\n- Units sold in the previous quarter: 1,679 units\n- Change in units sold vs the previous quarter: 15.4%\n- Online orders: 5,488 orders\n- Change in online orders vs the previous quarter: -14.6%\n- New customers: 647 customers\n- New customers in the previous quarter: 650 customers\n- Change in new customers vs the previous quarter: -0.5%\n- Average order value: 121.96 EUR\n- Verdict on the change in new customers vs the previous quarter: stability\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "In Q1 2026 Copperline generated revenue of €20.9 million, representing a 4.1 % increase over the prior quarter. Units sold rose to 1,938, up 15.4 % from 1,679 units in the previous quarter. Online orders totaled 5,488, a decline of 14.6 % versus the prior quarter. The company attracted 647 new customers, a marginal 0.5 % decrease that the data characterises as stable. The average order value was €121.96. Overall, the quarter delivered growth in revenue and unit volume while online order volume fell and new‑customer acquisition remained essentially unchanged.",
+  "text": "In Q1 2026 Copperline generated revenue of €20.9 million, representing a 4.1 % increase over the prior quarter. Units sold rose to 1,938, up 15.4 % from 1,679 units in the previous quarter. Online orders totaled 5,488, a decline of 14.6 % versus the prior quarter. The company attracted 647 new customers, a marginal 0.5 % decrease that the data characterises as stable. The average order value was €121.96. Overall, the quarter delivered growth in revenue and unit volume while online order volume fell and new‑customer acquisition remained essentially unchanged.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 1.350402582,
+    "prompt_tokens": 317,
+    "prompt_time": 0.018843361,
+    "completion_tokens": 474,
+    "completion_time": 0.996733165,
+    "total_tokens": 791,
+    "total_time": 1.015576526,
+    "completion_tokens_details": {
+      "reasoning_tokens": 324
+    }
+  },
+  "seconds": 2.42,
+  "created_at": "2026-11-18T14:22:11+00:00"
+}

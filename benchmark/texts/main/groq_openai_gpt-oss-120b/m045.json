@@ -1,0 +1,26 @@
+{
+  "dataset": "m045",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para los accionistas de Arkadia sobre los resultados financieros en el tercer trimestre de 2026, a partir de estos datos.\n\nEmpresa: Arkadia\nPeríodo: el tercer trimestre de 2026\n\nDatos:\n- EBITDA: 66,9 millones EUR\n- Variación del EBITDA respecto del trimestre anterior: -44,5 %\n- Empleados: 8.229 empleados\n- Deuda neta: 2,7 mil millones EUR\n- Deuda neta en el trimestre anterior: 3 mil millones EUR\n- Variación de la deuda neta respecto del trimestre anterior: -10,5 %\n- Margen operativo: -4,6 %\n- Margen operativo en el trimestre anterior: -6,3 %\n- Variación del margen operativo respecto del trimestre anterior, en puntos: 1,7 pp\n- Veredicto sobre la variación del margen operativo respecto del trimestre anterior, en puntos: subida leve\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En el tercer trimestre de 2026, Arkadia registró un EBITDA de 66,9 millones de euros, lo que representa una caída del 44,5 % respecto al trimestre anterior. A pesar de esta disminución, la empresa logró reducir su deuda neta a 2,7 mil millones de euros, una mejora del 10,5 % frente al período previo, lo que refuerza nuestra posición de liquidez. El margen operativo se situó en ‑4,6 %, mejorando en 1,7 puntos porcentuales respecto al trimestre anterior, lo que constituye una subida leve pero significativa. Esta mejora refleja los esfuerzos de la dirección por optimizar los costos operativos y ajustar la estructura de la organización. Con 8.229 empleados, seguimos comprometidos con la productividad y la eficiencia, manteniendo una base de talento sólida para impulsar el crecimiento futuro. En conjunto, los resultados evidencian un escenario de ajuste estructural que, aunque implica una reducción del EBITDA, sienta las bases para una recuperación sostenible en los próximos trimestres.",
+  "text": "En el tercer trimestre de 2026, Arkadia registró un EBITDA de 66,9 millones de euros, lo que representa una caída del 44,5 % respecto al trimestre anterior. A pesar de esta disminución, la empresa logró reducir su deuda neta a 2,7 mil millones de euros, una mejora del 10,5 % frente al período previo, lo que refuerza nuestra posición de liquidez. El margen operativo se situó en ‑4,6 %, mejorando en 1,7 puntos porcentuales respecto al trimestre anterior, lo que constituye una subida leve pero significativa. Esta mejora refleja los esfuerzos de la dirección por optimizar los costos operativos y ajustar la estructura de la organización. Con 8.229 empleados, seguimos comprometidos con la productividad y la eficiencia, manteniendo una base de talento sólida para impulsar el crecimiento futuro. En conjunto, los resultados evidencian un escenario de ajuste estructural que, aunque implica una reducción del EBITDA, sienta las bases para una recuperación sostenible en los próximos trimestres.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.312009429,
+    "prompt_tokens": 311,
+    "prompt_time": 0.018496117,
+    "completion_tokens": 296,
+    "completion_time": 0.609308061,
+    "total_tokens": 607,
+    "total_time": 0.627804178,
+    "completion_tokens_details": {
+      "reasoning_tokens": 60
+    }
+  },
+  "seconds": 1.03,
+  "created_at": "2026-11-18T14:36:54+00:00"
+}

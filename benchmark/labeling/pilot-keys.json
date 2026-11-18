@@ -1,0 +1,282 @@
+{
+  "593d27c2": {
+    "dataset": "p01",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p01.json"
+  },
+  "a9326b4c": {
+    "dataset": "p02",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p02.json"
+  },
+  "d4390ded": {
+    "dataset": "p03",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p03.json"
+  },
+  "c8d4d7cd": {
+    "dataset": "p04",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p04.json"
+  },
+  "7f8e087d": {
+    "dataset": "p05",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p05.json"
+  },
+  "bb31c6fd": {
+    "dataset": "p06",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p06.json"
+  },
+  "c142233f": {
+    "dataset": "p07",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p07.json"
+  },
+  "61a23213": {
+    "dataset": "p08",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p08.json"
+  },
+  "b1d0ab3e": {
+    "dataset": "p09",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p09.json"
+  },
+  "7d4b1cce": {
+    "dataset": "p10",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p10.json"
+  },
+  "6398e095": {
+    "dataset": "p11",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p11.json"
+  },
+  "4593853d": {
+    "dataset": "p12",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p12.json"
+  },
+  "e1a3ae81": {
+    "dataset": "p13",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p13.json"
+  },
+  "fa48b171": {
+    "dataset": "p14",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p14.json"
+  },
+  "1d01b654": {
+    "dataset": "p15",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p15.json"
+  },
+  "7ed33c6c": {
+    "dataset": "p16",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p16.json"
+  },
+  "e8d80891": {
+    "dataset": "p17",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p17.json"
+  },
+  "7054183b": {
+    "dataset": "p18",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p18.json"
+  },
+  "06a1c5ae": {
+    "dataset": "p19",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p19.json"
+  },
+  "5b9fba92": {
+    "dataset": "p20",
+    "model": "groq:openai/gpt-oss-120b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_openai_gpt-oss-120b/p20.json"
+  },
+  "e724dc69": {
+    "dataset": "p01",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p01.json"
+  },
+  "6d6f0ea9": {
+    "dataset": "p02",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p02.json"
+  },
+  "669655a3": {
+    "dataset": "p03",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p03.json"
+  },
+  "da7857fa": {
+    "dataset": "p04",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p04.json"
+  },
+  "3d1d3787": {
+    "dataset": "p05",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p05.json"
+  },
+  "e52452c8": {
+    "dataset": "p06",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p06.json"
+  },
+  "32998a50": {
+    "dataset": "p07",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p07.json"
+  },
+  "2c8dbb81": {
+    "dataset": "p08",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p08.json"
+  },
+  "eadf04c9": {
+    "dataset": "p09",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p09.json"
+  },
+  "0ae2c6ef": {
+    "dataset": "p10",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p10.json"
+  },
+  "e0996b73": {
+    "dataset": "p11",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p11.json"
+  },
+  "b3350b61": {
+    "dataset": "p12",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p12.json"
+  },
+  "873b17b9": {
+    "dataset": "p13",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p13.json"
+  },
+  "b45f12ec": {
+    "dataset": "p14",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p14.json"
+  },
+  "312c3ce4": {
+    "dataset": "p15",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p15.json"
+  },
+  "84e4a33b": {
+    "dataset": "p16",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p16.json"
+  },
+  "510b5e6d": {
+    "dataset": "p17",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p17.json"
+  },
+  "eba8ca7f": {
+    "dataset": "p18",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p18.json"
+  },
+  "4ee80298": {
+    "dataset": "p19",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "strict",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p19.json"
+  },
+  "41205f85": {
+    "dataset": "p20",
+    "model": "groq:qwen/qwen3.8-27b",
+    "variant": "plain",
+    "split": "pilot",
+    "file": "texts/pilot/groq_qwen_qwen3.8-27b/p20.json"
+  }
+}

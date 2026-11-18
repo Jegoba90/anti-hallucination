@@ -1,0 +1,198 @@
+{
+  "id": "p14",
+  "split": "pilot",
+  "domain": "finance",
+  "locale": "es",
+  "brief": {
+    "company": "Pampa Digital",
+    "audience": "el directorio",
+    "topic": "los resultados financieros",
+    "period": "el segundo trimestre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "empleados",
+        "value": 15627,
+        "unit": "empleados",
+        "label": "empleados",
+        "subject": [
+          "empleados",
+          "plantilla"
+        ]
+      },
+      {
+        "name": "empleados_anterior",
+        "value": 18595,
+        "unit": "empleados",
+        "label": "empleados en el trimestre anterior",
+        "subject": [
+          "empleados",
+          "plantilla"
+        ]
+      },
+      {
+        "name": "variacion_empleados",
+        "compute": "percent_change",
+        "from": "empleados_anterior",
+        "to": "empleados",
+        "label": "variación de los empleados respecto del trimestre anterior",
+        "decimals": 1
+      },
+      {
+        "name": "ebitda",
+        "value": 63959749,
+        "unit": "USD",
+        "label": "EBITDA",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ebitda_anterior",
+        "value": 58065033,
+        "unit": "USD",
+        "label": "EBITDA en el trimestre anterior",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_ebitda",
+        "compute": "percent_change",
+        "from": "ebitda_anterior",
+        "to": "ebitda",
+        "label": "variación del EBITDA respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "resultado_neto",
+        "value": 462842209,
+        "unit": "USD",
+        "label": "resultado neto",
+        "subject": [
+          "resultado neto",
+          "ganancia"
+        ],
+        "compact": true
+      },
+      {
+        "name": "resultado_neto_anterior",
+        "value": 328728425,
+        "unit": "USD",
+        "label": "resultado neto en el trimestre anterior",
+        "subject": [
+          "resultado neto",
+          "ganancia"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_resultado_neto",
+        "compute": "difference",
+        "from": "resultado_neto_anterior",
+        "to": "resultado_neto",
+        "label": "variación del resultado neto respecto del trimestre anterior",
+        "decimals": 0,
+        "compact": true
+      },
+      {
+        "name": "ingresos",
+        "value": 1282629315,
+        "unit": "USD",
+        "label": "ingresos",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ingresos_anterior",
+        "value": 1297138951,
+        "unit": "USD",
+        "label": "ingresos en el trimestre anterior",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_ingresos",
+        "compute": "percent_change",
+        "from": "ingresos_anterior",
+        "to": "ingresos",
+        "label": "variación de los ingresos respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "margen_operativo",
+        "value": -1.1,
+        "unit": "%",
+        "label": "margen operativo",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "margen_operativo_anterior",
+        "value": -1.5,
+        "unit": "%",
+        "label": "margen operativo en el trimestre anterior",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_margen_operativo",
+        "compute": "difference",
+        "from": "margen_operativo_anterior",
+        "to": "margen_operativo",
+        "label": "variación del margen operativo respecto del trimestre anterior, en puntos",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el segundo trimestre de 2026"
+      },
+      {
+        "name": "tendencia_ebitda",
+        "from": "variacion_ebitda",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Pampa Digital"
+    ]
+  }
+}

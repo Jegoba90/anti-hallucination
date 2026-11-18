@@ -1,0 +1,201 @@
+{
+  "id": "m068",
+  "split": "test",
+  "domain": "crypto",
+  "locale": "en",
+  "brief": {
+    "company": "Satstack Desk",
+    "audience": "the trading desk clients",
+    "topic": "the crypto market",
+    "period": "November 4, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "btc_price",
+        "value": 53318,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "btc_price_previous",
+        "value": 56083,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price in the previous day",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "btc_price_change",
+        "compute": "percent_change",
+        "from": "btc_price_previous",
+        "to": "btc_price",
+        "label": "change in bitcoin (BTC) price vs the previous day",
+        "decimals": 1
+      },
+      {
+        "name": "eth_price",
+        "value": 8767,
+        "unit": "USD",
+        "label": "ether (ETH) price",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "eth_price_previous",
+        "value": 8949,
+        "unit": "USD",
+        "label": "ether (ETH) price in the previous day",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "eth_price_change",
+        "compute": "percent_change",
+        "from": "eth_price_previous",
+        "to": "eth_price",
+        "label": "change in ether (ETH) price vs the previous day",
+        "decimals": 1
+      },
+      {
+        "name": "fear_greed",
+        "value": 64,
+        "unit": "",
+        "label": "fear and greed index",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_previous",
+        "value": 83,
+        "unit": "",
+        "label": "fear and greed index in the previous day",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_change",
+        "compute": "difference",
+        "from": "fear_greed_previous",
+        "to": "fear_greed",
+        "label": "change in fear and greed index vs the previous day",
+        "decimals": 0
+      },
+      {
+        "name": "open_interest",
+        "value": 45623841490,
+        "unit": "USD",
+        "label": "futures open interest",
+        "subject": [
+          "open interest"
+        ],
+        "compact": true
+      },
+      {
+        "name": "btc_dominance",
+        "value": 60.4,
+        "unit": "%",
+        "label": "bitcoin dominance",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_previous",
+        "value": 58.8,
+        "unit": "%",
+        "label": "bitcoin dominance in the previous day",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_change",
+        "compute": "difference",
+        "from": "btc_dominance_previous",
+        "to": "btc_dominance",
+        "label": "change in bitcoin dominance vs the previous day, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "volume_24h",
+        "value": 65709830082,
+        "unit": "USD",
+        "label": "24-hour trading volume",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "November 4, 2026"
+      },
+      {
+        "name": "eth_price_trend",
+        "from": "eth_price_change",
+        "thresholds": [
+          [
+            -10,
+            "a strong downtrend"
+          ],
+          [
+            -2,
+            "a downtrend"
+          ],
+          [
+            2,
+            "sideways movement"
+          ],
+          [
+            10,
+            "an uptrend"
+          ]
+        ],
+        "otherwise": "a strong uptrend"
+      }
+    ],
+    "known_names": [
+      "Satstack Desk"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Nimbex News",
+        "title": "Withdrawals paused",
+        "text": "The Nimbex exchange paused ETH withdrawals for 7 hours on Tuesday for maintenance."
+      },
+      {
+        "id": "s2",
+        "name": "Network calendar",
+        "title": "Network upgrade",
+        "text": "The Telar network will activate the Beacon upgrade on February 14."
+      }
+    ]
+  }
+}

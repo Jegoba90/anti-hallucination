@@ -1,0 +1,26 @@
+{
+  "dataset": "m030",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para el equipo de soporte de Quillon sobre el desempeño del área de soporte en la semana del 15 al 21 de octubre de 2026, a partir de estos datos.\n\nEmpresa: Quillon\nPeríodo: la semana del 15 al 21 de octubre de 2026\n\nDatos:\n- Tickets pendientes: 10 tickets\n- Tickets pendientes en la semana anterior: 16 tickets\n- Variación de los tickets pendientes respecto de la semana anterior: -37,5 %\n- Tickets resueltos: 7.114 tickets\n- Escalamientos: 25\n- Variación de los escalamientos respecto de la semana anterior: 24,6 %\n- Satisfacción del cliente (CSAT): 76 %\n- Satisfacción del cliente (CSAT) en la semana anterior: 75 %\n- Variación de la satisfacción del cliente (CSAT) respecto de la semana anterior, en puntos: 1 pp\n- Tiempo medio de resolución: 74,4 h\n- Tiempo medio de resolución en la semana anterior: 68,2 h\n- Variación del tiempo medio de resolución respecto de la semana anterior: 9,1 %\n- Tiempo de primera respuesta: 18,2 h\n- Tiempo de primera respuesta en la semana anterior: 16,6 h\n- Variación del tiempo de primera respuesta respecto de la semana anterior: 9,6 %\n- Veredicto sobre la variación de los escalamientos respecto de la semana anterior: subida fuerte\n\nNotas para el informe:\n[s1] Ticket 8825, «Correos demorados»: Los correos de confirmación llegan con hasta 6 horas de demora porque el proveedor de envíos limitó el tráfico. Se pasó el tráfico a un proveedor alternativo.\n[s2] Ticket 7580, «Facturas con el impuesto equivocado»: 3 clientes empresa de Mendoza recibieron facturas con el impuesto equivocado. Finanzas está emitiendo las facturas de nuevo.\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "La semana del 15 al 21 de octubre de 2026 el área de soporte cerró 7 114 tickets, manteniendo un nivel alto de productividad. Los tickets pendientes al final del período fueron 10, lo que representa una disminución del 37,5 % respecto a los 16 de la semana anterior. Los escalamientos aumentaron a 25, lo que equivale a una subida fuerte del 24,6 % respecto a la semana previa. La satisfacción del cliente (CSAT) subió ligeramente a 76 %, una mejora de 1 pp frente a la semana anterior. El tiempo medio de resolución se extendió a 74,4 h, lo que implica un incremento del 9,1 % respecto a los 68,2 h de la semana anterior. Asimismo, el tiempo de primera respuesta creció a 18,2 h, un aumento del 9,6 % frente a los 16,6 h anteriores. Entre los incidentes destacados, el ticket 8825 mostró demoras de hasta 6 h en los correos de confirmación por limitaciones del proveedor, mitigadas al redirigir el tráfico a un proveedor alternativo, y el ticket 7580 involucró a tres clientes de Mendoza que recibieron facturas con impuesto equivocado, situación que está siendo corregida por Finanzas con la reemisión de las facturas.",
+  "text": "La semana del 15 al 21 de octubre de 2026 el área de soporte cerró 7 114 tickets, manteniendo un nivel alto de productividad. Los tickets pendientes al final del período fueron 10, lo que representa una disminución del 37,5 % respecto a los 16 de la semana anterior. Los escalamientos aumentaron a 25, lo que equivale a una subida fuerte del 24,6 % respecto a la semana previa. La satisfacción del cliente (CSAT) subió ligeramente a 76 %, una mejora de 1 pp frente a la semana anterior. El tiempo medio de resolución se extendió a 74,4 h, lo que implica un incremento del 9,1 % respecto a los 68,2 h de la semana anterior. Asimismo, el tiempo de primera respuesta creció a 18,2 h, un aumento del 9,6 % frente a los 16,6 h anteriores. Entre los incidentes destacados, el ticket 8825 mostró demoras de hasta 6 h en los correos de confirmación por limitaciones del proveedor, mitigadas al redirigir el tráfico a un proveedor alternativo, y el ticket 7580 involucró a tres clientes de Mendoza que recibieron facturas con impuesto equivocado, situación que está siendo corregida por Finanzas con la reemisión de las facturas.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.204486361,
+    "prompt_tokens": 553,
+    "prompt_time": 0.026968925,
+    "completion_tokens": 883,
+    "completion_time": 1.876227878,
+    "total_tokens": 1436,
+    "total_time": 1.9031968030000002,
+    "completion_tokens_details": {
+      "reasoning_tokens": 574
+    }
+  },
+  "seconds": 2.17,
+  "created_at": "2026-11-18T14:35:05+00:00"
+}

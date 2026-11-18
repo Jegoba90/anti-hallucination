@@ -1,0 +1,26 @@
+{
+  "dataset": "m011",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the sales team at Lanternly on sales results for Q1 2026, based on this data.\n\nCompany: Lanternly\nPeriod: Q1 2026\n\nData:\n- Average order value: 201.26 EUR\n- Average order value in the previous quarter: 202.98 EUR\n- Change in average order value vs the previous quarter: -0.8%\n- Revenue: 917,644 EUR\n- Change in revenue vs the previous quarter: 10.7%\n- New customers: 1,691 customers\n- New customers in the previous quarter: 1,936 customers\n- Change in new customers vs the previous quarter: -12.7%\n- Units sold: 12,450 units\n- Units sold in the previous quarter: 13,332 units\n- Change in units sold vs the previous quarter: -6.6%\n- Return rate: 5.6%\n- Change in return rate vs the previous quarter, in percentage points: 2.4 pp\n- Verdict on the change in units sold vs the previous quarter: a mild drop\n\nNotes for the report:\n[s1] Sales team note, \"Seasonal campaign\": The Back to Basics campaign started on October 21 in Dublin and Tampa, with discounts of up to 30% on home goods.\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "Lanternly delivered €917,644 in revenue during Q1 2026, a solid 10.7 % increase over the prior quarter, underscoring the positive impact of our recent pricing initiatives. However, the average order value slipped to €201.26, down 0.8 % from €202.98, indicating that while more sales are being booked, they are occurring at slightly lower ticket sizes. New customer acquisition also weakened, with 1,691 first‑time buyers—a 12.7 % drop—contributing to a 6.6 % decline in units sold to 12,450, a mild drop that aligns with the lower order value. The return rate rose to 5.6 %, up 2.4 percentage points, suggesting that the deeper discounts offered in the “Back to Basics” campaign (up to 30 % on home goods in Dublin and Tampa, launched on October 21) may have attracted price‑sensitive shoppers who are more prone to return items. To sustain growth, the team should focus on converting the increased traffic from the campaign into higher‑value purchases and tightening post‑sale quality controls to curb returns.",
+  "text": "Lanternly delivered €917,644 in revenue during Q1 2026, a solid 10.7 % increase over the prior quarter, underscoring the positive impact of our recent pricing initiatives. However, the average order value slipped to €201.26, down 0.8 % from €202.98, indicating that while more sales are being booked, they are occurring at slightly lower ticket sizes. New customer acquisition also weakened, with 1,691 first‑time buyers—a 12.7 % drop—contributing to a 6.6 % decline in units sold to 12,450, a mild drop that aligns with the lower order value. The return rate rose to 5.6 %, up 2.4 percentage points, suggesting that the deeper discounts offered in the “Back to Basics” campaign (up to 30 % on home goods in Dublin and Tampa, launched on October 21) may have attracted price‑sensitive shoppers who are more prone to return items. To sustain growth, the team should focus on converting the increased traffic from the campaign into higher‑value purchases and tightening post‑sale quality controls to curb returns.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.145333459,
+    "prompt_tokens": 380,
+    "prompt_time": 0.018532379,
+    "completion_tokens": 465,
+    "completion_time": 0.979262104,
+    "total_tokens": 845,
+    "total_time": 0.997794483,
+    "completion_tokens_details": {
+      "reasoning_tokens": 211
+    }
+  },
+  "seconds": 1.2,
+  "created_at": "2026-11-18T14:32:52+00:00"
+}

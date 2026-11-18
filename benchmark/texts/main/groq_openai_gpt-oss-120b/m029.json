@@ -1,0 +1,26 @@
+{
+  "dataset": "m029",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for management at Harbor & Pine on sales results for Q1 2026, based on this data.\n\nCompany: Harbor & Pine\nPeriod: Q1 2026\n\nData:\n- Revenue: 398,854 USD\n- Revenue in the previous quarter: 402,192 USD\n- Change in revenue vs the previous quarter: -0.8%\n- Units sold: 9,671 units\n- Average order value: 136.01 USD\n- Average order value in the previous quarter: 136.82 USD\n- Change in average order value vs the previous quarter: -0.6%\n- Return rate: 5.2%\n- Return rate in the previous quarter: 6.0%\n- Change in return rate vs the previous quarter, in percentage points: -0.8 pp\n- Verdict on the change in revenue vs the previous quarter: stability\n\nNotes for the report:\n[s1] Sales team note, \"Seasonal campaign\": The Orange Week campaign started on October 2 in Bristol and Denver, with discounts of up to 15% on home goods.\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "Harbor & Pine generated $398,854 in revenue during Q1 2026, reflecting a modest 0.8 % decline from the prior quarter’s $402,192, which management has characterized as a period of stability. The company sold 9,671 units, while the average order value slipped to $136.01, down 0.6 % from $136.82, indicating slightly lower spend per transaction. Notably, the return rate improved to 5.2 %, a reduction of 0.8 percentage points from the previous quarter’s 6.0 %, suggesting better product satisfaction or more effective post‑sale processes. The sales team attributes the modest fluctuations to the “Seasonal campaign” – the Orange Week promotion launched on October 2 in Bristol and Denver, offering up to 15 % discounts on home goods. Overall, the figures point to a steady performance with incremental gains in customer retention despite the slight dip in revenue and order value.",
+  "text": "Harbor & Pine generated $398,854 in revenue during Q1 2026, reflecting a modest 0.8 % decline from the prior quarter’s $402,192, which management has characterized as a period of stability. The company sold 9,671 units, while the average order value slipped to $136.01, down 0.6 % from $136.82, indicating slightly lower spend per transaction. Notably, the return rate improved to 5.2 %, a reduction of 0.8 percentage points from the previous quarter’s 6.0 %, suggesting better product satisfaction or more effective post‑sale processes. The sales team attributes the modest fluctuations to the “Seasonal campaign” – the Orange Week promotion launched on October 2 in Bristol and Denver, offering up to 15 % discounts on home goods. Overall, the figures point to a steady performance with incremental gains in customer retention despite the slight dip in revenue and order value.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.242887821,
+    "prompt_tokens": 334,
+    "prompt_time": 0.018853086,
+    "completion_tokens": 269,
+    "completion_time": 0.570338023,
+    "total_tokens": 603,
+    "total_time": 0.589191109,
+    "completion_tokens_details": {
+      "reasoning_tokens": 59
+    }
+  },
+  "seconds": 0.95,
+  "created_at": "2026-11-18T14:34:59+00:00"
+}

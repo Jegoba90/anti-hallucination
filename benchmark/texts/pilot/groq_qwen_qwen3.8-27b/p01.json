@@ -1,0 +1,23 @@
+{
+  "dataset": "p01",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the operations managers at Ashgrove on support performance for the week of November 4–10, 2026, based on this data.\n\nCompany: Ashgrove\nPeriod: the week of November 4–10, 2026\n\nData:\n- Customer satisfaction (CSAT): 68%\n- Customer satisfaction (CSAT) in the previous week: 66%\n- Change in customer satisfaction (CSAT) vs the previous week, in percentage points: 2 pp\n- Tickets received: 1,287 tickets\n- Tickets received in the previous week: 1,295 tickets\n- Change in tickets received vs the previous week: -0.6%\n- First response time: 5.2 h\n- First response time in the previous week: 5.1 h\n- Change in first response time vs the previous week: 2.0%\n- Open backlog: 261 tickets\n- Open backlog in the previous week: 221 tickets\n- Change in open backlog vs the previous week: 18.1%\n- Average resolution time: 5.0 h\n\nNotes for the report:\n[s1] Ticket 4282, \"Invoices show the wrong tax\": 5 business customers in Tampa received invoices with the wrong tax. Finance is reissuing them.\n[s2] Ticket 7311, \"Delayed emails\": Confirmation emails arrive up to 8 hours late because the email provider throttled sending. Traffic was moved to a backup provider.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "Customer satisfaction improved by 2 percentage points to 68% for the week of November 4–10, 2026, marking a positive shift from the previous week's score. The total volume of tickets received remained stable at 1,287, representing a slight decrease of 0.6% compared to the prior period. While first response time increased marginally to 5.2 hours, a 2.0% change from the previous week's 5.1 hours, the average resolution time held steady at 5.0 hours. A significant concern is the 18.1% increase in open backlog, which rose from 221 to 261 tickets, indicating a growing accumulation of unresolved issues. This backlog growth occurred despite the stable ticket intake, suggesting potential capacity constraints within the support team. Specific incidents included five finance customers in Tampa receiving invoices with incorrect tax calculations, for which Finance is currently reissuing the documents. Additionally, confirmation emails experienced delays of up to eight hours due to provider throttling, prompting a traffic shift to a backup provider to restore service. Operations managers should prioritize reducing the expanding backlog while maintaining the improved satisfaction levels.",
+  "text": "Customer satisfaction improved by 2 percentage points to 68% for the week of November 4–10, 2026, marking a positive shift from the previous week's score. The total volume of tickets received remained stable at 1,287, representing a slight decrease of 0.6% compared to the prior period. While first response time increased marginally to 5.2 hours, a 2.0% change from the previous week's 5.1 hours, the average resolution time held steady at 5.0 hours. A significant concern is the 18.1% increase in open backlog, which rose from 221 to 261 tickets, indicating a growing accumulation of unresolved issues. This backlog growth occurred despite the stable ticket intake, suggesting potential capacity constraints within the support team. Specific incidents included five finance customers in Tampa receiving invoices with incorrect tax calculations, for which Finance is currently reissuing the documents. Additionally, confirmation emails experienced delays of up to eight hours due to provider throttling, prompting a traffic shift to a backup provider to restore service. Operations managers should prioritize reducing the expanding backlog while maintaining the improved satisfaction levels.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.639159953,
+    "prompt_tokens": 412,
+    "prompt_time": 0.036307204,
+    "completion_tokens": 246,
+    "completion_time": 0.711008547,
+    "total_tokens": 658,
+    "total_time": 0.747315751
+  },
+  "seconds": 1.43,
+  "created_at": "2026-11-18T14:22:39+00:00"
+}

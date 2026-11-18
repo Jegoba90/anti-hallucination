@@ -1,0 +1,176 @@
+{
+  "id": "m027",
+  "split": "dev",
+  "domain": "support",
+  "locale": "en",
+  "brief": {
+    "company": "Kestrel Goods",
+    "audience": "the support team",
+    "topic": "support performance",
+    "period": "the week of November 8–14, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "backlog",
+        "value": 84,
+        "unit": "tickets",
+        "label": "open backlog",
+        "subject": [
+          "backlog"
+        ]
+      },
+      {
+        "name": "backlog_previous",
+        "value": 69,
+        "unit": "tickets",
+        "label": "open backlog in the previous week",
+        "subject": [
+          "backlog"
+        ]
+      },
+      {
+        "name": "backlog_change",
+        "compute": "percent_change",
+        "from": "backlog_previous",
+        "to": "backlog",
+        "label": "change in open backlog vs the previous week",
+        "decimals": 1
+      },
+      {
+        "name": "tickets_received",
+        "value": 4792,
+        "unit": "tickets",
+        "label": "tickets received",
+        "subject": [
+          "tickets received",
+          "received"
+        ]
+      },
+      {
+        "name": "csat",
+        "value": 92,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT)",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_previous",
+        "value": 90,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT) in the previous week",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_change",
+        "compute": "difference",
+        "from": "csat_previous",
+        "to": "csat",
+        "label": "change in customer satisfaction (CSAT) vs the previous week, in percentage points",
+        "decimals": 0
+      },
+      {
+        "name": "resolution_time",
+        "value": 2.4,
+        "unit": "h",
+        "label": "average resolution time",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response",
+        "value": 0.8,
+        "unit": "h",
+        "label": "first response time",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_previous",
+        "value": 1.0,
+        "unit": "h",
+        "label": "first response time in the previous week",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_change",
+        "compute": "percent_change",
+        "from": "first_response_previous",
+        "to": "first_response",
+        "label": "change in first response time vs the previous week",
+        "decimals": 1
+      },
+      {
+        "name": "tickets_resolved",
+        "value": 14901,
+        "unit": "tickets",
+        "label": "tickets resolved",
+        "subject": [
+          "tickets resolved",
+          "resolved"
+        ]
+      },
+      {
+        "name": "tickets_resolved_previous",
+        "value": 13648,
+        "unit": "tickets",
+        "label": "tickets resolved in the previous week",
+        "subject": [
+          "tickets resolved",
+          "resolved"
+        ]
+      },
+      {
+        "name": "tickets_resolved_change",
+        "compute": "percent_change",
+        "from": "tickets_resolved_previous",
+        "to": "tickets_resolved",
+        "label": "change in tickets resolved vs the previous week",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "the week of November 8–14, 2026"
+      }
+    ],
+    "known_names": [
+      "Kestrel Goods"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 4209",
+        "title": "Card payments fail",
+        "text": "Since Friday, 38 customers in Bristol report that card payments fail with error 409. The payments team rolled back release 4.9.2 on Wednesday and the failures stopped."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 9291",
+        "title": "Invoices show the wrong tax",
+        "text": "6 business customers in Bristol received invoices with the wrong tax. Finance is reissuing them."
+      }
+    ]
+  }
+}

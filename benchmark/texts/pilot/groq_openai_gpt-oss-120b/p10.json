@@ -1,0 +1,26 @@
+{
+  "dataset": "p10",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for investors at Marlow Supply on business metrics for May 2026, based on this data.\n\nCompany: Marlow Supply\nPeriod: May 2026\n\nData:\n- Trial-to-paid conversion: 5.7%\n- Monthly churn: 1.4%\n- Monthly churn in the previous month: 1.1%\n- Change in monthly churn vs the previous month, in percentage points: 0.3 pp\n- Active users: 314 users\n- Active users in the previous month: 338 users\n- Change in active users vs the previous month: -7.1%\n- Customer acquisition cost (CAC): 1,199 USD\n- Change in customer acquisition cost (CAC) vs the previous month: 1.1%\n- Monthly recurring revenue (MRR): 159,554 USD\n- Monthly recurring revenue (MRR) in the previous month: 146,037 USD\n- Change in monthly recurring revenue (MRR) vs the previous month: 9.3%\n\nNotes for the report:\n[s1] Customer success note, \"Renewal\": Avalon Schools renewed its contract for 3 years and added 104 seats.\n[s2] Release notes, \"Version 4.11.2\": Version 4.11.2, released on June 7, added single sign-on and a new usage dashboard.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "In May 2026 Marlow Supply’s trial‑to‑paid conversion stood at 5.7%, while monthly churn rose to 1.4%, a 0.3‑percentage‑point increase from the prior month’s 1.1% rate. The active user base declined to 314, representing a 7.1% drop from the 338 users recorded in April. Customer acquisition cost edged higher to $1,199, up 1.1% month‑over‑month, as monthly recurring revenue grew to $159,554, a 9.3% increase over the previous $146,037. Avalon Schools renewed its contract for three years and added 104 seats, reinforcing the pipeline of recurring revenue. The product team released Version 4.11.2 on June 7, which introduced single sign‑on and a new usage dashboard. These developments together support a modest revenue expansion despite the dip in active users and a slight uptick in churn.",
+  "text": "In May 2026 Marlow Supply’s trial‑to‑paid conversion stood at 5.7%, while monthly churn rose to 1.4%, a 0.3‑percentage‑point increase from the prior month’s 1.1% rate. The active user base declined to 314, representing a 7.1% drop from the 338 users recorded in April. Customer acquisition cost edged higher to $1,199, up 1.1% month‑over‑month, as monthly recurring revenue grew to $159,554, a 9.3% increase over the previous $146,037. Avalon Schools renewed its contract for three years and added 104 seats, reinforcing the pipeline of recurring revenue. The product team released Version 4.11.2 on June 7, which introduced single sign‑on and a new usage dashboard. These developments together support a modest revenue expansion despite the dip in active users and a slight uptick in churn.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.310741257,
+    "prompt_tokens": 411,
+    "prompt_time": 0.02134952,
+    "completion_tokens": 424,
+    "completion_time": 0.889216708,
+    "total_tokens": 835,
+    "total_time": 0.910566228,
+    "completion_tokens_details": {
+      "reasoning_tokens": 215
+    }
+  },
+  "seconds": 1.27,
+  "created_at": "2026-11-18T14:21:40+00:00"
+}

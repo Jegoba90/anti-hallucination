@@ -1,0 +1,118 @@
+{
+  "id": "m089",
+  "split": "test",
+  "domain": "crypto",
+  "locale": "en",
+  "brief": {
+    "company": "Satstack Desk",
+    "audience": "the trading desk clients",
+    "topic": "the crypto market",
+    "period": "the week of November 14–20, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "volume_24h",
+        "value": 110025027615,
+        "unit": "USD",
+        "label": "24-hour trading volume",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest",
+        "value": 11879590288,
+        "unit": "USD",
+        "label": "futures open interest",
+        "subject": [
+          "open interest"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest_previous",
+        "value": 10336504665,
+        "unit": "USD",
+        "label": "futures open interest in the previous week",
+        "subject": [
+          "open interest"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest_change",
+        "compute": "percent_change",
+        "from": "open_interest_previous",
+        "to": "open_interest",
+        "label": "change in futures open interest vs the previous week",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "fear_greed",
+        "value": 19,
+        "unit": "",
+        "label": "fear and greed index",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "eth_price",
+        "value": 4026,
+        "unit": "USD",
+        "label": "ether (ETH) price",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "btc_dominance",
+        "value": 46.2,
+        "unit": "%",
+        "label": "bitcoin dominance",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_previous",
+        "value": 48.2,
+        "unit": "%",
+        "label": "bitcoin dominance in the previous week",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_change",
+        "compute": "difference",
+        "from": "btc_dominance_previous",
+        "to": "btc_dominance",
+        "label": "change in bitcoin dominance vs the previous week, in percentage points",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "the week of November 14–20, 2026"
+      }
+    ],
+    "known_names": [
+      "Satstack Desk"
+    ]
+  }
+}

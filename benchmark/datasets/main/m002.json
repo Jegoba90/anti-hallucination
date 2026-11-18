@@ -1,0 +1,185 @@
+{
+  "id": "m002",
+  "split": "dev",
+  "domain": "finance",
+  "locale": "en",
+  "brief": {
+    "company": "Copperline",
+    "audience": "the board",
+    "topic": "financial results",
+    "period": "Q1 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "net_debt",
+        "value": 2286246036,
+        "unit": "EUR",
+        "label": "net debt",
+        "subject": [
+          "debt"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash",
+        "value": 1493037788,
+        "unit": "EUR",
+        "label": "cash and equivalents",
+        "subject": [
+          "cash"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash_previous",
+        "value": 1514075739,
+        "unit": "EUR",
+        "label": "cash and equivalents in the previous quarter",
+        "subject": [
+          "cash"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash_change",
+        "compute": "percent_change",
+        "from": "cash_previous",
+        "to": "cash",
+        "label": "change in cash and equivalents vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "employees",
+        "value": 352,
+        "unit": "employees",
+        "label": "employees",
+        "subject": [
+          "employees",
+          "headcount"
+        ]
+      },
+      {
+        "name": "employees_previous",
+        "value": 315,
+        "unit": "employees",
+        "label": "employees in the previous quarter",
+        "subject": [
+          "employees",
+          "headcount"
+        ]
+      },
+      {
+        "name": "employees_change",
+        "compute": "percent_change",
+        "from": "employees_previous",
+        "to": "employees",
+        "label": "change in employees vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "revenue",
+        "value": 928161416,
+        "unit": "EUR",
+        "label": "revenue",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "revenue_previous",
+        "value": 946403496,
+        "unit": "EUR",
+        "label": "revenue in the previous quarter",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "revenue_change",
+        "compute": "percent_change",
+        "from": "revenue_previous",
+        "to": "revenue",
+        "label": "change in revenue vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "operating_margin",
+        "value": 19.2,
+        "unit": "%",
+        "label": "operating margin",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_previous",
+        "value": 19.4,
+        "unit": "%",
+        "label": "operating margin in the previous quarter",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_change",
+        "compute": "difference",
+        "from": "operating_margin_previous",
+        "to": "operating_margin",
+        "label": "change in operating margin vs the previous quarter, in percentage points",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "Q1 2026"
+      },
+      {
+        "name": "revenue_trend",
+        "from": "revenue_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Copperline"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Management remarks",
+        "title": "Priorities",
+        "text": "Hannah Pryce, the chief financial officer, said the focus for the coming quarters is to cut debt and hold the margin."
+      }
+    ]
+  }
+}

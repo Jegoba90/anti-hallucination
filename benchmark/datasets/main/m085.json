@@ -1,0 +1,171 @@
+{
+  "id": "m085",
+  "split": "test",
+  "domain": "support",
+  "locale": "en",
+  "brief": {
+    "company": "Tidewell",
+    "audience": "the operations managers",
+    "topic": "support performance",
+    "period": "June 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "csat",
+        "value": 69,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT)",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_previous",
+        "value": 71,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT) in the previous month",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_change",
+        "compute": "difference",
+        "from": "csat_previous",
+        "to": "csat",
+        "label": "change in customer satisfaction (CSAT) vs the previous month, in percentage points",
+        "decimals": 0
+      },
+      {
+        "name": "backlog",
+        "value": 56,
+        "unit": "tickets",
+        "label": "open backlog",
+        "subject": [
+          "backlog"
+        ]
+      },
+      {
+        "name": "backlog_change",
+        "value": 21.1,
+        "unit": "%",
+        "change": true,
+        "label": "change in open backlog vs the previous month",
+        "subject": [
+          "backlog"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "escalations",
+        "value": 17,
+        "unit": "",
+        "label": "escalations",
+        "subject": [
+          "escalations"
+        ]
+      },
+      {
+        "name": "escalations_previous",
+        "value": 12,
+        "unit": "",
+        "label": "escalations in the previous month",
+        "subject": [
+          "escalations"
+        ]
+      },
+      {
+        "name": "escalations_change",
+        "compute": "percent_change",
+        "from": "escalations_previous",
+        "to": "escalations",
+        "label": "change in escalations vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "first_response",
+        "value": 5.9,
+        "unit": "h",
+        "label": "first response time",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_previous",
+        "value": 5.8,
+        "unit": "h",
+        "label": "first response time in the previous month",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_change",
+        "compute": "percent_change",
+        "from": "first_response_previous",
+        "to": "first_response",
+        "label": "change in first response time vs the previous month",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "June 2026"
+      },
+      {
+        "name": "escalations_trend",
+        "from": "escalations_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Tidewell"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 8478",
+        "title": "Card payments fail",
+        "text": "Since Tuesday, 47 customers in Bristol report that card payments fail with error 502. The payments team rolled back release 6.6.5 on Thursday and the failures stopped."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 4480",
+        "title": "Delayed emails",
+        "text": "Confirmation emails arrive up to 5 hours late because the email provider throttled sending. Traffic was moved to a backup provider."
+      }
+    ]
+  }
+}

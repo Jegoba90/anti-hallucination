@@ -1,0 +1,202 @@
+{
+  "id": "m082",
+  "split": "test",
+  "domain": "finance",
+  "locale": "es",
+  "brief": {
+    "company": "Cardón",
+    "audience": "los accionistas",
+    "topic": "los resultados financieros",
+    "period": "el primer trimestre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "ebitda",
+        "value": 322155833,
+        "unit": "USD",
+        "label": "EBITDA",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ebitda_anterior",
+        "value": 351178418,
+        "unit": "USD",
+        "label": "EBITDA en el trimestre anterior",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_ebitda",
+        "compute": "percent_change",
+        "from": "ebitda_anterior",
+        "to": "ebitda",
+        "label": "variación del EBITDA respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "deuda_neta",
+        "value": 5942050,
+        "unit": "USD",
+        "label": "deuda neta",
+        "subject": [
+          "deuda"
+        ],
+        "compact": true
+      },
+      {
+        "name": "deuda_neta_anterior",
+        "value": 5970355,
+        "unit": "USD",
+        "label": "deuda neta en el trimestre anterior",
+        "subject": [
+          "deuda"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_deuda_neta",
+        "compute": "percent_change",
+        "from": "deuda_neta_anterior",
+        "to": "deuda_neta",
+        "label": "variación de la deuda neta respecto del trimestre anterior",
+        "decimals": 1
+      },
+      {
+        "name": "caja",
+        "value": 672381195,
+        "unit": "USD",
+        "label": "caja y equivalentes",
+        "subject": [
+          "caja"
+        ],
+        "compact": true
+      },
+      {
+        "name": "caja_anterior",
+        "value": 495354477,
+        "unit": "USD",
+        "label": "caja y equivalentes en el trimestre anterior",
+        "subject": [
+          "caja"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_caja",
+        "compute": "percent_change",
+        "from": "caja_anterior",
+        "to": "caja",
+        "label": "variación de la caja y equivalentes respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "empleados",
+        "value": 2375,
+        "unit": "empleados",
+        "label": "empleados",
+        "subject": [
+          "empleados",
+          "plantilla"
+        ]
+      },
+      {
+        "name": "empleados_anterior",
+        "value": 2827,
+        "unit": "empleados",
+        "label": "empleados en el trimestre anterior",
+        "subject": [
+          "empleados",
+          "plantilla"
+        ]
+      },
+      {
+        "name": "variacion_empleados",
+        "compute": "percent_change",
+        "from": "empleados_anterior",
+        "to": "empleados",
+        "label": "variación de los empleados respecto del trimestre anterior",
+        "decimals": 1
+      },
+      {
+        "name": "margen_operativo",
+        "value": 19.8,
+        "unit": "%",
+        "label": "margen operativo",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_margen_operativo",
+        "value": -1.1,
+        "unit": "pp",
+        "change": true,
+        "label": "variación del margen operativo respecto del trimestre anterior, en puntos",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el primer trimestre de 2026"
+      },
+      {
+        "name": "tendencia_margen_operativo",
+        "from": "variacion_margen_operativo",
+        "thresholds": [
+          [
+            -2,
+            "caída fuerte"
+          ],
+          [
+            -0.3,
+            "caída leve"
+          ],
+          [
+            0.3,
+            "estabilidad"
+          ],
+          [
+            2,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Cardón"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Declaraciones de la dirección",
+        "title": "Prioridades",
+        "text": "Lucía Ferrante, directora financiera, dijo que el foco de los próximos trimestres será bajar la deuda y sostener el margen."
+      },
+      {
+        "id": "s2",
+        "name": "Comunicado de prensa",
+        "title": "Nueva planta",
+        "text": "Cardón anunció una inversión de 250 millones de USD en una planta en Valencia, que empezará a operar en 2027."
+      }
+    ]
+  }
+}

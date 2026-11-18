@@ -1,0 +1,23 @@
+{
+  "dataset": "p14",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para el directorio de Pampa Digital sobre los resultados financieros en el segundo trimestre de 2026, a partir de estos datos.\n\nEmpresa: Pampa Digital\nPeríodo: el segundo trimestre de 2026\n\nDatos:\n- Empleados: 15.627 empleados\n- Empleados en el trimestre anterior: 18.595 empleados\n- Variación de los empleados respecto del trimestre anterior: -16,0 %\n- EBITDA: 64 millones USD\n- EBITDA en el trimestre anterior: 58,1 millones USD\n- Variación del EBITDA respecto del trimestre anterior: 10,2 %\n- Resultado neto: 462,8 millones USD\n- Resultado neto en el trimestre anterior: 328,7 millones USD\n- Variación del resultado neto respecto del trimestre anterior: 134 millones USD\n- Ingresos: 1,3 mil millones USD\n- Ingresos en el trimestre anterior: 1,3 mil millones USD\n- Variación de los ingresos respecto del trimestre anterior: -1,1 %\n- Margen operativo: -1,1 %\n- Margen operativo en el trimestre anterior: -1,5 %\n- Variación del margen operativo respecto del trimestre anterior, en puntos: 0,4 pp\n- Veredicto sobre la variación del EBITDA respecto del trimestre anterior: subida fuerte\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "El segundo trimestre de 2026 para Pampa Digital se caracterizó por un crecimiento sólido de la rentabilidad, impulsado principalmente por una mejora significativa en el EBITDA, que alcanzó los 64 millones de dólares, un aumento fuerte del 10,2 % intertrimestral. Este incremento se reflejó directamente en el resultado neto, que saltó de 328,7 a 462,8 millones de dólares, registrando una ganancia adicional de 134 millones de dólares respecto al período anterior. A pesar de esta expansión de las ganancias, los ingresos se mantuvieron estables en 1,3 mil millones de dólares, con una ligera contracción del 1,1 % que sugiere una optimización en la estructura de costos. La eficiencia operativa también mostró señales positivas, ya que el margen operativo se redujo la pérdida de -1,5 % a -1,1 %, representando una mejora de 0,4 puntos porcentuales. En paralelo, la empresa realizó una reestructura de su plantilla laboral, reduciendo la fuerza de trabajo en un 16,0 % hasta los 15.627 empleados, una caída notable respecto a los 18.595 del trimestre previo. Esta reducción estratégica de personal parece haber contribuido a sostener la rentabilidad a pesar de la estagnación en las ventas. En conjunto, los indicadores financieros del trimestre reflejan una gestión enfocada en la máxima eficiencia operativa y la contenida de gastos. La dirección debe considerar estos resultados como una base favorable para mantener la trayectoria de mejora en los períodos venideros.",
+  "text": "El segundo trimestre de 2026 para Pampa Digital se caracterizó por un crecimiento sólido de la rentabilidad, impulsado principalmente por una mejora significativa en el EBITDA, que alcanzó los 64 millones de dólares, un aumento fuerte del 10,2 % intertrimestral. Este incremento se reflejó directamente en el resultado neto, que saltó de 328,7 a 462,8 millones de dólares, registrando una ganancia adicional de 134 millones de dólares respecto al período anterior. A pesar de esta expansión de las ganancias, los ingresos se mantuvieron estables en 1,3 mil millones de dólares, con una ligera contracción del 1,1 % que sugiere una optimización en la estructura de costos. La eficiencia operativa también mostró señales positivas, ya que el margen operativo se redujo la pérdida de -1,5 % a -1,1 %, representando una mejora de 0,4 puntos porcentuales. En paralelo, la empresa realizó una reestructura de su plantilla laboral, reduciendo la fuerza de trabajo en un 16,0 % hasta los 15.627 empleados, una caída notable respecto a los 18.595 del trimestre previo. Esta reducción estratégica de personal parece haber contribuido a sostener la rentabilidad a pesar de la estagnación en las ventas. En conjunto, los indicadores financieros del trimestre reflejan una gestión enfocada en la máxima eficiencia operativa y la contenida de gastos. La dirección debe considerar estos resultados como una base favorable para mantener la trayectoria de mejora en los períodos venideros.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.469911302,
+    "prompt_tokens": 375,
+    "prompt_time": 0.027488539,
+    "completion_tokens": 344,
+    "completion_time": 0.691724404,
+    "total_tokens": 719,
+    "total_time": 0.719212943
+  },
+  "seconds": 1.28,
+  "created_at": "2026-11-18T14:25:19+00:00"
+}

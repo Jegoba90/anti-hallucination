@@ -1,0 +1,26 @@
+{
+  "dataset": "m007",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para la gerencia de Lumbre sobre los resultados de ventas en enero de 2026, a partir de estos datos.\n\nEmpresa: Lumbre\nPeríodo: enero de 2026\n\nDatos:\n- Pedidos online: 48.031 pedidos\n- Pedidos online en el mes anterior: 109.072 pedidos\n- Variación de los pedidos online respecto del mes anterior: -56,0 %\n- Unidades vendidas: 40.182 unidades\n- Variación de las unidades vendidas respecto del mes anterior: 1,5 %\n- Conversión web: 1,0 %\n- Clientes nuevos: 96 clientes\n- Clientes nuevos en el mes anterior: 92 clientes\n- Variación de los clientes nuevos respecto del mes anterior: 4,3 %\n- Tasa de devoluciones: 3,4 %\n- Tasa de devoluciones en el mes anterior: 2,5 %\n- Variación de la tasa de devoluciones respecto del mes anterior, en puntos: 0,9 pp\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En enero de 2026 Lumbre registró 48 031 pedidos online, lo que representa una caída del 56 % respecto al mes anterior, cuando se contabilizaron 109 072 pedidos. A pesar de la fuerte disminución en la cantidad de pedidos, el número de unidades vendidas se mantuvo estable, con 40 182 unidades y un ligero crecimiento del 1,5 % frente al periodo previo. La tasa de conversión web se situó en 1,0 %, indicando que la proporción de visitantes que realizan una compra se mantuvo constante. Los clientes nuevos aumentaron a 96, superando los 92 del mes anterior y evidenciando un incremento del 4,3 % en la captación de nuevos compradores. Sin embargo, la tasa de devoluciones subió a 3,4 %, lo que implica un aumento de 0,9 puntos porcentuales respecto al mes anterior y sugiere la necesidad de revisar los procesos de post‑venta y calidad del producto. En conjunto, aunque la venta de unidades se mantiene ligeramente positiva, la caída de pedidos y el incremento de devoluciones requieren acciones correctivas para recuperar el desempeño de la plataforma online.",
+  "text": "En enero de 2026 Lumbre registró 48 031 pedidos online, lo que representa una caída del 56 % respecto al mes anterior, cuando se contabilizaron 109 072 pedidos. A pesar de la fuerte disminución en la cantidad de pedidos, el número de unidades vendidas se mantuvo estable, con 40 182 unidades y un ligero crecimiento del 1,5 % frente al periodo previo. La tasa de conversión web se situó en 1,0 %, indicando que la proporción de visitantes que realizan una compra se mantuvo constante. Los clientes nuevos aumentaron a 96, superando los 92 del mes anterior y evidenciando un incremento del 4,3 % en la captación de nuevos compradores. Sin embargo, la tasa de devoluciones subió a 3,4 %, lo que implica un aumento de 0,9 puntos porcentuales respecto al mes anterior y sugiere la necesidad de revisar los procesos de post‑venta y calidad del producto. En conjunto, aunque la venta de unidades se mantiene ligeramente positiva, la caída de pedidos y el incremento de devoluciones requieren acciones correctivas para recuperar el desempeño de la plataforma online.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.317696649,
+    "prompt_tokens": 330,
+    "prompt_time": 0.014000055,
+    "completion_tokens": 309,
+    "completion_time": 0.642748919,
+    "total_tokens": 639,
+    "total_time": 0.656748974,
+    "completion_tokens_details": {
+      "reasoning_tokens": 52
+    }
+  },
+  "seconds": 1.03,
+  "created_at": "2026-11-18T14:32:47+00:00"
+}

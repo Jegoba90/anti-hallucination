@@ -1,0 +1,138 @@
+{
+  "id": "m076",
+  "split": "test",
+  "domain": "crypto",
+  "locale": "es",
+  "brief": {
+    "company": "Informe Andino de Mercados",
+    "audience": "los suscriptores",
+    "topic": "el mercado cripto",
+    "period": "la semana del 4 al 10 de noviembre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "interes_abierto",
+        "value": 5023812922,
+        "unit": "USD",
+        "label": "interés abierto en futuros",
+        "subject": [
+          "interés abierto"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_interes_abierto",
+        "value": 52.7,
+        "unit": "%",
+        "change": true,
+        "label": "variación del interés abierto en futuros respecto de la semana anterior",
+        "subject": [
+          "interés abierto"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "indice_miedo",
+        "value": 15,
+        "unit": "",
+        "label": "índice de miedo y codicia",
+        "subject": [
+          "miedo",
+          "codicia",
+          "sentimiento"
+        ]
+      },
+      {
+        "name": "indice_miedo_anterior",
+        "value": 17,
+        "unit": "",
+        "label": "índice de miedo y codicia en la semana anterior",
+        "subject": [
+          "miedo",
+          "codicia",
+          "sentimiento"
+        ]
+      },
+      {
+        "name": "variacion_indice_miedo",
+        "compute": "difference",
+        "from": "indice_miedo_anterior",
+        "to": "indice_miedo",
+        "label": "variación del índice de miedo y codicia respecto de la semana anterior",
+        "decimals": 0
+      },
+      {
+        "name": "dominancia_btc",
+        "value": 60.1,
+        "unit": "%",
+        "label": "dominancia de bitcoin",
+        "subject": [
+          "dominancia"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "dominancia_btc_anterior",
+        "value": 57.7,
+        "unit": "%",
+        "label": "dominancia de bitcoin en la semana anterior",
+        "subject": [
+          "dominancia"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_dominancia_btc",
+        "compute": "difference",
+        "from": "dominancia_btc_anterior",
+        "to": "dominancia_btc",
+        "label": "variación de la dominancia de bitcoin respecto de la semana anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "volumen_24h",
+        "value": 8042583104,
+        "unit": "USD",
+        "label": "volumen operado en 24 horas",
+        "subject": [
+          "volumen"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_volumen_24h",
+        "value": 4.3,
+        "unit": "%",
+        "change": true,
+        "label": "variación del volumen operado en 24 horas respecto de la semana anterior",
+        "subject": [
+          "volumen"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "la semana del 4 al 10 de noviembre de 2026"
+      }
+    ],
+    "known_names": [
+      "Informe Andino de Mercados"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Nimbex News",
+        "title": "Retiros suspendidos",
+        "text": "El exchange Nimbex suspendió los retiros de ETH durante 4 horas el martes por mantenimiento."
+      }
+    ]
+  }
+}

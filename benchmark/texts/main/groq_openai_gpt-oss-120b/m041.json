@@ -1,0 +1,26 @@
+{
+  "dataset": "m041",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para el equipo directivo de Arkadia sobre las métricas del negocio en octubre de 2026, a partir de estos datos.\n\nEmpresa: Arkadia\nPeríodo: octubre de 2026\n\nDatos:\n- Clientes nuevos: 532 clientes\n- Variación de los clientes nuevos respecto del mes anterior: 5,0 %\n- Conversión de prueba a pago: 28,6 %\n- Costo de adquisición de clientes (CAC): 2.391 EUR\n- Ingreso mensual recurrente (MRR): 32.725 EUR\n- Ingreso mensual recurrente (MRR) en el mes anterior: 31.966 EUR\n- Variación del ingreso mensual recurrente (MRR) respecto del mes anterior: 2,4 %\n- Retención neta de ingresos (NRR): 86 %\n- Retención neta de ingresos (NRR) en el mes anterior: 85 %\n- Variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos: 1 pp\n- Veredicto sobre la variación del ingreso mensual recurrente (MRR) respecto del mes anterior: subida leve\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En octubre de 2026 Arkadia incorporó 532 clientes nuevos, lo que representa un incremento del 5 % respecto al mes anterior y evidencia una captación sostenida. La tasa de conversión de pruebas gratuitas a suscripciones pagas se situó en el 28,6 %, indicando que cerca de un tercio de los usuarios de prueba se convierten en ingresos recurrentes. El costo de adquisición de clientes (CAC) alcanzó los 2.391 EUR, manteniéndose dentro del rango esperado para nuestro modelo de negocio. El ingreso mensual recurrente (MRR) subió a 32.725 EUR, un aumento del 2,4 % frente a los 31.966 EUR del mes previo, lo que califica como una subida leve según nuestro veredicto interno. La retención neta de ingresos (NRR) mejoró a 86 % frente al 85 % anterior, una variación positiva de 1 punto porcentual, lo que refuerza la capacidad de Arkadia para mantener y expandir el valor de sus clientes existentes. En conjunto, estos indicadores confirman una tendencia de crecimiento moderado y una gestión eficaz de la retención, aunque será clave seguir optimizando el CAC para maximizar la rentabilidad.",
+  "text": "En octubre de 2026 Arkadia incorporó 532 clientes nuevos, lo que representa un incremento del 5 % respecto al mes anterior y evidencia una captación sostenida. La tasa de conversión de pruebas gratuitas a suscripciones pagas se situó en el 28,6 %, indicando que cerca de un tercio de los usuarios de prueba se convierten en ingresos recurrentes. El costo de adquisición de clientes (CAC) alcanzó los 2.391 EUR, manteniéndose dentro del rango esperado para nuestro modelo de negocio. El ingreso mensual recurrente (MRR) subió a 32.725 EUR, un aumento del 2,4 % frente a los 31.966 EUR del mes previo, lo que califica como una subida leve según nuestro veredicto interno. La retención neta de ingresos (NRR) mejoró a 86 % frente al 85 % anterior, una variación positiva de 1 punto porcentual, lo que refuerza la capacidad de Arkadia para mantener y expandir el valor de sus clientes existentes. En conjunto, estos indicadores confirman una tendencia de crecimiento moderado y una gestión eficaz de la retención, aunque será clave seguir optimizando el CAC para maximizar la rentabilidad.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.25462912,
+    "prompt_tokens": 359,
+    "prompt_time": 0.043724381,
+    "completion_tokens": 376,
+    "completion_time": 0.794656662,
+    "total_tokens": 735,
+    "total_time": 0.838381043,
+    "completion_tokens_details": {
+      "reasoning_tokens": 100
+    }
+  },
+  "seconds": 1.18,
+  "created_at": "2026-11-18T14:36:26+00:00"
+}

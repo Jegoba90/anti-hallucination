@@ -1,0 +1,26 @@
+{
+  "dataset": "m022",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para la gerencia de operaciones de Quillon sobre el desempeño del área de soporte en agosto de 2026, a partir de estos datos.\n\nEmpresa: Quillon\nPeríodo: agosto de 2026\n\nDatos:\n- Escalamientos: 1\n- Variación de los escalamientos respecto del mes anterior: 19,7 %\n- Tiempo de primera respuesta: 10,7 h\n- Tiempo de primera respuesta en el mes anterior: 10,8 h\n- Variación del tiempo de primera respuesta respecto del mes anterior: -0,9 %\n- Satisfacción del cliente (CSAT): 84 %\n- Tickets resueltos: 23.680 tickets\n- Tickets resueltos en el mes anterior: 22.413 tickets\n- Variación de los tickets resueltos respecto del mes anterior: 5,7 %\n- Tickets pendientes: 1.652 tickets\n- Tickets pendientes en el mes anterior: 1.689 tickets\n- Variación de los tickets pendientes respecto del mes anterior: -2,2 %\n- Tickets recibidos: 454 tickets\n- Tickets recibidos en el mes anterior: 478 tickets\n- Variación de los tickets recibidos respecto del mes anterior: -5,0 %\n- Veredicto sobre la variación de los tickets pendientes respecto del mes anterior: caída leve\n\nNotas para el informe:\n[s1] Ticket 8480, «Facturas con el impuesto equivocado»: 6 clientes empresa de Rosario recibieron facturas con el impuesto equivocado. Finanzas está emitiendo las facturas de nuevo.\n[s2] Ticket 4222, «Falla el pago con tarjeta»: Desde el viernes, 54 clientes de Rosario reportan que el pago con tarjeta falla con el error 502. El equipo de pagos revirtió la versión 6.11.2 el lunes y las fallas se detuvieron.\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En agosto de 2026 el área de soporte resolvió 23 680 tickets, lo que supone un aumento del 5,7 % respecto al mes anterior. Los tickets recibidos descendieron a 454, una variación negativa del 5,0 % frente a julio. Los tickets pendientes se redujeron a 1 652, lo que representa una caída del 2,2 % y una disminución leve del backlog. El tiempo de primera respuesta mejoró ligeramente, situándose en 10,7 horas, un descenso del 0,9 % respecto al periodo anterior. La satisfacción del cliente se mantuvo alta, con un CSAT del 84 %. Los escalamientos se limitaron a un solo caso, aunque mostraron una variación positiva del 19,7 % respecto al mes previo.",
+  "text": "En agosto de 2026 el área de soporte resolvió 23 680 tickets, lo que supone un aumento del 5,7 % respecto al mes anterior. Los tickets recibidos descendieron a 454, una variación negativa del 5,0 % frente a julio. Los tickets pendientes se redujeron a 1 652, lo que representa una caída del 2,2 % y una disminución leve del backlog. El tiempo de primera respuesta mejoró ligeramente, situándose en 10,7 horas, un descenso del 0,9 % respecto al periodo anterior. La satisfacción del cliente se mantuvo alta, con un CSAT del 84 %. Los escalamientos se limitaron a un solo caso, aunque mostraron una variación positiva del 19,7 % respecto al mes previo.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.204131106,
+    "prompt_tokens": 534,
+    "prompt_time": 0.05457217,
+    "completion_tokens": 664,
+    "completion_time": 1.401987329,
+    "total_tokens": 1198,
+    "total_time": 1.456559499,
+    "completion_tokens_details": {
+      "reasoning_tokens": 479
+    }
+  },
+  "seconds": 1.72,
+  "created_at": "2026-11-18T14:34:12+00:00"
+}

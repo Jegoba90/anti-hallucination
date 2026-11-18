@@ -1,0 +1,185 @@
+{
+  "id": "m064",
+  "split": "test",
+  "domain": "crypto",
+  "locale": "es",
+  "brief": {
+    "company": "Informe Andino de Mercados",
+    "audience": "los clientes de la mesa de trading",
+    "topic": "el mercado cripto",
+    "period": "el 7 de noviembre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "precio_btc",
+        "value": 26335,
+        "unit": "USD",
+        "label": "precio de bitcoin (BTC)",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "precio_btc_anterior",
+        "value": 62695,
+        "unit": "USD",
+        "label": "precio de bitcoin (BTC) en el día anterior",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "variacion_precio_btc",
+        "compute": "percent_change",
+        "from": "precio_btc_anterior",
+        "to": "precio_btc",
+        "label": "variación del precio de bitcoin (BTC) respecto del día anterior",
+        "decimals": 1
+      },
+      {
+        "name": "dominancia_btc",
+        "value": 41.8,
+        "unit": "%",
+        "label": "dominancia de bitcoin",
+        "subject": [
+          "dominancia"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "indice_miedo",
+        "value": 70,
+        "unit": "",
+        "label": "índice de miedo y codicia",
+        "subject": [
+          "miedo",
+          "codicia",
+          "sentimiento"
+        ]
+      },
+      {
+        "name": "variacion_indice_miedo",
+        "value": -3,
+        "unit": "",
+        "change": true,
+        "label": "variación del índice de miedo y codicia respecto del día anterior",
+        "subject": [
+          "miedo",
+          "codicia",
+          "sentimiento"
+        ]
+      },
+      {
+        "name": "precio_eth",
+        "value": 5965,
+        "unit": "USD",
+        "label": "precio de ether (ETH)",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "precio_eth_anterior",
+        "value": 5674,
+        "unit": "USD",
+        "label": "precio de ether (ETH) en el día anterior",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "variacion_precio_eth",
+        "compute": "percent_change",
+        "from": "precio_eth_anterior",
+        "to": "precio_eth",
+        "label": "variación del precio de ether (ETH) respecto del día anterior",
+        "decimals": 1
+      },
+      {
+        "name": "interes_abierto",
+        "value": 38459513252,
+        "unit": "USD",
+        "label": "interés abierto en futuros",
+        "subject": [
+          "interés abierto"
+        ],
+        "compact": true
+      },
+      {
+        "name": "interes_abierto_anterior",
+        "value": 42044377604,
+        "unit": "USD",
+        "label": "interés abierto en futuros en el día anterior",
+        "subject": [
+          "interés abierto"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_interes_abierto",
+        "compute": "percent_change",
+        "from": "interes_abierto_anterior",
+        "to": "interes_abierto",
+        "label": "variación del interés abierto en futuros respecto del día anterior",
+        "decimals": 1,
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el 7 de noviembre de 2026"
+      },
+      {
+        "name": "tendencia_precio_eth",
+        "from": "variacion_precio_eth",
+        "thresholds": [
+          [
+            -10,
+            "tendencia bajista fuerte"
+          ],
+          [
+            -2,
+            "tendencia bajista"
+          ],
+          [
+            2,
+            "movimiento lateral"
+          ],
+          [
+            10,
+            "tendencia alcista"
+          ]
+        ],
+        "otherwise": "tendencia alcista fuerte"
+      }
+    ],
+    "known_names": [
+      "Informe Andino de Mercados"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Nimbex News",
+        "title": "Retiros suspendidos",
+        "text": "El exchange Nimbex suspendió los retiros de ETH durante 4 horas el martes por mantenimiento."
+      },
+      {
+        "id": "s2",
+        "name": "Agenda de redes",
+        "title": "Actualización de red",
+        "text": "La red Lumen activará la actualización «Faro» el 9 de octubre."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "dataset": "m012",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para los inversores de Pampa Digital sobre las métricas del negocio en septiembre de 2026, a partir de estos datos.\n\nEmpresa: Pampa Digital\nPeríodo: septiembre de 2026\n\nDatos:\n- Ingreso mensual recurrente (MRR): 8.234 USD\n- Ingreso mensual recurrente (MRR) en el mes anterior: 8.522 USD\n- Variación del ingreso mensual recurrente (MRR) respecto del mes anterior: -3,4 %\n- Retención neta de ingresos (NRR): 105 %\n- Retención neta de ingresos (NRR) en el mes anterior: 100 %\n- Variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos: 5 pp\n- Clientes nuevos: 6 clientes\n- Costo de adquisición de clientes (CAC): 184 USD\n- Costo de adquisición de clientes (CAC) en el mes anterior: 178 USD\n- Variación del costo de adquisición de clientes (CAC) respecto del mes anterior: 3,4 %\n- Conversión de prueba a pago: 4,1 %\n- Conversión de prueba a pago en el mes anterior: 6,1 %\n- Variación de la conversión de prueba a pago respecto del mes anterior, en puntos: -2,0 pp\n- Veredicto sobre la variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos: subida fuerte\n\nNotas para el informe:\n[s1] Nota de éxito del cliente, «Renovación»: Logística Austral renovó su contrato por 2 años y sumó 340 licencias.\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En septiembre de 2026, el ingreso mensual recurrente (MRR) de Pampa Digital fue de 8.234 USD, lo que representa una disminución del 3,4 % respecto al mes anterior (8.522 USD). A pesar de esta caída, la retención neta de ingresos (NRR) alcanzó 105 %, mejorando 5 pp respecto al 100 % del periodo previo, una subida fuerte. La empresa incorporó 6 clientes nuevos durante el mes. El costo de adquisición de clientes (CAC) se situó en 184 USD, un aumento del 3,4 % frente a los 178 USD del mes anterior. La conversión de prueba a pago descendió a 4,1 %, una variación negativa de 2,0 pp respecto al 6,1 % anterior. Como evidencia de éxito, Logística Austral renovó su contrato por 2 años y sumó 340 licencias. En conjunto, los indicadores muestran una retención robusta y renovaciones estratégicas pese a la ligera contracción del MRR.",
+  "text": "En septiembre de 2026, el ingreso mensual recurrente (MRR) de Pampa Digital fue de 8.234 USD, lo que representa una disminución del 3,4 % respecto al mes anterior (8.522 USD). A pesar de esta caída, la retención neta de ingresos (NRR) alcanzó 105 %, mejorando 5 pp respecto al 100 % del periodo previo, una subida fuerte. La empresa incorporó 6 clientes nuevos durante el mes. El costo de adquisición de clientes (CAC) se situó en 184 USD, un aumento del 3,4 % frente a los 178 USD del mes anterior. La conversión de prueba a pago descendió a 4,1 %, una variación negativa de 2,0 pp respecto al 6,1 % anterior. Como evidencia de éxito, Logística Austral renovó su contrato por 2 años y sumó 340 licencias. En conjunto, los indicadores muestran una retención robusta y renovaciones estratégicas pese a la ligera contracción del MRR.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.255817654,
+    "prompt_tokens": 493,
+    "prompt_time": 0.031445602,
+    "completion_tokens": 835,
+    "completion_time": 1.760362537,
+    "total_tokens": 1328,
+    "total_time": 1.791808139,
+    "completion_tokens_details": {
+      "reasoning_tokens": 592
+    }
+  },
+  "seconds": 2.1,
+  "created_at": "2026-11-18T14:32:58+00:00"
+}

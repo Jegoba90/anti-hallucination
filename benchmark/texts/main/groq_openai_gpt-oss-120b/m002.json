@@ -1,0 +1,26 @@
+{
+  "dataset": "m002",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the board at Copperline on financial results for Q1 2026, based on this data.\n\nCompany: Copperline\nPeriod: Q1 2026\n\nData:\n- Net debt: 2.3 billion EUR\n- Cash and equivalents: 1.5 billion EUR\n- Cash and equivalents in the previous quarter: 1.5 billion EUR\n- Change in cash and equivalents vs the previous quarter: -1.4%\n- Employees: 352 employees\n- Employees in the previous quarter: 315 employees\n- Change in employees vs the previous quarter: 11.7%\n- Revenue: 928.2 million EUR\n- Revenue in the previous quarter: 946.4 million EUR\n- Change in revenue vs the previous quarter: -1.9%\n- Operating margin: 19.2%\n- Operating margin in the previous quarter: 19.4%\n- Change in operating margin vs the previous quarter, in percentage points: -0.2 pp\n- Verdict on the change in revenue vs the previous quarter: stability\n\nNotes for the report:\n[s1] Management remarks, \"Priorities\": Hannah Pryce, the chief financial officer, said the focus for the coming quarters is to cut debt and hold the margin.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "Copperline entered Q1 2026 with net debt of €2.3 billion and cash and equivalents of €1.5 billion, unchanged from the prior quarter but reflecting a modest 1.4 % decline on a quarter‑over‑quarter basis. Revenue amounted to €928.2 million, a 1.9 % dip from €946.4 million in the preceding quarter, yet the change is described as stable. The operating margin slipped slightly to 19.2 %, down 0.2 percentage points from 19.4 % in the previous quarter. The workforce expanded to 352 employees, representing an 11.7 % increase over the prior quarter’s 315 staff. CFO Hannah Pryce emphasized that the upcoming quarters will prioritize debt reduction while maintaining the current margin level.",
+  "text": "Copperline entered Q1 2026 with net debt of €2.3 billion and cash and equivalents of €1.5 billion, unchanged from the prior quarter but reflecting a modest 1.4 % decline on a quarter‑over‑quarter basis. Revenue amounted to €928.2 million, a 1.9 % dip from €946.4 million in the preceding quarter, yet the change is described as stable. The operating margin slipped slightly to 19.2 %, down 0.2 percentage points from 19.4 % in the previous quarter. The workforce expanded to 352 employees, representing an 11.7 % increase over the prior quarter’s 315 staff. CFO Hannah Pryce emphasized that the upcoming quarters will prioritize debt reduction while maintaining the current margin level.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.250425343,
+    "prompt_tokens": 390,
+    "prompt_time": 0.021900693,
+    "completion_tokens": 295,
+    "completion_time": 0.62727986,
+    "total_tokens": 685,
+    "total_time": 0.649180553,
+    "completion_tokens_details": {
+      "reasoning_tokens": 111
+    }
+  },
+  "seconds": 0.96,
+  "created_at": "2026-11-18T14:32:39+00:00"
+}

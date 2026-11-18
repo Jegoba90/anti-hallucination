@@ -1,0 +1,26 @@
+{
+  "dataset": "m036",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the sales team at Bluefen on sales results for Q3 2026, based on this data.\n\nCompany: Bluefen\nPeriod: Q3 2026\n\nData:\n- Average order value: 110.72 GBP\n- Average order value in the previous quarter: 118.35 GBP\n- Change in average order value vs the previous quarter: -6.4%\n- New customers: 616 customers\n- New customers in the previous quarter: 1,086 customers\n- Change in new customers vs the previous quarter: -43.3%\n- Return rate: 2.7%\n- Change in return rate vs the previous quarter, in percentage points: 1.7 pp\n- Online orders: 15,618 orders\n- Online orders in the previous quarter: 13,699 orders\n- Change in online orders vs the previous quarter: 14.0%\n- Revenue: 16.6 million GBP\n- Revenue in the previous quarter: 15.6 million GBP\n- Change in revenue vs the previous quarter: 6.3%\n- Verdict on the change in average order value vs the previous quarter: a mild drop\n\nNotes for the report:\n[s1] Sales team note, \"Seasonal campaign\": The Summer Rush campaign started on May 3 in Calgary and Leeds, with discounts of up to 40% on home goods.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "The Q3 2026 results show a mild drop in average order value to £110.72, a 6.4% decline from the previous quarter. New customer acquisition fell sharply to 616, down 43.3% quarter‑on‑quarter. The return rate rose to 2.7%, an increase of 1.7 percentage points. Online orders grew by 14.0% to 15,618, driving revenue up 6.3% to £16.6 million. The Summer Rush campaign, launched on May 3 in Calgary and Leeds with discounts of up to 40% on home goods, contributed to the higher order volume. Despite the higher volume, the lower average order value and reduced new‑customer count offset some of the revenue gains.",
+  "text": "The Q3 2026 results show a mild drop in average order value to £110.72, a 6.4% decline from the previous quarter. New customer acquisition fell sharply to 616, down 43.3% quarter‑on‑quarter. The return rate rose to 2.7%, an increase of 1.7 percentage points. Online orders grew by 14.0% to 15,618, driving revenue up 6.3% to £16.6 million. The Summer Rush campaign, launched on May 3 in Calgary and Leeds with discounts of up to 40% on home goods, contributed to the higher order volume. Despite the higher volume, the lower average order value and reduced new‑customer count offset some of the revenue gains.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.207688155,
+    "prompt_tokens": 416,
+    "prompt_time": 0.021358299,
+    "completion_tokens": 542,
+    "completion_time": 1.138339416,
+    "total_tokens": 958,
+    "total_time": 1.159697715,
+    "completion_tokens_details": {
+      "reasoning_tokens": 372
+    }
+  },
+  "seconds": 1.44,
+  "created_at": "2026-11-18T14:35:51+00:00"
+}

@@ -1,0 +1,146 @@
+{
+  "id": "m096",
+  "split": "test",
+  "domain": "saas",
+  "locale": "es",
+  "brief": {
+    "company": "Ventisca",
+    "audience": "los inversores",
+    "topic": "las métricas del negocio",
+    "period": "junio de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "mrr",
+        "value": 127879,
+        "unit": "EUR",
+        "label": "ingreso mensual recurrente (MRR)",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ]
+      },
+      {
+        "name": "mrr_anterior",
+        "value": 192134,
+        "unit": "EUR",
+        "label": "ingreso mensual recurrente (MRR) en el mes anterior",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ]
+      },
+      {
+        "name": "variacion_mrr",
+        "compute": "percent_change",
+        "from": "mrr_anterior",
+        "to": "mrr",
+        "label": "variación del ingreso mensual recurrente (MRR) respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "cac",
+        "value": 1700,
+        "unit": "EUR",
+        "label": "costo de adquisición de clientes (CAC)",
+        "subject": [
+          "CAC",
+          "adquisición"
+        ]
+      },
+      {
+        "name": "cac_anterior",
+        "value": 1874,
+        "unit": "EUR",
+        "label": "costo de adquisición de clientes (CAC) en el mes anterior",
+        "subject": [
+          "CAC",
+          "adquisición"
+        ]
+      },
+      {
+        "name": "variacion_cac",
+        "compute": "percent_change",
+        "from": "cac_anterior",
+        "to": "cac",
+        "label": "variación del costo de adquisición de clientes (CAC) respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "clientes_nuevos",
+        "value": 6,
+        "unit": "clientes",
+        "label": "clientes nuevos",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "clientes_nuevos_anterior",
+        "value": 5,
+        "unit": "clientes",
+        "label": "clientes nuevos en el mes anterior",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "variacion_clientes_nuevos",
+        "compute": "percent_change",
+        "from": "clientes_nuevos_anterior",
+        "to": "clientes_nuevos",
+        "label": "variación de los clientes nuevos respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "churn",
+        "value": 4.9,
+        "unit": "%",
+        "label": "churn mensual",
+        "subject": [
+          "churn",
+          "bajas"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "junio de 2026"
+      },
+      {
+        "name": "tendencia_mrr",
+        "from": "variacion_mrr",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Ventisca"
+    ]
+  }
+}

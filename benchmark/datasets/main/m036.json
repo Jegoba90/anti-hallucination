@@ -1,0 +1,194 @@
+{
+  "id": "m036",
+  "split": "test",
+  "domain": "sales",
+  "locale": "en",
+  "brief": {
+    "company": "Bluefen",
+    "audience": "the sales team",
+    "topic": "sales results",
+    "period": "Q3 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "average_order",
+        "value": 110.72,
+        "unit": "GBP",
+        "label": "average order value",
+        "subject": [
+          "order value",
+          "average order"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "average_order_previous",
+        "value": 118.35,
+        "unit": "GBP",
+        "label": "average order value in the previous quarter",
+        "subject": [
+          "order value",
+          "average order"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "average_order_change",
+        "compute": "percent_change",
+        "from": "average_order_previous",
+        "to": "average_order",
+        "label": "change in average order value vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "new_customers",
+        "value": 616,
+        "unit": "customers",
+        "label": "new customers",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "new_customers_previous",
+        "value": 1086,
+        "unit": "customers",
+        "label": "new customers in the previous quarter",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "new_customers_change",
+        "compute": "percent_change",
+        "from": "new_customers_previous",
+        "to": "new_customers",
+        "label": "change in new customers vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "return_rate",
+        "value": 2.7,
+        "unit": "%",
+        "label": "return rate",
+        "subject": [
+          "returns",
+          "return rate"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "return_rate_change",
+        "value": 1.7,
+        "unit": "pp",
+        "change": true,
+        "label": "change in return rate vs the previous quarter, in percentage points",
+        "subject": [
+          "returns",
+          "return rate"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "online_orders",
+        "value": 15618,
+        "unit": "orders",
+        "label": "online orders",
+        "subject": [
+          "orders"
+        ]
+      },
+      {
+        "name": "online_orders_previous",
+        "value": 13699,
+        "unit": "orders",
+        "label": "online orders in the previous quarter",
+        "subject": [
+          "orders"
+        ]
+      },
+      {
+        "name": "online_orders_change",
+        "compute": "percent_change",
+        "from": "online_orders_previous",
+        "to": "online_orders",
+        "label": "change in online orders vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "revenue",
+        "value": 16569174,
+        "unit": "GBP",
+        "label": "revenue",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "revenue_previous",
+        "value": 15592798,
+        "unit": "GBP",
+        "label": "revenue in the previous quarter",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "revenue_change",
+        "compute": "percent_change",
+        "from": "revenue_previous",
+        "to": "revenue",
+        "label": "change in revenue vs the previous quarter",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "Q3 2026"
+      },
+      {
+        "name": "average_order_trend",
+        "from": "average_order_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Bluefen"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Sales team note",
+        "title": "Seasonal campaign",
+        "text": "The Summer Rush campaign started on May 3 in Calgary and Leeds, with discounts of up to 40% on home goods."
+      }
+    ]
+  }
+}

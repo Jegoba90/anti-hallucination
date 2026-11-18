@@ -1,0 +1,150 @@
+{
+  "id": "m057",
+  "split": "test",
+  "domain": "saas",
+  "locale": "es",
+  "brief": {
+    "company": "Lumbre",
+    "audience": "los inversores",
+    "topic": "las métricas del negocio",
+    "period": "febrero de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "cac",
+        "value": 1514,
+        "unit": "EUR",
+        "label": "costo de adquisición de clientes (CAC)",
+        "subject": [
+          "CAC",
+          "adquisición"
+        ]
+      },
+      {
+        "name": "churn",
+        "value": 0.8,
+        "unit": "%",
+        "label": "churn mensual",
+        "subject": [
+          "churn",
+          "bajas"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_anterior",
+        "value": 1.0,
+        "unit": "%",
+        "label": "churn mensual en el mes anterior",
+        "subject": [
+          "churn",
+          "bajas"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_churn",
+        "compute": "difference",
+        "from": "churn_anterior",
+        "to": "churn",
+        "label": "variación del churn mensual respecto del mes anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "clientes_nuevos",
+        "value": 8,
+        "unit": "clientes",
+        "label": "clientes nuevos",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "clientes_nuevos_anterior",
+        "value": 17,
+        "unit": "clientes",
+        "label": "clientes nuevos en el mes anterior",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "variacion_clientes_nuevos",
+        "compute": "percent_change",
+        "from": "clientes_nuevos_anterior",
+        "to": "clientes_nuevos",
+        "label": "variación de los clientes nuevos respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "usuarios_activos",
+        "value": 7304,
+        "unit": "usuarios",
+        "label": "usuarios activos",
+        "subject": [
+          "usuarios"
+        ]
+      },
+      {
+        "name": "usuarios_activos_anterior",
+        "value": 7438,
+        "unit": "usuarios",
+        "label": "usuarios activos en el mes anterior",
+        "subject": [
+          "usuarios"
+        ]
+      },
+      {
+        "name": "variacion_usuarios_activos",
+        "compute": "percent_change",
+        "from": "usuarios_activos_anterior",
+        "to": "usuarios_activos",
+        "label": "variación de los usuarios activos respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 118,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR)",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "nrr_anterior",
+        "value": 100,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR) en el mes anterior",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "variacion_nrr",
+        "compute": "difference",
+        "from": "nrr_anterior",
+        "to": "nrr",
+        "label": "variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos",
+        "decimals": 0
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "febrero de 2026"
+      }
+    ],
+    "known_names": [
+      "Lumbre"
+    ]
+  }
+}

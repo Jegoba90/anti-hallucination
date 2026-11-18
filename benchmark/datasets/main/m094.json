@@ -1,0 +1,232 @@
+{
+  "id": "m094",
+  "split": "test",
+  "domain": "crypto",
+  "locale": "es",
+  "brief": {
+    "company": "Mesa Pampa Trading",
+    "audience": "los suscriptores",
+    "topic": "el mercado cripto",
+    "period": "el 10 de noviembre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "precio_btc",
+        "value": 145436,
+        "unit": "USD",
+        "label": "precio de bitcoin (BTC)",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "precio_btc_anterior",
+        "value": 105910,
+        "unit": "USD",
+        "label": "precio de bitcoin (BTC) en el día anterior",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "variacion_precio_btc",
+        "compute": "percent_change",
+        "from": "precio_btc_anterior",
+        "to": "precio_btc",
+        "label": "variación del precio de bitcoin (BTC) respecto del día anterior",
+        "decimals": 1
+      },
+      {
+        "name": "interes_abierto",
+        "value": 44857260236,
+        "unit": "USD",
+        "label": "interés abierto en futuros",
+        "subject": [
+          "interés abierto"
+        ],
+        "compact": true
+      },
+      {
+        "name": "interes_abierto_anterior",
+        "value": 37087651480,
+        "unit": "USD",
+        "label": "interés abierto en futuros en el día anterior",
+        "subject": [
+          "interés abierto"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_interes_abierto",
+        "compute": "percent_change",
+        "from": "interes_abierto_anterior",
+        "to": "interes_abierto",
+        "label": "variación del interés abierto en futuros respecto del día anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "indice_miedo",
+        "value": 37,
+        "unit": "",
+        "label": "índice de miedo y codicia",
+        "subject": [
+          "miedo",
+          "codicia",
+          "sentimiento"
+        ]
+      },
+      {
+        "name": "indice_miedo_anterior",
+        "value": 47,
+        "unit": "",
+        "label": "índice de miedo y codicia en el día anterior",
+        "subject": [
+          "miedo",
+          "codicia",
+          "sentimiento"
+        ]
+      },
+      {
+        "name": "variacion_indice_miedo",
+        "compute": "difference",
+        "from": "indice_miedo_anterior",
+        "to": "indice_miedo",
+        "label": "variación del índice de miedo y codicia respecto del día anterior",
+        "decimals": 0
+      },
+      {
+        "name": "dominancia_btc",
+        "value": 44.3,
+        "unit": "%",
+        "label": "dominancia de bitcoin",
+        "subject": [
+          "dominancia"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_dominancia_btc",
+        "value": -1.4,
+        "unit": "pp",
+        "change": true,
+        "label": "variación de la dominancia de bitcoin respecto del día anterior, en puntos",
+        "subject": [
+          "dominancia"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "precio_eth",
+        "value": 8049,
+        "unit": "USD",
+        "label": "precio de ether (ETH)",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "precio_eth_anterior",
+        "value": 7475,
+        "unit": "USD",
+        "label": "precio de ether (ETH) en el día anterior",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "variacion_precio_eth",
+        "compute": "percent_change",
+        "from": "precio_eth_anterior",
+        "to": "precio_eth",
+        "label": "variación del precio de ether (ETH) respecto del día anterior",
+        "decimals": 1
+      },
+      {
+        "name": "volumen_24h",
+        "value": 34150097174,
+        "unit": "USD",
+        "label": "volumen operado en 24 horas",
+        "subject": [
+          "volumen"
+        ],
+        "compact": true
+      },
+      {
+        "name": "volumen_24h_anterior",
+        "value": 43753900616,
+        "unit": "USD",
+        "label": "volumen operado en 24 horas en el día anterior",
+        "subject": [
+          "volumen"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_volumen_24h",
+        "compute": "percent_change",
+        "from": "volumen_24h_anterior",
+        "to": "volumen_24h",
+        "label": "variación del volumen operado en 24 horas respecto del día anterior",
+        "decimals": 1,
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el 10 de noviembre de 2026"
+      },
+      {
+        "name": "tendencia_volumen_24h",
+        "from": "variacion_volumen_24h",
+        "thresholds": [
+          [
+            -10,
+            "tendencia bajista fuerte"
+          ],
+          [
+            -2,
+            "tendencia bajista"
+          ],
+          [
+            2,
+            "movimiento lateral"
+          ],
+          [
+            10,
+            "tendencia alcista"
+          ]
+        ],
+        "otherwise": "tendencia alcista fuerte"
+      }
+    ],
+    "known_names": [
+      "Mesa Pampa Trading"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Agenda de redes",
+        "title": "Actualización de red",
+        "text": "La red Lumen activará la actualización «Faro» el 22 de septiembre."
+      },
+      {
+        "id": "s2",
+        "name": "Kalder News",
+        "title": "Retiros suspendidos",
+        "text": "El exchange Kalder suspendió los retiros de ETH durante 5 horas el martes por mantenimiento."
+      }
+    ]
+  }
+}

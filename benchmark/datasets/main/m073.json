@@ -1,0 +1,138 @@
+{
+  "id": "m073",
+  "split": "test",
+  "domain": "support",
+  "locale": "en",
+  "brief": {
+    "company": "Fenwick Data",
+    "audience": "the operations managers",
+    "topic": "support performance",
+    "period": "the week of October 10–16, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "csat",
+        "value": 76,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT)",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_previous",
+        "value": 75,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT) in the previous week",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_change",
+        "compute": "difference",
+        "from": "csat_previous",
+        "to": "csat",
+        "label": "change in customer satisfaction (CSAT) vs the previous week, in percentage points",
+        "decimals": 0
+      },
+      {
+        "name": "tickets_resolved",
+        "value": 9371,
+        "unit": "tickets",
+        "label": "tickets resolved",
+        "subject": [
+          "tickets resolved",
+          "resolved"
+        ]
+      },
+      {
+        "name": "first_response",
+        "value": 0.4,
+        "unit": "h",
+        "label": "first response time",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_change",
+        "value": 17.1,
+        "unit": "%",
+        "change": true,
+        "label": "change in first response time vs the previous week",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time",
+        "value": 38.1,
+        "unit": "h",
+        "label": "average resolution time",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "the week of October 10–16, 2026"
+      },
+      {
+        "name": "csat_trend",
+        "from": "csat_change",
+        "thresholds": [
+          [
+            -2,
+            "a sharp drop"
+          ],
+          [
+            -0.3,
+            "a mild drop"
+          ],
+          [
+            0.3,
+            "stability"
+          ],
+          [
+            2,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Fenwick Data"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 6089",
+        "title": "The app does not sync",
+        "text": "Android users report that the app has not synced orders since version 7.10.3. There are 6 reports and the mobile team is preparing a fix."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 8796",
+        "title": "Invoices show the wrong tax",
+        "text": "6 business customers in Calgary received invoices with the wrong tax. Finance is reissuing them."
+      }
+    ]
+  }
+}

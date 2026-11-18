@@ -1,0 +1,143 @@
+{
+  "id": "m053",
+  "split": "test",
+  "domain": "finance",
+  "locale": "es",
+  "brief": {
+    "company": "Pampa Digital",
+    "audience": "el directorio",
+    "topic": "los resultados financieros",
+    "period": "el segundo trimestre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "margen_operativo",
+        "value": 10.5,
+        "unit": "%",
+        "label": "margen operativo",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "caja",
+        "value": 2657701321,
+        "unit": "EUR",
+        "label": "caja y equivalentes",
+        "subject": [
+          "caja"
+        ],
+        "compact": true
+      },
+      {
+        "name": "caja_anterior",
+        "value": 2801697322,
+        "unit": "EUR",
+        "label": "caja y equivalentes en el trimestre anterior",
+        "subject": [
+          "caja"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_caja",
+        "compute": "percent_change",
+        "from": "caja_anterior",
+        "to": "caja",
+        "label": "variación de la caja y equivalentes respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "empleados",
+        "value": 792,
+        "unit": "empleados",
+        "label": "empleados",
+        "subject": [
+          "empleados",
+          "plantilla"
+        ]
+      },
+      {
+        "name": "variacion_empleados",
+        "value": -6.7,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los empleados respecto del trimestre anterior",
+        "subject": [
+          "empleados",
+          "plantilla"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "ingresos",
+        "value": 451853073,
+        "unit": "EUR",
+        "label": "ingresos",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ingresos_anterior",
+        "value": 371506602,
+        "unit": "EUR",
+        "label": "ingresos en el trimestre anterior",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_ingresos",
+        "compute": "percent_change",
+        "from": "ingresos_anterior",
+        "to": "ingresos",
+        "label": "variación de los ingresos respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "resultado_neto",
+        "value": 271518494,
+        "unit": "EUR",
+        "label": "resultado neto",
+        "subject": [
+          "resultado neto",
+          "ganancia"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_resultado_neto",
+        "value": 67910005,
+        "unit": "EUR",
+        "change": true,
+        "label": "variación del resultado neto respecto del trimestre anterior",
+        "subject": [
+          "resultado neto",
+          "ganancia"
+        ],
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el segundo trimestre de 2026"
+      }
+    ],
+    "known_names": [
+      "Pampa Digital"
+    ]
+  }
+}

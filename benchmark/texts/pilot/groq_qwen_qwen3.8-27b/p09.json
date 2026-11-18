@@ -1,0 +1,23 @@
+{
+  "dataset": "p09",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the board at Lanternly on financial results for Q1 2026, based on this data.\n\nCompany: Lanternly\nPeriod: Q1 2026\n\nData:\n- Operating margin: 27.8%\n- Operating margin in the previous quarter: 30.1%\n- Change in operating margin vs the previous quarter, in percentage points: -2.3 pp\n- EBITDA: 1.8 billion USD\n- Cash and equivalents: 127.6 million USD\n- Cash and equivalents in the previous quarter: 124.6 million USD\n- Change in cash and equivalents vs the previous quarter: 2.4%\n- Revenue: 368.8 million USD\n- Change in revenue vs the previous quarter: -16.7%\n- Employees: 1,916 employees\n- Employees in the previous quarter: 1,877 employees\n- Change in employees vs the previous quarter: 2.1%\n- Verdict on the change in operating margin vs the previous quarter, in percentage points: a sharp drop\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "Lanternly reported Q1 2026 revenue of $368.8 million, representing a 16.7% decline compared to the previous quarter. The operating margin decreased by 2.3 percentage points to 27.8%, a sharp drop from the 30.1% recorded in the prior period. Despite the margin compression, the company generated $1.8 billion in EBITDA. Cash and equivalents saw a modest 2.4% increase, rising from $124.6 million to $127.6 million. The workforce expanded by 2.1% during the quarter, growing from 1,877 to 1,916 employees. These figures indicate a period of reduced top-line performance and lower profitability relative to the previous quarter, even as cash reserves and headcount showed slight growth.",
+  "text": "Lanternly reported Q1 2026 revenue of $368.8 million, representing a 16.7% decline compared to the previous quarter. The operating margin decreased by 2.3 percentage points to 27.8%, a sharp drop from the 30.1% recorded in the prior period. Despite the margin compression, the company generated $1.8 billion in EBITDA. Cash and equivalents saw a modest 2.4% increase, rising from $124.6 million to $127.6 million. The workforce expanded by 2.1% during the quarter, growing from 1,877 to 1,916 employees. These figures indicate a period of reduced top-line performance and lower profitability relative to the previous quarter, even as cash reserves and headcount showed slight growth.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.5258871,
+    "prompt_tokens": 316,
+    "prompt_time": 0.212120855,
+    "completion_tokens": 182,
+    "completion_time": 0.354294777,
+    "total_tokens": 498,
+    "total_time": 0.566415632
+  },
+  "seconds": 1.17,
+  "created_at": "2026-11-18T14:24:08+00:00"
+}

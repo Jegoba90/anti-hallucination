@@ -1,0 +1,160 @@
+{
+  "id": "p10",
+  "split": "pilot",
+  "domain": "saas",
+  "locale": "en",
+  "brief": {
+    "company": "Marlow Supply",
+    "audience": "investors",
+    "topic": "business metrics",
+    "period": "May 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "trial_conversion",
+        "value": 5.7,
+        "unit": "%",
+        "label": "trial-to-paid conversion",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn",
+        "value": 1.4,
+        "unit": "%",
+        "label": "monthly churn",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_previous",
+        "value": 1.1,
+        "unit": "%",
+        "label": "monthly churn in the previous month",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_change",
+        "compute": "difference",
+        "from": "churn_previous",
+        "to": "churn",
+        "label": "change in monthly churn vs the previous month, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "active_users",
+        "value": 314,
+        "unit": "users",
+        "label": "active users",
+        "subject": [
+          "users",
+          "active users"
+        ]
+      },
+      {
+        "name": "active_users_previous",
+        "value": 338,
+        "unit": "users",
+        "label": "active users in the previous month",
+        "subject": [
+          "users",
+          "active users"
+        ]
+      },
+      {
+        "name": "active_users_change",
+        "compute": "percent_change",
+        "from": "active_users_previous",
+        "to": "active_users",
+        "label": "change in active users vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "cac",
+        "value": 1199,
+        "unit": "USD",
+        "label": "customer acquisition cost (CAC)",
+        "subject": [
+          "CAC",
+          "acquisition cost"
+        ]
+      },
+      {
+        "name": "cac_change",
+        "value": 1.1,
+        "unit": "%",
+        "change": true,
+        "label": "change in customer acquisition cost (CAC) vs the previous month",
+        "subject": [
+          "CAC",
+          "acquisition cost"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "mrr",
+        "value": 159554,
+        "unit": "USD",
+        "label": "monthly recurring revenue (MRR)",
+        "subject": [
+          "MRR",
+          "recurring revenue"
+        ]
+      },
+      {
+        "name": "mrr_previous",
+        "value": 146037,
+        "unit": "USD",
+        "label": "monthly recurring revenue (MRR) in the previous month",
+        "subject": [
+          "MRR",
+          "recurring revenue"
+        ]
+      },
+      {
+        "name": "mrr_change",
+        "compute": "percent_change",
+        "from": "mrr_previous",
+        "to": "mrr",
+        "label": "change in monthly recurring revenue (MRR) vs the previous month",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "May 2026"
+      }
+    ],
+    "known_names": [
+      "Marlow Supply"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Customer success note",
+        "title": "Renewal",
+        "text": "Avalon Schools renewed its contract for 3 years and added 104 seats."
+      },
+      {
+        "id": "s2",
+        "name": "Release notes",
+        "title": "Version 4.11.2",
+        "text": "Version 4.11.2, released on June 7, added single sign-on and a new usage dashboard."
+      }
+    ]
+  }
+}

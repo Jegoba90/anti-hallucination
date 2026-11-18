@@ -1,0 +1,207 @@
+{
+  "id": "p04",
+  "split": "pilot",
+  "domain": "crypto",
+  "locale": "en",
+  "brief": {
+    "company": "Satstack Desk",
+    "audience": "the subscribers",
+    "topic": "the crypto market",
+    "period": "November 14, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "btc_price",
+        "value": 110582,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "btc_price_previous",
+        "value": 102541,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price in the previous day",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "btc_price_change",
+        "compute": "percent_change",
+        "from": "btc_price_previous",
+        "to": "btc_price",
+        "label": "change in bitcoin (BTC) price vs the previous day",
+        "decimals": 1
+      },
+      {
+        "name": "fear_greed",
+        "value": 89,
+        "unit": "",
+        "label": "fear and greed index",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_previous",
+        "value": 54,
+        "unit": "",
+        "label": "fear and greed index in the previous day",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_change",
+        "compute": "difference",
+        "from": "fear_greed_previous",
+        "to": "fear_greed",
+        "label": "change in fear and greed index vs the previous day",
+        "decimals": 0
+      },
+      {
+        "name": "volume_24h",
+        "value": 30416049364,
+        "unit": "USD",
+        "label": "24-hour trading volume",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "volume_24h_previous",
+        "value": 21633283011,
+        "unit": "USD",
+        "label": "24-hour trading volume in the previous day",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "volume_24h_change",
+        "compute": "percent_change",
+        "from": "volume_24h_previous",
+        "to": "volume_24h",
+        "label": "change in 24-hour trading volume vs the previous day",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "btc_dominance",
+        "value": 43.5,
+        "unit": "%",
+        "label": "bitcoin dominance",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "eth_price",
+        "value": 8631,
+        "unit": "USD",
+        "label": "ether (ETH) price",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "eth_price_previous",
+        "value": 7392,
+        "unit": "USD",
+        "label": "ether (ETH) price in the previous day",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "eth_price_change",
+        "compute": "percent_change",
+        "from": "eth_price_previous",
+        "to": "eth_price",
+        "label": "change in ether (ETH) price vs the previous day",
+        "decimals": 1
+      },
+      {
+        "name": "funding_rate",
+        "value": -0.018,
+        "unit": "%",
+        "label": "average funding rate",
+        "subject": [
+          "funding"
+        ],
+        "decimals": 3
+      },
+      {
+        "name": "funding_rate_change",
+        "value": -2.0,
+        "unit": "pp",
+        "change": true,
+        "label": "change in average funding rate vs the previous day, in percentage points",
+        "subject": [
+          "funding"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "November 14, 2026"
+      },
+      {
+        "name": "volume_24h_trend",
+        "from": "volume_24h_change",
+        "thresholds": [
+          [
+            -10,
+            "a strong downtrend"
+          ],
+          [
+            -2,
+            "a downtrend"
+          ],
+          [
+            2,
+            "sideways movement"
+          ],
+          [
+            10,
+            "an uptrend"
+          ]
+        ],
+        "otherwise": "a strong uptrend"
+      }
+    ],
+    "known_names": [
+      "Satstack Desk"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Nimbex News",
+        "title": "Withdrawals paused",
+        "text": "The Nimbex exchange paused ETH withdrawals for 3 hours on Monday for maintenance."
+      }
+    ]
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "id": "m071",
+  "split": "test",
+  "domain": "support",
+  "locale": "es",
+  "brief": {
+    "company": "Alerce Foods",
+    "audience": "la gerencia de operaciones",
+    "topic": "el desempeño del área de soporte",
+    "period": "la semana del 14 al 20 de noviembre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "pendientes",
+        "value": 360,
+        "unit": "tickets",
+        "label": "tickets pendientes",
+        "subject": [
+          "pendientes",
+          "backlog"
+        ]
+      },
+      {
+        "name": "variacion_pendientes",
+        "value": 0.8,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los tickets pendientes respecto de la semana anterior",
+        "subject": [
+          "pendientes",
+          "backlog"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "csat",
+        "value": 88,
+        "unit": "%",
+        "label": "satisfacción del cliente (CSAT)",
+        "subject": [
+          "satisfacción",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_anterior",
+        "value": 86,
+        "unit": "%",
+        "label": "satisfacción del cliente (CSAT) en la semana anterior",
+        "subject": [
+          "satisfacción",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "variacion_csat",
+        "compute": "difference",
+        "from": "csat_anterior",
+        "to": "csat",
+        "label": "variación de la satisfacción del cliente (CSAT) respecto de la semana anterior, en puntos",
+        "decimals": 0
+      },
+      {
+        "name": "primera_respuesta",
+        "value": 9.4,
+        "unit": "h",
+        "label": "tiempo de primera respuesta",
+        "subject": [
+          "primera respuesta",
+          "tiempo de respuesta"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "primera_respuesta_anterior",
+        "value": 9.3,
+        "unit": "h",
+        "label": "tiempo de primera respuesta en la semana anterior",
+        "subject": [
+          "primera respuesta",
+          "tiempo de respuesta"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_primera_respuesta",
+        "compute": "percent_change",
+        "from": "primera_respuesta_anterior",
+        "to": "primera_respuesta",
+        "label": "variación del tiempo de primera respuesta respecto de la semana anterior",
+        "decimals": 1
+      },
+      {
+        "name": "escalamientos",
+        "value": 2,
+        "unit": "",
+        "label": "escalamientos",
+        "subject": [
+          "escalamientos"
+        ]
+      },
+      {
+        "name": "escalamientos_anterior",
+        "value": 1,
+        "unit": "",
+        "label": "escalamientos en la semana anterior",
+        "subject": [
+          "escalamientos"
+        ]
+      },
+      {
+        "name": "variacion_escalamientos",
+        "compute": "percent_change",
+        "from": "escalamientos_anterior",
+        "to": "escalamientos",
+        "label": "variación de los escalamientos respecto de la semana anterior",
+        "decimals": 1
+      },
+      {
+        "name": "tiempo_resolucion",
+        "value": 2.2,
+        "unit": "h",
+        "label": "tiempo medio de resolución",
+        "subject": [
+          "resolución"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tiempo_resolucion_anterior",
+        "value": 2.4,
+        "unit": "h",
+        "label": "tiempo medio de resolución en la semana anterior",
+        "subject": [
+          "resolución"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_tiempo_resolucion",
+        "compute": "percent_change",
+        "from": "tiempo_resolucion_anterior",
+        "to": "tiempo_resolucion",
+        "label": "variación del tiempo medio de resolución respecto de la semana anterior",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "la semana del 14 al 20 de noviembre de 2026"
+      },
+      {
+        "name": "tendencia_pendientes",
+        "from": "variacion_pendientes",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Alerce Foods"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 7379",
+        "title": "Falla el pago con tarjeta",
+        "text": "Desde el lunes, 52 clientes de Asunción reportan que el pago con tarjeta falla con el error 502. El equipo de pagos revirtió la versión 7.13.5 el martes y las fallas se detuvieron."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 5656",
+        "title": "Correos demorados",
+        "text": "Los correos de confirmación llegan con hasta 4 horas de demora porque el proveedor de envíos limitó el tráfico. Se pasó el tráfico a un proveedor alternativo."
+      }
+    ]
+  }
+}

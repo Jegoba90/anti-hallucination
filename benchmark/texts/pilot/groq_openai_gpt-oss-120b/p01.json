@@ -1,0 +1,26 @@
+{
+  "dataset": "p01",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the operations managers at Ashgrove on support performance for the week of November 4–10, 2026, based on this data.\n\nCompany: Ashgrove\nPeriod: the week of November 4–10, 2026\n\nData:\n- Customer satisfaction (CSAT): 68%\n- Customer satisfaction (CSAT) in the previous week: 66%\n- Change in customer satisfaction (CSAT) vs the previous week, in percentage points: 2 pp\n- Tickets received: 1,287 tickets\n- Tickets received in the previous week: 1,295 tickets\n- Change in tickets received vs the previous week: -0.6%\n- First response time: 5.2 h\n- First response time in the previous week: 5.1 h\n- Change in first response time vs the previous week: 2.0%\n- Open backlog: 261 tickets\n- Open backlog in the previous week: 221 tickets\n- Change in open backlog vs the previous week: 18.1%\n- Average resolution time: 5.0 h\n\nNotes for the report:\n[s1] Ticket 4282, \"Invoices show the wrong tax\": 5 business customers in Tampa received invoices with the wrong tax. Finance is reissuing them.\n[s2] Ticket 7311, \"Delayed emails\": Confirmation emails arrive up to 8 hours late because the email provider throttled sending. Traffic was moved to a backup provider.\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "Support performance for the week of November 4–10 showed a modest improvement in customer satisfaction, rising to 68 % from 66 % the prior week—a 2‑point gain. Ticket volume was essentially flat, with 1,287 tickets received, down 0.6 % from the previous week, indicating stable demand. However, first‑response time slipped to 5.2 hours, a 2 % increase over last week’s 5.1 hours, and the open backlog expanded by 18.1 % to 261 tickets, suggesting pressure on handling capacity. Average resolution time remained steady at 5.0 hours. Notable incidents included Ticket 4282, where five business customers in Tampa received invoices with the wrong tax and finance is reissuing them, and Ticket 7311, where confirmation emails were delayed up to eight hours due to email‑provider throttling, prompting a switch to a backup provider. Addressing the growing backlog and the slight slowdown in response times should be priorities for the coming week.",
+  "text": "Support performance for the week of November 4–10 showed a modest improvement in customer satisfaction, rising to 68 % from 66 % the prior week—a 2‑point gain. Ticket volume was essentially flat, with 1,287 tickets received, down 0.6 % from the previous week, indicating stable demand. However, first‑response time slipped to 5.2 hours, a 2 % increase over last week’s 5.1 hours, and the open backlog expanded by 18.1 % to 261 tickets, suggesting pressure on handling capacity. Average resolution time remained steady at 5.0 hours. Notable incidents included Ticket 4282, where five business customers in Tampa received invoices with the wrong tax and finance is reissuing them, and Ticket 7311, where confirmation emails were delayed up to eight hours due to email‑provider throttling, prompting a switch to a backup provider. Addressing the growing backlog and the slight slowdown in response times should be priorities for the coming week.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.155394229,
+    "prompt_tokens": 414,
+    "prompt_time": 0.023947977,
+    "completion_tokens": 489,
+    "completion_time": 1.035132332,
+    "total_tokens": 903,
+    "total_time": 1.059080309,
+    "completion_tokens_details": {
+      "reasoning_tokens": 262
+    }
+  },
+  "seconds": 1.34,
+  "created_at": "2026-11-18T14:21:30+00:00"
+}

@@ -1,0 +1,158 @@
+{
+  "id": "m006",
+  "split": "dev",
+  "domain": "finance",
+  "locale": "en",
+  "brief": {
+    "company": "Tidewell",
+    "audience": "shareholders",
+    "topic": "financial results",
+    "period": "Q2 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "ebitda",
+        "value": 1033785417,
+        "unit": "GBP",
+        "label": "EBITDA",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_income",
+        "value": 180610920,
+        "unit": "GBP",
+        "label": "net income",
+        "subject": [
+          "net income",
+          "profit"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_income_change",
+        "value": -14571516,
+        "unit": "GBP",
+        "change": true,
+        "label": "change in net income vs the previous quarter",
+        "subject": [
+          "net income",
+          "profit"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash",
+        "value": 9607116,
+        "unit": "GBP",
+        "label": "cash and equivalents",
+        "subject": [
+          "cash"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash_previous",
+        "value": 10425517,
+        "unit": "GBP",
+        "label": "cash and equivalents in the previous quarter",
+        "subject": [
+          "cash"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash_change",
+        "compute": "percent_change",
+        "from": "cash_previous",
+        "to": "cash",
+        "label": "change in cash and equivalents vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin",
+        "value": 20.9,
+        "unit": "%",
+        "label": "operating margin",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_previous",
+        "value": 22.8,
+        "unit": "%",
+        "label": "operating margin in the previous quarter",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_change",
+        "compute": "difference",
+        "from": "operating_margin_previous",
+        "to": "operating_margin",
+        "label": "change in operating margin vs the previous quarter, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "net_debt",
+        "value": 3327588213,
+        "unit": "GBP",
+        "label": "net debt",
+        "subject": [
+          "debt"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_debt_previous",
+        "value": 2752647231,
+        "unit": "GBP",
+        "label": "net debt in the previous quarter",
+        "subject": [
+          "debt"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_debt_change",
+        "compute": "percent_change",
+        "from": "net_debt_previous",
+        "to": "net_debt",
+        "label": "change in net debt vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "employees",
+        "value": 1098,
+        "unit": "employees",
+        "label": "employees",
+        "subject": [
+          "employees",
+          "headcount"
+        ]
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "Q2 2026"
+      }
+    ],
+    "known_names": [
+      "Tidewell"
+    ]
+  }
+}

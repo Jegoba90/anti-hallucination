@@ -1,0 +1,185 @@
+{
+  "id": "m047",
+  "split": "test",
+  "domain": "finance",
+  "locale": "en",
+  "brief": {
+    "company": "Kestrel Goods",
+    "audience": "shareholders",
+    "topic": "financial results",
+    "period": "Q1 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "cash",
+        "value": 278588952,
+        "unit": "EUR",
+        "label": "cash and equivalents",
+        "subject": [
+          "cash"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash_previous",
+        "value": 271741735,
+        "unit": "EUR",
+        "label": "cash and equivalents in the previous quarter",
+        "subject": [
+          "cash"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash_change",
+        "compute": "percent_change",
+        "from": "cash_previous",
+        "to": "cash",
+        "label": "change in cash and equivalents vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "net_income",
+        "value": 596587308,
+        "unit": "EUR",
+        "label": "net income",
+        "subject": [
+          "net income",
+          "profit"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_income_change",
+        "value": -4622186,
+        "unit": "EUR",
+        "change": true,
+        "label": "change in net income vs the previous quarter",
+        "subject": [
+          "net income",
+          "profit"
+        ],
+        "compact": true
+      },
+      {
+        "name": "operating_margin",
+        "value": -0.2,
+        "unit": "%",
+        "label": "operating margin",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_previous",
+        "value": 1.8,
+        "unit": "%",
+        "label": "operating margin in the previous quarter",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_change",
+        "compute": "difference",
+        "from": "operating_margin_previous",
+        "to": "operating_margin",
+        "label": "change in operating margin vs the previous quarter, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "revenue",
+        "value": 4673582606,
+        "unit": "EUR",
+        "label": "revenue",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "revenue_previous",
+        "value": 4584436728,
+        "unit": "EUR",
+        "label": "revenue in the previous quarter",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "revenue_change",
+        "compute": "percent_change",
+        "from": "revenue_previous",
+        "to": "revenue",
+        "label": "change in revenue vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "employees",
+        "value": 23639,
+        "unit": "employees",
+        "label": "employees",
+        "subject": [
+          "employees",
+          "headcount"
+        ]
+      },
+      {
+        "name": "employees_previous",
+        "value": 16185,
+        "unit": "employees",
+        "label": "employees in the previous quarter",
+        "subject": [
+          "employees",
+          "headcount"
+        ]
+      },
+      {
+        "name": "employees_change",
+        "compute": "percent_change",
+        "from": "employees_previous",
+        "to": "employees",
+        "label": "change in employees vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "net_debt",
+        "value": 1612094804,
+        "unit": "EUR",
+        "label": "net debt",
+        "subject": [
+          "debt"
+        ],
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "Q1 2026"
+      }
+    ],
+    "known_names": [
+      "Kestrel Goods"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Management remarks",
+        "title": "Priorities",
+        "text": "Olivia Grant, the chief financial officer, said the focus for the coming quarters is to cut debt and hold the margin."
+      }
+    ]
+  }
+}

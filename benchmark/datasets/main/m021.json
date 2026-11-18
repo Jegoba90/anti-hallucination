@@ -1,0 +1,149 @@
+{
+  "id": "m021",
+  "split": "dev",
+  "domain": "crypto",
+  "locale": "en",
+  "brief": {
+    "company": "Satstack Desk",
+    "audience": "the subscribers",
+    "topic": "the crypto market",
+    "period": "the week of October 8–14, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "volume_24h",
+        "value": 116743526815,
+        "unit": "USD",
+        "label": "24-hour trading volume",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "volume_24h_previous",
+        "value": 112487439562,
+        "unit": "USD",
+        "label": "24-hour trading volume in the previous week",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "volume_24h_change",
+        "compute": "percent_change",
+        "from": "volume_24h_previous",
+        "to": "volume_24h",
+        "label": "change in 24-hour trading volume vs the previous week",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "btc_dominance",
+        "value": 38.8,
+        "unit": "%",
+        "label": "bitcoin dominance",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_previous",
+        "value": 40.9,
+        "unit": "%",
+        "label": "bitcoin dominance in the previous week",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_change",
+        "compute": "difference",
+        "from": "btc_dominance_previous",
+        "to": "btc_dominance",
+        "label": "change in bitcoin dominance vs the previous week, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "open_interest",
+        "value": 49826412683,
+        "unit": "USD",
+        "label": "futures open interest",
+        "subject": [
+          "open interest"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest_previous",
+        "value": 46992948661,
+        "unit": "USD",
+        "label": "futures open interest in the previous week",
+        "subject": [
+          "open interest"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest_change",
+        "compute": "percent_change",
+        "from": "open_interest_previous",
+        "to": "open_interest",
+        "label": "change in futures open interest vs the previous week",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "btc_price",
+        "value": 32889,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "the week of October 8–14, 2026"
+      },
+      {
+        "name": "open_interest_trend",
+        "from": "open_interest_change",
+        "thresholds": [
+          [
+            -10,
+            "a strong downtrend"
+          ],
+          [
+            -2,
+            "a downtrend"
+          ],
+          [
+            2,
+            "sideways movement"
+          ],
+          [
+            10,
+            "an uptrend"
+          ]
+        ],
+        "otherwise": "a strong uptrend"
+      }
+    ],
+    "known_names": [
+      "Satstack Desk"
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "id": "p08",
+  "split": "pilot",
+  "domain": "sales",
+  "locale": "es",
+  "brief": {
+    "company": "Corvina Labs",
+    "audience": "el equipo comercial",
+    "topic": "los resultados de ventas",
+    "period": "marzo de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "ticket_promedio",
+        "value": 15.14,
+        "unit": "USD",
+        "label": "ticket promedio",
+        "subject": [
+          "ticket"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "ticket_promedio_anterior",
+        "value": 17.08,
+        "unit": "USD",
+        "label": "ticket promedio en el mes anterior",
+        "subject": [
+          "ticket"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "variacion_ticket_promedio",
+        "compute": "percent_change",
+        "from": "ticket_promedio_anterior",
+        "to": "ticket_promedio",
+        "label": "variación del ticket promedio respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "tasa_devoluciones",
+        "value": 8.2,
+        "unit": "%",
+        "label": "tasa de devoluciones",
+        "subject": [
+          "devoluciones"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tasa_devoluciones_anterior",
+        "value": 8.5,
+        "unit": "%",
+        "label": "tasa de devoluciones en el mes anterior",
+        "subject": [
+          "devoluciones"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_tasa_devoluciones",
+        "compute": "difference",
+        "from": "tasa_devoluciones_anterior",
+        "to": "tasa_devoluciones",
+        "label": "variación de la tasa de devoluciones respecto del mes anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "pedidos_online",
+        "value": 47992,
+        "unit": "pedidos",
+        "label": "pedidos online",
+        "subject": [
+          "pedidos"
+        ]
+      },
+      {
+        "name": "pedidos_online_anterior",
+        "value": 48748,
+        "unit": "pedidos",
+        "label": "pedidos online en el mes anterior",
+        "subject": [
+          "pedidos"
+        ]
+      },
+      {
+        "name": "variacion_pedidos_online",
+        "compute": "percent_change",
+        "from": "pedidos_online_anterior",
+        "to": "pedidos_online",
+        "label": "variación de los pedidos online respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "facturacion",
+        "value": 5526350,
+        "unit": "USD",
+        "label": "facturación",
+        "subject": [
+          "facturación",
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "clientes_nuevos",
+        "value": 61,
+        "unit": "clientes",
+        "label": "clientes nuevos",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "variacion_clientes_nuevos",
+        "value": 6.1,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los clientes nuevos respecto del mes anterior",
+        "subject": [
+          "clientes"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "marzo de 2026"
+      }
+    ],
+    "known_names": [
+      "Corvina Labs"
+    ]
+  }
+}

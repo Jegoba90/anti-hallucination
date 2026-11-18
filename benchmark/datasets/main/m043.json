@@ -1,0 +1,227 @@
+{
+  "id": "m043",
+  "split": "dev",
+  "domain": "support",
+  "locale": "en",
+  "brief": {
+    "company": "Harbor & Pine",
+    "audience": "the operations managers",
+    "topic": "support performance",
+    "period": "June 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "escalations",
+        "value": 38,
+        "unit": "",
+        "label": "escalations",
+        "subject": [
+          "escalations"
+        ]
+      },
+      {
+        "name": "escalations_previous",
+        "value": 37,
+        "unit": "",
+        "label": "escalations in the previous month",
+        "subject": [
+          "escalations"
+        ]
+      },
+      {
+        "name": "escalations_change",
+        "compute": "percent_change",
+        "from": "escalations_previous",
+        "to": "escalations",
+        "label": "change in escalations vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "csat",
+        "value": 96,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT)",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_previous",
+        "value": 95,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT) in the previous month",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_change",
+        "compute": "difference",
+        "from": "csat_previous",
+        "to": "csat",
+        "label": "change in customer satisfaction (CSAT) vs the previous month, in percentage points",
+        "decimals": 0
+      },
+      {
+        "name": "tickets_received",
+        "value": 5824,
+        "unit": "tickets",
+        "label": "tickets received",
+        "subject": [
+          "tickets received",
+          "received"
+        ]
+      },
+      {
+        "name": "tickets_received_change",
+        "value": -5.5,
+        "unit": "%",
+        "change": true,
+        "label": "change in tickets received vs the previous month",
+        "subject": [
+          "tickets received",
+          "received"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time",
+        "value": 10.4,
+        "unit": "h",
+        "label": "average resolution time",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time_previous",
+        "value": 9.5,
+        "unit": "h",
+        "label": "average resolution time in the previous month",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time_change",
+        "compute": "percent_change",
+        "from": "resolution_time_previous",
+        "to": "resolution_time",
+        "label": "change in average resolution time vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "backlog",
+        "value": 293,
+        "unit": "tickets",
+        "label": "open backlog",
+        "subject": [
+          "backlog"
+        ]
+      },
+      {
+        "name": "backlog_previous",
+        "value": 298,
+        "unit": "tickets",
+        "label": "open backlog in the previous month",
+        "subject": [
+          "backlog"
+        ]
+      },
+      {
+        "name": "backlog_change",
+        "compute": "percent_change",
+        "from": "backlog_previous",
+        "to": "backlog",
+        "label": "change in open backlog vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "first_response",
+        "value": 0.7,
+        "unit": "h",
+        "label": "first response time",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_previous",
+        "value": 0.6,
+        "unit": "h",
+        "label": "first response time in the previous month",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_change",
+        "compute": "percent_change",
+        "from": "first_response_previous",
+        "to": "first_response",
+        "label": "change in first response time vs the previous month",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "June 2026"
+      },
+      {
+        "name": "tickets_received_trend",
+        "from": "tickets_received_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Harbor & Pine"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 9853",
+        "title": "The app does not sync",
+        "text": "Android users report that the app has not synced orders since version 6.12.1. There are 12 reports and the mobile team is preparing a fix."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 6353",
+        "title": "Card payments fail",
+        "text": "Since Monday, 12 customers in Denver report that card payments fail with error 402. The payments team rolled back release 6.12.1 on Friday and the failures stopped."
+      }
+    ]
+  }
+}

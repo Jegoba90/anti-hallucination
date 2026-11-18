@@ -1,0 +1,213 @@
+{
+  "id": "m066",
+  "split": "test",
+  "domain": "saas",
+  "locale": "en",
+  "brief": {
+    "company": "Orbitly",
+    "audience": "investors",
+    "topic": "business metrics",
+    "period": "September 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "mrr",
+        "value": 533097,
+        "unit": "USD",
+        "label": "monthly recurring revenue (MRR)",
+        "subject": [
+          "MRR",
+          "recurring revenue"
+        ]
+      },
+      {
+        "name": "mrr_previous",
+        "value": 526514,
+        "unit": "USD",
+        "label": "monthly recurring revenue (MRR) in the previous month",
+        "subject": [
+          "MRR",
+          "recurring revenue"
+        ]
+      },
+      {
+        "name": "mrr_change",
+        "compute": "percent_change",
+        "from": "mrr_previous",
+        "to": "mrr",
+        "label": "change in monthly recurring revenue (MRR) vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "new_customers",
+        "value": 189,
+        "unit": "customers",
+        "label": "new customers",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "new_customers_change",
+        "value": 14.6,
+        "unit": "%",
+        "change": true,
+        "label": "change in new customers vs the previous month",
+        "subject": [
+          "customers"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "trial_conversion",
+        "value": 4.5,
+        "unit": "%",
+        "label": "trial-to-paid conversion",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "trial_conversion_previous",
+        "value": 2.8,
+        "unit": "%",
+        "label": "trial-to-paid conversion in the previous month",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "trial_conversion_change",
+        "compute": "difference",
+        "from": "trial_conversion_previous",
+        "to": "trial_conversion",
+        "label": "change in trial-to-paid conversion vs the previous month, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "active_users",
+        "value": 16833,
+        "unit": "users",
+        "label": "active users",
+        "subject": [
+          "users",
+          "active users"
+        ]
+      },
+      {
+        "name": "active_users_previous",
+        "value": 15243,
+        "unit": "users",
+        "label": "active users in the previous month",
+        "subject": [
+          "users",
+          "active users"
+        ]
+      },
+      {
+        "name": "active_users_change",
+        "compute": "percent_change",
+        "from": "active_users_previous",
+        "to": "active_users",
+        "label": "change in active users vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 86,
+        "unit": "%",
+        "label": "net revenue retention (NRR)",
+        "subject": [
+          "NRR",
+          "retention"
+        ]
+      },
+      {
+        "name": "nrr_previous",
+        "value": 85,
+        "unit": "%",
+        "label": "net revenue retention (NRR) in the previous month",
+        "subject": [
+          "NRR",
+          "retention"
+        ]
+      },
+      {
+        "name": "nrr_change",
+        "compute": "difference",
+        "from": "nrr_previous",
+        "to": "nrr",
+        "label": "change in net revenue retention (NRR) vs the previous month, in percentage points",
+        "decimals": 0
+      },
+      {
+        "name": "churn",
+        "value": 0.9,
+        "unit": "%",
+        "label": "monthly churn",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_previous",
+        "value": 1.0,
+        "unit": "%",
+        "label": "monthly churn in the previous month",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_change",
+        "compute": "difference",
+        "from": "churn_previous",
+        "to": "churn",
+        "label": "change in monthly churn vs the previous month, in percentage points",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "September 2026"
+      },
+      {
+        "name": "new_customers_trend",
+        "from": "new_customers_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Orbitly"
+    ]
+  }
+}

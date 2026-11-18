@@ -1,0 +1,23 @@
+{
+  "dataset": "p04",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the subscribers at Satstack Desk on the crypto market for November 14, 2026, based on this data.\n\nCompany: Satstack Desk\nPeriod: November 14, 2026\n\nData:\n- Bitcoin (BTC) price: 110,582 USD\n- Bitcoin (BTC) price in the previous day: 102,541 USD\n- Change in bitcoin (BTC) price vs the previous day: 7.8%\n- Fear and greed index: 89\n- Fear and greed index in the previous day: 54\n- Change in fear and greed index vs the previous day: 35\n- 24-hour trading volume: 30.4 billion USD\n- 24-hour trading volume in the previous day: 21.6 billion USD\n- Change in 24-hour trading volume vs the previous day: 40.6%\n- Bitcoin dominance: 43.5%\n- Ether (ETH) price: 8,631 USD\n- Ether (ETH) price in the previous day: 7,392 USD\n- Change in ether (ETH) price vs the previous day: 16.8%\n- Average funding rate: -0.018%\n- Change in average funding rate vs the previous day, in percentage points: -2.0 pp\n- Verdict on the change in 24-hour trading volume vs the previous day: a strong uptrend\n\nNotes for the report:\n[s1] Nimbex News, \"Withdrawals paused\": The Nimbex exchange paused ETH withdrawals for 3 hours on Monday for maintenance.\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "On November 14, 2026, the crypto market experienced a significant surge in both price and sentiment, marking one of the strongest days for subscribers to track. Bitcoin climbed 7.8% to $110,582, while Ether outperformed with a 16.8% gain to reach $8,631. This bullish momentum was accompanied by a dramatic shift in market psychology, as the Fear and Greed Index jumped 35 points to 89, indicating extreme greed among investors. Trading activity intensified substantially, with 24-hour volume rising 40.6% to $30.4 billion, a trend analysts describe as a strong uptrend in market participation. Notably, despite the sharp price increases, the average funding rate fell to -0.018%, suggesting that futures markets were not overleveraged for the rally. Bitcoin’s dominance remains steady at 43.5%, though the outsized gain in Ethereum hints at a broadening of risk appetite across altcoins. A brief operational hiccup occurred when the Nimbex exchange paused ETH withdrawals for three hours on Monday for maintenance, but this did not appear to douse the widespread optimism. The combination of high volume and elevated sentiment suggests that momentum may persist, although investors should remain mindful of the rapid pace of recent gains.",
+  "text": "On November 14, 2026, the crypto market experienced a significant surge in both price and sentiment, marking one of the strongest days for subscribers to track. Bitcoin climbed 7.8% to $110,582, while Ether outperformed with a 16.8% gain to reach $8,631. This bullish momentum was accompanied by a dramatic shift in market psychology, as the Fear and Greed Index jumped 35 points to 89, indicating extreme greed among investors. Trading activity intensified substantially, with 24-hour volume rising 40.6% to $30.4 billion, a trend analysts describe as a strong uptrend in market participation. Notably, despite the sharp price increases, the average funding rate fell to -0.018%, suggesting that futures markets were not overleveraged for the rally. Bitcoin’s dominance remains steady at 43.5%, though the outsized gain in Ethereum hints at a broadening of risk appetite across altcoins. A brief operational hiccup occurred when the Nimbex exchange paused ETH withdrawals for three hours on Monday for maintenance, but this did not appear to douse the widespread optimism. The combination of high volume and elevated sentiment suggests that momentum may persist, although investors should remain mindful of the rapid pace of recent gains.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.493873269,
+    "prompt_tokens": 417,
+    "prompt_time": 0.03073694,
+    "completion_tokens": 280,
+    "completion_time": 0.581292112,
+    "total_tokens": 697,
+    "total_time": 0.612029052
+  },
+  "seconds": 1.16,
+  "created_at": "2026-11-18T14:22:41+00:00"
+}

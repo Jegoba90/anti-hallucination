@@ -1,0 +1,26 @@
+{
+  "dataset": "m019",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para el equipo comercial de Ventisca sobre los resultados de ventas en julio de 2026, a partir de estos datos.\n\nEmpresa: Ventisca\nPeríodo: julio de 2026\n\nDatos:\n- Ticket promedio: 68,03 USD\n- Facturación: 54.510 USD\n- Pedidos online: 20.733 pedidos\n- Pedidos online en el mes anterior: 19.609 pedidos\n- Variación de los pedidos online respecto del mes anterior: 5,7 %\n- Unidades vendidas: 16.928 unidades\n- Unidades vendidas en el mes anterior: 12.669 unidades\n- Variación de las unidades vendidas respecto del mes anterior: 33,6 %\n- Conversión web: 0,9 %\n- Conversión web en el mes anterior: 0,6 %\n- Variación de la conversión web respecto del mes anterior, en puntos: 0,3 pp\n- Clientes nuevos: 68 clientes\n- Variación de los clientes nuevos respecto del mes anterior: 1,9 %\n- Veredicto sobre la variación de los clientes nuevos respecto del mes anterior: estabilidad\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En julio de 2026 Ventisca alcanzó una facturación de 54 510 USD con un ticket promedio de 68,03 USD, lo que refleja un desempeño sólido en comparación con el mes anterior. Los pedidos online aumentaron a 20 733, registrando una variación positiva del 5,7 % respecto a junio, y la cantidad de unidades vendidas subió a 16 928, lo que supone un crecimiento del 33,6 % frente al periodo previo. La tasa de conversión web mejoró notablemente, pasando de 0,6 % a 0,9 %, lo que implica un incremento de 0,3 puntos porcentuales. Este aumento en la conversión contribuyó significativamente al crecimiento de las ventas y al mayor número de unidades despachadas. Se incorporaron 68 clientes nuevos, manteniéndose prácticamente estable con una variación del 1,9 % respecto al mes anterior. En conjunto, los indicadores evidencian una tendencia al alza en la actividad comercial y una mayor efectividad del canal digital.",
+  "text": "En julio de 2026 Ventisca alcanzó una facturación de 54 510 USD con un ticket promedio de 68,03 USD, lo que refleja un desempeño sólido en comparación con el mes anterior. Los pedidos online aumentaron a 20 733, registrando una variación positiva del 5,7 % respecto a junio, y la cantidad de unidades vendidas subió a 16 928, lo que supone un crecimiento del 33,6 % frente al periodo previo. La tasa de conversión web mejoró notablemente, pasando de 0,6 % a 0,9 %, lo que implica un incremento de 0,3 puntos porcentuales. Este aumento en la conversión contribuyó significativamente al crecimiento de las ventas y al mayor número de unidades despachadas. Se incorporaron 68 clientes nuevos, manteniéndose prácticamente estable con una variación del 1,9 % respecto al mes anterior. En conjunto, los indicadores evidencian una tendencia al alza en la actividad comercial y una mayor efectividad del canal digital.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.316895392,
+    "prompt_tokens": 360,
+    "prompt_time": 0.016627722,
+    "completion_tokens": 378,
+    "completion_time": 0.784188855,
+    "total_tokens": 738,
+    "total_time": 0.800816577,
+    "completion_tokens_details": {
+      "reasoning_tokens": 142
+    }
+  },
+  "seconds": 1.17,
+  "created_at": "2026-11-18T14:33:50+00:00"
+}

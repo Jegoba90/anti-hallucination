@@ -1,0 +1,137 @@
+{
+  "id": "m063",
+  "split": "test",
+  "domain": "crypto",
+  "locale": "en",
+  "brief": {
+    "company": "Ledger Notes",
+    "audience": "the trading desk clients",
+    "topic": "the crypto market",
+    "period": "November 6, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "btc_price",
+        "value": 59424,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "btc_price_change",
+        "value": -13.8,
+        "unit": "%",
+        "change": true,
+        "label": "change in bitcoin (BTC) price vs the previous day",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "volume_24h",
+        "value": 117806187910,
+        "unit": "USD",
+        "label": "24-hour trading volume",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "volume_24h_change",
+        "value": 1.5,
+        "unit": "%",
+        "change": true,
+        "label": "change in 24-hour trading volume vs the previous day",
+        "subject": [
+          "volume"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "funding_rate",
+        "value": -0.001,
+        "unit": "%",
+        "label": "average funding rate",
+        "subject": [
+          "funding"
+        ],
+        "decimals": 3
+      },
+      {
+        "name": "fear_greed",
+        "value": 12,
+        "unit": "",
+        "label": "fear and greed index",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_change",
+        "value": -6,
+        "unit": "",
+        "change": true,
+        "label": "change in fear and greed index vs the previous day",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "November 6, 2026"
+      },
+      {
+        "name": "btc_price_trend",
+        "from": "btc_price_change",
+        "thresholds": [
+          [
+            -10,
+            "a strong downtrend"
+          ],
+          [
+            -2,
+            "a downtrend"
+          ],
+          [
+            2,
+            "sideways movement"
+          ],
+          [
+            10,
+            "an uptrend"
+          ]
+        ],
+        "otherwise": "a strong uptrend"
+      }
+    ],
+    "known_names": [
+      "Ledger Notes"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Orbita News",
+        "title": "Withdrawals paused",
+        "text": "The Orbita exchange paused ETH withdrawals for 6 hours on Monday for maintenance."
+      }
+    ]
+  }
+}

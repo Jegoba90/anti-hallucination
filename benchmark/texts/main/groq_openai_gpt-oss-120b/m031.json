@@ -1,0 +1,26 @@
+{
+  "dataset": "m031",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para los accionistas de Alerce Foods sobre los resultados financieros en el primer trimestre de 2026, a partir de estos datos.\n\nEmpresa: Alerce Foods\nPeríodo: el primer trimestre de 2026\n\nDatos:\n- Margen operativo: 32,5 %\n- Variación del margen operativo respecto del trimestre anterior, en puntos: -0,6 pp\n- Resultado neto: -57,9 millones USD\n- Resultado neto en el trimestre anterior: -52,8 millones USD\n- Variación del resultado neto respecto del trimestre anterior: -5 millones USD\n- Ingresos: 2,1 mil millones USD\n- Ingresos en el trimestre anterior: 1,4 mil millones USD\n- Variación de los ingresos respecto del trimestre anterior: 51,3 %\n- Deuda neta: 124,5 millones USD\n\nNotas para el informe:\n[s1] Comunicado de prensa, «Nueva planta»: Alerce Foods anunció una inversión de 40 millones de USD en una planta en Valparaíso, que empezará a operar en 2027.\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En el primer trimestre de 2026, Alerge Foods registró ingresos de 2,1 mil millones de dólares, lo que representa un crecimiento intertrimestral del 51,3 % frente a los 1,4 mil millones del periodo anterior. El margen operativo se situó en 32,5 %, aunque mostró una ligera disminución de 0,6 puntos porcentuales respecto al trimestre previo. El resultado neto alcanzó una pérdida de 57,9 millones de dólares, ampliándose en 5 millones frente a la pérdida de 52,8 millones del trimestre anterior. La deuda neta de la compañía se mantuvo en 124,5 millones de dólares, indicando una posición de financiamiento estable. En el marco de su estrategia de expansión, Alerge Foods anunció una inversión de 40 millones de dólares para una nueva planta en Valparaíso, cuya puesta en marcha está prevista para 2027. Con estos resultados, la compañía sigue enfocada en capitalizar el fuerte impulso de ventas mientras gestiona de manera prudente sus costos y su estructura de capital.",
+  "text": "En el primer trimestre de 2026, Alerge Foods registró ingresos de 2,1 mil millones de dólares, lo que representa un crecimiento intertrimestral del 51,3 % frente a los 1,4 mil millones del periodo anterior. El margen operativo se situó en 32,5 %, aunque mostró una ligera disminución de 0,6 puntos porcentuales respecto al trimestre previo. El resultado neto alcanzó una pérdida de 57,9 millones de dólares, ampliándose en 5 millones frente a la pérdida de 52,8 millones del trimestre anterior. La deuda neta de la compañía se mantuvo en 124,5 millones de dólares, indicando una posición de financiamiento estable. En el marco de su estrategia de expansión, Alerge Foods anunció una inversión de 40 millones de dólares para una nueva planta en Valparaíso, cuya puesta en marcha está prevista para 2027. Con estos resultados, la compañía sigue enfocada en capitalizar el fuerte impulso de ventas mientras gestiona de manera prudente sus costos y su estructura de capital.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.31982721,
+    "prompt_tokens": 348,
+    "prompt_time": 0.088453075,
+    "completion_tokens": 511,
+    "completion_time": 1.074952757,
+    "total_tokens": 859,
+    "total_time": 1.163405832,
+    "completion_tokens_details": {
+      "reasoning_tokens": 263
+    }
+  },
+  "seconds": 1.58,
+  "created_at": "2026-11-18T14:35:15+00:00"
+}

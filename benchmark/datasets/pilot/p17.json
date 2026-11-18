@@ -1,0 +1,158 @@
+{
+  "id": "p17",
+  "split": "pilot",
+  "domain": "support",
+  "locale": "es",
+  "brief": {
+    "company": "Pampa Digital",
+    "audience": "el equipo de soporte",
+    "topic": "el desempeño del área de soporte",
+    "period": "la semana del 6 al 12 de noviembre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "tickets_recibidos",
+        "value": 4095,
+        "unit": "tickets",
+        "label": "tickets recibidos",
+        "subject": [
+          "tickets recibidos",
+          "recibidos"
+        ]
+      },
+      {
+        "name": "tickets_recibidos_anterior",
+        "value": 4237,
+        "unit": "tickets",
+        "label": "tickets recibidos en la semana anterior",
+        "subject": [
+          "tickets recibidos",
+          "recibidos"
+        ]
+      },
+      {
+        "name": "variacion_tickets_recibidos",
+        "compute": "percent_change",
+        "from": "tickets_recibidos_anterior",
+        "to": "tickets_recibidos",
+        "label": "variación de los tickets recibidos respecto de la semana anterior",
+        "decimals": 1
+      },
+      {
+        "name": "csat",
+        "value": 88,
+        "unit": "%",
+        "label": "satisfacción del cliente (CSAT)",
+        "subject": [
+          "satisfacción",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_anterior",
+        "value": 87,
+        "unit": "%",
+        "label": "satisfacción del cliente (CSAT) en la semana anterior",
+        "subject": [
+          "satisfacción",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "variacion_csat",
+        "compute": "difference",
+        "from": "csat_anterior",
+        "to": "csat",
+        "label": "variación de la satisfacción del cliente (CSAT) respecto de la semana anterior, en puntos",
+        "decimals": 0
+      },
+      {
+        "name": "tickets_resueltos",
+        "value": 12316,
+        "unit": "tickets",
+        "label": "tickets resueltos",
+        "subject": [
+          "tickets resueltos",
+          "resueltos"
+        ]
+      },
+      {
+        "name": "tickets_resueltos_anterior",
+        "value": 11271,
+        "unit": "tickets",
+        "label": "tickets resueltos en la semana anterior",
+        "subject": [
+          "tickets resueltos",
+          "resueltos"
+        ]
+      },
+      {
+        "name": "variacion_tickets_resueltos",
+        "compute": "percent_change",
+        "from": "tickets_resueltos_anterior",
+        "to": "tickets_resueltos",
+        "label": "variación de los tickets resueltos respecto de la semana anterior",
+        "decimals": 1
+      },
+      {
+        "name": "escalamientos",
+        "value": 2,
+        "unit": "",
+        "label": "escalamientos",
+        "subject": [
+          "escalamientos"
+        ]
+      },
+      {
+        "name": "variacion_escalamientos",
+        "value": -14.8,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los escalamientos respecto de la semana anterior",
+        "subject": [
+          "escalamientos"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tiempo_resolucion",
+        "value": 31.6,
+        "unit": "h",
+        "label": "tiempo medio de resolución",
+        "subject": [
+          "resolución"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "la semana del 6 al 12 de noviembre de 2026"
+      }
+    ],
+    "known_names": [
+      "Pampa Digital"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 7791",
+        "title": "Falla el pago con tarjeta",
+        "text": "Desde el martes, 39 clientes de Mendoza reportan que el pago con tarjeta falla con el error 402. El equipo de pagos revirtió la versión 5.4.1 el lunes y las fallas se detuvieron."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 6485",
+        "title": "La app no sincroniza",
+        "text": "Usuarios de Android reportan que la app no sincroniza los pedidos desde la versión 5.4.1. Hay 39 reportes y el equipo móvil prepara un parche."
+      }
+    ]
+  }
+}

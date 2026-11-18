@@ -1,0 +1,26 @@
+{
+  "dataset": "m016",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para el equipo comercial de Corvina Labs sobre los resultados de ventas en el primer trimestre de 2026, a partir de estos datos.\n\nEmpresa: Corvina Labs\nPeríodo: el primer trimestre de 2026\n\nDatos:\n- Unidades vendidas: 53.739 unidades\n- Variación de las unidades vendidas respecto del trimestre anterior: -1,5 %\n- Tasa de devoluciones: 3,9 %\n- Tasa de devoluciones en el trimestre anterior: 3,4 %\n- Variación de la tasa de devoluciones respecto del trimestre anterior, en puntos: 0,5 pp\n- Conversión web: 3,4 %\n- Conversión web en el trimestre anterior: 3,7 %\n- Variación de la conversión web respecto del trimestre anterior, en puntos: -0,3 pp\n- Pedidos online: 4.686 pedidos\n- Pedidos online en el trimestre anterior: 4.833 pedidos\n- Variación de los pedidos online respecto del trimestre anterior: -3,0 %\n- Ticket promedio: 43,87 USD\n- Ticket promedio en el trimestre anterior: 40,93 USD\n- Variación del ticket promedio respecto del trimestre anterior: 7,2 %\n- Veredicto sobre la variación del ticket promedio respecto del trimestre anterior: subida leve\n\nNotas para el informe:\n[s1] Informe de logística, «Demoras en entregas»: Durante 4 días hubo demoras en las entregas a Mendoza por un problema con el operador Ruta Veloz.\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En el primer trimestre de 2026 Corvina Labs vendió 53.739 unidades, lo que representa una variación de -1,5 % respecto al trimestre anterior. La tasa de devoluciones aumentó a 3,9 %, un alza de 0,5 pp frente al 3,4 % del periodo previo. La conversión web descendió a 3,4 %, una caída de 0,3 pp respecto al 3,7 % anterior. Los pedidos online fueron 4.686, un decremento del 3,0 % frente a los 4.833 del trimestre anterior. El ticket promedio se situó en 43,87 USD, lo que implica una subida leve del 7,2 % respecto a los 40,93 USD del trimestre anterior. Durante cuatro días se registraron demoras en las entregas a Mendoza por un problema con el operador Ruta Veloz. En conjunto, los indicadores de venta muestran una ligera contracción en volumen, compensada por una mejora del valor promedio por venta.",
+  "text": "En el primer trimestre de 2026 Corvina Labs vendió 53.739 unidades, lo que representa una variación de -1,5 % respecto al trimestre anterior. La tasa de devoluciones aumentó a 3,9 %, un alza de 0,5 pp frente al 3,4 % del periodo previo. La conversión web descendió a 3,4 %, una caída de 0,3 pp respecto al 3,7 % anterior. Los pedidos online fueron 4.686, un decremento del 3,0 % frente a los 4.833 del trimestre anterior. El ticket promedio se situó en 43,87 USD, lo que implica una subida leve del 7,2 % respecto a los 40,93 USD del trimestre anterior. Durante cuatro días se registraron demoras en las entregas a Mendoza por un problema con el operador Ruta Veloz. En conjunto, los indicadores de venta muestran una ligera contracción en volumen, compensada por una mejora del valor promedio por venta.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.160780361,
+    "prompt_tokens": 462,
+    "prompt_time": 0.019828165,
+    "completion_tokens": 629,
+    "completion_time": 1.326716644,
+    "total_tokens": 1091,
+    "total_time": 1.346544809,
+    "completion_tokens_details": {
+      "reasoning_tokens": 394
+    }
+  },
+  "seconds": 1.64,
+  "created_at": "2026-11-18T14:33:30+00:00"
+}

@@ -1,0 +1,177 @@
+{
+  "id": "m009",
+  "split": "dev",
+  "domain": "sales",
+  "locale": "en",
+  "brief": {
+    "company": "Harbor & Pine",
+    "audience": "the board",
+    "topic": "sales results",
+    "period": "August 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "average_order",
+        "value": 229.69,
+        "unit": "EUR",
+        "label": "average order value",
+        "subject": [
+          "order value",
+          "average order"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "average_order_previous",
+        "value": 218.48,
+        "unit": "EUR",
+        "label": "average order value in the previous month",
+        "subject": [
+          "order value",
+          "average order"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "average_order_change",
+        "compute": "percent_change",
+        "from": "average_order_previous",
+        "to": "average_order",
+        "label": "change in average order value vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "web_conversion",
+        "value": 3.8,
+        "unit": "%",
+        "label": "web conversion rate",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "web_conversion_change",
+        "value": 1.6,
+        "unit": "pp",
+        "change": true,
+        "label": "change in web conversion rate vs the previous month, in percentage points",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "online_orders",
+        "value": 5166,
+        "unit": "orders",
+        "label": "online orders",
+        "subject": [
+          "orders"
+        ]
+      },
+      {
+        "name": "online_orders_previous",
+        "value": 5130,
+        "unit": "orders",
+        "label": "online orders in the previous month",
+        "subject": [
+          "orders"
+        ]
+      },
+      {
+        "name": "online_orders_change",
+        "compute": "percent_change",
+        "from": "online_orders_previous",
+        "to": "online_orders",
+        "label": "change in online orders vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "new_customers",
+        "value": 70,
+        "unit": "customers",
+        "label": "new customers",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "return_rate",
+        "value": 2.6,
+        "unit": "%",
+        "label": "return rate",
+        "subject": [
+          "returns",
+          "return rate"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "return_rate_previous",
+        "value": 2.3,
+        "unit": "%",
+        "label": "return rate in the previous month",
+        "subject": [
+          "returns",
+          "return rate"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "return_rate_change",
+        "compute": "difference",
+        "from": "return_rate_previous",
+        "to": "return_rate",
+        "label": "change in return rate vs the previous month, in percentage points",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "August 2026"
+      },
+      {
+        "name": "return_rate_trend",
+        "from": "return_rate_change",
+        "thresholds": [
+          [
+            -2,
+            "a sharp drop"
+          ],
+          [
+            -0.3,
+            "a mild drop"
+          ],
+          [
+            0.3,
+            "stability"
+          ],
+          [
+            2,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Harbor & Pine"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Logistics report",
+        "title": "Delivery delays",
+        "text": "For 8 days, deliveries to Calgary were delayed by a problem with the carrier Parcelon."
+      }
+    ]
+  }
+}

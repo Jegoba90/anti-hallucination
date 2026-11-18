@@ -1,0 +1,26 @@
+{
+  "dataset": "m037",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for investors at Bluefen on business metrics for July 2026, based on this data.\n\nCompany: Bluefen\nPeriod: July 2026\n\nData:\n- Monthly recurring revenue (MRR): 980,329 EUR\n- Change in monthly recurring revenue (MRR) vs the previous month: 23.3%\n- Monthly churn: 0.5%\n- Monthly churn in the previous month: 0.3%\n- Change in monthly churn vs the previous month, in percentage points: 0.2 pp\n- Customer acquisition cost (CAC): 277 EUR\n- Customer acquisition cost (CAC) in the previous month: 174 EUR\n- Change in customer acquisition cost (CAC) vs the previous month: 59.2%\n- New customers: 111 customers\n- New customers in the previous month: 112 customers\n- Change in new customers vs the previous month: -0.9%\n- Trial-to-paid conversion: 11.4%\n- Verdict on the change in customer acquisition cost (CAC) vs the previous month: strong growth\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "Bluefen’s July 2026 performance shows a robust expansion of monthly recurring revenue, reaching €980,329—a 23.3 % increase over June. This revenue growth is tempered by a modest rise in churn to 0.5 % from 0.3 %, representing a 0.2‑percentage‑point uptick that warrants monitoring but remains low overall. Customer acquisition cost accelerated sharply to €277, up 59.2 % from the prior month, a change the team describes as strong growth, reflecting higher investment in scaling acquisition channels. Despite the higher CAC, the number of new customers was essentially flat at 111, a slight 0.9 % dip from June’s 112 sign‑ups, indicating that the additional spend is being directed toward higher‑value prospects. The trial‑to‑paid conversion rate held at 11.4 %, supporting the quality of the pipeline even as acquisition costs rise. Taken together, the metrics suggest that Bluefen is successfully converting a larger share of its marketing spend into revenue, though continued attention to churn and cost efficiency will be important to sustain the momentum.",
+  "text": "Bluefen’s July 2026 performance shows a robust expansion of monthly recurring revenue, reaching €980,329—a 23.3 % increase over June. This revenue growth is tempered by a modest rise in churn to 0.5 % from 0.3 %, representing a 0.2‑percentage‑point uptick that warrants monitoring but remains low overall. Customer acquisition cost accelerated sharply to €277, up 59.2 % from the prior month, a change the team describes as strong growth, reflecting higher investment in scaling acquisition channels. Despite the higher CAC, the number of new customers was essentially flat at 111, a slight 0.9 % dip from June’s 112 sign‑ups, indicating that the additional spend is being directed toward higher‑value prospects. The trial‑to‑paid conversion rate held at 11.4 %, supporting the quality of the pipeline even as acquisition costs rise. Taken together, the metrics suggest that Bluefen is successfully converting a larger share of its marketing spend into revenue, though continued attention to churn and cost efficiency will be important to sustain the momentum.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 1.0401073809999999,
+    "prompt_tokens": 331,
+    "prompt_time": 0.018271236,
+    "completion_tokens": 400,
+    "completion_time": 0.840451113,
+    "total_tokens": 731,
+    "total_time": 0.858722349,
+    "completion_tokens_details": {
+      "reasoning_tokens": 160
+    }
+  },
+  "seconds": 1.99,
+  "created_at": "2026-11-18T14:35:58+00:00"
+}

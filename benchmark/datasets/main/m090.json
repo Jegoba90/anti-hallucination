@@ -1,0 +1,154 @@
+{
+  "id": "m090",
+  "split": "test",
+  "domain": "saas",
+  "locale": "es",
+  "brief": {
+    "company": "Quillon",
+    "audience": "los inversores",
+    "topic": "las métricas del negocio",
+    "period": "julio de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "cac",
+        "value": 48,
+        "unit": "USD",
+        "label": "costo de adquisición de clientes (CAC)",
+        "subject": [
+          "CAC",
+          "adquisición"
+        ]
+      },
+      {
+        "name": "churn",
+        "value": 3.2,
+        "unit": "%",
+        "label": "churn mensual",
+        "subject": [
+          "churn",
+          "bajas"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_anterior",
+        "value": 3.1,
+        "unit": "%",
+        "label": "churn mensual en el mes anterior",
+        "subject": [
+          "churn",
+          "bajas"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_churn",
+        "compute": "difference",
+        "from": "churn_anterior",
+        "to": "churn",
+        "label": "variación del churn mensual respecto del mes anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "mrr",
+        "value": 2916810,
+        "unit": "USD",
+        "label": "ingreso mensual recurrente (MRR)",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ],
+        "compact": true
+      },
+      {
+        "name": "mrr_anterior",
+        "value": 2623064,
+        "unit": "USD",
+        "label": "ingreso mensual recurrente (MRR) en el mes anterior",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_mrr",
+        "compute": "percent_change",
+        "from": "mrr_anterior",
+        "to": "mrr",
+        "label": "variación del ingreso mensual recurrente (MRR) respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "clientes_nuevos",
+        "value": 160,
+        "unit": "clientes",
+        "label": "clientes nuevos",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "clientes_nuevos_anterior",
+        "value": 146,
+        "unit": "clientes",
+        "label": "clientes nuevos en el mes anterior",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "variacion_clientes_nuevos",
+        "compute": "percent_change",
+        "from": "clientes_nuevos_anterior",
+        "to": "clientes_nuevos",
+        "label": "variación de los clientes nuevos respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 100,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR)",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "nrr_anterior",
+        "value": 99,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR) en el mes anterior",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "variacion_nrr",
+        "compute": "difference",
+        "from": "nrr_anterior",
+        "to": "nrr",
+        "label": "variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos",
+        "decimals": 0
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "julio de 2026"
+      }
+    ],
+    "known_names": [
+      "Quillon"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "dataset": "m035",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the leadership team at Lanternly on business metrics for June 2026, based on this data.\n\nCompany: Lanternly\nPeriod: June 2026\n\nData:\n- Customer acquisition cost (CAC): 309 EUR\n- Customer acquisition cost (CAC) in the previous month: 255 EUR\n- Change in customer acquisition cost (CAC) vs the previous month: 21.2%\n- Active users: 211,676 users\n- Active users in the previous month: 198,011 users\n- Change in active users vs the previous month: 6.9%\n- New customers: 52 customers\n- Change in new customers vs the previous month: -33.9%\n- Net revenue retention (NRR): 86%\n- Net revenue retention (NRR) in the previous month: 87%\n- Change in net revenue retention (NRR) vs the previous month, in percentage points: -1 pp\n- Trial-to-paid conversion: 4.2%\n- Monthly recurring revenue (MRR): 382,917 EUR\n- Verdict on the change in new customers vs the previous month: a sharp drop\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "In June 2026 Lanternly’s customer acquisition cost rose sharply to €309, a 21.2 % increase over May, indicating that our marketing spend is becoming less efficient. Despite the higher CAC, the platform saw a healthy 6.9 % lift in active users, reaching 211,676, which suggests that our acquisition channels are still delivering engaged traffic. However, the number of newly signed‑up customers fell dramatically to 52, a 33.9 % drop from the prior month, a trend that warrants immediate investigation into funnel bottlenecks or pricing friction. Net revenue retention slipped to 86 % from 87 %, a one‑point decline that signals modest churn and limited upsell success. Trial‑to‑paid conversion remained low at 4.2 %, reinforcing the need to improve onboarding and value demonstration. Nonetheless, monthly recurring revenue held steady at €382,917, providing a solid revenue base while we address the acquisition and retention challenges.",
+  "text": "In June 2026 Lanternly’s customer acquisition cost rose sharply to €309, a 21.2 % increase over May, indicating that our marketing spend is becoming less efficient. Despite the higher CAC, the platform saw a healthy 6.9 % lift in active users, reaching 211,676, which suggests that our acquisition channels are still delivering engaged traffic. However, the number of newly signed‑up customers fell dramatically to 52, a 33.9 % drop from the prior month, a trend that warrants immediate investigation into funnel bottlenecks or pricing friction. Net revenue retention slipped to 86 % from 87 %, a one‑point decline that signals modest churn and limited upsell success. Trial‑to‑paid conversion remained low at 4.2 %, reinforcing the need to improve onboarding and value demonstration. Nonetheless, monthly recurring revenue held steady at €382,917, providing a solid revenue base while we address the acquisition and retention challenges.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.241921109,
+    "prompt_tokens": 345,
+    "prompt_time": 0.019143001,
+    "completion_tokens": 353,
+    "completion_time": 0.7406623,
+    "total_tokens": 698,
+    "total_time": 0.759805301,
+    "completion_tokens_details": {
+      "reasoning_tokens": 141
+    }
+  },
+  "seconds": 1.1,
+  "created_at": "2026-11-18T14:35:44+00:00"
+}

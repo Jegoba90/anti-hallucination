@@ -1,0 +1,26 @@
+{
+  "dataset": "p03",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para los clientes de la mesa de trading de Mesa Pampa Trading sobre el mercado cripto en el 3 de noviembre de 2026, a partir de estos datos.\n\nEmpresa: Mesa Pampa Trading\nPeríodo: el 3 de noviembre de 2026\n\nDatos:\n- Tasa de financiamiento promedio: 0,045 %\n- Tasa de financiamiento promedio en el día anterior: 0,044 %\n- Variación de la tasa de financiamiento promedio respecto del día anterior, en puntos: 0,001 pp\n- Índice de miedo y codicia: 61\n- Índice de miedo y codicia en el día anterior: 77\n- Variación del índice de miedo y codicia respecto del día anterior: -16\n- Precio de ether (ETH): 4.170 USD\n- Precio de ether (ETH) en el día anterior: 4.155 USD\n- Variación del precio de ether (ETH) respecto del día anterior: 0,4 %\n- Dominancia de bitcoin: 59,7 %\n- Interés abierto en futuros: 5,1 mil millones USD\n- Veredicto sobre la variación de la tasa de financiamiento promedio respecto del día anterior, en puntos: movimiento lateral\n\nNotas para el informe:\n[s1] Agenda de redes, «Actualización de red»: La red Telar activará la actualización «Faro» el 5 de mayo.\n[s2] Orbita News, «Retiros suspendidos»: El exchange Orbita suspendió los retiros de ETH durante 6 horas el viernes por mantenimiento.\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "El 3 de noviembre de 2026 la tasa de financiamiento promedio se ubicó en 0,045 %, ligeramente superior a los 0,044 % del día anterior, reflejando un movimiento lateral con un incremento de 0,001 puntos porcentuales. El índice de miedo y codicia cayó a 61, frente a 77 del día previo, una variación de –16 que indica un mayor nerviosismo entre los participantes del mercado. Ether (ETH) cotizó a 4.170 USD, un avance del 0,4 % respecto al cierre anterior, mientras la dominancia de Bitcoin se mantuvo en torno al 59,7 %. El interés abierto en contratos de futuros alcanzó los 5,1 mil millones de USD, señal de que los traders continúan manteniendo posiciones significativas. En el ámbito de infraestructura, la red Telar anunciará la activación de la actualización «Faro» el próximo 5 de mayo, lo que podría mejorar la capacidad de procesamiento. Por otro lado, el exchange Orbita suspendió los retiros de ETH durante seis horas el viernes para realizar tareas de mantenimiento. Mantenerse atento a estos eventos será clave para gestionar el riesgo y aprovechar oportunidades en el mercado cripto.",
+  "text": "El 3 de noviembre de 2026 la tasa de financiamiento promedio se ubicó en 0,045 %, ligeramente superior a los 0,044 % del día anterior, reflejando un movimiento lateral con un incremento de 0,001 puntos porcentuales. El índice de miedo y codicia cayó a 61, frente a 77 del día previo, una variación de –16 que indica un mayor nerviosismo entre los participantes del mercado. Ether (ETH) cotizó a 4.170 USD, un avance del 0,4 % respecto al cierre anterior, mientras la dominancia de Bitcoin se mantuvo en torno al 59,7 %. El interés abierto en contratos de futuros alcanzó los 5,1 mil millones de USD, señal de que los traders continúan manteniendo posiciones significativas. En el ámbito de infraestructura, la red Telar anunciará la activación de la actualización «Faro» el próximo 5 de mayo, lo que podría mejorar la capacidad de procesamiento. Por otro lado, el exchange Orbita suspendió los retiros de ETH durante seis horas el viernes para realizar tareas de mantenimiento. Mantenerse atento a estos eventos será clave para gestionar el riesgo y aprovechar oportunidades en el mercado cripto.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.318824503,
+    "prompt_tokens": 448,
+    "prompt_time": 0.020540627,
+    "completion_tokens": 572,
+    "completion_time": 1.189592816,
+    "total_tokens": 1020,
+    "total_time": 1.210133443,
+    "completion_tokens_details": {
+      "reasoning_tokens": 302
+    }
+  },
+  "seconds": 1.58,
+  "created_at": "2026-11-18T14:21:31+00:00"
+}

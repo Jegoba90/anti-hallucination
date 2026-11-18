@@ -1,0 +1,193 @@
+{
+  "id": "m016",
+  "split": "test",
+  "domain": "sales",
+  "locale": "es",
+  "brief": {
+    "company": "Corvina Labs",
+    "audience": "el equipo comercial",
+    "topic": "los resultados de ventas",
+    "period": "el primer trimestre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "unidades_vendidas",
+        "value": 53739,
+        "unit": "unidades",
+        "label": "unidades vendidas",
+        "subject": [
+          "ventas",
+          "unidades"
+        ]
+      },
+      {
+        "name": "variacion_unidades_vendidas",
+        "value": -1.5,
+        "unit": "%",
+        "change": true,
+        "label": "variación de las unidades vendidas respecto del trimestre anterior",
+        "subject": [
+          "ventas",
+          "unidades"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tasa_devoluciones",
+        "value": 3.9,
+        "unit": "%",
+        "label": "tasa de devoluciones",
+        "subject": [
+          "devoluciones"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tasa_devoluciones_anterior",
+        "value": 3.4,
+        "unit": "%",
+        "label": "tasa de devoluciones en el trimestre anterior",
+        "subject": [
+          "devoluciones"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_tasa_devoluciones",
+        "compute": "difference",
+        "from": "tasa_devoluciones_anterior",
+        "to": "tasa_devoluciones",
+        "label": "variación de la tasa de devoluciones respecto del trimestre anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "conversion_web",
+        "value": 3.4,
+        "unit": "%",
+        "label": "conversión web",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "conversion_web_anterior",
+        "value": 3.7,
+        "unit": "%",
+        "label": "conversión web en el trimestre anterior",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_conversion_web",
+        "compute": "difference",
+        "from": "conversion_web_anterior",
+        "to": "conversion_web",
+        "label": "variación de la conversión web respecto del trimestre anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "pedidos_online",
+        "value": 4686,
+        "unit": "pedidos",
+        "label": "pedidos online",
+        "subject": [
+          "pedidos"
+        ]
+      },
+      {
+        "name": "pedidos_online_anterior",
+        "value": 4833,
+        "unit": "pedidos",
+        "label": "pedidos online en el trimestre anterior",
+        "subject": [
+          "pedidos"
+        ]
+      },
+      {
+        "name": "variacion_pedidos_online",
+        "compute": "percent_change",
+        "from": "pedidos_online_anterior",
+        "to": "pedidos_online",
+        "label": "variación de los pedidos online respecto del trimestre anterior",
+        "decimals": 1
+      },
+      {
+        "name": "ticket_promedio",
+        "value": 43.87,
+        "unit": "USD",
+        "label": "ticket promedio",
+        "subject": [
+          "ticket"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "ticket_promedio_anterior",
+        "value": 40.93,
+        "unit": "USD",
+        "label": "ticket promedio en el trimestre anterior",
+        "subject": [
+          "ticket"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "variacion_ticket_promedio",
+        "compute": "percent_change",
+        "from": "ticket_promedio_anterior",
+        "to": "ticket_promedio",
+        "label": "variación del ticket promedio respecto del trimestre anterior",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el primer trimestre de 2026"
+      },
+      {
+        "name": "tendencia_ticket_promedio",
+        "from": "variacion_ticket_promedio",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Corvina Labs"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Informe de logística",
+        "title": "Demoras en entregas",
+        "text": "Durante 4 días hubo demoras en las entregas a Mendoza por un problema con el operador Ruta Veloz."
+      }
+    ]
+  }
+}

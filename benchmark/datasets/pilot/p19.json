@@ -1,0 +1,163 @@
+{
+  "id": "p19",
+  "split": "pilot",
+  "domain": "crypto",
+  "locale": "en",
+  "brief": {
+    "company": "Satstack Desk",
+    "audience": "the trading desk clients",
+    "topic": "the crypto market",
+    "period": "the week of October 10–16, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "btc_price",
+        "value": 25158,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "btc_price_previous",
+        "value": 29493,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price in the previous week",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "btc_price_change",
+        "compute": "percent_change",
+        "from": "btc_price_previous",
+        "to": "btc_price",
+        "label": "change in bitcoin (BTC) price vs the previous week",
+        "decimals": 1
+      },
+      {
+        "name": "volume_24h",
+        "value": 97650992288,
+        "unit": "USD",
+        "label": "24-hour trading volume",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest",
+        "value": 67262159588,
+        "unit": "USD",
+        "label": "futures open interest",
+        "subject": [
+          "open interest"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest_previous",
+        "value": 64698096419,
+        "unit": "USD",
+        "label": "futures open interest in the previous week",
+        "subject": [
+          "open interest"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest_change",
+        "compute": "percent_change",
+        "from": "open_interest_previous",
+        "to": "open_interest",
+        "label": "change in futures open interest vs the previous week",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "fear_greed",
+        "value": 15,
+        "unit": "",
+        "label": "fear and greed index",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_previous",
+        "value": 20,
+        "unit": "",
+        "label": "fear and greed index in the previous week",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_change",
+        "compute": "difference",
+        "from": "fear_greed_previous",
+        "to": "fear_greed",
+        "label": "change in fear and greed index vs the previous week",
+        "decimals": 0
+      },
+      {
+        "name": "eth_price",
+        "value": 3664,
+        "unit": "USD",
+        "label": "ether (ETH) price",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "eth_price_previous",
+        "value": 3139,
+        "unit": "USD",
+        "label": "ether (ETH) price in the previous week",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "eth_price_change",
+        "compute": "percent_change",
+        "from": "eth_price_previous",
+        "to": "eth_price",
+        "label": "change in ether (ETH) price vs the previous week",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "the week of October 10–16, 2026"
+      }
+    ],
+    "known_names": [
+      "Satstack Desk"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Network calendar",
+        "title": "Network upgrade",
+        "text": "The Telar network will activate the Beacon upgrade on June 5."
+      }
+    ]
+  }
+}

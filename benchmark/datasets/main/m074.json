@@ -1,0 +1,182 @@
+{
+  "id": "m074",
+  "split": "test",
+  "domain": "crypto",
+  "locale": "en",
+  "brief": {
+    "company": "Blockwise Weekly",
+    "audience": "the subscribers",
+    "topic": "the crypto market",
+    "period": "the week of October 14–20, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "btc_dominance",
+        "value": 39.5,
+        "unit": "%",
+        "label": "bitcoin dominance",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "eth_price",
+        "value": 3210,
+        "unit": "USD",
+        "label": "ether (ETH) price",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "eth_price_previous",
+        "value": 2966,
+        "unit": "USD",
+        "label": "ether (ETH) price in the previous week",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "eth_price_change",
+        "compute": "percent_change",
+        "from": "eth_price_previous",
+        "to": "eth_price",
+        "label": "change in ether (ETH) price vs the previous week",
+        "decimals": 1
+      },
+      {
+        "name": "fear_greed",
+        "value": 6,
+        "unit": "",
+        "label": "fear and greed index",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_change",
+        "value": -7,
+        "unit": "",
+        "change": true,
+        "label": "change in fear and greed index vs the previous week",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "volume_24h",
+        "value": 66026770574,
+        "unit": "USD",
+        "label": "24-hour trading volume",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "volume_24h_previous",
+        "value": 66368127346,
+        "unit": "USD",
+        "label": "24-hour trading volume in the previous week",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "volume_24h_change",
+        "compute": "percent_change",
+        "from": "volume_24h_previous",
+        "to": "volume_24h",
+        "label": "change in 24-hour trading volume vs the previous week",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "btc_price",
+        "value": 92527,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "open_interest",
+        "value": 11527730692,
+        "unit": "USD",
+        "label": "futures open interest",
+        "subject": [
+          "open interest"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest_previous",
+        "value": 9867551056,
+        "unit": "USD",
+        "label": "futures open interest in the previous week",
+        "subject": [
+          "open interest"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest_change",
+        "compute": "percent_change",
+        "from": "open_interest_previous",
+        "to": "open_interest",
+        "label": "change in futures open interest vs the previous week",
+        "decimals": 1,
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "the week of October 14–20, 2026"
+      },
+      {
+        "name": "eth_price_trend",
+        "from": "eth_price_change",
+        "thresholds": [
+          [
+            -10,
+            "a strong downtrend"
+          ],
+          [
+            -2,
+            "a downtrend"
+          ],
+          [
+            2,
+            "sideways movement"
+          ],
+          [
+            10,
+            "an uptrend"
+          ]
+        ],
+        "otherwise": "a strong uptrend"
+      }
+    ],
+    "known_names": [
+      "Blockwise Weekly"
+    ]
+  }
+}

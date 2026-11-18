@@ -1,0 +1,199 @@
+{
+  "id": "m098",
+  "split": "test",
+  "domain": "sales",
+  "locale": "en",
+  "brief": {
+    "company": "Ashgrove",
+    "audience": "the sales team",
+    "topic": "sales results",
+    "period": "Q2 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "return_rate",
+        "value": 4.1,
+        "unit": "%",
+        "label": "return rate",
+        "subject": [
+          "returns",
+          "return rate"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "return_rate_previous",
+        "value": 4.6,
+        "unit": "%",
+        "label": "return rate in the previous quarter",
+        "subject": [
+          "returns",
+          "return rate"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "return_rate_change",
+        "compute": "difference",
+        "from": "return_rate_previous",
+        "to": "return_rate",
+        "label": "change in return rate vs the previous quarter, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "units_sold",
+        "value": 36709,
+        "unit": "units",
+        "label": "units sold",
+        "subject": [
+          "sales",
+          "units"
+        ]
+      },
+      {
+        "name": "revenue",
+        "value": 21313154,
+        "unit": "EUR",
+        "label": "revenue",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "revenue_previous",
+        "value": 22860961,
+        "unit": "EUR",
+        "label": "revenue in the previous quarter",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "revenue_change",
+        "compute": "percent_change",
+        "from": "revenue_previous",
+        "to": "revenue",
+        "label": "change in revenue vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "average_order",
+        "value": 36.13,
+        "unit": "EUR",
+        "label": "average order value",
+        "subject": [
+          "order value",
+          "average order"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "average_order_previous",
+        "value": 32.92,
+        "unit": "EUR",
+        "label": "average order value in the previous quarter",
+        "subject": [
+          "order value",
+          "average order"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "average_order_change",
+        "compute": "percent_change",
+        "from": "average_order_previous",
+        "to": "average_order",
+        "label": "change in average order value vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "web_conversion",
+        "value": 2.8,
+        "unit": "%",
+        "label": "web conversion rate",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "web_conversion_change",
+        "value": 2.4,
+        "unit": "pp",
+        "change": true,
+        "label": "change in web conversion rate vs the previous quarter, in percentage points",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "online_orders",
+        "value": 18342,
+        "unit": "orders",
+        "label": "online orders",
+        "subject": [
+          "orders"
+        ]
+      },
+      {
+        "name": "online_orders_previous",
+        "value": 17494,
+        "unit": "orders",
+        "label": "online orders in the previous quarter",
+        "subject": [
+          "orders"
+        ]
+      },
+      {
+        "name": "online_orders_change",
+        "compute": "percent_change",
+        "from": "online_orders_previous",
+        "to": "online_orders",
+        "label": "change in online orders vs the previous quarter",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "Q2 2026"
+      },
+      {
+        "name": "average_order_trend",
+        "from": "average_order_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Ashgrove"
+    ]
+  }
+}

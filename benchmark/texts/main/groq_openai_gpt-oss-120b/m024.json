@@ -1,0 +1,26 @@
+{
+  "dataset": "m024",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the operations managers at Brightloom on support performance for April 2026, based on this data.\n\nCompany: Brightloom\nPeriod: April 2026\n\nData:\n- Tickets resolved: 11,048 tickets\n- Tickets resolved in the previous month: 10,778 tickets\n- Change in tickets resolved vs the previous month: 2.5%\n- Open backlog: 2,776 tickets\n- Open backlog in the previous month: 3,627 tickets\n- Change in open backlog vs the previous month: -23.5%\n- Average resolution time: 65.0 h\n- Average resolution time in the previous month: 61.0 h\n- Change in average resolution time vs the previous month: 6.6%\n- Customer satisfaction (CSAT): 77%\n- Customer satisfaction (CSAT) in the previous month: 79%\n- Change in customer satisfaction (CSAT) vs the previous month, in percentage points: -2 pp\n\nNotes for the report:\n[s1] Ticket 4351, \"Delayed emails\": Confirmation emails arrive up to 4 hours late because the email provider throttled sending. Traffic was moved to a backup provider.\n[s2] Ticket 5513, \"Card payments fail\": Since Monday, 30 customers in Denver report that card payments fail with error 502. The payments team rolled back release 5.10.4 on Wednesday and the failures stopped.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "April resolved 11,048 tickets, a 2.5 % increase over the 10,778 tickets handled in the prior month. The open backlog contracted to 2,776 tickets from 3,627, representing a 23.5 % reduction. Average resolution time rose to 65.0 hours, 6.6 % slower than the 61.0 hours recorded in March. Customer satisfaction slipped to 77 %, down 2 percentage points from the previous month’s 79 %. Ticket 4351 highlighted delayed confirmation emails, which arrived up to four hours late because the email provider throttled sending; traffic was moved to a backup provider to restore timely delivery. Ticket 5513 documented card‑payment failures for 30 Denver customers with error 502; the payments team rolled back release 5.10.4 on Wednesday, stopping the failures. While ticket volume and backlog improved, the slower resolution speed and modest CSAT decline indicate areas for further operational focus.",
+  "text": "April resolved 11,048 tickets, a 2.5 % increase over the 10,778 tickets handled in the prior month. The open backlog contracted to 2,776 tickets from 3,627, representing a 23.5 % reduction. Average resolution time rose to 65.0 hours, 6.6 % slower than the 61.0 hours recorded in March. Customer satisfaction slipped to 77 %, down 2 percentage points from the previous month’s 79 %. Ticket 4351 highlighted delayed confirmation emails, which arrived up to four hours late because the email provider throttled sending; traffic was moved to a backup provider to restore timely delivery. Ticket 5513 documented card‑payment failures for 30 Denver customers with error 502; the payments team rolled back release 5.10.4 on Wednesday, stopping the failures. While ticket volume and backlog improved, the slower resolution speed and modest CSAT decline indicate areas for further operational focus.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.312004017,
+    "prompt_tokens": 427,
+    "prompt_time": 0.023675179,
+    "completion_tokens": 673,
+    "completion_time": 1.412599344,
+    "total_tokens": 1100,
+    "total_time": 1.436274523,
+    "completion_tokens_details": {
+      "reasoning_tokens": 458
+    }
+  },
+  "seconds": 1.84,
+  "created_at": "2026-11-18T14:34:26+00:00"
+}

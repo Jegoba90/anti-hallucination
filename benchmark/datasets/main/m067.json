@@ -1,0 +1,147 @@
+{
+  "id": "m067",
+  "split": "test",
+  "domain": "saas",
+  "locale": "es",
+  "brief": {
+    "company": "Quillon",
+    "audience": "el equipo directivo",
+    "topic": "las métricas del negocio",
+    "period": "julio de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "cac",
+        "value": 183,
+        "unit": "EUR",
+        "label": "costo de adquisición de clientes (CAC)",
+        "subject": [
+          "CAC",
+          "adquisición"
+        ]
+      },
+      {
+        "name": "nrr",
+        "value": 93,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR)",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "nrr_anterior",
+        "value": 92,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR) en el mes anterior",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "variacion_nrr",
+        "compute": "difference",
+        "from": "nrr_anterior",
+        "to": "nrr",
+        "label": "variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos",
+        "decimals": 0
+      },
+      {
+        "name": "mrr",
+        "value": 858668,
+        "unit": "EUR",
+        "label": "ingreso mensual recurrente (MRR)",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ]
+      },
+      {
+        "name": "mrr_anterior",
+        "value": 796712,
+        "unit": "EUR",
+        "label": "ingreso mensual recurrente (MRR) en el mes anterior",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ]
+      },
+      {
+        "name": "variacion_mrr",
+        "compute": "percent_change",
+        "from": "mrr_anterior",
+        "to": "mrr",
+        "label": "variación del ingreso mensual recurrente (MRR) respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "conversion_prueba",
+        "value": 4.2,
+        "unit": "%",
+        "label": "conversión de prueba a pago",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "conversion_prueba_anterior",
+        "value": 2.3,
+        "unit": "%",
+        "label": "conversión de prueba a pago en el mes anterior",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_conversion_prueba",
+        "compute": "difference",
+        "from": "conversion_prueba_anterior",
+        "to": "conversion_prueba",
+        "label": "variación de la conversión de prueba a pago respecto del mes anterior, en puntos",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "julio de 2026"
+      },
+      {
+        "name": "tendencia_nrr",
+        "from": "variacion_nrr",
+        "thresholds": [
+          [
+            -2,
+            "caída fuerte"
+          ],
+          [
+            -0.3,
+            "caída leve"
+          ],
+          [
+            0.3,
+            "estabilidad"
+          ],
+          [
+            2,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Quillon"
+    ]
+  }
+}

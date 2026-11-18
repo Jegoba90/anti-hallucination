@@ -1,0 +1,26 @@
+{
+  "dataset": "m017",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para los suscriptores de Informe Andino de Mercados sobre el mercado cripto en el 12 de noviembre de 2026, a partir de estos datos.\n\nEmpresa: Informe Andino de Mercados\nPeríodo: el 12 de noviembre de 2026\n\nDatos:\n- Tasa de financiamiento promedio: 0,007 %\n- Índice de miedo y codicia: 5\n- Variación del índice de miedo y codicia respecto del día anterior: 9\n- Precio de ether (ETH): 5.045 USD\n- Precio de bitcoin (BTC): 25.795 USD\n- Precio de bitcoin (BTC) en el día anterior: 27.292 USD\n- Variación del precio de bitcoin (BTC) respecto del día anterior: -5,5 %\n- Dominancia de bitcoin: 56,8 %\n- Dominancia de bitcoin en el día anterior: 57,0 %\n- Variación de la dominancia de bitcoin respecto del día anterior, en puntos: -0,2 pp\n- Veredicto sobre la variación del precio de bitcoin (BTC) respecto del día anterior: tendencia bajista\n\nNotas para el informe:\n[s1] Orbita News, «Retiros suspendidos»: El exchange Orbita suspendió los retiros de ETH durante 3 horas el martes por mantenimiento.\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "El 12 de noviembre de 2026 la tasa de financiamiento promedio se situó en 0,007 %, mientras que el índice de miedo y codicia alcanzó 5, marcando un aumento de 9 puntos respecto al día anterior, lo que refleja una mayor aversión al riesgo entre los participantes. Bitcoin cotizó a 25 795 USD, una caída del 5,5 % frente a los 27 292 USD de ayer, y su dominancia descendió a 56,8 %, perdiendo 0,2 puntos porcentuales. Ether se mantuvo en 5 045 USD, pese a la interrupción temporal de los retiros en el exchange Orbita, que suspendió las salidas de ETH durante tres horas por mantenimiento. La variación bajista del precio de Bitcoin y la disminución de su dominancia confirman la tendencia bajista señalada en el veredicto. El mercado muestra una presión vendedora sostenida, impulsada tanto por la caída de Bitcoin como por el ambiente de miedo reflejado en el índice. Se recomienda a los inversores cautelar la exposición a activos de alta volatilidad y vigilar de cerca cualquier novedad regulatoria o de infraestructura que pueda afectar la liquidez. Mantendremos el seguimiento de estos indicadores para ofrecer una visión actualizada en los próximos informes.",
+  "text": "El 12 de noviembre de 2026 la tasa de financiamiento promedio se situó en 0,007 %, mientras que el índice de miedo y codicia alcanzó 5, marcando un aumento de 9 puntos respecto al día anterior, lo que refleja una mayor aversión al riesgo entre los participantes. Bitcoin cotizó a 25 795 USD, una caída del 5,5 % frente a los 27 292 USD de ayer, y su dominancia descendió a 56,8 %, perdiendo 0,2 puntos porcentuales. Ether se mantuvo en 5 045 USD, pese a la interrupción temporal de los retiros en el exchange Orbita, que suspendió las salidas de ETH durante tres horas por mantenimiento. La variación bajista del precio de Bitcoin y la disminución de su dominancia confirman la tendencia bajista señalada en el veredicto. El mercado muestra una presión vendedora sostenida, impulsada tanto por la caída de Bitcoin como por el ambiente de miedo reflejado en el índice. Se recomienda a los inversores cautelar la exposición a activos de alta volatilidad y vigilar de cerca cualquier novedad regulatoria o de infraestructura que pueda afectar la liquidez. Mantendremos el seguimiento de estos indicadores para ofrecer una visión actualizada en los próximos informes.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.31246322,
+    "prompt_tokens": 395,
+    "prompt_time": 0.018751125,
+    "completion_tokens": 554,
+    "completion_time": 1.176621106,
+    "total_tokens": 949,
+    "total_time": 1.195372231,
+    "completion_tokens_details": {
+      "reasoning_tokens": 261
+    }
+  },
+  "seconds": 1.6,
+  "created_at": "2026-11-18T14:33:38+00:00"
+}

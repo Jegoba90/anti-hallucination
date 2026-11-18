@@ -1,0 +1,164 @@
+{
+  "id": "p15",
+  "split": "pilot",
+  "domain": "saas",
+  "locale": "en",
+  "brief": {
+    "company": "Brightloom",
+    "audience": "the leadership team",
+    "topic": "business metrics",
+    "period": "January 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "churn",
+        "value": 0.9,
+        "unit": "%",
+        "label": "monthly churn",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_previous",
+        "value": 0.5,
+        "unit": "%",
+        "label": "monthly churn in the previous month",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_change",
+        "compute": "difference",
+        "from": "churn_previous",
+        "to": "churn",
+        "label": "change in monthly churn vs the previous month, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "trial_conversion",
+        "value": 7.5,
+        "unit": "%",
+        "label": "trial-to-paid conversion",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "trial_conversion_previous",
+        "value": 5.9,
+        "unit": "%",
+        "label": "trial-to-paid conversion in the previous month",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "trial_conversion_change",
+        "compute": "difference",
+        "from": "trial_conversion_previous",
+        "to": "trial_conversion",
+        "label": "change in trial-to-paid conversion vs the previous month, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "active_users",
+        "value": 106796,
+        "unit": "users",
+        "label": "active users",
+        "subject": [
+          "users",
+          "active users"
+        ]
+      },
+      {
+        "name": "active_users_change",
+        "value": 14.0,
+        "unit": "%",
+        "change": true,
+        "label": "change in active users vs the previous month",
+        "subject": [
+          "users",
+          "active users"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "cac",
+        "value": 173,
+        "unit": "GBP",
+        "label": "customer acquisition cost (CAC)",
+        "subject": [
+          "CAC",
+          "acquisition cost"
+        ]
+      },
+      {
+        "name": "cac_previous",
+        "value": 170,
+        "unit": "GBP",
+        "label": "customer acquisition cost (CAC) in the previous month",
+        "subject": [
+          "CAC",
+          "acquisition cost"
+        ]
+      },
+      {
+        "name": "cac_change",
+        "compute": "percent_change",
+        "from": "cac_previous",
+        "to": "cac",
+        "label": "change in customer acquisition cost (CAC) vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 90,
+        "unit": "%",
+        "label": "net revenue retention (NRR)",
+        "subject": [
+          "NRR",
+          "retention"
+        ]
+      },
+      {
+        "name": "nrr_previous",
+        "value": 94,
+        "unit": "%",
+        "label": "net revenue retention (NRR) in the previous month",
+        "subject": [
+          "NRR",
+          "retention"
+        ]
+      },
+      {
+        "name": "nrr_change",
+        "compute": "difference",
+        "from": "nrr_previous",
+        "to": "nrr",
+        "label": "change in net revenue retention (NRR) vs the previous month, in percentage points",
+        "decimals": 0
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "January 2026"
+      }
+    ],
+    "known_names": [
+      "Brightloom"
+    ]
+  }
+}

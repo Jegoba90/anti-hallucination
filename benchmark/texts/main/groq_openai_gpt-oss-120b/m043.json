@@ -1,0 +1,26 @@
+{
+  "dataset": "m043",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the operations managers at Harbor & Pine on support performance for June 2026, based on this data.\n\nCompany: Harbor & Pine\nPeriod: June 2026\n\nData:\n- Escalations: 38\n- Escalations in the previous month: 37\n- Change in escalations vs the previous month: 2.7%\n- Customer satisfaction (CSAT): 96%\n- Customer satisfaction (CSAT) in the previous month: 95%\n- Change in customer satisfaction (CSAT) vs the previous month, in percentage points: 1 pp\n- Tickets received: 5,824 tickets\n- Change in tickets received vs the previous month: -5.5%\n- Average resolution time: 10.4 h\n- Average resolution time in the previous month: 9.5 h\n- Change in average resolution time vs the previous month: 9.5%\n- Open backlog: 293 tickets\n- Open backlog in the previous month: 298 tickets\n- Change in open backlog vs the previous month: -1.7%\n- First response time: 0.7 h\n- First response time in the previous month: 0.6 h\n- Change in first response time vs the previous month: 16.7%\n- Verdict on the change in tickets received vs the previous month: a mild drop\n\nNotes for the report:\n[s1] Ticket 9853, \"The app does not sync\": Android users report that the app has not synced orders since version 6.12.1. There are 12 reports and the mobile team is preparing a fix.\n[s2] Ticket 6353, \"Card payments fail\": Since Monday, 12 customers in Denver report that card payments fail with error 402. The payments team rolled back release 6.12.1 on Friday and the failures stopped.\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "Overall support performance in June 2026 showed modest improvements in customer satisfaction alongside a slight rise in escalations. CSAT increased to 96 %, up one percentage point from the previous month, while escalations grew to 38, a 2.7 % increase over May. Ticket volume fell 5.5 % to 5,824, helping shrink the open backlog by 1.7 % to 293 tickets. However, average resolution time slipped to 10.4 hours (up 9.5 %) and first‑response time rose 16.7 % to 0.7 hours, indicating slower handling of individual cases. The reduction in backlog and higher CSAT suggest the team is managing fewer cases more effectively despite the slower resolution metrics. Ticket 9853 revealed that Android users on version 6.12.1 experienced sync failures, with 12 reports now being addressed by the mobile team. Ticket 6353 documented card‑payment errors (error 402) for 12 Denver customers; the payments team rolled back release 6.12.1, which stopped the failures.",
+  "text": "Overall support performance in June 2026 showed modest improvements in customer satisfaction alongside a slight rise in escalations. CSAT increased to 96 %, up one percentage point from the previous month, while escalations grew to 38, a 2.7 % increase over May. Ticket volume fell 5.5 % to 5,824, helping shrink the open backlog by 1.7 % to 293 tickets. However, average resolution time slipped to 10.4 hours (up 9.5 %) and first‑response time rose 16.7 % to 0.7 hours, indicating slower handling of individual cases. The reduction in backlog and higher CSAT suggest the team is managing fewer cases more effectively despite the slower resolution metrics. Ticket 9853 revealed that Android users on version 6.12.1 experienced sync failures, with 12 reports now being addressed by the mobile team. Ticket 6353 documented card‑payment errors (error 402) for 12 Denver customers; the payments team rolled back release 6.12.1, which stopped the failures.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.207146059,
+    "prompt_tokens": 493,
+    "prompt_time": 0.024862545,
+    "completion_tokens": 621,
+    "completion_time": 1.3127290409999999,
+    "total_tokens": 1114,
+    "total_time": 1.337591586,
+    "completion_tokens_details": {
+      "reasoning_tokens": 381
+    }
+  },
+  "seconds": 1.63,
+  "created_at": "2026-11-18T14:36:40+00:00"
+}

@@ -1,0 +1,23 @@
+{
+  "dataset": "p07",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para los clientes de la mesa de trading de Informe Andino de Mercados sobre el mercado cripto en la semana del 3 al 9 de noviembre de 2026, a partir de estos datos.\n\nEmpresa: Informe Andino de Mercados\nPeríodo: la semana del 3 al 9 de noviembre de 2026\n\nDatos:\n- Precio de bitcoin (BTC): 52.319 USD\n- Precio de bitcoin (BTC) en la semana anterior: 51.372 USD\n- Variación del precio de bitcoin (BTC) respecto de la semana anterior: 1,8 %\n- Volumen operado en 24 horas: 141,6 mil millones USD\n- Volumen operado en 24 horas en la semana anterior: 139,7 mil millones USD\n- Variación del volumen operado en 24 horas respecto de la semana anterior: 1,3 %\n- Tasa de financiamiento promedio: 0,023 %\n- Variación de la tasa de financiamiento promedio respecto de la semana anterior, en puntos: 1,7 pp\n- Interés abierto en futuros: 29,9 mil millones USD\n- Interés abierto en futuros en la semana anterior: 30 mil millones USD\n- Variación del interés abierto en futuros respecto de la semana anterior: -0,3 %\n- Veredicto sobre la variación de la tasa de financiamiento promedio respecto de la semana anterior, en puntos: tendencia alcista\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "Durante la semana del 3 al 9 de noviembre de 2026, el precio de Bitcoin se situó en 52.319 dólares, lo que representa una variación de 1,8 % frente a los 51.372 dólares registrados en la semana anterior. El volumen operado en 24 horas alcanzó los 141,6 mil millones de dólares, mostrando un incremento del 1,3 % respecto a los 139,7 mil millones de dólares de la semana previa. En materia de derivados, el interés abierto en futuros experimentó una ligera disminución del 0,3 %, pasando de 30 mil millones de dólares a 29,9 mil millones de dólares. Por su parte, la tasa de financiamiento promedio se ubicó en 0,023 %, tras registrar un aumento de 1,7 puntos básicos en comparación con el período inmediato anterior. Este incremento en la tasa de financiamiento promedia refleja una tendencia alcista en el mercado. Estos indicadores sugieren una moderada expansión de la actividad comercial y un leve cambio en las condiciones de apalancamiento durante el periodo analizado. En conjunto, los datos muestran una consolidación del precio con un volumen ligeramente superior y un financiamiento más costoso que en la semana anterior. La evolución de estas métricas durante la semana del 3 al 9 de noviembre de 2026 permite observar un comportamiento estable en el mercado cripto.",
+  "text": "Durante la semana del 3 al 9 de noviembre de 2026, el precio de Bitcoin se situó en 52.319 dólares, lo que representa una variación de 1,8 % frente a los 51.372 dólares registrados en la semana anterior. El volumen operado en 24 horas alcanzó los 141,6 mil millones de dólares, mostrando un incremento del 1,3 % respecto a los 139,7 mil millones de dólares de la semana previa. En materia de derivados, el interés abierto en futuros experimentó una ligera disminución del 0,3 %, pasando de 30 mil millones de dólares a 29,9 mil millones de dólares. Por su parte, la tasa de financiamiento promedio se ubicó en 0,023 %, tras registrar un aumento de 1,7 puntos básicos en comparación con el período inmediato anterior. Este incremento en la tasa de financiamiento promedia refleja una tendencia alcista en el mercado. Estos indicadores sugieren una moderada expansión de la actividad comercial y un leve cambio en las condiciones de apalancamiento durante el periodo analizado. En conjunto, los datos muestran una consolidación del precio con un volumen ligeramente superior y un financiamiento más costoso que en la semana anterior. La evolución de estas métricas durante la semana del 3 al 9 de noviembre de 2026 permite observar un comportamiento estable en el mercado cripto.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.213470402,
+    "prompt_tokens": 418,
+    "prompt_time": 0.034642369,
+    "completion_tokens": 313,
+    "completion_time": 1.51593201,
+    "total_tokens": 731,
+    "total_time": 1.550574379
+  },
+  "seconds": 1.84,
+  "created_at": "2026-11-18T14:23:32+00:00"
+}

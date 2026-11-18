@@ -1,0 +1,140 @@
+{
+  "id": "m028",
+  "split": "dev",
+  "domain": "crypto",
+  "locale": "en",
+  "brief": {
+    "company": "Satstack Desk",
+    "audience": "the subscribers",
+    "topic": "the crypto market",
+    "period": "November 6, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "btc_dominance",
+        "value": 38.1,
+        "unit": "%",
+        "label": "bitcoin dominance",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_previous",
+        "value": 35.7,
+        "unit": "%",
+        "label": "bitcoin dominance in the previous day",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_change",
+        "compute": "difference",
+        "from": "btc_dominance_previous",
+        "to": "btc_dominance",
+        "label": "change in bitcoin dominance vs the previous day, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "volume_24h",
+        "value": 72785619914,
+        "unit": "USD",
+        "label": "24-hour trading volume",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "eth_price",
+        "value": 918,
+        "unit": "USD",
+        "label": "ether (ETH) price",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "eth_price_previous",
+        "value": 954,
+        "unit": "USD",
+        "label": "ether (ETH) price in the previous day",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "eth_price_change",
+        "compute": "percent_change",
+        "from": "eth_price_previous",
+        "to": "eth_price",
+        "label": "change in ether (ETH) price vs the previous day",
+        "decimals": 1
+      },
+      {
+        "name": "fear_greed",
+        "value": 47,
+        "unit": "",
+        "label": "fear and greed index",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_previous",
+        "value": 33,
+        "unit": "",
+        "label": "fear and greed index in the previous day",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_change",
+        "compute": "difference",
+        "from": "fear_greed_previous",
+        "to": "fear_greed",
+        "label": "change in fear and greed index vs the previous day",
+        "decimals": 0
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "November 6, 2026"
+      }
+    ],
+    "known_names": [
+      "Satstack Desk"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Network calendar",
+        "title": "Network upgrade",
+        "text": "The Telar network will activate the Beacon upgrade on October 6."
+      },
+      {
+        "id": "s2",
+        "name": "Nimbex News",
+        "title": "Withdrawals paused",
+        "text": "The Nimbex exchange paused ETH withdrawals for 5 hours on Monday for maintenance."
+      }
+    ]
+  }
+}

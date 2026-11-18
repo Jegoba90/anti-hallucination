@@ -1,0 +1,141 @@
+{
+  "id": "m045",
+  "split": "test",
+  "domain": "finance",
+  "locale": "es",
+  "brief": {
+    "company": "Arkadia",
+    "audience": "los accionistas",
+    "topic": "los resultados financieros",
+    "period": "el tercer trimestre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "ebitda",
+        "value": 66857870,
+        "unit": "EUR",
+        "label": "EBITDA",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_ebitda",
+        "value": -44.5,
+        "unit": "%",
+        "change": true,
+        "label": "variación del EBITDA respecto del trimestre anterior",
+        "subject": [
+          "EBITDA"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "empleados",
+        "value": 8229,
+        "unit": "empleados",
+        "label": "empleados",
+        "subject": [
+          "empleados",
+          "plantilla"
+        ]
+      },
+      {
+        "name": "deuda_neta",
+        "value": 2686516524,
+        "unit": "EUR",
+        "label": "deuda neta",
+        "subject": [
+          "deuda"
+        ],
+        "compact": true
+      },
+      {
+        "name": "deuda_neta_anterior",
+        "value": 3000948688,
+        "unit": "EUR",
+        "label": "deuda neta en el trimestre anterior",
+        "subject": [
+          "deuda"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_deuda_neta",
+        "compute": "percent_change",
+        "from": "deuda_neta_anterior",
+        "to": "deuda_neta",
+        "label": "variación de la deuda neta respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "margen_operativo",
+        "value": -4.6,
+        "unit": "%",
+        "label": "margen operativo",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "margen_operativo_anterior",
+        "value": -6.3,
+        "unit": "%",
+        "label": "margen operativo en el trimestre anterior",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_margen_operativo",
+        "compute": "difference",
+        "from": "margen_operativo_anterior",
+        "to": "margen_operativo",
+        "label": "variación del margen operativo respecto del trimestre anterior, en puntos",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el tercer trimestre de 2026"
+      },
+      {
+        "name": "tendencia_margen_operativo",
+        "from": "variacion_margen_operativo",
+        "thresholds": [
+          [
+            -2,
+            "caída fuerte"
+          ],
+          [
+            -0.3,
+            "caída leve"
+          ],
+          [
+            0.3,
+            "estabilidad"
+          ],
+          [
+            2,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Arkadia"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "dataset": "m026",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for management at Kestrel Goods on sales results for July 2026, based on this data.\n\nCompany: Kestrel Goods\nPeriod: July 2026\n\nData:\n- Revenue: 799,041 USD\n- New customers: 2,630 customers\n- New customers in the previous month: 6,282 customers\n- Change in new customers vs the previous month: -58.1%\n- Average order value: 109.62 USD\n- Average order value in the previous month: 130.18 USD\n- Change in average order value vs the previous month: -15.8%\n- Online orders: 14,192 orders\n- Change in online orders vs the previous month: 8.3%\n- Verdict on the change in average order value vs the previous month: a sharp drop\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "Revenue for July 2026 totaled $799,041. The month attracted 2,630 new customers, a 58.1% decline from the 6,282 new customers recorded in the prior month. Average order value dropped to $109.62, a 15.8% decrease from the previous month’s $130.18 and is described as a sharp drop. Nevertheless, online orders rose by 8.3% to a total of 14,192. The reduction in new‑customer acquisition and lower spend per order together shaped the revenue outcome. Management should note the contrast between the sharp decline in acquisition and order value and the modest growth in order volume.",
+  "text": "Revenue for July 2026 totaled $799,041. The month attracted 2,630 new customers, a 58.1% decline from the 6,282 new customers recorded in the prior month. Average order value dropped to $109.62, a 15.8% decrease from the previous month’s $130.18 and is described as a sharp drop. Nevertheless, online orders rose by 8.3% to a total of 14,192. The reduction in new‑customer acquisition and lower spend per order together shaped the revenue outcome. Management should note the contrast between the sharp decline in acquisition and order value and the modest growth in order volume.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.241544669,
+    "prompt_tokens": 303,
+    "prompt_time": 0.019353607,
+    "completion_tokens": 492,
+    "completion_time": 1.03404833,
+    "total_tokens": 795,
+    "total_time": 1.053401937,
+    "completion_tokens_details": {
+      "reasoning_tokens": 346
+    }
+  },
+  "seconds": 1.39,
+  "created_at": "2026-11-18T14:34:39+00:00"
+}

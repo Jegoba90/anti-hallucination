@@ -1,0 +1,158 @@
+{
+  "id": "m083",
+  "split": "test",
+  "domain": "support",
+  "locale": "en",
+  "brief": {
+    "company": "Harbor & Pine",
+    "audience": "the support team",
+    "topic": "support performance",
+    "period": "the week of October 9–15, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "first_response",
+        "value": 9.4,
+        "unit": "h",
+        "label": "first response time",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time",
+        "value": 35.3,
+        "unit": "h",
+        "label": "average resolution time",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time_previous",
+        "value": 37.5,
+        "unit": "h",
+        "label": "average resolution time in the previous week",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time_change",
+        "compute": "percent_change",
+        "from": "resolution_time_previous",
+        "to": "resolution_time",
+        "label": "change in average resolution time vs the previous week",
+        "decimals": 1
+      },
+      {
+        "name": "escalations",
+        "value": 104,
+        "unit": "",
+        "label": "escalations",
+        "subject": [
+          "escalations"
+        ]
+      },
+      {
+        "name": "escalations_previous",
+        "value": 112,
+        "unit": "",
+        "label": "escalations in the previous week",
+        "subject": [
+          "escalations"
+        ]
+      },
+      {
+        "name": "escalations_change",
+        "compute": "percent_change",
+        "from": "escalations_previous",
+        "to": "escalations",
+        "label": "change in escalations vs the previous week",
+        "decimals": 1
+      },
+      {
+        "name": "backlog",
+        "value": 2485,
+        "unit": "tickets",
+        "label": "open backlog",
+        "subject": [
+          "backlog"
+        ]
+      },
+      {
+        "name": "backlog_previous",
+        "value": 2278,
+        "unit": "tickets",
+        "label": "open backlog in the previous week",
+        "subject": [
+          "backlog"
+        ]
+      },
+      {
+        "name": "backlog_change",
+        "compute": "percent_change",
+        "from": "backlog_previous",
+        "to": "backlog",
+        "label": "change in open backlog vs the previous week",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "the week of October 9–15, 2026"
+      },
+      {
+        "name": "backlog_trend",
+        "from": "backlog_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Harbor & Pine"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 4228",
+        "title": "The app does not sync",
+        "text": "Android users report that the app has not synced orders since version 2.7.1. There are 3 reports and the mobile team is preparing a fix."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 5947",
+        "title": "Invoices show the wrong tax",
+        "text": "5 business customers in Tampa received invoices with the wrong tax. Finance is reissuing them."
+      }
+    ]
+  }
+}

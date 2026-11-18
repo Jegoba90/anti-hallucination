@@ -1,0 +1,138 @@
+{
+  "id": "m026",
+  "split": "test",
+  "domain": "sales",
+  "locale": "en",
+  "brief": {
+    "company": "Kestrel Goods",
+    "audience": "management",
+    "topic": "sales results",
+    "period": "July 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "revenue",
+        "value": 799041,
+        "unit": "USD",
+        "label": "revenue",
+        "subject": [
+          "revenue"
+        ]
+      },
+      {
+        "name": "new_customers",
+        "value": 2630,
+        "unit": "customers",
+        "label": "new customers",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "new_customers_previous",
+        "value": 6282,
+        "unit": "customers",
+        "label": "new customers in the previous month",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "new_customers_change",
+        "compute": "percent_change",
+        "from": "new_customers_previous",
+        "to": "new_customers",
+        "label": "change in new customers vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "average_order",
+        "value": 109.62,
+        "unit": "USD",
+        "label": "average order value",
+        "subject": [
+          "order value",
+          "average order"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "average_order_previous",
+        "value": 130.18,
+        "unit": "USD",
+        "label": "average order value in the previous month",
+        "subject": [
+          "order value",
+          "average order"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "average_order_change",
+        "compute": "percent_change",
+        "from": "average_order_previous",
+        "to": "average_order",
+        "label": "change in average order value vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "online_orders",
+        "value": 14192,
+        "unit": "orders",
+        "label": "online orders",
+        "subject": [
+          "orders"
+        ]
+      },
+      {
+        "name": "online_orders_change",
+        "value": 8.3,
+        "unit": "%",
+        "change": true,
+        "label": "change in online orders vs the previous month",
+        "subject": [
+          "orders"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "July 2026"
+      },
+      {
+        "name": "average_order_trend",
+        "from": "average_order_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Kestrel Goods"
+    ]
+  }
+}

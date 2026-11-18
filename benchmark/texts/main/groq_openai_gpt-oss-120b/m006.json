@@ -1,0 +1,26 @@
+{
+  "dataset": "m006",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for shareholders at Tidewell on financial results for Q2 2026, based on this data.\n\nCompany: Tidewell\nPeriod: Q2 2026\n\nData:\n- EBITDA: 1 billion GBP\n- Net income: 180.6 million GBP\n- Change in net income vs the previous quarter: -14.6 million GBP\n- Cash and equivalents: 9.6 million GBP\n- Cash and equivalents in the previous quarter: 10.4 million GBP\n- Change in cash and equivalents vs the previous quarter: -7.8%\n- Operating margin: 20.9%\n- Operating margin in the previous quarter: 22.8%\n- Change in operating margin vs the previous quarter, in percentage points: -1.9 pp\n- Net debt: 3.3 billion GBP\n- Net debt in the previous quarter: 2.8 billion GBP\n- Change in net debt vs the previous quarter: 20.9%\n- Employees: 1,098 employees\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "Tidewell reported EBITDA of £1 billion in Q2 2026. Net income was £180.6 million, a decline of £14.6 million from the previous quarter. Cash and equivalents fell to £9.6 million, a 7.8% decrease from the prior quarter’s £10.4 million. Operating margin contracted to 20.9%, down 1.9 percentage points from 22.8% in the previous quarter. Net debt rose to £3.3 billion, a 20.9% increase over the £2.8 billion recorded in the prior quarter. The company employed 1,098 staff at the end of the period.",
+  "text": "Tidewell reported EBITDA of £1 billion in Q2 2026. Net income was £180.6 million, a decline of £14.6 million from the previous quarter. Cash and equivalents fell to £9.6 million, a 7.8% decrease from the prior quarter’s £10.4 million. Operating margin contracted to 20.9%, down 1.9 percentage points from 22.8% in the previous quarter. Net debt rose to £3.3 billion, a 20.9% increase over the £2.8 billion recorded in the prior quarter. The company employed 1,098 staff at the end of the period.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.356786653,
+    "prompt_tokens": 340,
+    "prompt_time": 0.017923899,
+    "completion_tokens": 411,
+    "completion_time": 0.87335014,
+    "total_tokens": 751,
+    "total_time": 0.891274039,
+    "completion_tokens_details": {
+      "reasoning_tokens": 253
+    }
+  },
+  "seconds": 1.3,
+  "created_at": "2026-11-18T14:32:46+00:00"
+}

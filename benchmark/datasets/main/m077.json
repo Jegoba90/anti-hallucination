@@ -1,0 +1,135 @@
+{
+  "id": "m077",
+  "split": "test",
+  "domain": "saas",
+  "locale": "en",
+  "brief": {
+    "company": "Marlow Supply",
+    "audience": "investors",
+    "topic": "business metrics",
+    "period": "February 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "active_users",
+        "value": 98555,
+        "unit": "users",
+        "label": "active users",
+        "subject": [
+          "users",
+          "active users"
+        ]
+      },
+      {
+        "name": "active_users_change",
+        "value": -7.0,
+        "unit": "%",
+        "change": true,
+        "label": "change in active users vs the previous month",
+        "subject": [
+          "users",
+          "active users"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "cac",
+        "value": 240,
+        "unit": "EUR",
+        "label": "customer acquisition cost (CAC)",
+        "subject": [
+          "CAC",
+          "acquisition cost"
+        ]
+      },
+      {
+        "name": "mrr",
+        "value": 9661,
+        "unit": "EUR",
+        "label": "monthly recurring revenue (MRR)",
+        "subject": [
+          "MRR",
+          "recurring revenue"
+        ]
+      },
+      {
+        "name": "mrr_previous",
+        "value": 22612,
+        "unit": "EUR",
+        "label": "monthly recurring revenue (MRR) in the previous month",
+        "subject": [
+          "MRR",
+          "recurring revenue"
+        ]
+      },
+      {
+        "name": "mrr_change",
+        "compute": "percent_change",
+        "from": "mrr_previous",
+        "to": "mrr",
+        "label": "change in monthly recurring revenue (MRR) vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 130,
+        "unit": "%",
+        "label": "net revenue retention (NRR)",
+        "subject": [
+          "NRR",
+          "retention"
+        ]
+      },
+      {
+        "name": "nrr_previous",
+        "value": 100,
+        "unit": "%",
+        "label": "net revenue retention (NRR) in the previous month",
+        "subject": [
+          "NRR",
+          "retention"
+        ]
+      },
+      {
+        "name": "nrr_change",
+        "compute": "difference",
+        "from": "nrr_previous",
+        "to": "nrr",
+        "label": "change in net revenue retention (NRR) vs the previous month, in percentage points",
+        "decimals": 0
+      },
+      {
+        "name": "new_customers",
+        "value": 174,
+        "unit": "customers",
+        "label": "new customers",
+        "subject": [
+          "customers"
+        ]
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "February 2026"
+      }
+    ],
+    "known_names": [
+      "Marlow Supply"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Customer success note",
+        "title": "Renewal",
+        "text": "Halden Health renewed its contract for 3 years and added 50 seats."
+      }
+    ]
+  }
+}

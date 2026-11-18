@@ -1,0 +1,26 @@
+{
+  "dataset": "p18",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the sales team at Kestrel Goods on sales results for Q1 2026, based on this data.\n\nCompany: Kestrel Goods\nPeriod: Q1 2026\n\nData:\n- Units sold: 33,623 units\n- Change in units sold vs the previous quarter: -19.9%\n- Revenue: 10 million EUR\n- Online orders: 37,225 orders\n- Online orders in the previous quarter: 36,537 orders\n- Change in online orders vs the previous quarter: 1.9%\n- New customers: 506 customers\n- New customers in the previous quarter: 539 customers\n- Change in new customers vs the previous quarter: -6.1%\n- Average order value: 50.43 EUR\n- Average order value in the previous quarter: 51.35 EUR\n- Change in average order value vs the previous quarter: -1.8%\n- Return rate: 5.8%\n- Change in return rate vs the previous quarter, in percentage points: -1.9 pp\n- Verdict on the change in units sold vs the previous quarter: a sharp drop\n\nNotes for the report:\n[s1] Sales team note, \"Seasonal campaign\": The Spring Reset campaign started on January 3 in Bristol and Portland, with discounts of up to 40% on home goods.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "In Q1 2026 Kestrel Goods sold 33,623 units, generating revenue of €10 million. This represents a sharp drop of 19.9 % in units sold compared with the previous quarter. Online orders increased modestly by 1.9 % to 37,225, while new customers fell by 6.1 % to 506 and the average order value slipped to €50.43, a 1.8 % decline. The return rate improved, decreasing to 5.8 %, which is 1.9 percentage points lower than the prior quarter. The Spring Reset campaign, launched on 3 January in Bristol and Portland with discounts of up to 40 % on home goods, contributed to the modest rise in online orders. Nevertheless, the overall unit‑sale decline and lower customer acquisition indicate that the campaign was not sufficient to offset the broader downward trend.",
+  "text": "In Q1 2026 Kestrel Goods sold 33,623 units, generating revenue of €10 million. This represents a sharp drop of 19.9 % in units sold compared with the previous quarter. Online orders increased modestly by 1.9 % to 37,225, while new customers fell by 6.1 % to 506 and the average order value slipped to €50.43, a 1.8 % decline. The return rate improved, decreasing to 5.8 %, which is 1.9 percentage points lower than the prior quarter. The Spring Reset campaign, launched on 3 January in Bristol and Portland with discounts of up to 40 % on home goods, contributed to the modest rise in online orders. Nevertheless, the overall unit‑sale decline and lower customer acquisition indicate that the campaign was not sufficient to offset the broader downward trend.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.249923782,
+    "prompt_tokens": 412,
+    "prompt_time": 0.021965697,
+    "completion_tokens": 599,
+    "completion_time": 1.280787551,
+    "total_tokens": 1011,
+    "total_time": 1.302753248,
+    "completion_tokens_details": {
+      "reasoning_tokens": 399
+    }
+  },
+  "seconds": 1.61,
+  "created_at": "2026-11-18T14:22:22+00:00"
+}

@@ -1,0 +1,23 @@
+{
+  "dataset": "p13",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the board at Kestrel Goods on financial results for Q3 2026, based on this data.\n\nCompany: Kestrel Goods\nPeriod: Q3 2026\n\nData:\n- Net income: -3.1 million USD\n- EBITDA: 292.9 million USD\n- EBITDA in the previous quarter: 198.9 million USD\n- Change in EBITDA vs the previous quarter: 47.2%\n- Cash and equivalents: 1.6 billion USD\n- Change in cash and equivalents vs the previous quarter: 1.9%\n- Net debt: 1.1 billion USD\n- Operating margin: 23.5%\n- Employees: 14,842 employees\n- Employees in the previous quarter: 13,139 employees\n- Change in employees vs the previous quarter: 13.0%\n- Verdict on the change in cash and equivalents vs the previous quarter: stability\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "Kestrel Goods reported a net loss of 3.1 million USD for the third quarter of 2026, despite strong operational performance. EBITDA reached 292.9 million USD, representing a significant 47.2% increase from the previous quarter's 198.9 million USD. The company maintained an operating margin of 23.5%, indicating robust core business profitability. Cash and equivalents stood at 1.6 billion USD, reflecting a 1.9% increase compared to the prior quarter, which signifies stability in liquidity. With net debt of 1.1 billion USD, the balance sheet remains manageable relative to cash reserves. Headcount expanded by 13.0% to 14,842 employees, up from 13,139 in the previous period. This workforce growth suggests continued investment in operational capacity and market presence.",
+  "text": "Kestrel Goods reported a net loss of 3.1 million USD for the third quarter of 2026, despite strong operational performance. EBITDA reached 292.9 million USD, representing a significant 47.2% increase from the previous quarter's 198.9 million USD. The company maintained an operating margin of 23.5%, indicating robust core business profitability. Cash and equivalents stood at 1.6 billion USD, reflecting a 1.9% increase compared to the prior quarter, which signifies stability in liquidity. With net debt of 1.1 billion USD, the balance sheet remains manageable relative to cash reserves. Headcount expanded by 13.0% to 14,842 employees, up from 13,139 in the previous period. This workforce growth suggests continued investment in operational capacity and market presence.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.337923652,
+    "prompt_tokens": 295,
+    "prompt_time": 0.03060322,
+    "completion_tokens": 188,
+    "completion_time": 1.021169778,
+    "total_tokens": 483,
+    "total_time": 1.051772998
+  },
+  "seconds": 1.47,
+  "created_at": "2026-11-18T14:25:07+00:00"
+}

@@ -1,0 +1,168 @@
+{
+  "id": "m078",
+  "split": "test",
+  "domain": "finance",
+  "locale": "es",
+  "brief": {
+    "company": "Brisa Market",
+    "audience": "el directorio",
+    "topic": "los resultados financieros",
+    "period": "el segundo trimestre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "deuda_neta",
+        "value": 538448895,
+        "unit": "USD",
+        "label": "deuda neta",
+        "subject": [
+          "deuda"
+        ],
+        "compact": true
+      },
+      {
+        "name": "deuda_neta_anterior",
+        "value": 558688118,
+        "unit": "USD",
+        "label": "deuda neta en el trimestre anterior",
+        "subject": [
+          "deuda"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_deuda_neta",
+        "compute": "percent_change",
+        "from": "deuda_neta_anterior",
+        "to": "deuda_neta",
+        "label": "variación de la deuda neta respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "empleados",
+        "value": 24387,
+        "unit": "empleados",
+        "label": "empleados",
+        "subject": [
+          "empleados",
+          "plantilla"
+        ]
+      },
+      {
+        "name": "empleados_anterior",
+        "value": 21560,
+        "unit": "empleados",
+        "label": "empleados en el trimestre anterior",
+        "subject": [
+          "empleados",
+          "plantilla"
+        ]
+      },
+      {
+        "name": "variacion_empleados",
+        "compute": "percent_change",
+        "from": "empleados_anterior",
+        "to": "empleados",
+        "label": "variación de los empleados respecto del trimestre anterior",
+        "decimals": 1
+      },
+      {
+        "name": "margen_operativo",
+        "value": 6.1,
+        "unit": "%",
+        "label": "margen operativo",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_margen_operativo",
+        "value": -1.1,
+        "unit": "pp",
+        "change": true,
+        "label": "variación del margen operativo respecto del trimestre anterior, en puntos",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "ingresos",
+        "value": 607261836,
+        "unit": "USD",
+        "label": "ingresos",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ingresos_anterior",
+        "value": 558396319,
+        "unit": "USD",
+        "label": "ingresos en el trimestre anterior",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_ingresos",
+        "compute": "percent_change",
+        "from": "ingresos_anterior",
+        "to": "ingresos",
+        "label": "variación de los ingresos respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "resultado_neto",
+        "value": 217800074,
+        "unit": "USD",
+        "label": "resultado neto",
+        "subject": [
+          "resultado neto",
+          "ganancia"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_resultado_neto",
+        "value": 28291330,
+        "unit": "USD",
+        "change": true,
+        "label": "variación del resultado neto respecto del trimestre anterior",
+        "subject": [
+          "resultado neto",
+          "ganancia"
+        ],
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el segundo trimestre de 2026"
+      }
+    ],
+    "known_names": [
+      "Brisa Market"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Declaraciones de la dirección",
+        "title": "Prioridades",
+        "text": "Lucía Ferrante, directora financiera, dijo que el foco de los próximos trimestres será bajar la deuda y sostener el margen."
+      }
+    ]
+  }
+}

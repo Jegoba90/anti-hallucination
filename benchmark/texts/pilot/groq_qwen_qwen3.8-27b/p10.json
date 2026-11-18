@@ -1,0 +1,23 @@
+{
+  "dataset": "p10",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for investors at Marlow Supply on business metrics for May 2026, based on this data.\n\nCompany: Marlow Supply\nPeriod: May 2026\n\nData:\n- Trial-to-paid conversion: 5.7%\n- Monthly churn: 1.4%\n- Monthly churn in the previous month: 1.1%\n- Change in monthly churn vs the previous month, in percentage points: 0.3 pp\n- Active users: 314 users\n- Active users in the previous month: 338 users\n- Change in active users vs the previous month: -7.1%\n- Customer acquisition cost (CAC): 1,199 USD\n- Change in customer acquisition cost (CAC) vs the previous month: 1.1%\n- Monthly recurring revenue (MRR): 159,554 USD\n- Monthly recurring revenue (MRR) in the previous month: 146,037 USD\n- Change in monthly recurring revenue (MRR) vs the previous month: 9.3%\n\nNotes for the report:\n[s1] Customer success note, \"Renewal\": Avalon Schools renewed its contract for 3 years and added 104 seats.\n[s2] Release notes, \"Version 4.11.2\": Version 4.11.2, released on June 7, added single sign-on and a new usage dashboard.\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "May 2026 delivered strong revenue growth for Marlow Supply, with Monthly Recurring Revenue (MRR) increasing by 9.3% to $159,554, a significant jump from the previous month's $146,037. This financial expansion was bolstered by a major strategic win, as Avalon Schools committed to a three-year contract renewal while expanding their footprint by 104 additional seats. Despite this top-line success, the user base contracted by 7.1%, leaving 314 active users compared to 338 in April, which suggests a shift toward higher-value accounts rather than broad net addition. Consequently, monthly churn rose from 1.1% to 1.4%, marking a 0.3 percentage point increase that warrants close monitoring to protect the customer base. On the acquisition front, Customer Acquisition Cost (CAC) remained relatively stable at $1,199, reflecting a modest 1.1% month-over-month increase that aligns with typical inflationary pressures in marketing spend. The trial-to-paid conversion rate stood at 5.7%, indicating a consistent pipeline efficiency that supports sustainable growth without excessive discounting. Looking ahead, the recent release of Version 4.11.2, which introduced single sign-on and an enhanced usage dashboard, is poised to improve product stickiness and potentially reverse the trend in user count. In summary, while the revenue trajectory is favorable, management must prioritize retention efforts to offset the rising churn and ensure long-term stability.",
+  "text": "May 2026 delivered strong revenue growth for Marlow Supply, with Monthly Recurring Revenue (MRR) increasing by 9.3% to $159,554, a significant jump from the previous month's $146,037. This financial expansion was bolstered by a major strategic win, as Avalon Schools committed to a three-year contract renewal while expanding their footprint by 104 additional seats. Despite this top-line success, the user base contracted by 7.1%, leaving 314 active users compared to 338 in April, which suggests a shift toward higher-value accounts rather than broad net addition. Consequently, monthly churn rose from 1.1% to 1.4%, marking a 0.3 percentage point increase that warrants close monitoring to protect the customer base. On the acquisition front, Customer Acquisition Cost (CAC) remained relatively stable at $1,199, reflecting a modest 1.1% month-over-month increase that aligns with typical inflationary pressures in marketing spend. The trial-to-paid conversion rate stood at 5.7%, indicating a consistent pipeline efficiency that supports sustainable growth without excessive discounting. Looking ahead, the recent release of Version 4.11.2, which introduced single sign-on and an enhanced usage dashboard, is poised to improve product stickiness and potentially reverse the trend in user count. In summary, while the revenue trajectory is favorable, management must prioritize retention efforts to offset the rising churn and ensure long-term stability.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.208261098,
+    "prompt_tokens": 366,
+    "prompt_time": 0.02969441,
+    "completion_tokens": 318,
+    "completion_time": 0.636185458,
+    "total_tokens": 684,
+    "total_time": 0.665879868
+  },
+  "seconds": 1.1,
+  "created_at": "2026-11-18T14:24:17+00:00"
+}

@@ -1,0 +1,150 @@
+{
+  "id": "m092",
+  "split": "test",
+  "domain": "saas",
+  "locale": "en",
+  "brief": {
+    "company": "Orbitly",
+    "audience": "the leadership team",
+    "topic": "business metrics",
+    "period": "April 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "churn",
+        "value": 2.5,
+        "unit": "%",
+        "label": "monthly churn",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_change",
+        "value": -2.0,
+        "unit": "pp",
+        "change": true,
+        "label": "change in monthly churn vs the previous month, in percentage points",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "cac",
+        "value": 168,
+        "unit": "GBP",
+        "label": "customer acquisition cost (CAC)",
+        "subject": [
+          "CAC",
+          "acquisition cost"
+        ]
+      },
+      {
+        "name": "cac_previous",
+        "value": 194,
+        "unit": "GBP",
+        "label": "customer acquisition cost (CAC) in the previous month",
+        "subject": [
+          "CAC",
+          "acquisition cost"
+        ]
+      },
+      {
+        "name": "cac_change",
+        "compute": "percent_change",
+        "from": "cac_previous",
+        "to": "cac",
+        "label": "change in customer acquisition cost (CAC) vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 96,
+        "unit": "%",
+        "label": "net revenue retention (NRR)",
+        "subject": [
+          "NRR",
+          "retention"
+        ]
+      },
+      {
+        "name": "nrr_previous",
+        "value": 92,
+        "unit": "%",
+        "label": "net revenue retention (NRR) in the previous month",
+        "subject": [
+          "NRR",
+          "retention"
+        ]
+      },
+      {
+        "name": "nrr_change",
+        "compute": "difference",
+        "from": "nrr_previous",
+        "to": "nrr",
+        "label": "change in net revenue retention (NRR) vs the previous month, in percentage points",
+        "decimals": 0
+      },
+      {
+        "name": "mrr",
+        "value": 11260,
+        "unit": "GBP",
+        "label": "monthly recurring revenue (MRR)",
+        "subject": [
+          "MRR",
+          "recurring revenue"
+        ]
+      },
+      {
+        "name": "active_users",
+        "value": 4940,
+        "unit": "users",
+        "label": "active users",
+        "subject": [
+          "users",
+          "active users"
+        ]
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "April 2026"
+      },
+      {
+        "name": "nrr_trend",
+        "from": "nrr_change",
+        "thresholds": [
+          [
+            -2,
+            "a sharp drop"
+          ],
+          [
+            -0.3,
+            "a mild drop"
+          ],
+          [
+            0.3,
+            "stability"
+          ],
+          [
+            2,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Orbitly"
+    ]
+  }
+}

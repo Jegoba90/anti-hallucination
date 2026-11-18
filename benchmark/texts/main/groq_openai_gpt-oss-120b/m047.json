@@ -1,0 +1,26 @@
+{
+  "dataset": "m047",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for shareholders at Kestrel Goods on financial results for Q1 2026, based on this data.\n\nCompany: Kestrel Goods\nPeriod: Q1 2026\n\nData:\n- Cash and equivalents: 278.6 million EUR\n- Cash and equivalents in the previous quarter: 271.7 million EUR\n- Change in cash and equivalents vs the previous quarter: 2.5%\n- Net income: 596.6 million EUR\n- Change in net income vs the previous quarter: -4.6 million EUR\n- Operating margin: -0.2%\n- Operating margin in the previous quarter: 1.8%\n- Change in operating margin vs the previous quarter, in percentage points: -2.0 pp\n- Revenue: 4.7 billion EUR\n- Revenue in the previous quarter: 4.6 billion EUR\n- Change in revenue vs the previous quarter: 1.9%\n- Employees: 23,639 employees\n- Employees in the previous quarter: 16,185 employees\n- Change in employees vs the previous quarter: 46.1%\n- Net debt: 1.6 billion EUR\n\nNotes for the report:\n[s1] Management remarks, \"Priorities\": Olivia Grant, the chief financial officer, said the focus for the coming quarters is to cut debt and hold the margin.\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "Kestrel Goods reported cash and equivalents of €278.6 million at the end of Q1 2026, up 2.5 % from €271.7 million a quarter earlier. Revenue grew 1.9 % to €4.7 billion, reflecting modest top‑line momentum. However, net income slipped by €4.6 million to €596.6 million and the operating margin turned negative at –0.2 %, a decline of 2.0 percentage points from the 1.8 % margin recorded in the prior quarter. Net debt stood at €1.6 billion, highlighting the need for continued balance‑sheet discipline. The workforce expanded sharply, reaching 23,639 employees, a 46.1 % increase versus the previous quarter. CFO Olivia Grant said the company's priority for the coming quarters is to cut debt and hold the margin. Overall, the modest revenue gain is offset by pressure on profitability and a rising cost base, underscoring the importance of the stated financial discipline.",
+  "text": "Kestrel Goods reported cash and equivalents of €278.6 million at the end of Q1 2026, up 2.5 % from €271.7 million a quarter earlier. Revenue grew 1.9 % to €4.7 billion, reflecting modest top‑line momentum. However, net income slipped by €4.6 million to €596.6 million and the operating margin turned negative at –0.2 %, a decline of 2.0 percentage points from the 1.8 % margin recorded in the prior quarter. Net debt stood at €1.6 billion, highlighting the need for continued balance‑sheet discipline. The workforce expanded sharply, reaching 23,639 employees, a 46.1 % increase versus the previous quarter. CFO Olivia Grant said the company's priority for the coming quarters is to cut debt and hold the margin. Overall, the modest revenue gain is offset by pressure on profitability and a rising cost base, underscoring the importance of the stated financial discipline.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.318772703,
+    "prompt_tokens": 387,
+    "prompt_time": 0.01589502,
+    "completion_tokens": 545,
+    "completion_time": 1.148051146,
+    "total_tokens": 932,
+    "total_time": 1.1639461660000001,
+    "completion_tokens_details": {
+      "reasoning_tokens": 317
+    }
+  },
+  "seconds": 1.54,
+  "created_at": "2026-11-18T14:37:06+00:00"
+}

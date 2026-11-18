@@ -1,0 +1,86 @@
+{
+  "id": "p20",
+  "split": "pilot",
+  "domain": "saas",
+  "locale": "es",
+  "brief": {
+    "company": "Lumbre",
+    "audience": "los inversores",
+    "topic": "las métricas del negocio",
+    "period": "marzo de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "clientes_nuevos",
+        "value": 8,
+        "unit": "clientes",
+        "label": "clientes nuevos",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "cac",
+        "value": 606,
+        "unit": "USD",
+        "label": "costo de adquisición de clientes (CAC)",
+        "subject": [
+          "CAC",
+          "adquisición"
+        ]
+      },
+      {
+        "name": "usuarios_activos",
+        "value": 215160,
+        "unit": "usuarios",
+        "label": "usuarios activos",
+        "subject": [
+          "usuarios"
+        ]
+      },
+      {
+        "name": "conversion_prueba",
+        "value": 21.3,
+        "unit": "%",
+        "label": "conversión de prueba a pago",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 123,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR)",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "marzo de 2026"
+      }
+    ],
+    "known_names": [
+      "Lumbre"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Nota de éxito del cliente",
+        "title": "Renovación",
+        "text": "Clínicas Moreno renovó su contrato por 3 años y sumó 257 licencias."
+      }
+    ]
+  }
+}

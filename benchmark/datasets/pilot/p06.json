@@ -1,0 +1,205 @@
+{
+  "id": "p06",
+  "split": "pilot",
+  "domain": "sales",
+  "locale": "es",
+  "brief": {
+    "company": "Corvina Labs",
+    "audience": "el directorio",
+    "topic": "los resultados de ventas",
+    "period": "enero de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "tasa_devoluciones",
+        "value": 2.8,
+        "unit": "%",
+        "label": "tasa de devoluciones",
+        "subject": [
+          "devoluciones"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tasa_devoluciones_anterior",
+        "value": 1.9,
+        "unit": "%",
+        "label": "tasa de devoluciones en el mes anterior",
+        "subject": [
+          "devoluciones"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_tasa_devoluciones",
+        "compute": "difference",
+        "from": "tasa_devoluciones_anterior",
+        "to": "tasa_devoluciones",
+        "label": "variación de la tasa de devoluciones respecto del mes anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "pedidos_online",
+        "value": 1702,
+        "unit": "pedidos",
+        "label": "pedidos online",
+        "subject": [
+          "pedidos"
+        ]
+      },
+      {
+        "name": "pedidos_online_anterior",
+        "value": 1879,
+        "unit": "pedidos",
+        "label": "pedidos online en el mes anterior",
+        "subject": [
+          "pedidos"
+        ]
+      },
+      {
+        "name": "variacion_pedidos_online",
+        "compute": "percent_change",
+        "from": "pedidos_online_anterior",
+        "to": "pedidos_online",
+        "label": "variación de los pedidos online respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "unidades_vendidas",
+        "value": 18726,
+        "unit": "unidades",
+        "label": "unidades vendidas",
+        "subject": [
+          "ventas",
+          "unidades"
+        ]
+      },
+      {
+        "name": "unidades_vendidas_anterior",
+        "value": 30092,
+        "unit": "unidades",
+        "label": "unidades vendidas en el mes anterior",
+        "subject": [
+          "ventas",
+          "unidades"
+        ]
+      },
+      {
+        "name": "variacion_unidades_vendidas",
+        "compute": "percent_change",
+        "from": "unidades_vendidas_anterior",
+        "to": "unidades_vendidas",
+        "label": "variación de las unidades vendidas respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "ticket_promedio",
+        "value": 99.92,
+        "unit": "USD",
+        "label": "ticket promedio",
+        "subject": [
+          "ticket"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "ticket_promedio_anterior",
+        "value": 113.05,
+        "unit": "USD",
+        "label": "ticket promedio en el mes anterior",
+        "subject": [
+          "ticket"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "variacion_ticket_promedio",
+        "compute": "percent_change",
+        "from": "ticket_promedio_anterior",
+        "to": "ticket_promedio",
+        "label": "variación del ticket promedio respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "conversion_web",
+        "value": 1.2,
+        "unit": "%",
+        "label": "conversión web",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "conversion_web_anterior",
+        "value": 1.1,
+        "unit": "%",
+        "label": "conversión web en el mes anterior",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_conversion_web",
+        "compute": "difference",
+        "from": "conversion_web_anterior",
+        "to": "conversion_web",
+        "label": "variación de la conversión web respecto del mes anterior, en puntos",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "enero de 2026"
+      },
+      {
+        "name": "tendencia_conversion_web",
+        "from": "variacion_conversion_web",
+        "thresholds": [
+          [
+            -2,
+            "caída fuerte"
+          ],
+          [
+            -0.3,
+            "caída leve"
+          ],
+          [
+            0.3,
+            "estabilidad"
+          ],
+          [
+            2,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Corvina Labs"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Informe de logística",
+        "title": "Demoras en entregas",
+        "text": "Durante 4 días hubo demoras en las entregas a Rosario por un problema con el operador Envíos Delta."
+      },
+      {
+        "id": "s2",
+        "name": "Nota del equipo comercial",
+        "title": "Campaña de temporada",
+        "text": "La campaña «Días Calientes» empezó el 23 de marzo en Rosario y Medellín, con descuentos de hasta 40 % en la categoría hogar."
+      }
+    ]
+  }
+}

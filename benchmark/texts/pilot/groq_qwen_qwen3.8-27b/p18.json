@@ -1,0 +1,23 @@
+{
+  "dataset": "p18",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the sales team at Kestrel Goods on sales results for Q1 2026, based on this data.\n\nCompany: Kestrel Goods\nPeriod: Q1 2026\n\nData:\n- Units sold: 33,623 units\n- Change in units sold vs the previous quarter: -19.9%\n- Revenue: 10 million EUR\n- Online orders: 37,225 orders\n- Online orders in the previous quarter: 36,537 orders\n- Change in online orders vs the previous quarter: 1.9%\n- New customers: 506 customers\n- New customers in the previous quarter: 539 customers\n- Change in new customers vs the previous quarter: -6.1%\n- Average order value: 50.43 EUR\n- Average order value in the previous quarter: 51.35 EUR\n- Change in average order value vs the previous quarter: -1.8%\n- Return rate: 5.8%\n- Change in return rate vs the previous quarter, in percentage points: -1.9 pp\n- Verdict on the change in units sold vs the previous quarter: a sharp drop\n\nNotes for the report:\n[s1] Sales team note, \"Seasonal campaign\": The Spring Reset campaign started on January 3 in Bristol and Portland, with discounts of up to 40% on home goods.\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "Kestrel Goods concluded Q1 2026 with total revenue of 10 million EUR, despite a sharp 19.9% drop in unit sales to 33,623 compared to the previous quarter. This significant decline in volume contrasts with a 1.9% increase in online orders, which totaled 37,225, suggesting a shift in customer purchasing behavior rather than a loss of digital engagement. The average order value dipped slightly by 1.8% to 50.43 EUR, likely influenced by the Spring Reset campaign that launched in January with discounts of up to 40% on home goods in Bristol and Portland. New customer acquisition also slowed, down 6.1% from the prior quarter, resulting in 506 new customers while retention efforts remain critical. On a positive note, the return rate improved by 1.9 percentage points to 5.8%, indicating better product fit or quality perception despite the lower average spend per order. The team should prioritize analyzing why unit sales fell so sharply despite stable online traffic, potentially focusing on overall demand drivers beyond promotional discounts. Upcoming strategies should aim to convert the steady online order flow into higher unit volumes without further eroding average order value.",
+  "text": "Kestrel Goods concluded Q1 2026 with total revenue of 10 million EUR, despite a sharp 19.9% drop in unit sales to 33,623 compared to the previous quarter. This significant decline in volume contrasts with a 1.9% increase in online orders, which totaled 37,225, suggesting a shift in customer purchasing behavior rather than a loss of digital engagement. The average order value dipped slightly by 1.8% to 50.43 EUR, likely influenced by the Spring Reset campaign that launched in January with discounts of up to 40% on home goods in Bristol and Portland. New customer acquisition also slowed, down 6.1% from the prior quarter, resulting in 506 new customers while retention efforts remain critical. On a positive note, the return rate improved by 1.9 percentage points to 5.8%, indicating better product fit or quality perception despite the lower average spend per order. The team should prioritize analyzing why unit sales fell so sharply despite stable online traffic, potentially focusing on overall demand drivers beyond promotional discounts. Upcoming strategies should aim to convert the steady online order flow into higher unit volumes without further eroding average order value.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.203284437,
+    "prompt_tokens": 366,
+    "prompt_time": 0.02662265,
+    "completion_tokens": 260,
+    "completion_time": 0.569569876,
+    "total_tokens": 626,
+    "total_time": 0.596192526
+  },
+  "seconds": 0.86,
+  "created_at": "2026-11-18T14:26:28+00:00"
+}

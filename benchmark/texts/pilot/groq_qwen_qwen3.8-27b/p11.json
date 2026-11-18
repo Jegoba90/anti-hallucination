@@ -1,0 +1,23 @@
+{
+  "dataset": "p11",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the support team at Marlow Supply on support performance for the week of October 15–21, 2026, based on this data.\n\nCompany: Marlow Supply\nPeriod: the week of October 15–21, 2026\n\nData:\n- Tickets resolved: 12,476 tickets\n- Change in tickets resolved vs the previous week: 5.1%\n- First response time: 3.3 h\n- Average resolution time: 28.1 h\n- Escalations: 69\n- Escalations in the previous week: 67\n- Change in escalations vs the previous week: 3.0%\n- Open backlog: 31 tickets\n\nNotes for the report:\n[s1] Ticket 8374, \"The app does not sync\": Android users report that the app has not synced orders since version 6.14.3. There are 11 reports and the mobile team is preparing a fix.\n[s2] Ticket 7532, \"Invoices show the wrong tax\": 6 business customers in Portland received invoices with the wrong tax. Finance is reissuing them.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "Marlow Supply's support team resolved 12,476 tickets during the week of October 15–21, 2026, representing a 5.1% increase over the previous week. Performance remained strong with a first response time of 3.3 hours and an average resolution time of 28.1 hours. The team managed 69 escalations, a 3.0% rise from the 67 recorded in the prior period, while maintaining a low open backlog of 31 tickets. Specific issues included Ticket 8374, where 11 reports indicated Android users had not synced orders since version 6.14.3 as the mobile team prepares a fix. Additionally, Ticket 7532 involved six business customers in Portland receiving invoices with incorrect tax, which Finance is currently reissuing. These targeted interventions support the overall stability of the support operation during the review period.",
+  "text": "Marlow Supply's support team resolved 12,476 tickets during the week of October 15–21, 2026, representing a 5.1% increase over the previous week. Performance remained strong with a first response time of 3.3 hours and an average resolution time of 28.1 hours. The team managed 69 escalations, a 3.0% rise from the 67 recorded in the prior period, while maintaining a low open backlog of 31 tickets. Specific issues included Ticket 8374, where 11 reports indicated Android users had not synced orders since version 6.14.3 as the mobile team prepares a fix. Additionally, Ticket 7532 involved six business customers in Portland receiving invoices with incorrect tax, which Finance is currently reissuing. These targeted interventions support the overall stability of the support operation during the review period.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.225809093,
+    "prompt_tokens": 336,
+    "prompt_time": 0.029459967,
+    "completion_tokens": 196,
+    "completion_time": 1.115261974,
+    "total_tokens": 532,
+    "total_time": 1.144721941
+  },
+  "seconds": 1.46,
+  "created_at": "2026-11-18T14:24:39+00:00"
+}

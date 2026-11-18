@@ -1,0 +1,186 @@
+{
+  "id": "m069",
+  "split": "test",
+  "domain": "finance",
+  "locale": "es",
+  "brief": {
+    "company": "Nubra",
+    "audience": "el directorio",
+    "topic": "los resultados financieros",
+    "period": "el primer trimestre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "empleados",
+        "value": 970,
+        "unit": "empleados",
+        "label": "empleados",
+        "subject": [
+          "empleados",
+          "plantilla"
+        ]
+      },
+      {
+        "name": "empleados_anterior",
+        "value": 1021,
+        "unit": "empleados",
+        "label": "empleados en el trimestre anterior",
+        "subject": [
+          "empleados",
+          "plantilla"
+        ]
+      },
+      {
+        "name": "variacion_empleados",
+        "compute": "percent_change",
+        "from": "empleados_anterior",
+        "to": "empleados",
+        "label": "variación de los empleados respecto del trimestre anterior",
+        "decimals": 1
+      },
+      {
+        "name": "caja",
+        "value": 2626598610,
+        "unit": "EUR",
+        "label": "caja y equivalentes",
+        "subject": [
+          "caja"
+        ],
+        "compact": true
+      },
+      {
+        "name": "caja_anterior",
+        "value": 2667792744,
+        "unit": "EUR",
+        "label": "caja y equivalentes en el trimestre anterior",
+        "subject": [
+          "caja"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_caja",
+        "compute": "percent_change",
+        "from": "caja_anterior",
+        "to": "caja",
+        "label": "variación de la caja y equivalentes respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "margen_operativo",
+        "value": 29.4,
+        "unit": "%",
+        "label": "margen operativo",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "ingresos",
+        "value": 1525716552,
+        "unit": "EUR",
+        "label": "ingresos",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ingresos_anterior",
+        "value": 1412860326,
+        "unit": "EUR",
+        "label": "ingresos en el trimestre anterior",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_ingresos",
+        "compute": "percent_change",
+        "from": "ingresos_anterior",
+        "to": "ingresos",
+        "label": "variación de los ingresos respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "ebitda",
+        "value": 782851317,
+        "unit": "EUR",
+        "label": "EBITDA",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ebitda_anterior",
+        "value": 625308635,
+        "unit": "EUR",
+        "label": "EBITDA en el trimestre anterior",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_ebitda",
+        "compute": "percent_change",
+        "from": "ebitda_anterior",
+        "to": "ebitda",
+        "label": "variación del EBITDA respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el primer trimestre de 2026"
+      },
+      {
+        "name": "tendencia_caja",
+        "from": "variacion_caja",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Nubra"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Comunicado de prensa",
+        "title": "Nueva planta",
+        "text": "Nubra anunció una inversión de 40 millones de USD en una planta en Valencia, que empezará a operar en 2028."
+      }
+    ]
+  }
+}

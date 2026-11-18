@@ -1,0 +1,188 @@
+{
+  "id": "m011",
+  "split": "dev",
+  "domain": "sales",
+  "locale": "en",
+  "brief": {
+    "company": "Lanternly",
+    "audience": "the sales team",
+    "topic": "sales results",
+    "period": "Q1 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "average_order",
+        "value": 201.26,
+        "unit": "EUR",
+        "label": "average order value",
+        "subject": [
+          "order value",
+          "average order"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "average_order_previous",
+        "value": 202.98,
+        "unit": "EUR",
+        "label": "average order value in the previous quarter",
+        "subject": [
+          "order value",
+          "average order"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "average_order_change",
+        "compute": "percent_change",
+        "from": "average_order_previous",
+        "to": "average_order",
+        "label": "change in average order value vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "revenue",
+        "value": 917644,
+        "unit": "EUR",
+        "label": "revenue",
+        "subject": [
+          "revenue"
+        ]
+      },
+      {
+        "name": "revenue_change",
+        "value": 10.7,
+        "unit": "%",
+        "change": true,
+        "label": "change in revenue vs the previous quarter",
+        "subject": [
+          "revenue"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "new_customers",
+        "value": 1691,
+        "unit": "customers",
+        "label": "new customers",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "new_customers_previous",
+        "value": 1936,
+        "unit": "customers",
+        "label": "new customers in the previous quarter",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "new_customers_change",
+        "compute": "percent_change",
+        "from": "new_customers_previous",
+        "to": "new_customers",
+        "label": "change in new customers vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "units_sold",
+        "value": 12450,
+        "unit": "units",
+        "label": "units sold",
+        "subject": [
+          "sales",
+          "units"
+        ]
+      },
+      {
+        "name": "units_sold_previous",
+        "value": 13332,
+        "unit": "units",
+        "label": "units sold in the previous quarter",
+        "subject": [
+          "sales",
+          "units"
+        ]
+      },
+      {
+        "name": "units_sold_change",
+        "compute": "percent_change",
+        "from": "units_sold_previous",
+        "to": "units_sold",
+        "label": "change in units sold vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "return_rate",
+        "value": 5.6,
+        "unit": "%",
+        "label": "return rate",
+        "subject": [
+          "returns",
+          "return rate"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "return_rate_change",
+        "value": 2.4,
+        "unit": "pp",
+        "change": true,
+        "label": "change in return rate vs the previous quarter, in percentage points",
+        "subject": [
+          "returns",
+          "return rate"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "Q1 2026"
+      },
+      {
+        "name": "units_sold_trend",
+        "from": "units_sold_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Lanternly"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Sales team note",
+        "title": "Seasonal campaign",
+        "text": "The Back to Basics campaign started on October 21 in Dublin and Tampa, with discounts of up to 30% on home goods."
+      }
+    ]
+  }
+}

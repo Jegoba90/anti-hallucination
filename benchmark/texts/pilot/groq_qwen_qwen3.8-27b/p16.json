@@ -1,0 +1,23 @@
+{
+  "dataset": "p16",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for management at Copperline on sales results for Q1 2026, based on this data.\n\nCompany: Copperline\nPeriod: Q1 2026\n\nData:\n- Revenue: 20.9 million EUR\n- Change in revenue vs the previous quarter: 4.1%\n- Units sold: 1,938 units\n- Units sold in the previous quarter: 1,679 units\n- Change in units sold vs the previous quarter: 15.4%\n- Online orders: 5,488 orders\n- Change in online orders vs the previous quarter: -14.6%\n- New customers: 647 customers\n- New customers in the previous quarter: 650 customers\n- Change in new customers vs the previous quarter: -0.5%\n- Average order value: 121.96 EUR\n- Verdict on the change in new customers vs the previous quarter: stability\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "Copperline concluded Q1 2026 with total revenue of 20.9 million EUR, marking a 4.1% increase quarter-over-quarter. This financial growth was primarily driven by a significant 15.4% surge in unit sales, which rose to 1,938 units from the previous quarter's 1,679. Although revenue expanded, the average order value remained stable at 121.96 EUR, indicating that the growth was volume-led rather than price-driven. In contrast, the digital channel faced challenges, as online orders declined by 14.6% to 5,488, suggesting a potential shift in customer purchasing behavior or channel preference. Customer acquisition remained largely flat, with 647 new customers joining the base, representing a negligible 0.5% decrease compared to the prior period. This stability in new customer acquisition highlights the need for adjusted marketing strategies to renew growth momentum in that specific area. Overall, the quarter demonstrated strong product demand and physical sales performance, despite headwinds in the online sector and stagnant customer expansion. Management should focus on understanding the decline in online orders to ensure balanced growth across all channels in the upcoming quarters.",
+  "text": "Copperline concluded Q1 2026 with total revenue of 20.9 million EUR, marking a 4.1% increase quarter-over-quarter. This financial growth was primarily driven by a significant 15.4% surge in unit sales, which rose to 1,938 units from the previous quarter's 1,679. Although revenue expanded, the average order value remained stable at 121.96 EUR, indicating that the growth was volume-led rather than price-driven. In contrast, the digital channel faced challenges, as online orders declined by 14.6% to 5,488, suggesting a potential shift in customer purchasing behavior or channel preference. Customer acquisition remained largely flat, with 647 new customers joining the base, representing a negligible 0.5% decrease compared to the prior period. This stability in new customer acquisition highlights the need for adjusted marketing strategies to renew growth momentum in that specific area. Overall, the quarter demonstrated strong product demand and physical sales performance, despite headwinds in the online sector and stagnant customer expansion. Management should focus on understanding the decline in online orders to ensure balanced growth across all channels in the upcoming quarters.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.523556816,
+    "prompt_tokens": 264,
+    "prompt_time": 0.019883022,
+    "completion_tokens": 252,
+    "completion_time": 0.547549004,
+    "total_tokens": 516,
+    "total_time": 0.567432026
+  },
+  "seconds": 1.14,
+  "created_at": "2026-11-18T14:25:55+00:00"
+}

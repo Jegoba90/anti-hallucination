@@ -1,0 +1,172 @@
+{
+  "id": "m072",
+  "split": "test",
+  "domain": "support",
+  "locale": "es",
+  "brief": {
+    "company": "Ventisca",
+    "audience": "el equipo de soporte",
+    "topic": "el desempeño del área de soporte",
+    "period": "marzo de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "escalamientos",
+        "value": 1,
+        "unit": "",
+        "label": "escalamientos",
+        "subject": [
+          "escalamientos"
+        ]
+      },
+      {
+        "name": "primera_respuesta",
+        "value": 0.6,
+        "unit": "h",
+        "label": "tiempo de primera respuesta",
+        "subject": [
+          "primera respuesta",
+          "tiempo de respuesta"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "primera_respuesta_anterior",
+        "value": 0.5,
+        "unit": "h",
+        "label": "tiempo de primera respuesta en el mes anterior",
+        "subject": [
+          "primera respuesta",
+          "tiempo de respuesta"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_primera_respuesta",
+        "compute": "percent_change",
+        "from": "primera_respuesta_anterior",
+        "to": "primera_respuesta",
+        "label": "variación del tiempo de primera respuesta respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "tickets_resueltos",
+        "value": 3784,
+        "unit": "tickets",
+        "label": "tickets resueltos",
+        "subject": [
+          "tickets resueltos",
+          "resueltos"
+        ]
+      },
+      {
+        "name": "tickets_resueltos_anterior",
+        "value": 3978,
+        "unit": "tickets",
+        "label": "tickets resueltos en el mes anterior",
+        "subject": [
+          "tickets resueltos",
+          "resueltos"
+        ]
+      },
+      {
+        "name": "variacion_tickets_resueltos",
+        "compute": "percent_change",
+        "from": "tickets_resueltos_anterior",
+        "to": "tickets_resueltos",
+        "label": "variación de los tickets resueltos respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "pendientes",
+        "value": 693,
+        "unit": "tickets",
+        "label": "tickets pendientes",
+        "subject": [
+          "pendientes",
+          "backlog"
+        ]
+      },
+      {
+        "name": "pendientes_anterior",
+        "value": 748,
+        "unit": "tickets",
+        "label": "tickets pendientes en el mes anterior",
+        "subject": [
+          "pendientes",
+          "backlog"
+        ]
+      },
+      {
+        "name": "variacion_pendientes",
+        "compute": "percent_change",
+        "from": "pendientes_anterior",
+        "to": "pendientes",
+        "label": "variación de los tickets pendientes respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "tiempo_resolucion",
+        "value": 3.4,
+        "unit": "h",
+        "label": "tiempo medio de resolución",
+        "subject": [
+          "resolución"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "marzo de 2026"
+      },
+      {
+        "name": "tendencia_pendientes",
+        "from": "variacion_pendientes",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Ventisca"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 5341",
+        "title": "Correos demorados",
+        "text": "Los correos de confirmación llegan con hasta 3 horas de demora porque el proveedor de envíos limitó el tráfico. Se pasó el tráfico a un proveedor alternativo."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 8721",
+        "title": "La app no sincroniza",
+        "text": "Usuarios de Android reportan que la app no sincroniza los pedidos desde la versión 5.3.5. Hay 19 reportes y el equipo móvil prepara un parche."
+      }
+    ]
+  }
+}

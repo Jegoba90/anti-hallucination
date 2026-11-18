@@ -1,0 +1,23 @@
+{
+  "dataset": "p05",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para el equipo de soporte de Pampa Digital sobre el desempeño del área de soporte en septiembre de 2026, a partir de estos datos.\n\nEmpresa: Pampa Digital\nPeríodo: septiembre de 2026\n\nDatos:\n- Tiempo medio de resolución: 5,7 h\n- Variación del tiempo medio de resolución respecto del mes anterior: -3,6 %\n- Tickets resueltos: 10.700 tickets\n- Tickets resueltos en el mes anterior: 10.229 tickets\n- Variación de los tickets resueltos respecto del mes anterior: 4,6 %\n- Tiempo de primera respuesta: 16,3 h\n- Tiempo de primera respuesta en el mes anterior: 16,2 h\n- Variación del tiempo de primera respuesta respecto del mes anterior: 0,6 %\n- Tickets recibidos: 15.362 tickets\n- Tickets recibidos en el mes anterior: 15.148 tickets\n- Variación de los tickets recibidos respecto del mes anterior: 1,4 %\n- Veredicto sobre la variación de los tickets recibidos respecto del mes anterior: estabilidad\n\nNotas para el informe:\n[s1] Ticket 8144, «La app no sincroniza»: Usuarios de Android reportan que la app no sincroniza los pedidos desde la versión 3.2.4. Hay 11 reportes y el equipo móvil prepara un parche.\n[s2] Ticket 6721, «Facturas con el impuesto equivocado»: 6 clientes empresa de Asunción recibieron facturas con el impuesto equivocado. Finanzas está emitiendo las facturas de nuevo.\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En septiembre de 2026, el equipo de soporte de Pampa Digital resolvió 10.700 tickets, una cifra que representa un aumento del 4,6% respecto a los 10.229 gestionados el mes anterior. La cantidad total de tickets recibidos fue de 15.362, lo que supone un incremento del 1,4% en comparación con los 15.148 del período previo, una variación que se considera estabilidad. El tiempo medio de resolución mejoró al situarse en 5,7 horas, reflejando una disminución del 3,6% frente al mes anterior. No obstante, el tiempo de primera respuesta experimentó un ligero aumento del 0,6%, pasando de 16,2 a 16,3 horas. Entre los incidentes destacados, el ticket 8144 reportó que la app no sincroniza pedidos en Android desde la versión 3.2.4, acumulando 11 reportes mientras el equipo móvil prepara un parche. Por su parte, el ticket 6721 señaló que seis clientes empresa de Asunción recibieron facturas con el impuesto equivocado. En este último caso, el área de Finanzas se encuentra emitiendo nuevamente las facturas afectadas. El desempeño general del área muestra una mejora en la eficiencia de resolución a pesar de un leve aumento en los tiempos de contacto inicial.",
+  "text": "En septiembre de 2026, el equipo de soporte de Pampa Digital resolvió 10.700 tickets, una cifra que representa un aumento del 4,6% respecto a los 10.229 gestionados el mes anterior. La cantidad total de tickets recibidos fue de 15.362, lo que supone un incremento del 1,4% en comparación con los 15.148 del período previo, una variación que se considera estabilidad. El tiempo medio de resolución mejoró al situarse en 5,7 horas, reflejando una disminución del 3,6% frente al mes anterior. No obstante, el tiempo de primera respuesta experimentó un ligero aumento del 0,6%, pasando de 16,2 a 16,3 horas. Entre los incidentes destacados, el ticket 8144 reportó que la app no sincroniza pedidos en Android desde la versión 3.2.4, acumulando 11 reportes mientras el equipo móvil prepara un parche. Por su parte, el ticket 6721 señaló que seis clientes empresa de Asunción recibieron facturas con el impuesto equivocado. En este último caso, el área de Finanzas se encuentra emitiendo nuevamente las facturas afectadas. El desempeño general del área muestra una mejora en la eficiencia de resolución a pesar de un leve aumento en los tiempos de contacto inicial.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.4717518,
+    "prompt_tokens": 459,
+    "prompt_time": 0.03863047,
+    "completion_tokens": 301,
+    "completion_time": 0.589408864,
+    "total_tokens": 760,
+    "total_time": 0.628039334
+  },
+  "seconds": 1.18,
+  "created_at": "2026-11-18T14:22:54+00:00"
+}

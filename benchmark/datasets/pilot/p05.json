@@ -1,0 +1,174 @@
+{
+  "id": "p05",
+  "split": "pilot",
+  "domain": "support",
+  "locale": "es",
+  "brief": {
+    "company": "Pampa Digital",
+    "audience": "el equipo de soporte",
+    "topic": "el desempeño del área de soporte",
+    "period": "septiembre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "tiempo_resolucion",
+        "value": 5.7,
+        "unit": "h",
+        "label": "tiempo medio de resolución",
+        "subject": [
+          "resolución"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_tiempo_resolucion",
+        "value": -3.6,
+        "unit": "%",
+        "change": true,
+        "label": "variación del tiempo medio de resolución respecto del mes anterior",
+        "subject": [
+          "resolución"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tickets_resueltos",
+        "value": 10700,
+        "unit": "tickets",
+        "label": "tickets resueltos",
+        "subject": [
+          "tickets resueltos",
+          "resueltos"
+        ]
+      },
+      {
+        "name": "tickets_resueltos_anterior",
+        "value": 10229,
+        "unit": "tickets",
+        "label": "tickets resueltos en el mes anterior",
+        "subject": [
+          "tickets resueltos",
+          "resueltos"
+        ]
+      },
+      {
+        "name": "variacion_tickets_resueltos",
+        "compute": "percent_change",
+        "from": "tickets_resueltos_anterior",
+        "to": "tickets_resueltos",
+        "label": "variación de los tickets resueltos respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "primera_respuesta",
+        "value": 16.3,
+        "unit": "h",
+        "label": "tiempo de primera respuesta",
+        "subject": [
+          "primera respuesta",
+          "tiempo de respuesta"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "primera_respuesta_anterior",
+        "value": 16.2,
+        "unit": "h",
+        "label": "tiempo de primera respuesta en el mes anterior",
+        "subject": [
+          "primera respuesta",
+          "tiempo de respuesta"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_primera_respuesta",
+        "compute": "percent_change",
+        "from": "primera_respuesta_anterior",
+        "to": "primera_respuesta",
+        "label": "variación del tiempo de primera respuesta respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "tickets_recibidos",
+        "value": 15362,
+        "unit": "tickets",
+        "label": "tickets recibidos",
+        "subject": [
+          "tickets recibidos",
+          "recibidos"
+        ]
+      },
+      {
+        "name": "tickets_recibidos_anterior",
+        "value": 15148,
+        "unit": "tickets",
+        "label": "tickets recibidos en el mes anterior",
+        "subject": [
+          "tickets recibidos",
+          "recibidos"
+        ]
+      },
+      {
+        "name": "variacion_tickets_recibidos",
+        "compute": "percent_change",
+        "from": "tickets_recibidos_anterior",
+        "to": "tickets_recibidos",
+        "label": "variación de los tickets recibidos respecto del mes anterior",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "septiembre de 2026"
+      },
+      {
+        "name": "tendencia_tickets_recibidos",
+        "from": "variacion_tickets_recibidos",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Pampa Digital"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 8144",
+        "title": "La app no sincroniza",
+        "text": "Usuarios de Android reportan que la app no sincroniza los pedidos desde la versión 3.2.4. Hay 11 reportes y el equipo móvil prepara un parche."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 6721",
+        "title": "Facturas con el impuesto equivocado",
+        "text": "6 clientes empresa de Asunción recibieron facturas con el impuesto equivocado. Finanzas está emitiendo las facturas de nuevo."
+      }
+    ]
+  }
+}

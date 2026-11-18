@@ -1,0 +1,149 @@
+{
+  "id": "m041",
+  "split": "dev",
+  "domain": "saas",
+  "locale": "es",
+  "brief": {
+    "company": "Arkadia",
+    "audience": "el equipo directivo",
+    "topic": "las métricas del negocio",
+    "period": "octubre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "clientes_nuevos",
+        "value": 532,
+        "unit": "clientes",
+        "label": "clientes nuevos",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "variacion_clientes_nuevos",
+        "value": 5.0,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los clientes nuevos respecto del mes anterior",
+        "subject": [
+          "clientes"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "conversion_prueba",
+        "value": 28.6,
+        "unit": "%",
+        "label": "conversión de prueba a pago",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "cac",
+        "value": 2391,
+        "unit": "EUR",
+        "label": "costo de adquisición de clientes (CAC)",
+        "subject": [
+          "CAC",
+          "adquisición"
+        ]
+      },
+      {
+        "name": "mrr",
+        "value": 32725,
+        "unit": "EUR",
+        "label": "ingreso mensual recurrente (MRR)",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ]
+      },
+      {
+        "name": "mrr_anterior",
+        "value": 31966,
+        "unit": "EUR",
+        "label": "ingreso mensual recurrente (MRR) en el mes anterior",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ]
+      },
+      {
+        "name": "variacion_mrr",
+        "compute": "percent_change",
+        "from": "mrr_anterior",
+        "to": "mrr",
+        "label": "variación del ingreso mensual recurrente (MRR) respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 86,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR)",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "nrr_anterior",
+        "value": 85,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR) en el mes anterior",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "variacion_nrr",
+        "compute": "difference",
+        "from": "nrr_anterior",
+        "to": "nrr",
+        "label": "variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos",
+        "decimals": 0
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "octubre de 2026"
+      },
+      {
+        "name": "tendencia_mrr",
+        "from": "variacion_mrr",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Arkadia"
+    ]
+  }
+}

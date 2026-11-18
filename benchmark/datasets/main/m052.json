@@ -1,0 +1,188 @@
+{
+  "id": "m052",
+  "split": "test",
+  "domain": "saas",
+  "locale": "es",
+  "brief": {
+    "company": "Quillon",
+    "audience": "los inversores",
+    "topic": "las métricas del negocio",
+    "period": "febrero de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "mrr",
+        "value": 1284666,
+        "unit": "USD",
+        "label": "ingreso mensual recurrente (MRR)",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ],
+        "compact": true
+      },
+      {
+        "name": "mrr_anterior",
+        "value": 1253640,
+        "unit": "USD",
+        "label": "ingreso mensual recurrente (MRR) en el mes anterior",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_mrr",
+        "compute": "percent_change",
+        "from": "mrr_anterior",
+        "to": "mrr",
+        "label": "variación del ingreso mensual recurrente (MRR) respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "usuarios_activos",
+        "value": 315,
+        "unit": "usuarios",
+        "label": "usuarios activos",
+        "subject": [
+          "usuarios"
+        ]
+      },
+      {
+        "name": "cac",
+        "value": 2314,
+        "unit": "USD",
+        "label": "costo de adquisición de clientes (CAC)",
+        "subject": [
+          "CAC",
+          "adquisición"
+        ]
+      },
+      {
+        "name": "cac_anterior",
+        "value": 2396,
+        "unit": "USD",
+        "label": "costo de adquisición de clientes (CAC) en el mes anterior",
+        "subject": [
+          "CAC",
+          "adquisición"
+        ]
+      },
+      {
+        "name": "variacion_cac",
+        "compute": "percent_change",
+        "from": "cac_anterior",
+        "to": "cac",
+        "label": "variación del costo de adquisición de clientes (CAC) respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "churn",
+        "value": 1.7,
+        "unit": "%",
+        "label": "churn mensual",
+        "subject": [
+          "churn",
+          "bajas"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_anterior",
+        "value": 1.3,
+        "unit": "%",
+        "label": "churn mensual en el mes anterior",
+        "subject": [
+          "churn",
+          "bajas"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_churn",
+        "compute": "difference",
+        "from": "churn_anterior",
+        "to": "churn",
+        "label": "variación del churn mensual respecto del mes anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 86,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR)",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "nrr_anterior",
+        "value": 85,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR) en el mes anterior",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "variacion_nrr",
+        "compute": "difference",
+        "from": "nrr_anterior",
+        "to": "nrr",
+        "label": "variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos",
+        "decimals": 0
+      },
+      {
+        "name": "conversion_prueba",
+        "value": 7.9,
+        "unit": "%",
+        "label": "conversión de prueba a pago",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "febrero de 2026"
+      },
+      {
+        "name": "tendencia_cac",
+        "from": "variacion_cac",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Quillon"
+    ]
+  }
+}

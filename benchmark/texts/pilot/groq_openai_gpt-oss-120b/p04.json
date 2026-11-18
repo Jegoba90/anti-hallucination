@@ -1,0 +1,26 @@
+{
+  "dataset": "p04",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the subscribers at Satstack Desk on the crypto market for November 14, 2026, based on this data.\n\nCompany: Satstack Desk\nPeriod: November 14, 2026\n\nData:\n- Bitcoin (BTC) price: 110,582 USD\n- Bitcoin (BTC) price in the previous day: 102,541 USD\n- Change in bitcoin (BTC) price vs the previous day: 7.8%\n- Fear and greed index: 89\n- Fear and greed index in the previous day: 54\n- Change in fear and greed index vs the previous day: 35\n- 24-hour trading volume: 30.4 billion USD\n- 24-hour trading volume in the previous day: 21.6 billion USD\n- Change in 24-hour trading volume vs the previous day: 40.6%\n- Bitcoin dominance: 43.5%\n- Ether (ETH) price: 8,631 USD\n- Ether (ETH) price in the previous day: 7,392 USD\n- Change in ether (ETH) price vs the previous day: 16.8%\n- Average funding rate: -0.018%\n- Change in average funding rate vs the previous day, in percentage points: -2.0 pp\n- Verdict on the change in 24-hour trading volume vs the previous day: a strong uptrend\n\nNotes for the report:\n[s1] Nimbex News, \"Withdrawals paused\": The Nimbex exchange paused ETH withdrawals for 3 hours on Monday for maintenance.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "On November 14, 2026 Bitcoin surged to $110,582, a 7.8 % rise from the prior day, while the Fear & Greed Index leapt to 89, up 35 points, reflecting extreme market optimism. The 24‑hour trading volume accelerated to $30.4 billion, a 40.6 % increase over the previous day, and is judged to be in a strong uptrend. Bitcoin’s market share settled at 43.5 % of total crypto capitalisation. Ether also posted robust gains, climbing 16.8 % to $8,631, even as the average funding rate slipped to –0.018 %, down 2.0 percentage points from yesterday. Nimbex News reported that the Nimbex exchange paused ETH withdrawals for three hours on Monday for maintenance. The combined price advances and heightened trading activity suggest a pronounced bullish momentum across the leading assets. Investors should remain aware that the elevated Fear & Greed reading may signal heightened risk appetite.",
+  "text": "On November 14, 2026 Bitcoin surged to $110,582, a 7.8 % rise from the prior day, while the Fear & Greed Index leapt to 89, up 35 points, reflecting extreme market optimism. The 24‑hour trading volume accelerated to $30.4 billion, a 40.6 % increase over the previous day, and is judged to be in a strong uptrend. Bitcoin’s market share settled at 43.5 % of total crypto capitalisation. Ether also posted robust gains, climbing 16.8 % to $8,631, even as the average funding rate slipped to –0.018 %, down 2.0 percentage points from yesterday. Nimbex News reported that the Nimbex exchange paused ETH withdrawals for three hours on Monday for maintenance. The combined price advances and heightened trading activity suggest a pronounced bullish momentum across the leading assets. Investors should remain aware that the elevated Fear & Greed reading may signal heightened risk appetite.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.208477498,
+    "prompt_tokens": 455,
+    "prompt_time": 0.030660313,
+    "completion_tokens": 373,
+    "completion_time": 0.798988442,
+    "total_tokens": 828,
+    "total_time": 0.829648755,
+    "completion_tokens_details": {
+      "reasoning_tokens": 151
+    }
+  },
+  "seconds": 1.09,
+  "created_at": "2026-11-18T14:21:32+00:00"
+}

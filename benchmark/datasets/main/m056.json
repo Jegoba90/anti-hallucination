@@ -1,0 +1,209 @@
+{
+  "id": "m056",
+  "split": "test",
+  "domain": "support",
+  "locale": "en",
+  "brief": {
+    "company": "Orbitly",
+    "audience": "the support team",
+    "topic": "support performance",
+    "period": "October 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "backlog",
+        "value": 10,
+        "unit": "tickets",
+        "label": "open backlog",
+        "subject": [
+          "backlog"
+        ]
+      },
+      {
+        "name": "backlog_change",
+        "value": -8.2,
+        "unit": "%",
+        "change": true,
+        "label": "change in open backlog vs the previous month",
+        "subject": [
+          "backlog"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "csat",
+        "value": 70,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT)",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "first_response",
+        "value": 13.0,
+        "unit": "h",
+        "label": "first response time",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_previous",
+        "value": 12.9,
+        "unit": "h",
+        "label": "first response time in the previous month",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_change",
+        "compute": "percent_change",
+        "from": "first_response_previous",
+        "to": "first_response",
+        "label": "change in first response time vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "escalations",
+        "value": 35,
+        "unit": "",
+        "label": "escalations",
+        "subject": [
+          "escalations"
+        ]
+      },
+      {
+        "name": "escalations_previous",
+        "value": 33,
+        "unit": "",
+        "label": "escalations in the previous month",
+        "subject": [
+          "escalations"
+        ]
+      },
+      {
+        "name": "escalations_change",
+        "compute": "percent_change",
+        "from": "escalations_previous",
+        "to": "escalations",
+        "label": "change in escalations vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "tickets_resolved",
+        "value": 1168,
+        "unit": "tickets",
+        "label": "tickets resolved",
+        "subject": [
+          "tickets resolved",
+          "resolved"
+        ]
+      },
+      {
+        "name": "tickets_resolved_previous",
+        "value": 946,
+        "unit": "tickets",
+        "label": "tickets resolved in the previous month",
+        "subject": [
+          "tickets resolved",
+          "resolved"
+        ]
+      },
+      {
+        "name": "tickets_resolved_change",
+        "compute": "percent_change",
+        "from": "tickets_resolved_previous",
+        "to": "tickets_resolved",
+        "label": "change in tickets resolved vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time",
+        "value": 6.6,
+        "unit": "h",
+        "label": "average resolution time",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time_previous",
+        "value": 6.8,
+        "unit": "h",
+        "label": "average resolution time in the previous month",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time_change",
+        "compute": "percent_change",
+        "from": "resolution_time_previous",
+        "to": "resolution_time",
+        "label": "change in average resolution time vs the previous month",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "October 2026"
+      },
+      {
+        "name": "first_response_trend",
+        "from": "first_response_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Orbitly"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 9199",
+        "title": "Delayed emails",
+        "text": "Confirmation emails arrive up to 11 hours late because the email provider throttled sending. Traffic was moved to a backup provider."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 9518",
+        "title": "Card payments fail",
+        "text": "Since Friday, 25 customers in Leeds report that card payments fail with error 402. The payments team rolled back release 8.13.2 on Tuesday and the failures stopped."
+      }
+    ]
+  }
+}

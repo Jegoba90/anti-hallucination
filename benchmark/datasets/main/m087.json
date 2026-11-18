@@ -1,0 +1,170 @@
+{
+  "id": "m087",
+  "split": "test",
+  "domain": "finance",
+  "locale": "en",
+  "brief": {
+    "company": "Fenwick Data",
+    "audience": "shareholders",
+    "topic": "financial results",
+    "period": "Q3 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "revenue",
+        "value": 76221589,
+        "unit": "EUR",
+        "label": "revenue",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "revenue_previous",
+        "value": 72705939,
+        "unit": "EUR",
+        "label": "revenue in the previous quarter",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "revenue_change",
+        "compute": "percent_change",
+        "from": "revenue_previous",
+        "to": "revenue",
+        "label": "change in revenue vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "employees",
+        "value": 6580,
+        "unit": "employees",
+        "label": "employees",
+        "subject": [
+          "employees",
+          "headcount"
+        ]
+      },
+      {
+        "name": "employees_previous",
+        "value": 6497,
+        "unit": "employees",
+        "label": "employees in the previous quarter",
+        "subject": [
+          "employees",
+          "headcount"
+        ]
+      },
+      {
+        "name": "employees_change",
+        "compute": "percent_change",
+        "from": "employees_previous",
+        "to": "employees",
+        "label": "change in employees vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "net_income",
+        "value": 493999150,
+        "unit": "EUR",
+        "label": "net income",
+        "subject": [
+          "net income",
+          "profit"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_income_previous",
+        "value": 352238005,
+        "unit": "EUR",
+        "label": "net income in the previous quarter",
+        "subject": [
+          "net income",
+          "profit"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_income_change",
+        "compute": "difference",
+        "from": "net_income_previous",
+        "to": "net_income",
+        "label": "change in net income vs the previous quarter",
+        "decimals": 0,
+        "compact": true
+      },
+      {
+        "name": "ebitda",
+        "value": 825353390,
+        "unit": "EUR",
+        "label": "EBITDA",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ebitda_previous",
+        "value": 709745031,
+        "unit": "EUR",
+        "label": "EBITDA in the previous quarter",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ebitda_change",
+        "compute": "percent_change",
+        "from": "ebitda_previous",
+        "to": "ebitda",
+        "label": "change in EBITDA vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "Q3 2026"
+      },
+      {
+        "name": "revenue_trend",
+        "from": "revenue_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Fenwick Data"
+    ]
+  }
+}

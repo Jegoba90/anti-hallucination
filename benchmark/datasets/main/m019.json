@@ -1,0 +1,175 @@
+{
+  "id": "m019",
+  "split": "test",
+  "domain": "sales",
+  "locale": "es",
+  "brief": {
+    "company": "Ventisca",
+    "audience": "el equipo comercial",
+    "topic": "los resultados de ventas",
+    "period": "julio de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "ticket_promedio",
+        "value": 68.03,
+        "unit": "USD",
+        "label": "ticket promedio",
+        "subject": [
+          "ticket"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "facturacion",
+        "value": 54510,
+        "unit": "USD",
+        "label": "facturación",
+        "subject": [
+          "facturación",
+          "ingresos"
+        ]
+      },
+      {
+        "name": "pedidos_online",
+        "value": 20733,
+        "unit": "pedidos",
+        "label": "pedidos online",
+        "subject": [
+          "pedidos"
+        ]
+      },
+      {
+        "name": "pedidos_online_anterior",
+        "value": 19609,
+        "unit": "pedidos",
+        "label": "pedidos online en el mes anterior",
+        "subject": [
+          "pedidos"
+        ]
+      },
+      {
+        "name": "variacion_pedidos_online",
+        "compute": "percent_change",
+        "from": "pedidos_online_anterior",
+        "to": "pedidos_online",
+        "label": "variación de los pedidos online respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "unidades_vendidas",
+        "value": 16928,
+        "unit": "unidades",
+        "label": "unidades vendidas",
+        "subject": [
+          "ventas",
+          "unidades"
+        ]
+      },
+      {
+        "name": "unidades_vendidas_anterior",
+        "value": 12669,
+        "unit": "unidades",
+        "label": "unidades vendidas en el mes anterior",
+        "subject": [
+          "ventas",
+          "unidades"
+        ]
+      },
+      {
+        "name": "variacion_unidades_vendidas",
+        "compute": "percent_change",
+        "from": "unidades_vendidas_anterior",
+        "to": "unidades_vendidas",
+        "label": "variación de las unidades vendidas respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "conversion_web",
+        "value": 0.9,
+        "unit": "%",
+        "label": "conversión web",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "conversion_web_anterior",
+        "value": 0.6,
+        "unit": "%",
+        "label": "conversión web en el mes anterior",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_conversion_web",
+        "compute": "difference",
+        "from": "conversion_web_anterior",
+        "to": "conversion_web",
+        "label": "variación de la conversión web respecto del mes anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "clientes_nuevos",
+        "value": 68,
+        "unit": "clientes",
+        "label": "clientes nuevos",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "variacion_clientes_nuevos",
+        "value": 1.9,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los clientes nuevos respecto del mes anterior",
+        "subject": [
+          "clientes"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "julio de 2026"
+      },
+      {
+        "name": "tendencia_clientes_nuevos",
+        "from": "variacion_clientes_nuevos",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Ventisca"
+    ]
+  }
+}

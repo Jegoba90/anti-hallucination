@@ -1,0 +1,26 @@
+{
+  "dataset": "m042",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the subscribers at Satstack Desk on the crypto market for November 5, 2026, based on this data.\n\nCompany: Satstack Desk\nPeriod: November 5, 2026\n\nData:\n- Fear and greed index: 79\n- Fear and greed index in the previous day: 69\n- Change in fear and greed index vs the previous day: 10\n- Average funding rate: 0.014%\n- Average funding rate in the previous day: 0.008%\n- Change in average funding rate vs the previous day, in percentage points: 0.006 pp\n- Futures open interest: 17.1 billion USD\n- Change in futures open interest vs the previous day: -0.9%\n- Ether (ETH) price: 5,708 USD\n- Ether (ETH) price in the previous day: 5,731 USD\n- Change in ether (ETH) price vs the previous day: -0.4%\n- Bitcoin (BTC) price: 91,720 USD\n- Bitcoin (BTC) price in the previous day: 92,302 USD\n- Change in bitcoin (BTC) price vs the previous day: -0.6%\n- Verdict on the change in fear and greed index vs the previous day: an uptrend\n\nNotes for the report:\n[s1] Nimbex News, \"Withdrawals paused\": The Nimbex exchange paused ETH withdrawals for 4 hours on Tuesday for maintenance.\n[s2] Network calendar, \"Network upgrade\": The Telar network will activate the Beacon upgrade on March 19.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "On November 5, 2026, the crypto market’s Fear and Greed Index rose sharply to 79, marking a 10‑point increase from the previous day’s reading of 69 and indicating an uptrend in market sentiment. At the same time, the average funding rate edged higher to 0.014%, up 0.006 percentage points from 0.008% the day before. Futures open interest slipped slightly to $17.1 billion, a 0.9 % decline versus the prior day. Ether (ETH) price dipped to $5,708, down 0.4 % from $5,731, while Bitcoin (BTC) fell to $91,720, a 0.6 % drop from $92,302. Despite the modest price corrections in the two leading assets, the rising Fear and Greed Index suggests that market participants remain increasingly optimistic. Overall, the combination of higher sentiment, modest funding pressure, and stable but slightly lower open interest points to a market that is bullish in outlook but experiencing short‑term price pullbacks.",
+  "text": "On November 5, 2026, the crypto market’s Fear and Greed Index rose sharply to 79, marking a 10‑point increase from the previous day’s reading of 69 and indicating an uptrend in market sentiment. At the same time, the average funding rate edged higher to 0.014%, up 0.006 percentage points from 0.008% the day before. Futures open interest slipped slightly to $17.1 billion, a 0.9 % decline versus the prior day. Ether (ETH) price dipped to $5,708, down 0.4 % from $5,731, while Bitcoin (BTC) fell to $91,720, a 0.6 % drop from $92,302. Despite the modest price corrections in the two leading assets, the rising Fear and Greed Index suggests that market participants remain increasingly optimistic. Overall, the combination of higher sentiment, modest funding pressure, and stable but slightly lower open interest points to a market that is bullish in outlook but experiencing short‑term price pullbacks.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.312713743,
+    "prompt_tokens": 460,
+    "prompt_time": 0.021600093,
+    "completion_tokens": 466,
+    "completion_time": 0.977931547,
+    "total_tokens": 926,
+    "total_time": 0.99953164,
+    "completion_tokens_details": {
+      "reasoning_tokens": 233
+    }
+  },
+  "seconds": 1.43,
+  "created_at": "2026-11-18T14:36:32+00:00"
+}

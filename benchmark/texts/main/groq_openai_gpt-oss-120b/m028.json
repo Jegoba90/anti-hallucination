@@ -1,0 +1,26 @@
+{
+  "dataset": "m028",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the subscribers at Satstack Desk on the crypto market for November 6, 2026, based on this data.\n\nCompany: Satstack Desk\nPeriod: November 6, 2026\n\nData:\n- Bitcoin dominance: 38.1%\n- Bitcoin dominance in the previous day: 35.7%\n- Change in bitcoin dominance vs the previous day, in percentage points: 2.4 pp\n- 24-hour trading volume: 72.8 billion USD\n- Ether (ETH) price: 918 USD\n- Ether (ETH) price in the previous day: 954 USD\n- Change in ether (ETH) price vs the previous day: -3.8%\n- Fear and greed index: 47\n- Fear and greed index in the previous day: 33\n- Change in fear and greed index vs the previous day: 14\n\nNotes for the report:\n[s1] Network calendar, \"Network upgrade\": The Telar network will activate the Beacon upgrade on October 6.\n[s2] Nimbex News, \"Withdrawals paused\": The Nimbex exchange paused ETH withdrawals for 5 hours on Monday for maintenance.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "Bitcoin’s market dominance rose to 38.1% on November 6, up 2.4 percentage points from the previous day’s 35.7%. The 24‑hour crypto trading volume reached $72.8 billion, indicating strong overall market activity. Ether slipped to $918, a 3.8% decline from $954 the day before. The Fear & Greed Index climbed to 47 from 33, reflecting a shift toward greater market optimism. The Telar network’s Beacon upgrade was activated on October 6, marking a recent network development. Meanwhile, the Nimbex exchange paused ETH withdrawals for five hours on Monday for maintenance. The combined movement in dominance, volume, price, and sentiment points to a dynamic market environment on November 6.",
+  "text": "Bitcoin’s market dominance rose to 38.1% on November 6, up 2.4 percentage points from the previous day’s 35.7%. The 24‑hour crypto trading volume reached $72.8 billion, indicating strong overall market activity. Ether slipped to $918, a 3.8% decline from $954 the day before. The Fear & Greed Index climbed to 47 from 33, reflecting a shift toward greater market optimism. The Telar network’s Beacon upgrade was activated on October 6, marking a recent network development. Meanwhile, the Nimbex exchange paused ETH withdrawals for five hours on Monday for maintenance. The combined movement in dominance, volume, price, and sentiment points to a dynamic market environment on November 6.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.310987925,
+    "prompt_tokens": 372,
+    "prompt_time": 0.017466398,
+    "completion_tokens": 625,
+    "completion_time": 1.3005760290000001,
+    "total_tokens": 997,
+    "total_time": 1.318042427,
+    "completion_tokens_details": {
+      "reasoning_tokens": 457
+    }
+  },
+  "seconds": 1.68,
+  "created_at": "2026-11-18T14:34:51+00:00"
+}

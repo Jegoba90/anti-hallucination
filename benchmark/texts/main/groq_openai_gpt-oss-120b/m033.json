@@ -1,0 +1,26 @@
+{
+  "dataset": "m033",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for investors at Orbitly on business metrics for January 2026, based on this data.\n\nCompany: Orbitly\nPeriod: January 2026\n\nData:\n- Net revenue retention (NRR): 85%\n- Net revenue retention (NRR) in the previous month: 88%\n- Change in net revenue retention (NRR) vs the previous month, in percentage points: -3 pp\n- Trial-to-paid conversion: 5.7%\n- Change in trial-to-paid conversion vs the previous month, in percentage points: 0.5 pp\n- Monthly recurring revenue (MRR): 371,288 GBP\n- Monthly recurring revenue (MRR) in the previous month: 348,903 GBP\n- Change in monthly recurring revenue (MRR) vs the previous month: 6.4%\n- Monthly churn: 0.6%\n- Monthly churn in the previous month: 0.5%\n- Change in monthly churn vs the previous month, in percentage points: 0.1 pp\n- New customers: 47 customers\n- Customer acquisition cost (CAC): 2,208 GBP\n- Customer acquisition cost (CAC) in the previous month: 2,079 GBP\n- Change in customer acquisition cost (CAC) vs the previous month: 6.2%\n- Verdict on the change in monthly churn vs the previous month, in percentage points: stability\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "January 2026 saw Monthly Recurring Revenue climb 6.4 % to £371,288, reflecting solid organic growth from the prior month’s £348,903. Net Revenue Retention slipped to 85 % from 88 %, a 3‑percentage‑point decline that signals modest revenue contraction among existing accounts. Conversely, the trial‑to‑paid conversion rate improved by 0.5 percentage points, reaching 5.7 % and indicating more effective onboarding of new users. Monthly churn edged up to 0.6 % from 0.5 %, a marginal 0.1‑point increase that the team characterises as stable rather than alarming. The company added 47 new customers in the period, though the Customer Acquisition Cost rose 6.2 % to £2,208, suggesting higher spending to secure each new account. Overall, the revenue expansion outpaces the slight churn and acquisition cost uptick, positioning Orbitly for continued incremental growth in the coming months.",
+  "text": "January 2026 saw Monthly Recurring Revenue climb 6.4 % to £371,288, reflecting solid organic growth from the prior month’s £348,903. Net Revenue Retention slipped to 85 % from 88 %, a 3‑percentage‑point decline that signals modest revenue contraction among existing accounts. Conversely, the trial‑to‑paid conversion rate improved by 0.5 percentage points, reaching 5.7 % and indicating more effective onboarding of new users. Monthly churn edged up to 0.6 % from 0.5 %, a marginal 0.1‑point increase that the team characterises as stable rather than alarming. The company added 47 new customers in the period, though the Customer Acquisition Cost rose 6.2 % to £2,208, suggesting higher spending to secure each new account. Overall, the revenue expansion outpaces the slight churn and acquisition cost uptick, positioning Orbitly for continued incremental growth in the coming months.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.242290835,
+    "prompt_tokens": 398,
+    "prompt_time": 0.018286461,
+    "completion_tokens": 442,
+    "completion_time": 0.926187195,
+    "total_tokens": 840,
+    "total_time": 0.944473656,
+    "completion_tokens_details": {
+      "reasoning_tokens": 225
+    }
+  },
+  "seconds": 1.27,
+  "created_at": "2026-11-18T14:35:32+00:00"
+}

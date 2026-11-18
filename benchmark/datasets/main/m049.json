@@ -1,0 +1,181 @@
+{
+  "id": "m049",
+  "split": "test",
+  "domain": "crypto",
+  "locale": "es",
+  "brief": {
+    "company": "Mesa Pampa Trading",
+    "audience": "los suscriptores",
+    "topic": "el mercado cripto",
+    "period": "la semana del 7 al 13 de noviembre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "precio_btc",
+        "value": 26014,
+        "unit": "USD",
+        "label": "precio de bitcoin (BTC)",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "precio_btc_anterior",
+        "value": 32028,
+        "unit": "USD",
+        "label": "precio de bitcoin (BTC) en la semana anterior",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "variacion_precio_btc",
+        "compute": "percent_change",
+        "from": "precio_btc_anterior",
+        "to": "precio_btc",
+        "label": "variación del precio de bitcoin (BTC) respecto de la semana anterior",
+        "decimals": 1
+      },
+      {
+        "name": "interes_abierto",
+        "value": 78654894642,
+        "unit": "USD",
+        "label": "interés abierto en futuros",
+        "subject": [
+          "interés abierto"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_interes_abierto",
+        "value": 5.8,
+        "unit": "%",
+        "change": true,
+        "label": "variación del interés abierto en futuros respecto de la semana anterior",
+        "subject": [
+          "interés abierto"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "indice_miedo",
+        "value": 12,
+        "unit": "",
+        "label": "índice de miedo y codicia",
+        "subject": [
+          "miedo",
+          "codicia",
+          "sentimiento"
+        ]
+      },
+      {
+        "name": "precio_eth",
+        "value": 1230,
+        "unit": "USD",
+        "label": "precio de ether (ETH)",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "precio_eth_anterior",
+        "value": 1505,
+        "unit": "USD",
+        "label": "precio de ether (ETH) en la semana anterior",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "variacion_precio_eth",
+        "compute": "percent_change",
+        "from": "precio_eth_anterior",
+        "to": "precio_eth",
+        "label": "variación del precio de ether (ETH) respecto de la semana anterior",
+        "decimals": 1
+      },
+      {
+        "name": "tasa_financiamiento",
+        "value": 0.021,
+        "unit": "%",
+        "label": "tasa de financiamiento promedio",
+        "subject": [
+          "financiamiento"
+        ],
+        "decimals": 3
+      },
+      {
+        "name": "tasa_financiamiento_anterior",
+        "value": 0.018,
+        "unit": "%",
+        "label": "tasa de financiamiento promedio en la semana anterior",
+        "subject": [
+          "financiamiento"
+        ],
+        "decimals": 3
+      },
+      {
+        "name": "variacion_tasa_financiamiento",
+        "compute": "difference",
+        "from": "tasa_financiamiento_anterior",
+        "to": "tasa_financiamiento",
+        "label": "variación de la tasa de financiamiento promedio respecto de la semana anterior, en puntos",
+        "decimals": 3
+      },
+      {
+        "name": "dominancia_btc",
+        "value": 60.7,
+        "unit": "%",
+        "label": "dominancia de bitcoin",
+        "subject": [
+          "dominancia"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_dominancia_btc",
+        "value": 1.0,
+        "unit": "pp",
+        "change": true,
+        "label": "variación de la dominancia de bitcoin respecto de la semana anterior, en puntos",
+        "subject": [
+          "dominancia"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "la semana del 7 al 13 de noviembre de 2026"
+      }
+    ],
+    "known_names": [
+      "Mesa Pampa Trading"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Orbita News",
+        "title": "Retiros suspendidos",
+        "text": "El exchange Orbita suspendió los retiros de ETH durante 6 horas el viernes por mantenimiento."
+      },
+      {
+        "id": "s2",
+        "name": "Agenda de redes",
+        "title": "Actualización de red",
+        "text": "La red Telar activará la actualización «Faro» el 19 de agosto."
+      }
+    ]
+  }
+}

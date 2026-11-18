@@ -1,0 +1,159 @@
+{
+  "id": "p16",
+  "split": "pilot",
+  "domain": "sales",
+  "locale": "en",
+  "brief": {
+    "company": "Copperline",
+    "audience": "management",
+    "topic": "sales results",
+    "period": "Q1 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "revenue",
+        "value": 20852492,
+        "unit": "EUR",
+        "label": "revenue",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "revenue_change",
+        "value": 4.1,
+        "unit": "%",
+        "change": true,
+        "label": "change in revenue vs the previous quarter",
+        "subject": [
+          "revenue"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "units_sold",
+        "value": 1938,
+        "unit": "units",
+        "label": "units sold",
+        "subject": [
+          "sales",
+          "units"
+        ]
+      },
+      {
+        "name": "units_sold_previous",
+        "value": 1679,
+        "unit": "units",
+        "label": "units sold in the previous quarter",
+        "subject": [
+          "sales",
+          "units"
+        ]
+      },
+      {
+        "name": "units_sold_change",
+        "compute": "percent_change",
+        "from": "units_sold_previous",
+        "to": "units_sold",
+        "label": "change in units sold vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "online_orders",
+        "value": 5488,
+        "unit": "orders",
+        "label": "online orders",
+        "subject": [
+          "orders"
+        ]
+      },
+      {
+        "name": "online_orders_change",
+        "value": -14.6,
+        "unit": "%",
+        "change": true,
+        "label": "change in online orders vs the previous quarter",
+        "subject": [
+          "orders"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "new_customers",
+        "value": 647,
+        "unit": "customers",
+        "label": "new customers",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "new_customers_previous",
+        "value": 650,
+        "unit": "customers",
+        "label": "new customers in the previous quarter",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "new_customers_change",
+        "compute": "percent_change",
+        "from": "new_customers_previous",
+        "to": "new_customers",
+        "label": "change in new customers vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "average_order",
+        "value": 121.96,
+        "unit": "EUR",
+        "label": "average order value",
+        "subject": [
+          "order value",
+          "average order"
+        ],
+        "decimals": 2
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "Q1 2026"
+      },
+      {
+        "name": "new_customers_trend",
+        "from": "new_customers_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Copperline"
+    ]
+  }
+}

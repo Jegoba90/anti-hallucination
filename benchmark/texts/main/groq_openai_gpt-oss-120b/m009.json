@@ -1,0 +1,26 @@
+{
+  "dataset": "m009",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the board at Harbor & Pine on sales results for August 2026, based on this data.\n\nCompany: Harbor & Pine\nPeriod: August 2026\n\nData:\n- Average order value: 229.69 EUR\n- Average order value in the previous month: 218.48 EUR\n- Change in average order value vs the previous month: 5.1%\n- Web conversion rate: 3.8%\n- Change in web conversion rate vs the previous month, in percentage points: 1.6 pp\n- Online orders: 5,166 orders\n- Online orders in the previous month: 5,130 orders\n- Change in online orders vs the previous month: 0.7%\n- New customers: 70 customers\n- Return rate: 2.6%\n- Return rate in the previous month: 2.3%\n- Change in return rate vs the previous month, in percentage points: 0.3 pp\n- Verdict on the change in return rate vs the previous month, in percentage points: mild growth\n\nNotes for the report:\n[s1] Logistics report, \"Delivery delays\": For 8 days, deliveries to Calgary were delayed by a problem with the carrier Parcelon.\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "In August 2026 Harbor & Pine achieved an average order value of €229.69, up 5.1 % from July’s €218.48, reflecting stronger basket sizes despite only a modest 0.7 % increase in total online orders to 5,166. The web conversion rate rose by 1.6 percentage points to 3.8 %, indicating improved site performance and customer acquisition efficiency. New customer acquisition was modest, with 70 first‑time buyers contributing to the revenue lift, while the return rate edged higher to 2.6 % from 2.3 %—a mild growth of 0.3 percentage points. A logistical hiccup affected deliveries to Calgary, where eight days of delays occurred due to an issue with carrier Parcelon, potentially influencing customer satisfaction in that region. Overall, the month’s metrics show a positive revenue trend, though the slight uptick in returns and the localized delivery disruption warrant monitoring.",
+  "text": "In August 2026 Harbor & Pine achieved an average order value of €229.69, up 5.1 % from July’s €218.48, reflecting stronger basket sizes despite only a modest 0.7 % increase in total online orders to 5,166. The web conversion rate rose by 1.6 percentage points to 3.8 %, indicating improved site performance and customer acquisition efficiency. New customer acquisition was modest, with 70 first‑time buyers contributing to the revenue lift, while the return rate edged higher to 2.6 % from 2.3 %—a mild growth of 0.3 percentage points. A logistical hiccup affected deliveries to Calgary, where eight days of delays occurred due to an issue with carrier Parcelon, potentially influencing customer satisfaction in that region. Overall, the month’s metrics show a positive revenue trend, though the slight uptick in returns and the localized delivery disruption warrant monitoring.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.661528827,
+    "prompt_tokens": 362,
+    "prompt_time": 0.017824164,
+    "completion_tokens": 276,
+    "completion_time": 0.582091358,
+    "total_tokens": 638,
+    "total_time": 0.599915522,
+    "completion_tokens_details": {
+      "reasoning_tokens": 67
+    }
+  },
+  "seconds": 1.33,
+  "created_at": "2026-11-18T14:32:50+00:00"
+}

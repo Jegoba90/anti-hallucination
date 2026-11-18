@@ -1,0 +1,26 @@
+{
+  "dataset": "m025",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for shareholders at Ashgrove on financial results for Q2 2026, based on this data.\n\nCompany: Ashgrove\nPeriod: Q2 2026\n\nData:\n- Revenue: 238.9 million USD\n- Cash and equivalents: 1.4 billion USD\n- Cash and equivalents in the previous quarter: 1.9 billion USD\n- Change in cash and equivalents vs the previous quarter: -29.5%\n- Employees: 13,805 employees\n- Change in employees vs the previous quarter: -4.5%\n- Operating margin: -0.7%\n- Operating margin in the previous quarter: -0.2%\n- Change in operating margin vs the previous quarter, in percentage points: -0.5 pp\n- Verdict on the change in employees vs the previous quarter: a mild drop\n\nNotes for the report:\n[s1] Press release, \"New plant\": Ashgrove announced a USD 180 million investment in a plant in Leeds, due to start operating in 2027.\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "Ashgrove reported Q2 2026 revenue of $238.9 million, reflecting stable top‑line performance. However, cash and equivalents fell sharply to $1.4 billion, a 29.5% decline from the prior quarter’s $1.9 billion. The reduction in cash coincides with a 4.5% decrease in workforce, now 13,805 employees, which we characterize as a mild drop. Operating margin deteriorated to –0.7%, down 0.5 percentage points from –0.2% in the previous quarter. The company is investing $180 million in a new manufacturing plant in Leeds, scheduled to begin operations in 2027, which is expected to drive future growth. While short‑term liquidity and profitability pressures are evident, the strategic capital allocation aims to strengthen long‑term earnings potential. We remain confident that the planned Leeds facility will offset current challenges and deliver value to shareholders in the coming years.",
+  "text": "Ashgrove reported Q2 2026 revenue of $238.9 million, reflecting stable top‑line performance. However, cash and equivalents fell sharply to $1.4 billion, a 29.5% decline from the prior quarter’s $1.9 billion. The reduction in cash coincides with a 4.5% decrease in workforce, now 13,805 employees, which we characterize as a mild drop. Operating margin deteriorated to –0.7%, down 0.5 percentage points from –0.2% in the previous quarter. The company is investing $180 million in a new manufacturing plant in Leeds, scheduled to begin operations in 2027, which is expected to drive future growth. While short‑term liquidity and profitability pressures are evident, the strategic capital allocation aims to strengthen long‑term earnings potential. We remain confident that the planned Leeds facility will offset current challenges and deliver value to shareholders in the coming years.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.309721909,
+    "prompt_tokens": 322,
+    "prompt_time": 0.016036486,
+    "completion_tokens": 513,
+    "completion_time": 1.06687091,
+    "total_tokens": 835,
+    "total_time": 1.082907396,
+    "completion_tokens_details": {
+      "reasoning_tokens": 304
+    }
+  },
+  "seconds": 1.48,
+  "created_at": "2026-11-18T14:34:33+00:00"
+}

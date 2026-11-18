@@ -1,0 +1,26 @@
+{
+  "dataset": "m048",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the leadership team at Tidewell on business metrics for April 2026, based on this data.\n\nCompany: Tidewell\nPeriod: April 2026\n\nData:\n- Customer acquisition cost (CAC): 2,452 GBP\n- Customer acquisition cost (CAC) in the previous month: 2,374 GBP\n- Change in customer acquisition cost (CAC) vs the previous month: 3.3%\n- Trial-to-paid conversion: 23.4%\n- Active users: 147,642 users\n- Active users in the previous month: 151,381 users\n- Change in active users vs the previous month: -2.5%\n- Monthly churn: 2.2%\n- Change in monthly churn vs the previous month, in percentage points: 0.8 pp\n- Monthly recurring revenue (MRR): 14,079 GBP\n- Monthly recurring revenue (MRR) in the previous month: 12,887 GBP\n- Change in monthly recurring revenue (MRR) vs the previous month: 9.2%\n- Net revenue retention (NRR): 120%\n- Change in net revenue retention (NRR) vs the previous month, in percentage points: -1.8 pp\n- Verdict on the change in net revenue retention (NRR) vs the previous month, in percentage points: a mild drop\n\nNotes for the report:\n[s1] Customer success note, \"Renewal\": Avalon Schools renewed its contract for 2 years and added 68 seats.\n[s2] Release notes, \"Version 8.7.4\": Version 8.7.4, released on October 16, added single sign-on and a new usage dashboard.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "In April 2026, Tidewell’s customer acquisition cost rose to £2,452, a 3.3% increase from the previous month. The trial‑to‑paid conversion rate held steady at 23.4%. Active users slipped to 147,642, down 2.5% month‑over‑month, while monthly churn rose to 2.2%, an increase of 0.8 percentage points. Monthly recurring revenue grew to £14,079, a 9.2% gain over March. Net revenue retention remained strong at 120% despite a mild 1.8‑point decline. Avalon Schools renewed its contract for two years and added 68 seats, and the October 16 release of version 8.7.4 introduced single sign‑on and a new usage dashboard.",
+  "text": "In April 2026, Tidewell’s customer acquisition cost rose to £2,452, a 3.3% increase from the previous month. The trial‑to‑paid conversion rate held steady at 23.4%. Active users slipped to 147,642, down 2.5% month‑over‑month, while monthly churn rose to 2.2%, an increase of 0.8 percentage points. Monthly recurring revenue grew to £14,079, a 9.2% gain over March. Net revenue retention remained strong at 120% despite a mild 1.8‑point decline. Avalon Schools renewed its contract for two years and added 68 seats, and the October 16 release of version 8.7.4 introduced single sign‑on and a new usage dashboard.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.311460897,
+    "prompt_tokens": 482,
+    "prompt_time": 0.026054137,
+    "completion_tokens": 459,
+    "completion_time": 0.9572996,
+    "total_tokens": 941,
+    "total_time": 0.983353737,
+    "completion_tokens_details": {
+      "reasoning_tokens": 283
+    }
+  },
+  "seconds": 1.4,
+  "created_at": "2026-11-18T14:37:16+00:00"
+}

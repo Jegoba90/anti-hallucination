@@ -1,0 +1,26 @@
+{
+  "dataset": "p12",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para el directorio de Arkadia sobre los resultados financieros en el segundo trimestre de 2026, a partir de estos datos.\n\nEmpresa: Arkadia\nPeríodo: el segundo trimestre de 2026\n\nDatos:\n- Caja y equivalentes: 90,6 millones USD\n- Caja y equivalentes en el trimestre anterior: 89,9 millones USD\n- Variación de la caja y equivalentes respecto del trimestre anterior: 0,8 %\n- Ingresos: 4,2 mil millones USD\n- Ingresos en el trimestre anterior: 5,4 mil millones USD\n- Variación de los ingresos respecto del trimestre anterior: -22,8 %\n- Empleados: 3.857 empleados\n- Empleados en el trimestre anterior: 3.835 empleados\n- Variación de los empleados respecto del trimestre anterior: 0,6 %\n- Margen operativo: 3,2 %\n- Deuda neta: 3,3 mil millones USD\n- Deuda neta en el trimestre anterior: 3,3 mil millones USD\n- Variación de la deuda neta respecto del trimestre anterior: -2,1 %\n- EBITDA: 908,6 millones USD\n- Variación del EBITDA respecto del trimestre anterior: -2,6 %\n- Veredicto sobre la variación de los empleados respecto del trimestre anterior: estabilidad\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "Durante el segundo trimestre de 2026, Arkadia reportó caja y equivalentes de 90,6 millones USD, lo que representa un incremento del 0,8 % respecto al trimestre anterior. Los ingresos descendieron a 4,2 mil millones USD, una caída del 22,8 % frente al periodo previo. El número de empleados alcanzó los 3 857, con una variación positiva del 0,6 % y se mantiene en una situación de estabilidad. El margen operativo se situó en 3,2 %. La deuda neta permaneció en torno a los 3,3 mil millones USD, reduciéndose un 2,1 % respecto al trimestre anterior. Finalmente, el EBITDA fue de 908,6 millones USD, lo que equivale a una disminución del 2,6 % comparado con el trimestre previo.",
+  "text": "Durante el segundo trimestre de 2026, Arkadia reportó caja y equivalentes de 90,6 millones USD, lo que representa un incremento del 0,8 % respecto al trimestre anterior. Los ingresos descendieron a 4,2 mil millones USD, una caída del 22,8 % frente al periodo previo. El número de empleados alcanzó los 3 857, con una variación positiva del 0,6 % y se mantiene en una situación de estabilidad. El margen operativo se situó en 3,2 %. La deuda neta permaneció en torno a los 3,3 mil millones USD, reduciéndose un 2,1 % respecto al trimestre anterior. Finalmente, el EBITDA fue de 908,6 millones USD, lo que equivale a una disminución del 2,6 % comparado con el trimestre previo.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.213951145,
+    "prompt_tokens": 425,
+    "prompt_time": 0.020489176,
+    "completion_tokens": 466,
+    "completion_time": 0.981824272,
+    "total_tokens": 891,
+    "total_time": 1.002313448,
+    "completion_tokens_details": {
+      "reasoning_tokens": 268
+    }
+  },
+  "seconds": 1.27,
+  "created_at": "2026-11-18T14:21:45+00:00"
+}

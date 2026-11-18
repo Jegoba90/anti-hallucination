@@ -1,0 +1,26 @@
+{
+  "dataset": "m010",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for management at Copperline on sales results for Q2 2026, based on this data.\n\nCompany: Copperline\nPeriod: Q2 2026\n\nData:\n- Average order value: 48.08 USD\n- Return rate: 10.4%\n- Return rate in the previous quarter: 11.0%\n- Change in return rate vs the previous quarter, in percentage points: -0.6 pp\n- New customers: 2,215 customers\n- Change in new customers vs the previous quarter: 24.0%\n- Web conversion rate: 4.8%\n- Web conversion rate in the previous quarter: 5.0%\n- Change in web conversion rate vs the previous quarter, in percentage points: -0.2 pp\n- Online orders: 12,410 orders\n- Online orders in the previous quarter: 12,653 orders\n- Change in online orders vs the previous quarter: -1.9%\n- Verdict on the change in new customers vs the previous quarter: strong growth\n\nNotes for the report:\n[s1] Logistics report, \"Delivery delays\": For 4 days, deliveries to Portland were delayed by a problem with the carrier Swiftway.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "Copperline’s Q2 2026 average order value was $48.08, providing a solid revenue base despite modest fluctuations elsewhere. The return rate improved to 10.4% from 11.0% in the prior quarter, a decline of 0.6 percentage points. New‑customer acquisition rose to 2,215, marking a 24 percent increase that the data describes as strong growth. Web conversion slipped to 4.8% from 5.0%, a drop of 0.2 percentage points, and online orders fell to 12,410, down 1.9 percent from 12,653. The higher influx of new customers and stable average order value helped offset the modest declines in conversion and order volume. Overall, sales performance remained resilient, though the slight downward trends warrant monitoring. A logistics issue impacted deliveries to Portland, where a carrier problem with Swiftway caused a four‑day delay.",
+  "text": "Copperline’s Q2 2026 average order value was $48.08, providing a solid revenue base despite modest fluctuations elsewhere. The return rate improved to 10.4% from 11.0% in the prior quarter, a decline of 0.6 percentage points. New‑customer acquisition rose to 2,215, marking a 24 percent increase that the data describes as strong growth. Web conversion slipped to 4.8% from 5.0%, a drop of 0.2 percentage points, and online orders fell to 12,410, down 1.9 percent from 12,653. The higher influx of new customers and stable average order value helped offset the modest declines in conversion and order volume. Overall, sales performance remained resilient, though the slight downward trends warrant monitoring. A logistics issue impacted deliveries to Portland, where a carrier problem with Swiftway caused a four‑day delay.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.310233653,
+    "prompt_tokens": 380,
+    "prompt_time": 0.018694291,
+    "completion_tokens": 514,
+    "completion_time": 1.071044246,
+    "total_tokens": 894,
+    "total_time": 1.089738537,
+    "completion_tokens_details": {
+      "reasoning_tokens": 312
+    }
+  },
+  "seconds": 1.46,
+  "created_at": "2026-11-18T14:32:51+00:00"
+}

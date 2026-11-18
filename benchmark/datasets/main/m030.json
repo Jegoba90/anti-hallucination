@@ -1,0 +1,211 @@
+{
+  "id": "m030",
+  "split": "test",
+  "domain": "support",
+  "locale": "es",
+  "brief": {
+    "company": "Quillon",
+    "audience": "el equipo de soporte",
+    "topic": "el desempeño del área de soporte",
+    "period": "la semana del 15 al 21 de octubre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "pendientes",
+        "value": 10,
+        "unit": "tickets",
+        "label": "tickets pendientes",
+        "subject": [
+          "pendientes",
+          "backlog"
+        ]
+      },
+      {
+        "name": "pendientes_anterior",
+        "value": 16,
+        "unit": "tickets",
+        "label": "tickets pendientes en la semana anterior",
+        "subject": [
+          "pendientes",
+          "backlog"
+        ]
+      },
+      {
+        "name": "variacion_pendientes",
+        "compute": "percent_change",
+        "from": "pendientes_anterior",
+        "to": "pendientes",
+        "label": "variación de los tickets pendientes respecto de la semana anterior",
+        "decimals": 1
+      },
+      {
+        "name": "tickets_resueltos",
+        "value": 7114,
+        "unit": "tickets",
+        "label": "tickets resueltos",
+        "subject": [
+          "tickets resueltos",
+          "resueltos"
+        ]
+      },
+      {
+        "name": "escalamientos",
+        "value": 25,
+        "unit": "",
+        "label": "escalamientos",
+        "subject": [
+          "escalamientos"
+        ]
+      },
+      {
+        "name": "variacion_escalamientos",
+        "value": 24.6,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los escalamientos respecto de la semana anterior",
+        "subject": [
+          "escalamientos"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "csat",
+        "value": 76,
+        "unit": "%",
+        "label": "satisfacción del cliente (CSAT)",
+        "subject": [
+          "satisfacción",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_anterior",
+        "value": 75,
+        "unit": "%",
+        "label": "satisfacción del cliente (CSAT) en la semana anterior",
+        "subject": [
+          "satisfacción",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "variacion_csat",
+        "compute": "difference",
+        "from": "csat_anterior",
+        "to": "csat",
+        "label": "variación de la satisfacción del cliente (CSAT) respecto de la semana anterior, en puntos",
+        "decimals": 0
+      },
+      {
+        "name": "tiempo_resolucion",
+        "value": 74.4,
+        "unit": "h",
+        "label": "tiempo medio de resolución",
+        "subject": [
+          "resolución"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tiempo_resolucion_anterior",
+        "value": 68.2,
+        "unit": "h",
+        "label": "tiempo medio de resolución en la semana anterior",
+        "subject": [
+          "resolución"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_tiempo_resolucion",
+        "compute": "percent_change",
+        "from": "tiempo_resolucion_anterior",
+        "to": "tiempo_resolucion",
+        "label": "variación del tiempo medio de resolución respecto de la semana anterior",
+        "decimals": 1
+      },
+      {
+        "name": "primera_respuesta",
+        "value": 18.2,
+        "unit": "h",
+        "label": "tiempo de primera respuesta",
+        "subject": [
+          "primera respuesta",
+          "tiempo de respuesta"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "primera_respuesta_anterior",
+        "value": 16.6,
+        "unit": "h",
+        "label": "tiempo de primera respuesta en la semana anterior",
+        "subject": [
+          "primera respuesta",
+          "tiempo de respuesta"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_primera_respuesta",
+        "compute": "percent_change",
+        "from": "primera_respuesta_anterior",
+        "to": "primera_respuesta",
+        "label": "variación del tiempo de primera respuesta respecto de la semana anterior",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "la semana del 15 al 21 de octubre de 2026"
+      },
+      {
+        "name": "tendencia_escalamientos",
+        "from": "variacion_escalamientos",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Quillon"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 8825",
+        "title": "Correos demorados",
+        "text": "Los correos de confirmación llegan con hasta 6 horas de demora porque el proveedor de envíos limitó el tráfico. Se pasó el tráfico a un proveedor alternativo."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 7580",
+        "title": "Facturas con el impuesto equivocado",
+        "text": "3 clientes empresa de Mendoza recibieron facturas con el impuesto equivocado. Finanzas está emitiendo las facturas de nuevo."
+      }
+    ]
+  }
+}

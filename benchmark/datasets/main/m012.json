@@ -1,0 +1,182 @@
+{
+  "id": "m012",
+  "split": "dev",
+  "domain": "saas",
+  "locale": "es",
+  "brief": {
+    "company": "Pampa Digital",
+    "audience": "los inversores",
+    "topic": "las métricas del negocio",
+    "period": "septiembre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "mrr",
+        "value": 8234,
+        "unit": "USD",
+        "label": "ingreso mensual recurrente (MRR)",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ]
+      },
+      {
+        "name": "mrr_anterior",
+        "value": 8522,
+        "unit": "USD",
+        "label": "ingreso mensual recurrente (MRR) en el mes anterior",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ]
+      },
+      {
+        "name": "variacion_mrr",
+        "compute": "percent_change",
+        "from": "mrr_anterior",
+        "to": "mrr",
+        "label": "variación del ingreso mensual recurrente (MRR) respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 105,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR)",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "nrr_anterior",
+        "value": 100,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR) en el mes anterior",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "variacion_nrr",
+        "compute": "difference",
+        "from": "nrr_anterior",
+        "to": "nrr",
+        "label": "variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos",
+        "decimals": 0
+      },
+      {
+        "name": "clientes_nuevos",
+        "value": 6,
+        "unit": "clientes",
+        "label": "clientes nuevos",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "cac",
+        "value": 184,
+        "unit": "USD",
+        "label": "costo de adquisición de clientes (CAC)",
+        "subject": [
+          "CAC",
+          "adquisición"
+        ]
+      },
+      {
+        "name": "cac_anterior",
+        "value": 178,
+        "unit": "USD",
+        "label": "costo de adquisición de clientes (CAC) en el mes anterior",
+        "subject": [
+          "CAC",
+          "adquisición"
+        ]
+      },
+      {
+        "name": "variacion_cac",
+        "compute": "percent_change",
+        "from": "cac_anterior",
+        "to": "cac",
+        "label": "variación del costo de adquisición de clientes (CAC) respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "conversion_prueba",
+        "value": 4.1,
+        "unit": "%",
+        "label": "conversión de prueba a pago",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "conversion_prueba_anterior",
+        "value": 6.1,
+        "unit": "%",
+        "label": "conversión de prueba a pago en el mes anterior",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_conversion_prueba",
+        "compute": "difference",
+        "from": "conversion_prueba_anterior",
+        "to": "conversion_prueba",
+        "label": "variación de la conversión de prueba a pago respecto del mes anterior, en puntos",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "septiembre de 2026"
+      },
+      {
+        "name": "tendencia_nrr",
+        "from": "variacion_nrr",
+        "thresholds": [
+          [
+            -2,
+            "caída fuerte"
+          ],
+          [
+            -0.3,
+            "caída leve"
+          ],
+          [
+            0.3,
+            "estabilidad"
+          ],
+          [
+            2,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Pampa Digital"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Nota de éxito del cliente",
+        "title": "Renovación",
+        "text": "Logística Austral renovó su contrato por 2 años y sumó 340 licencias."
+      }
+    ]
+  }
+}

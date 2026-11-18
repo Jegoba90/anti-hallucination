@@ -1,0 +1,165 @@
+{
+  "id": "p02",
+  "split": "pilot",
+  "domain": "saas",
+  "locale": "es",
+  "brief": {
+    "company": "Tallo",
+    "audience": "los inversores",
+    "topic": "las métricas del negocio",
+    "period": "enero de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "conversion_prueba",
+        "value": 4.0,
+        "unit": "%",
+        "label": "conversión de prueba a pago",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "conversion_prueba_anterior",
+        "value": 5.5,
+        "unit": "%",
+        "label": "conversión de prueba a pago en el mes anterior",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_conversion_prueba",
+        "compute": "difference",
+        "from": "conversion_prueba_anterior",
+        "to": "conversion_prueba",
+        "label": "variación de la conversión de prueba a pago respecto del mes anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 101,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR)",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "nrr_anterior",
+        "value": 100,
+        "unit": "%",
+        "label": "retención neta de ingresos (NRR) en el mes anterior",
+        "subject": [
+          "NRR",
+          "retención"
+        ]
+      },
+      {
+        "name": "variacion_nrr",
+        "compute": "difference",
+        "from": "nrr_anterior",
+        "to": "nrr",
+        "label": "variación de la retención neta de ingresos (NRR) respecto del mes anterior, en puntos",
+        "decimals": 0
+      },
+      {
+        "name": "clientes_nuevos",
+        "value": 579,
+        "unit": "clientes",
+        "label": "clientes nuevos",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "variacion_clientes_nuevos",
+        "value": -8.9,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los clientes nuevos respecto del mes anterior",
+        "subject": [
+          "clientes"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "cac",
+        "value": 689,
+        "unit": "EUR",
+        "label": "costo de adquisición de clientes (CAC)",
+        "subject": [
+          "CAC",
+          "adquisición"
+        ]
+      },
+      {
+        "name": "usuarios_activos",
+        "value": 83662,
+        "unit": "usuarios",
+        "label": "usuarios activos",
+        "subject": [
+          "usuarios"
+        ]
+      },
+      {
+        "name": "usuarios_activos_anterior",
+        "value": 78642,
+        "unit": "usuarios",
+        "label": "usuarios activos en el mes anterior",
+        "subject": [
+          "usuarios"
+        ]
+      },
+      {
+        "name": "variacion_usuarios_activos",
+        "compute": "percent_change",
+        "from": "usuarios_activos_anterior",
+        "to": "usuarios_activos",
+        "label": "variación de los usuarios activos respecto del mes anterior",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "enero de 2026"
+      },
+      {
+        "name": "tendencia_nrr",
+        "from": "variacion_nrr",
+        "thresholds": [
+          [
+            -2,
+            "caída fuerte"
+          ],
+          [
+            -0.3,
+            "caída leve"
+          ],
+          [
+            0.3,
+            "estabilidad"
+          ],
+          [
+            2,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Tallo"
+    ]
+  }
+}

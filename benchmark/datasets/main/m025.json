@@ -1,0 +1,150 @@
+{
+  "id": "m025",
+  "split": "test",
+  "domain": "finance",
+  "locale": "en",
+  "brief": {
+    "company": "Ashgrove",
+    "audience": "shareholders",
+    "topic": "financial results",
+    "period": "Q2 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "revenue",
+        "value": 238928564,
+        "unit": "USD",
+        "label": "revenue",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash",
+        "value": 1366123149,
+        "unit": "USD",
+        "label": "cash and equivalents",
+        "subject": [
+          "cash"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash_previous",
+        "value": 1938478539,
+        "unit": "USD",
+        "label": "cash and equivalents in the previous quarter",
+        "subject": [
+          "cash"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash_change",
+        "compute": "percent_change",
+        "from": "cash_previous",
+        "to": "cash",
+        "label": "change in cash and equivalents vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "employees",
+        "value": 13805,
+        "unit": "employees",
+        "label": "employees",
+        "subject": [
+          "employees",
+          "headcount"
+        ]
+      },
+      {
+        "name": "employees_change",
+        "value": -4.5,
+        "unit": "%",
+        "change": true,
+        "label": "change in employees vs the previous quarter",
+        "subject": [
+          "employees",
+          "headcount"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin",
+        "value": -0.7,
+        "unit": "%",
+        "label": "operating margin",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_previous",
+        "value": -0.2,
+        "unit": "%",
+        "label": "operating margin in the previous quarter",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_change",
+        "compute": "difference",
+        "from": "operating_margin_previous",
+        "to": "operating_margin",
+        "label": "change in operating margin vs the previous quarter, in percentage points",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "Q2 2026"
+      },
+      {
+        "name": "employees_trend",
+        "from": "employees_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Ashgrove"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Press release",
+        "title": "New plant",
+        "text": "Ashgrove announced a USD 180 million investment in a plant in Leeds, due to start operating in 2027."
+      }
+    ]
+  }
+}

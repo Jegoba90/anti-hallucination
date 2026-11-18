@@ -1,0 +1,170 @@
+{
+  "id": "m070",
+  "split": "test",
+  "domain": "support",
+  "locale": "en",
+  "brief": {
+    "company": "Lanternly",
+    "audience": "the support team",
+    "topic": "support performance",
+    "period": "the week of November 16–22, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "resolution_time",
+        "value": 17.8,
+        "unit": "h",
+        "label": "average resolution time",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time_previous",
+        "value": 19.8,
+        "unit": "h",
+        "label": "average resolution time in the previous week",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time_change",
+        "compute": "percent_change",
+        "from": "resolution_time_previous",
+        "to": "resolution_time",
+        "label": "change in average resolution time vs the previous week",
+        "decimals": 1
+      },
+      {
+        "name": "csat",
+        "value": 70,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT)",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_previous",
+        "value": 71,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT) in the previous week",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_change",
+        "compute": "difference",
+        "from": "csat_previous",
+        "to": "csat",
+        "label": "change in customer satisfaction (CSAT) vs the previous week, in percentage points",
+        "decimals": 0
+      },
+      {
+        "name": "escalations",
+        "value": 7,
+        "unit": "",
+        "label": "escalations",
+        "subject": [
+          "escalations"
+        ]
+      },
+      {
+        "name": "escalations_change",
+        "value": 1.4,
+        "unit": "%",
+        "change": true,
+        "label": "change in escalations vs the previous week",
+        "subject": [
+          "escalations"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tickets_received",
+        "value": 18541,
+        "unit": "tickets",
+        "label": "tickets received",
+        "subject": [
+          "tickets received",
+          "received"
+        ]
+      },
+      {
+        "name": "tickets_resolved",
+        "value": 2275,
+        "unit": "tickets",
+        "label": "tickets resolved",
+        "subject": [
+          "tickets resolved",
+          "resolved"
+        ]
+      },
+      {
+        "name": "first_response",
+        "value": 1.7,
+        "unit": "h",
+        "label": "first response time",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_previous",
+        "value": 1.6,
+        "unit": "h",
+        "label": "first response time in the previous week",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_change",
+        "compute": "percent_change",
+        "from": "first_response_previous",
+        "to": "first_response",
+        "label": "change in first response time vs the previous week",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "the week of November 16–22, 2026"
+      }
+    ],
+    "known_names": [
+      "Lanternly"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 6354",
+        "title": "Invoices show the wrong tax",
+        "text": "7 business customers in Tampa received invoices with the wrong tax. Finance is reissuing them."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 4008",
+        "title": "Card payments fail",
+        "text": "Since Monday, 29 customers in Tampa report that card payments fail with error 502. The payments team rolled back release 5.11.2 on Tuesday and the failures stopped."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "dataset": "m038",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for management at Fenwick Data on sales results for Q3 2026, based on this data.\n\nCompany: Fenwick Data\nPeriod: Q3 2026\n\nData:\n- Web conversion rate: 1.1%\n- Web conversion rate in the previous quarter: 1.0%\n- Change in web conversion rate vs the previous quarter, in percentage points: 0.1 pp\n- Average order value: 272.45 EUR\n- Average order value in the previous quarter: 273.46 EUR\n- Change in average order value vs the previous quarter: -0.4%\n- Revenue: 23.4 million EUR\n- Revenue in the previous quarter: 27.1 million EUR\n- Change in revenue vs the previous quarter: -13.4%\n- New customers: 3,554 customers\n- New customers in the previous quarter: 3,790 customers\n- Change in new customers vs the previous quarter: -6.2%\n- Return rate: 7.3%\n- Units sold: 3,912 units\n- Units sold in the previous quarter: 3,696 units\n- Change in units sold vs the previous quarter: 5.8%\n- Verdict on the change in average order value vs the previous quarter: stability\n\nNotes for the report:\n[s1] Logistics report, \"Delivery delays\": For 4 days, deliveries to Leeds were delayed by a problem with the carrier Parcelon.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "In Q3 2026 Fenwick Data generated revenue of €23.4 million, a 13.4 % decline from the €27.1 million recorded in the prior quarter. The web conversion rate improved modestly to 1.1 %, up 0.1 percentage points from 1.0 % in Q2. Although the average order value slipped 0.4 % to €272.45, the change is regarded as stable. New customers fell 6.2 % to 3,554, while units sold rose 5.8 % to 3,912, partially offsetting the revenue shortfall. The overall return rate stood at 7.3 %. Additionally, deliveries to Leeds experienced a four‑day delay due to an issue with the carrier Parcelon.",
+  "text": "In Q3 2026 Fenwick Data generated revenue of €23.4 million, a 13.4 % decline from the €27.1 million recorded in the prior quarter. The web conversion rate improved modestly to 1.1 %, up 0.1 percentage points from 1.0 % in Q2. Although the average order value slipped 0.4 % to €272.45, the change is regarded as stable. New customers fell 6.2 % to 3,554, while units sold rose 5.8 % to 3,912, partially offsetting the revenue shortfall. The overall return rate stood at 7.3 %. Additionally, deliveries to Leeds experienced a four‑day delay due to an issue with the carrier Parcelon.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.243696021,
+    "prompt_tokens": 432,
+    "prompt_time": 0.021817458,
+    "completion_tokens": 450,
+    "completion_time": 0.954300014,
+    "total_tokens": 882,
+    "total_time": 0.976117472,
+    "completion_tokens_details": {
+      "reasoning_tokens": 271
+    }
+  },
+  "seconds": 1.28,
+  "created_at": "2026-11-18T14:36:03+00:00"
+}

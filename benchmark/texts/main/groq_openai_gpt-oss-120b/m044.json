@@ -1,0 +1,26 @@
+{
+  "dataset": "m044",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the board at Tidewell on financial results for Q2 2026, based on this data.\n\nCompany: Tidewell\nPeriod: Q2 2026\n\nData:\n- EBITDA: 1 billion GBP\n- Change in EBITDA vs the previous quarter: 12.8%\n- Cash and equivalents: 625.1 million GBP\n- Cash and equivalents in the previous quarter: 460.7 million GBP\n- Change in cash and equivalents vs the previous quarter: 35.7%\n- Revenue: 260.9 million GBP\n- Revenue in the previous quarter: 245.2 million GBP\n- Change in revenue vs the previous quarter: 6.4%\n- Operating margin: 20.6%\n- Operating margin in the previous quarter: 18.0%\n- Change in operating margin vs the previous quarter, in percentage points: 2.6 pp\n- Net debt: 88.6 million GBP\n- Net debt in the previous quarter: 94.7 million GBP\n- Change in net debt vs the previous quarter: -6.4%\n\nNotes for the report:\n[s1] Press release, \"New plant\": Tidewell announced a USD 120 million investment in a plant in Leeds, due to start operating in 2028.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "Tidewell recorded EBITDA of £1.0 billion in Q2 2026, representing a 12.8% increase from the previous quarter. Revenue rose to £260.9 million, up 6.4% on a quarter‑over‑quarter basis. The operating margin expanded to 20.6%, an improvement of 2.6 percentage points over the prior quarter’s 18.0%. Cash and equivalents grew to £625.1 million, a 35.7% rise from £460.7 million in the preceding quarter. Net debt fell to £88.6 million, down 6.4% from £94.7 million. The company also announced a USD 120 million investment in a new plant in Leeds, slated to commence operations in 2028. Overall, the quarter’s results demonstrate stronger profitability, enhanced liquidity and a lower debt burden, supporting Tidewell’s strategic outlook.",
+  "text": "Tidewell recorded EBITDA of £1.0 billion in Q2 2026, representing a 12.8% increase from the previous quarter. Revenue rose to £260.9 million, up 6.4% on a quarter‑over‑quarter basis. The operating margin expanded to 20.6%, an improvement of 2.6 percentage points over the prior quarter’s 18.0%. Cash and equivalents grew to £625.1 million, a 35.7% rise from £460.7 million in the preceding quarter. Net debt fell to £88.6 million, down 6.4% from £94.7 million. The company also announced a USD 120 million investment in a new plant in Leeds, slated to commence operations in 2028. Overall, the quarter’s results demonstrate stronger profitability, enhanced liquidity and a lower debt burden, supporting Tidewell’s strategic outlook.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.268242598,
+    "prompt_tokens": 395,
+    "prompt_time": 0.054521076,
+    "completion_tokens": 726,
+    "completion_time": 1.538483121,
+    "total_tokens": 1121,
+    "total_time": 1.593004197,
+    "completion_tokens_details": {
+      "reasoning_tokens": 522
+    }
+  },
+  "seconds": 1.96,
+  "created_at": "2026-11-18T14:36:48+00:00"
+}

@@ -1,0 +1,23 @@
+{
+  "dataset": "p08",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para el equipo comercial de Corvina Labs sobre los resultados de ventas en marzo de 2026, a partir de estos datos.\n\nEmpresa: Corvina Labs\nPeríodo: marzo de 2026\n\nDatos:\n- Ticket promedio: 15,14 USD\n- Ticket promedio en el mes anterior: 17,08 USD\n- Variación del ticket promedio respecto del mes anterior: -11,4 %\n- Tasa de devoluciones: 8,2 %\n- Tasa de devoluciones en el mes anterior: 8,5 %\n- Variación de la tasa de devoluciones respecto del mes anterior, en puntos: -0,3 pp\n- Pedidos online: 47.992 pedidos\n- Pedidos online en el mes anterior: 48.748 pedidos\n- Variación de los pedidos online respecto del mes anterior: -1,6 %\n- Facturación: 5,5 millones USD\n- Clientes nuevos: 61 clientes\n- Variación de los clientes nuevos respecto del mes anterior: 6,1 %\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "Los resultados de Corvina Labs en marzo de 2026 muestran una facturación total de 5,5 millones de dólares, respaldada por el volumen de 47.992 pedidos online. Sin embargo, se observa una ligera contracción del 1,6 % en el número de pedidos respecto al mes anterior, lo que refleja un entorno de consumo algo menos dinámico. Este descenso en el volumen no fue suficiente para compensar la caída significativa en el ticket promedio, que bajó un 11,4 % al situarse en 15,14 dólares frente a los 17,08 dólares de febrero. Como contrapartida positiva, el equipo comercial logró captar 61 clientes nuevos, lo que representa un crecimiento del 6,1 % sobre la base anterior, señalando una estrategia de adquisición efectiva. Por su parte, la tasa de devoluciones mejoró ligeramente al situarse en el 8,2 %, bajando 0,3 puntos porcentuales respecto al mes previo, lo que indica una mejor satisfacción o control postventa. En conjunto, aunque los indicadores de recaudación y volumen mostraron un retroceso, la expansión de la cartera de clientes ofrece una base sólida para recuperar el impulso comercial en los próximos meses. Se recomienda al equipo centrarse en estrategias de venta cruzada y fidelización para revertir la caída del ticket promedio y capitalizar el nuevo crecimiento en clientes.",
+  "text": "Los resultados de Corvina Labs en marzo de 2026 muestran una facturación total de 5,5 millones de dólares, respaldada por el volumen de 47.992 pedidos online. Sin embargo, se observa una ligera contracción del 1,6 % en el número de pedidos respecto al mes anterior, lo que refleja un entorno de consumo algo menos dinámico. Este descenso en el volumen no fue suficiente para compensar la caída significativa en el ticket promedio, que bajó un 11,4 % al situarse en 15,14 dólares frente a los 17,08 dólares de febrero. Como contrapartida positiva, el equipo comercial logró captar 61 clientes nuevos, lo que representa un crecimiento del 6,1 % sobre la base anterior, señalando una estrategia de adquisición efectiva. Por su parte, la tasa de devoluciones mejoró ligeramente al situarse en el 8,2 %, bajando 0,3 puntos porcentuales respecto al mes previo, lo que indica una mejor satisfacción o control postventa. En conjunto, aunque los indicadores de recaudación y volumen mostraron un retroceso, la expansión de la cartera de clientes ofrece una base sólida para recuperar el impulso comercial en los próximos meses. Se recomienda al equipo centrarse en estrategias de venta cruzada y fidelización para revertir la caída del ticket promedio y capitalizar el nuevo crecimiento en clientes.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.202401964,
+    "prompt_tokens": 302,
+    "prompt_time": 0.022719549,
+    "completion_tokens": 299,
+    "completion_time": 0.59103458,
+    "total_tokens": 601,
+    "total_time": 0.613754129
+  },
+  "seconds": 0.9,
+  "created_at": "2026-11-18T14:23:45+00:00"
+}

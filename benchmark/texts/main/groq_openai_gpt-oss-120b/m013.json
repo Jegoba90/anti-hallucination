@@ -1,0 +1,26 @@
+{
+  "dataset": "m013",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para la gerencia de operaciones de Mirlo sobre el desempeño del área de soporte en enero de 2026, a partir de estos datos.\n\nEmpresa: Mirlo\nPeríodo: enero de 2026\n\nDatos:\n- Tickets resueltos: 4.537 tickets\n- Tickets resueltos en el mes anterior: 4.186 tickets\n- Variación de los tickets resueltos respecto del mes anterior: 8,4 %\n- Tiempo medio de resolución: 29,8 h\n- Tiempo medio de resolución en el mes anterior: 27,6 h\n- Variación del tiempo medio de resolución respecto del mes anterior: 8,0 %\n- Escalamientos: 14\n- Variación de los escalamientos respecto del mes anterior: -19,9 %\n- Tiempo de primera respuesta: 6,4 h\n- Tiempo de primera respuesta en el mes anterior: 6,3 h\n- Variación del tiempo de primera respuesta respecto del mes anterior: 1,6 %\n- Satisfacción del cliente (CSAT): 80 %\n- Variación de la satisfacción del cliente (CSAT) respecto del mes anterior, en puntos: 1,8 pp\n\nNotas para el informe:\n[s1] Ticket 9625, «Facturas con el impuesto equivocado»: 8 clientes empresa de Montevideo recibieron facturas con el impuesto equivocado. Finanzas está emitiendo las facturas de nuevo.\n[s2] Ticket 4755, «Falla el pago con tarjeta»: Desde el lunes, 9 clientes de Montevideo reportan que el pago con tarjeta falla con el error 409. El equipo de pagos revirtió la versión 3.10.5 el martes y las fallas se detuvieron.\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En enero de 2026 el área de soporte resolvió 4 537 tickets, lo que representa un incremento del 8,4 % respecto al mes anterior, aunque el tiempo medio de resolución se alargó a 29,8 horas, un aumento del 8,0 % frente a las 27,6 horas del diciembre. Los escalamientos descendieron a 14, una caída del 19,9 %, lo que indica una mejora en la capacidad de resolución en primera instancia; sin embargo, el tiempo de primera respuesta se dilató ligeramente a 6,4 horas, un 1,6 % más que en el periodo previo. La satisfacción del cliente (CSAT) alcanzó el 80 %, mejorando en 1,8 puntos porcentuales con respecto al mes anterior, lo que sugiere que los usuarios perciben positivamente los esfuerzos del equipo pese a los mayores tiempos de cierre. Entre los incidentes destacados, el ticket 9625 sobre facturas con el impuesto equivocado afectó a ocho clientes corporativos de Montevideo y está siendo corregido por Finanzas mediante la emisión de nuevas facturas. Asimismo, el ticket 4755 reportó fallas en pagos con tarjeta para nueve clientes de Montevideo; el equipo de pagos revirtió la versión 3.10.5 el martes y logró detener el error 409. En conjunto, los resultados indican que, aunque la eficiencia operativa necesita ajustes para reducir los tiempos de resolución, la disminución de escalamientos y la mejora en CSAT demuestran una tendencia positiva en la calidad del soporte.",
+  "text": "En enero de 2026 el área de soporte resolvió 4 537 tickets, lo que representa un incremento del 8,4 % respecto al mes anterior, aunque el tiempo medio de resolución se alargó a 29,8 horas, un aumento del 8,0 % frente a las 27,6 horas del diciembre. Los escalamientos descendieron a 14, una caída del 19,9 %, lo que indica una mejora en la capacidad de resolución en primera instancia; sin embargo, el tiempo de primera respuesta se dilató ligeramente a 6,4 horas, un 1,6 % más que en el periodo previo. La satisfacción del cliente (CSAT) alcanzó el 80 %, mejorando en 1,8 puntos porcentuales con respecto al mes anterior, lo que sugiere que los usuarios perciben positivamente los esfuerzos del equipo pese a los mayores tiempos de cierre. Entre los incidentes destacados, el ticket 9625 sobre facturas con el impuesto equivocado afectó a ocho clientes corporativos de Montevideo y está siendo corregido por Finanzas mediante la emisión de nuevas facturas. Asimismo, el ticket 4755 reportó fallas en pagos con tarjeta para nueve clientes de Montevideo; el equipo de pagos revirtió la versión 3.10.5 el martes y logró detener el error 409. En conjunto, los resultados indican que, aunque la eficiencia operativa necesita ajustes para reducir los tiempos de resolución, la disminución de escalamientos y la mejora en CSAT demuestran una tendencia positiva en la calidad del soporte.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 1.358336252,
+    "prompt_tokens": 482,
+    "prompt_time": 0.154961184,
+    "completion_tokens": 447,
+    "completion_time": 0.969758194,
+    "total_tokens": 929,
+    "total_time": 1.124719378,
+    "completion_tokens_details": {
+      "reasoning_tokens": 102
+    }
+  },
+  "seconds": 2.57,
+  "created_at": "2026-11-18T14:33:09+00:00"
+}

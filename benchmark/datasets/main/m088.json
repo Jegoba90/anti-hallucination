@@ -1,0 +1,220 @@
+{
+  "id": "m088",
+  "split": "test",
+  "domain": "sales",
+  "locale": "es",
+  "brief": {
+    "company": "Nubra",
+    "audience": "el equipo comercial",
+    "topic": "los resultados de ventas",
+    "period": "febrero de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "clientes_nuevos",
+        "value": 3198,
+        "unit": "clientes",
+        "label": "clientes nuevos",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "clientes_nuevos_anterior",
+        "value": 3300,
+        "unit": "clientes",
+        "label": "clientes nuevos en el mes anterior",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "variacion_clientes_nuevos",
+        "compute": "percent_change",
+        "from": "clientes_nuevos_anterior",
+        "to": "clientes_nuevos",
+        "label": "variación de los clientes nuevos respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "unidades_vendidas",
+        "value": 3222,
+        "unit": "unidades",
+        "label": "unidades vendidas",
+        "subject": [
+          "ventas",
+          "unidades"
+        ]
+      },
+      {
+        "name": "unidades_vendidas_anterior",
+        "value": 3033,
+        "unit": "unidades",
+        "label": "unidades vendidas en el mes anterior",
+        "subject": [
+          "ventas",
+          "unidades"
+        ]
+      },
+      {
+        "name": "variacion_unidades_vendidas",
+        "compute": "percent_change",
+        "from": "unidades_vendidas_anterior",
+        "to": "unidades_vendidas",
+        "label": "variación de las unidades vendidas respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "facturacion",
+        "value": 9614140,
+        "unit": "USD",
+        "label": "facturación",
+        "subject": [
+          "facturación",
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "facturacion_anterior",
+        "value": 8744497,
+        "unit": "USD",
+        "label": "facturación en el mes anterior",
+        "subject": [
+          "facturación",
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_facturacion",
+        "compute": "percent_change",
+        "from": "facturacion_anterior",
+        "to": "facturacion",
+        "label": "variación de la facturación respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "ticket_promedio",
+        "value": 140.76,
+        "unit": "USD",
+        "label": "ticket promedio",
+        "subject": [
+          "ticket"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "variacion_ticket_promedio",
+        "value": -2.3,
+        "unit": "%",
+        "change": true,
+        "label": "variación del ticket promedio respecto del mes anterior",
+        "subject": [
+          "ticket"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tasa_devoluciones",
+        "value": 10.6,
+        "unit": "%",
+        "label": "tasa de devoluciones",
+        "subject": [
+          "devoluciones"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tasa_devoluciones_anterior",
+        "value": 10.1,
+        "unit": "%",
+        "label": "tasa de devoluciones en el mes anterior",
+        "subject": [
+          "devoluciones"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_tasa_devoluciones",
+        "compute": "difference",
+        "from": "tasa_devoluciones_anterior",
+        "to": "tasa_devoluciones",
+        "label": "variación de la tasa de devoluciones respecto del mes anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "pedidos_online",
+        "value": 341,
+        "unit": "pedidos",
+        "label": "pedidos online",
+        "subject": [
+          "pedidos"
+        ]
+      },
+      {
+        "name": "pedidos_online_anterior",
+        "value": 335,
+        "unit": "pedidos",
+        "label": "pedidos online en el mes anterior",
+        "subject": [
+          "pedidos"
+        ]
+      },
+      {
+        "name": "variacion_pedidos_online",
+        "compute": "percent_change",
+        "from": "pedidos_online_anterior",
+        "to": "pedidos_online",
+        "label": "variación de los pedidos online respecto del mes anterior",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "febrero de 2026"
+      },
+      {
+        "name": "tendencia_facturacion",
+        "from": "variacion_facturacion",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Nubra"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Informe de logística",
+        "title": "Demoras en entregas",
+        "text": "Durante 7 días hubo demoras en las entregas a Mendoza por un problema con el operador Ruta Veloz."
+      }
+    ]
+  }
+}

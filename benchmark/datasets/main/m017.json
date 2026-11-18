@@ -1,0 +1,160 @@
+{
+  "id": "m017",
+  "split": "dev",
+  "domain": "crypto",
+  "locale": "es",
+  "brief": {
+    "company": "Informe Andino de Mercados",
+    "audience": "los suscriptores",
+    "topic": "el mercado cripto",
+    "period": "el 12 de noviembre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "tasa_financiamiento",
+        "value": 0.007,
+        "unit": "%",
+        "label": "tasa de financiamiento promedio",
+        "subject": [
+          "financiamiento"
+        ],
+        "decimals": 3
+      },
+      {
+        "name": "indice_miedo",
+        "value": 5,
+        "unit": "",
+        "label": "índice de miedo y codicia",
+        "subject": [
+          "miedo",
+          "codicia",
+          "sentimiento"
+        ]
+      },
+      {
+        "name": "variacion_indice_miedo",
+        "value": 9,
+        "unit": "",
+        "change": true,
+        "label": "variación del índice de miedo y codicia respecto del día anterior",
+        "subject": [
+          "miedo",
+          "codicia",
+          "sentimiento"
+        ]
+      },
+      {
+        "name": "precio_eth",
+        "value": 5045,
+        "unit": "USD",
+        "label": "precio de ether (ETH)",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "precio_btc",
+        "value": 25795,
+        "unit": "USD",
+        "label": "precio de bitcoin (BTC)",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "precio_btc_anterior",
+        "value": 27292,
+        "unit": "USD",
+        "label": "precio de bitcoin (BTC) en el día anterior",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "variacion_precio_btc",
+        "compute": "percent_change",
+        "from": "precio_btc_anterior",
+        "to": "precio_btc",
+        "label": "variación del precio de bitcoin (BTC) respecto del día anterior",
+        "decimals": 1
+      },
+      {
+        "name": "dominancia_btc",
+        "value": 56.8,
+        "unit": "%",
+        "label": "dominancia de bitcoin",
+        "subject": [
+          "dominancia"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "dominancia_btc_anterior",
+        "value": 57.0,
+        "unit": "%",
+        "label": "dominancia de bitcoin en el día anterior",
+        "subject": [
+          "dominancia"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_dominancia_btc",
+        "compute": "difference",
+        "from": "dominancia_btc_anterior",
+        "to": "dominancia_btc",
+        "label": "variación de la dominancia de bitcoin respecto del día anterior, en puntos",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el 12 de noviembre de 2026"
+      },
+      {
+        "name": "tendencia_precio_btc",
+        "from": "variacion_precio_btc",
+        "thresholds": [
+          [
+            -10,
+            "tendencia bajista fuerte"
+          ],
+          [
+            -2,
+            "tendencia bajista"
+          ],
+          [
+            2,
+            "movimiento lateral"
+          ],
+          [
+            10,
+            "tendencia alcista"
+          ]
+        ],
+        "otherwise": "tendencia alcista fuerte"
+      }
+    ],
+    "known_names": [
+      "Informe Andino de Mercados"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Orbita News",
+        "title": "Retiros suspendidos",
+        "text": "El exchange Orbita suspendió los retiros de ETH durante 3 horas el martes por mantenimiento."
+      }
+    ]
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "id": "m034",
+  "split": "dev",
+  "domain": "crypto",
+  "locale": "es",
+  "brief": {
+    "company": "Mesa Pampa Trading",
+    "audience": "los suscriptores",
+    "topic": "el mercado cripto",
+    "period": "el 7 de noviembre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "tasa_financiamiento",
+        "value": 0.037,
+        "unit": "%",
+        "label": "tasa de financiamiento promedio",
+        "subject": [
+          "financiamiento"
+        ],
+        "decimals": 3
+      },
+      {
+        "name": "interes_abierto",
+        "value": 27665482477,
+        "unit": "USD",
+        "label": "interés abierto en futuros",
+        "subject": [
+          "interés abierto"
+        ],
+        "compact": true
+      },
+      {
+        "name": "interes_abierto_anterior",
+        "value": 24964491233,
+        "unit": "USD",
+        "label": "interés abierto en futuros en el día anterior",
+        "subject": [
+          "interés abierto"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_interes_abierto",
+        "compute": "percent_change",
+        "from": "interes_abierto_anterior",
+        "to": "interes_abierto",
+        "label": "variación del interés abierto en futuros respecto del día anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "precio_eth",
+        "value": 1505,
+        "unit": "USD",
+        "label": "precio de ether (ETH)",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "indice_miedo",
+        "value": 14,
+        "unit": "",
+        "label": "índice de miedo y codicia",
+        "subject": [
+          "miedo",
+          "codicia",
+          "sentimiento"
+        ]
+      },
+      {
+        "name": "indice_miedo_anterior",
+        "value": 10,
+        "unit": "",
+        "label": "índice de miedo y codicia en el día anterior",
+        "subject": [
+          "miedo",
+          "codicia",
+          "sentimiento"
+        ]
+      },
+      {
+        "name": "variacion_indice_miedo",
+        "compute": "difference",
+        "from": "indice_miedo_anterior",
+        "to": "indice_miedo",
+        "label": "variación del índice de miedo y codicia respecto del día anterior",
+        "decimals": 0
+      },
+      {
+        "name": "dominancia_btc",
+        "value": 47.7,
+        "unit": "%",
+        "label": "dominancia de bitcoin",
+        "subject": [
+          "dominancia"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "dominancia_btc_anterior",
+        "value": 45.4,
+        "unit": "%",
+        "label": "dominancia de bitcoin en el día anterior",
+        "subject": [
+          "dominancia"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_dominancia_btc",
+        "compute": "difference",
+        "from": "dominancia_btc_anterior",
+        "to": "dominancia_btc",
+        "label": "variación de la dominancia de bitcoin respecto del día anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "precio_btc",
+        "value": 38967,
+        "unit": "USD",
+        "label": "precio de bitcoin (BTC)",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el 7 de noviembre de 2026"
+      }
+    ],
+    "known_names": [
+      "Mesa Pampa Trading"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Nimbex News",
+        "title": "Retiros suspendidos",
+        "text": "El exchange Nimbex suspendió los retiros de ETH durante 2 horas el jueves por mantenimiento."
+      }
+    ]
+  }
+}

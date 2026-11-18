@@ -1,0 +1,166 @@
+{
+  "id": "p01",
+  "split": "pilot",
+  "domain": "support",
+  "locale": "en",
+  "brief": {
+    "company": "Ashgrove",
+    "audience": "the operations managers",
+    "topic": "support performance",
+    "period": "the week of November 4–10, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "csat",
+        "value": 68,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT)",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_previous",
+        "value": 66,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT) in the previous week",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_change",
+        "compute": "difference",
+        "from": "csat_previous",
+        "to": "csat",
+        "label": "change in customer satisfaction (CSAT) vs the previous week, in percentage points",
+        "decimals": 0
+      },
+      {
+        "name": "tickets_received",
+        "value": 1287,
+        "unit": "tickets",
+        "label": "tickets received",
+        "subject": [
+          "tickets received",
+          "received"
+        ]
+      },
+      {
+        "name": "tickets_received_previous",
+        "value": 1295,
+        "unit": "tickets",
+        "label": "tickets received in the previous week",
+        "subject": [
+          "tickets received",
+          "received"
+        ]
+      },
+      {
+        "name": "tickets_received_change",
+        "compute": "percent_change",
+        "from": "tickets_received_previous",
+        "to": "tickets_received",
+        "label": "change in tickets received vs the previous week",
+        "decimals": 1
+      },
+      {
+        "name": "first_response",
+        "value": 5.2,
+        "unit": "h",
+        "label": "first response time",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_previous",
+        "value": 5.1,
+        "unit": "h",
+        "label": "first response time in the previous week",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_change",
+        "compute": "percent_change",
+        "from": "first_response_previous",
+        "to": "first_response",
+        "label": "change in first response time vs the previous week",
+        "decimals": 1
+      },
+      {
+        "name": "backlog",
+        "value": 261,
+        "unit": "tickets",
+        "label": "open backlog",
+        "subject": [
+          "backlog"
+        ]
+      },
+      {
+        "name": "backlog_previous",
+        "value": 221,
+        "unit": "tickets",
+        "label": "open backlog in the previous week",
+        "subject": [
+          "backlog"
+        ]
+      },
+      {
+        "name": "backlog_change",
+        "compute": "percent_change",
+        "from": "backlog_previous",
+        "to": "backlog",
+        "label": "change in open backlog vs the previous week",
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time",
+        "value": 5.0,
+        "unit": "h",
+        "label": "average resolution time",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "the week of November 4–10, 2026"
+      }
+    ],
+    "known_names": [
+      "Ashgrove"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 4282",
+        "title": "Invoices show the wrong tax",
+        "text": "5 business customers in Tampa received invoices with the wrong tax. Finance is reissuing them."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 7311",
+        "title": "Delayed emails",
+        "text": "Confirmation emails arrive up to 8 hours late because the email provider throttled sending. Traffic was moved to a backup provider."
+      }
+    ]
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "id": "m024",
+  "split": "dev",
+  "domain": "support",
+  "locale": "en",
+  "brief": {
+    "company": "Brightloom",
+    "audience": "the operations managers",
+    "topic": "support performance",
+    "period": "April 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "tickets_resolved",
+        "value": 11048,
+        "unit": "tickets",
+        "label": "tickets resolved",
+        "subject": [
+          "tickets resolved",
+          "resolved"
+        ]
+      },
+      {
+        "name": "tickets_resolved_previous",
+        "value": 10778,
+        "unit": "tickets",
+        "label": "tickets resolved in the previous month",
+        "subject": [
+          "tickets resolved",
+          "resolved"
+        ]
+      },
+      {
+        "name": "tickets_resolved_change",
+        "compute": "percent_change",
+        "from": "tickets_resolved_previous",
+        "to": "tickets_resolved",
+        "label": "change in tickets resolved vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "backlog",
+        "value": 2776,
+        "unit": "tickets",
+        "label": "open backlog",
+        "subject": [
+          "backlog"
+        ]
+      },
+      {
+        "name": "backlog_previous",
+        "value": 3627,
+        "unit": "tickets",
+        "label": "open backlog in the previous month",
+        "subject": [
+          "backlog"
+        ]
+      },
+      {
+        "name": "backlog_change",
+        "compute": "percent_change",
+        "from": "backlog_previous",
+        "to": "backlog",
+        "label": "change in open backlog vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time",
+        "value": 65.0,
+        "unit": "h",
+        "label": "average resolution time",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time_previous",
+        "value": 61.0,
+        "unit": "h",
+        "label": "average resolution time in the previous month",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time_change",
+        "compute": "percent_change",
+        "from": "resolution_time_previous",
+        "to": "resolution_time",
+        "label": "change in average resolution time vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "csat",
+        "value": 77,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT)",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_previous",
+        "value": 79,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT) in the previous month",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_change",
+        "compute": "difference",
+        "from": "csat_previous",
+        "to": "csat",
+        "label": "change in customer satisfaction (CSAT) vs the previous month, in percentage points",
+        "decimals": 0
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "April 2026"
+      }
+    ],
+    "known_names": [
+      "Brightloom"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 4351",
+        "title": "Delayed emails",
+        "text": "Confirmation emails arrive up to 4 hours late because the email provider throttled sending. Traffic was moved to a backup provider."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 5513",
+        "title": "Card payments fail",
+        "text": "Since Monday, 30 customers in Denver report that card payments fail with error 502. The payments team rolled back release 5.10.4 on Wednesday and the failures stopped."
+      }
+    ]
+  }
+}

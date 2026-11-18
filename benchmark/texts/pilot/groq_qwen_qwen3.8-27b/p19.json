@@ -1,0 +1,23 @@
+{
+  "dataset": "p19",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "strict",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the trading desk clients at Satstack Desk on the crypto market for the week of October 10–16, 2026, based on this data.\n\nCompany: Satstack Desk\nPeriod: the week of October 10–16, 2026\n\nData:\n- Bitcoin (BTC) price: 25,158 USD\n- Bitcoin (BTC) price in the previous week: 29,493 USD\n- Change in bitcoin (BTC) price vs the previous week: -14.7%\n- 24-hour trading volume: 97.7 billion USD\n- Futures open interest: 67.3 billion USD\n- Futures open interest in the previous week: 64.7 billion USD\n- Change in futures open interest vs the previous week: 4.0%\n- Fear and greed index: 15\n- Fear and greed index in the previous week: 20\n- Change in fear and greed index vs the previous week: -5\n- Ether (ETH) price: 3,664 USD\n- Ether (ETH) price in the previous week: 3,139 USD\n- Change in ether (ETH) price vs the previous week: 16.7%\n\nNotes for the report:\n[s1] Network calendar, \"Network upgrade\": The Telar network will activate the Beacon upgrade on June 5.\n\nUse only the information in the data: do not add figures, names, causes or predictions that are not there. Write only the report, in prose, with no headings or lists.",
+  "raw": "For the week of October 10–16, 2026, Bitcoin experienced a significant decline of 14.7 per cent, closing at $25,158, down from the previous week’s $29,493. Conversly, Ether demonstrated strong momentum, surging 16.7 per cent to reach $3,664 from $3,139 in the prior period. Despite the headline weakness in Bitcoin, the broader market remains active, with 24-hour trading volume reaching $97.7 billion. Sentiment indicators continue to deteriorate, as the Fear and Greed Index dropped five points to 15, deepening the prevailing market fear from the previous reading of 20. In the derivatives space, futures open interest expanded by 4.0 per cent to $67.3 billion, up from $64.7 billion in the previous week. This divergence in open interest suggests continued positioning activity even as spot prices for Bitcoin trend lower. No specific catalysts or external events from the provided network calendar impact this specific weekly review. Clients should note this substantial week-over-week divergence between Bitcoin and Ether performance.",
+  "text": "For the week of October 10–16, 2026, Bitcoin experienced a significant decline of 14.7 per cent, closing at $25,158, down from the previous week’s $29,493. Conversly, Ether demonstrated strong momentum, surging 16.7 per cent to reach $3,664 from $3,139 in the prior period. Despite the headline weakness in Bitcoin, the broader market remains active, with 24-hour trading volume reaching $97.7 billion. Sentiment indicators continue to deteriorate, as the Fear and Greed Index dropped five points to 15, deepening the prevailing market fear from the previous reading of 20. In the derivatives space, futures open interest expanded by 4.0 per cent to $67.3 billion, up from $64.7 billion in the previous week. This divergence in open interest suggests continued positioning activity even as spot prices for Bitcoin trend lower. No specific catalysts or external events from the provided network calendar impact this specific weekly review. Clients should note this substantial week-over-week divergence between Bitcoin and Ether performance.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.381490906,
+    "prompt_tokens": 384,
+    "prompt_time": 0.030610702,
+    "completion_tokens": 248,
+    "completion_time": 0.541560523,
+    "total_tokens": 632,
+    "total_time": 0.572171225
+  },
+  "seconds": 1.04,
+  "created_at": "2026-11-18T14:26:44+00:00"
+}

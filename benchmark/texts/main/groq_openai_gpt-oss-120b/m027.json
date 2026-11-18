@@ -1,0 +1,26 @@
+{
+  "dataset": "m027",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the support team at Kestrel Goods on support performance for the week of November 8–14, 2026, based on this data.\n\nCompany: Kestrel Goods\nPeriod: the week of November 8–14, 2026\n\nData:\n- Open backlog: 84 tickets\n- Open backlog in the previous week: 69 tickets\n- Change in open backlog vs the previous week: 21.7%\n- Tickets received: 4,792 tickets\n- Customer satisfaction (CSAT): 92%\n- Customer satisfaction (CSAT) in the previous week: 90%\n- Change in customer satisfaction (CSAT) vs the previous week, in percentage points: 2 pp\n- Average resolution time: 2.4 h\n- First response time: 0.8 h\n- First response time in the previous week: 1.0 h\n- Change in first response time vs the previous week: -20.0%\n- Tickets resolved: 14,901 tickets\n- Tickets resolved in the previous week: 13,648 tickets\n- Change in tickets resolved vs the previous week: 9.2%\n\nNotes for the report:\n[s1] Ticket 4209, \"Card payments fail\": Since Friday, 38 customers in Bristol report that card payments fail with error 409. The payments team rolled back release 4.9.2 on Wednesday and the failures stopped.\n[s2] Ticket 9291, \"Invoices show the wrong tax\": 6 business customers in Bristol received invoices with the wrong tax. Finance is reissuing them.\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "During the week of November 8‑14, the support backlog grew to 84 tickets, a 21.7 % rise from the prior week’s 69, reflecting the impact of two localized issues that required additional attention. Ticket 4209 reported 38 Bristol customers experiencing card‑payment failures (error 409); the payments team’s rollback of release 4.9.2 on Wednesday halted the problem. Ticket 9291 involved six Bristol business customers receiving invoices with incorrect tax, and finance is currently reissuing the affected invoices. Despite the larger backlog, the team handled an impressive 4,792 inbound tickets and resolved 14,901 cases, a 9.2 % increase over the previous week. Customer satisfaction climbed to 92 %, up 2 percentage points, indicating that the majority of interactions remained positive. Average resolution time held steady at 2.4 hours, while first‑response time improved to 0.8 hours—a 20 % reduction from the week before. Overall, the team’s productivity and service quality continued to advance, even as targeted incidents temporarily strained capacity.",
+  "text": "During the week of November 8‑14, the support backlog grew to 84 tickets, a 21.7 % rise from the prior week’s 69, reflecting the impact of two localized issues that required additional attention. Ticket 4209 reported 38 Bristol customers experiencing card‑payment failures (error 409); the payments team’s rollback of release 4.9.2 on Wednesday halted the problem. Ticket 9291 involved six Bristol business customers receiving invoices with incorrect tax, and finance is currently reissuing the affected invoices. Despite the larger backlog, the team handled an impressive 4,792 inbound tickets and resolved 14,901 cases, a 9.2 % increase over the previous week. Customer satisfaction climbed to 92 %, up 2 percentage points, indicating that the majority of interactions remained positive. Average resolution time held steady at 2.4 hours, while first‑response time improved to 0.8 hours—a 20 % reduction from the week before. Overall, the team’s productivity and service quality continued to advance, even as targeted incidents temporarily strained capacity.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.244034672,
+    "prompt_tokens": 439,
+    "prompt_time": 0.120145054,
+    "completion_tokens": 324,
+    "completion_time": 0.681820493,
+    "total_tokens": 763,
+    "total_time": 0.801965547,
+    "completion_tokens_details": {
+      "reasoning_tokens": 85
+    }
+  },
+  "seconds": 1.13,
+  "created_at": "2026-11-18T14:34:46+00:00"
+}

@@ -1,0 +1,197 @@
+{
+  "id": "m091",
+  "split": "test",
+  "domain": "finance",
+  "locale": "en",
+  "brief": {
+    "company": "Kestrel Goods",
+    "audience": "the board",
+    "topic": "financial results",
+    "period": "Q1 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "net_income",
+        "value": 431462172,
+        "unit": "EUR",
+        "label": "net income",
+        "subject": [
+          "net income",
+          "profit"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_income_previous",
+        "value": 462240990,
+        "unit": "EUR",
+        "label": "net income in the previous quarter",
+        "subject": [
+          "net income",
+          "profit"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_income_change",
+        "compute": "difference",
+        "from": "net_income_previous",
+        "to": "net_income",
+        "label": "change in net income vs the previous quarter",
+        "decimals": 0,
+        "compact": true
+      },
+      {
+        "name": "employees",
+        "value": 525,
+        "unit": "employees",
+        "label": "employees",
+        "subject": [
+          "employees",
+          "headcount"
+        ]
+      },
+      {
+        "name": "employees_previous",
+        "value": 569,
+        "unit": "employees",
+        "label": "employees in the previous quarter",
+        "subject": [
+          "employees",
+          "headcount"
+        ]
+      },
+      {
+        "name": "employees_change",
+        "compute": "percent_change",
+        "from": "employees_previous",
+        "to": "employees",
+        "label": "change in employees vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "ebitda",
+        "value": 368481279,
+        "unit": "EUR",
+        "label": "EBITDA",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ebitda_previous",
+        "value": 381385529,
+        "unit": "EUR",
+        "label": "EBITDA in the previous quarter",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ebitda_change",
+        "compute": "percent_change",
+        "from": "ebitda_previous",
+        "to": "ebitda",
+        "label": "change in EBITDA vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "net_debt",
+        "value": 14240913,
+        "unit": "EUR",
+        "label": "net debt",
+        "subject": [
+          "debt"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_debt_previous",
+        "value": 13698587,
+        "unit": "EUR",
+        "label": "net debt in the previous quarter",
+        "subject": [
+          "debt"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_debt_change",
+        "compute": "percent_change",
+        "from": "net_debt_previous",
+        "to": "net_debt",
+        "label": "change in net debt vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin",
+        "value": 24.2,
+        "unit": "%",
+        "label": "operating margin",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_previous",
+        "value": 23.9,
+        "unit": "%",
+        "label": "operating margin in the previous quarter",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_change",
+        "compute": "difference",
+        "from": "operating_margin_previous",
+        "to": "operating_margin",
+        "label": "change in operating margin vs the previous quarter, in percentage points",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "Q1 2026"
+      },
+      {
+        "name": "net_debt_trend",
+        "from": "net_debt_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Kestrel Goods"
+    ]
+  }
+}

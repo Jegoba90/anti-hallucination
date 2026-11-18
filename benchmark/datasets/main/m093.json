@@ -1,0 +1,174 @@
+{
+  "id": "m093",
+  "split": "test",
+  "domain": "saas",
+  "locale": "en",
+  "brief": {
+    "company": "Orbitly",
+    "audience": "the leadership team",
+    "topic": "business metrics",
+    "period": "May 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "trial_conversion",
+        "value": 7.0,
+        "unit": "%",
+        "label": "trial-to-paid conversion",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "trial_conversion_change",
+        "value": -0.3,
+        "unit": "pp",
+        "change": true,
+        "label": "change in trial-to-paid conversion vs the previous month, in percentage points",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "new_customers",
+        "value": 563,
+        "unit": "customers",
+        "label": "new customers",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "new_customers_previous",
+        "value": 608,
+        "unit": "customers",
+        "label": "new customers in the previous month",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "new_customers_change",
+        "compute": "percent_change",
+        "from": "new_customers_previous",
+        "to": "new_customers",
+        "label": "change in new customers vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "churn",
+        "value": 3.3,
+        "unit": "%",
+        "label": "monthly churn",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_previous",
+        "value": 2.9,
+        "unit": "%",
+        "label": "monthly churn in the previous month",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_change",
+        "compute": "difference",
+        "from": "churn_previous",
+        "to": "churn",
+        "label": "change in monthly churn vs the previous month, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "active_users",
+        "value": 63647,
+        "unit": "users",
+        "label": "active users",
+        "subject": [
+          "users",
+          "active users"
+        ]
+      },
+      {
+        "name": "active_users_previous",
+        "value": 64067,
+        "unit": "users",
+        "label": "active users in the previous month",
+        "subject": [
+          "users",
+          "active users"
+        ]
+      },
+      {
+        "name": "active_users_change",
+        "compute": "percent_change",
+        "from": "active_users_previous",
+        "to": "active_users",
+        "label": "change in active users vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 100,
+        "unit": "%",
+        "label": "net revenue retention (NRR)",
+        "subject": [
+          "NRR",
+          "retention"
+        ]
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "May 2026"
+      },
+      {
+        "name": "new_customers_trend",
+        "from": "new_customers_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Orbitly"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Release notes",
+        "title": "Version 6.8.0",
+        "text": "Version 6.8.0, released on August 11, added single sign-on and a new usage dashboard."
+      }
+    ]
+  }
+}

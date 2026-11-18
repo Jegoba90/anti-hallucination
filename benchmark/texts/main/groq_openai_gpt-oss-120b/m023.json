@@ -1,0 +1,26 @@
+{
+  "dataset": "m023",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para los clientes de la mesa de trading de Mesa Pampa Trading sobre el mercado cripto en la semana del 10 al 16 de octubre de 2026, a partir de estos datos.\n\nEmpresa: Mesa Pampa Trading\nPeríodo: la semana del 10 al 16 de octubre de 2026\n\nDatos:\n- Dominancia de bitcoin: 41,7 %\n- Dominancia de bitcoin en la semana anterior: 39,9 %\n- Variación de la dominancia de bitcoin respecto de la semana anterior, en puntos: 1,8 pp\n- Precio de bitcoin (BTC): 29.895 USD\n- Precio de ether (ETH): 1.300 USD\n- Precio de ether (ETH) en la semana anterior: 1.368 USD\n- Variación del precio de ether (ETH) respecto de la semana anterior: -5,0 %\n- Tasa de financiamiento promedio: 0,045 %\n- Volumen operado en 24 horas: 138,2 mil millones USD\n- Variación del volumen operado en 24 horas respecto de la semana anterior: -0,4 %\n- Veredicto sobre la variación de la dominancia de bitcoin respecto de la semana anterior, en puntos: tendencia alcista\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "Durante la semana del 10 al 16 de octubre de 2026 la dominancia de Bitcoin se situó en 41,7 %, frente al 39,9 % de la semana anterior, lo que representa un aumento de 1,8 puntos porcentuales y confirma una tendencia alcista en su participación de mercado. El precio de Bitcoin se mantuvo estable alrededor de 29 895 USD, mientras que Ether cotizó a 1 300 USD, evidenciando una caída del 5,0 % respecto a los 1 368 USD de la semana previa. La tasa de financiamiento promedio se ubicó en 0,045 %, indicando un costo de apalancamiento moderado para los operadores. El volumen operado en las últimas 24 horas alcanzó los 138,2 mil millones USD, con una ligera disminución del 0,4 % frente a la semana anterior. En conjunto, el mercado muestra una consolidación del liderazgo de Bitcoin y una presión a la baja sobre los altcoins, particularmente Ether, en un entorno de liquidez casi estable. Este escenario sugiere que los inversores podrían preferir posiciones defensivas en Bitcoin mientras evalúan oportunidades de reentrada en los altcoins cuando se estabilicen los precios.",
+  "text": "Durante la semana del 10 al 16 de octubre de 2026 la dominancia de Bitcoin se situó en 41,7 %, frente al 39,9 % de la semana anterior, lo que representa un aumento de 1,8 puntos porcentuales y confirma una tendencia alcista en su participación de mercado. El precio de Bitcoin se mantuvo estable alrededor de 29 895 USD, mientras que Ether cotizó a 1 300 USD, evidenciando una caída del 5,0 % respecto a los 1 368 USD de la semana previa. La tasa de financiamiento promedio se ubicó en 0,045 %, indicando un costo de apalancamiento moderado para los operadores. El volumen operado en las últimas 24 horas alcanzó los 138,2 mil millones USD, con una ligera disminución del 0,4 % frente a la semana anterior. En conjunto, el mercado muestra una consolidación del liderazgo de Bitcoin y una presión a la baja sobre los altcoins, particularmente Ether, en un entorno de liquidez casi estable. Este escenario sugiere que los inversores podrían preferir posiciones defensivas en Bitcoin mientras evalúan oportunidades de reentrada en los altcoins cuando se estabilicen los precios.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.257610883,
+    "prompt_tokens": 380,
+    "prompt_time": 0.017622435,
+    "completion_tokens": 471,
+    "completion_time": 0.998779164,
+    "total_tokens": 851,
+    "total_time": 1.016401599,
+    "completion_tokens_details": {
+      "reasoning_tokens": 188
+    }
+  },
+  "seconds": 1.33,
+  "created_at": "2026-11-18T14:34:19+00:00"
+}

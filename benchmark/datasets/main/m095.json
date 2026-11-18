@@ -1,0 +1,206 @@
+{
+  "id": "m095",
+  "split": "test",
+  "domain": "crypto",
+  "locale": "en",
+  "brief": {
+    "company": "Satstack Desk",
+    "audience": "the subscribers",
+    "topic": "the crypto market",
+    "period": "the week of October 8–14, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "btc_dominance",
+        "value": 40.6,
+        "unit": "%",
+        "label": "bitcoin dominance",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_previous",
+        "value": 38.7,
+        "unit": "%",
+        "label": "bitcoin dominance in the previous week",
+        "subject": [
+          "dominance"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "btc_dominance_change",
+        "compute": "difference",
+        "from": "btc_dominance_previous",
+        "to": "btc_dominance",
+        "label": "change in bitcoin dominance vs the previous week, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "fear_greed",
+        "value": 29,
+        "unit": "",
+        "label": "fear and greed index",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_previous",
+        "value": 32,
+        "unit": "",
+        "label": "fear and greed index in the previous week",
+        "subject": [
+          "fear",
+          "greed",
+          "sentiment"
+        ]
+      },
+      {
+        "name": "fear_greed_change",
+        "compute": "difference",
+        "from": "fear_greed_previous",
+        "to": "fear_greed",
+        "label": "change in fear and greed index vs the previous week",
+        "decimals": 0
+      },
+      {
+        "name": "volume_24h",
+        "value": 60785870253,
+        "unit": "USD",
+        "label": "24-hour trading volume",
+        "subject": [
+          "volume"
+        ],
+        "compact": true
+      },
+      {
+        "name": "funding_rate",
+        "value": -0.002,
+        "unit": "%",
+        "label": "average funding rate",
+        "subject": [
+          "funding"
+        ],
+        "decimals": 3
+      },
+      {
+        "name": "funding_rate_previous",
+        "value": -0.005,
+        "unit": "%",
+        "label": "average funding rate in the previous week",
+        "subject": [
+          "funding"
+        ],
+        "decimals": 3
+      },
+      {
+        "name": "funding_rate_change",
+        "compute": "difference",
+        "from": "funding_rate_previous",
+        "to": "funding_rate",
+        "label": "change in average funding rate vs the previous week, in percentage points",
+        "decimals": 3
+      },
+      {
+        "name": "btc_price",
+        "value": 109069,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "btc_price_previous",
+        "value": 95848,
+        "unit": "USD",
+        "label": "bitcoin (BTC) price in the previous week",
+        "subject": [
+          "bitcoin",
+          "BTC"
+        ]
+      },
+      {
+        "name": "btc_price_change",
+        "compute": "percent_change",
+        "from": "btc_price_previous",
+        "to": "btc_price",
+        "label": "change in bitcoin (BTC) price vs the previous week",
+        "decimals": 1
+      },
+      {
+        "name": "open_interest",
+        "value": 81609597842,
+        "unit": "USD",
+        "label": "futures open interest",
+        "subject": [
+          "open interest"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest_previous",
+        "value": 88614740655,
+        "unit": "USD",
+        "label": "futures open interest in the previous week",
+        "subject": [
+          "open interest"
+        ],
+        "compact": true
+      },
+      {
+        "name": "open_interest_change",
+        "compute": "percent_change",
+        "from": "open_interest_previous",
+        "to": "open_interest",
+        "label": "change in futures open interest vs the previous week",
+        "decimals": 1,
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "the week of October 8–14, 2026"
+      },
+      {
+        "name": "btc_dominance_trend",
+        "from": "btc_dominance_change",
+        "thresholds": [
+          [
+            -2,
+            "a strong downtrend"
+          ],
+          [
+            -0.3,
+            "a downtrend"
+          ],
+          [
+            0.3,
+            "sideways movement"
+          ],
+          [
+            2,
+            "an uptrend"
+          ]
+        ],
+        "otherwise": "a strong uptrend"
+      }
+    ],
+    "known_names": [
+      "Satstack Desk"
+    ]
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "id": "m029",
+  "split": "test",
+  "domain": "sales",
+  "locale": "en",
+  "brief": {
+    "company": "Harbor & Pine",
+    "audience": "management",
+    "topic": "sales results",
+    "period": "Q1 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "revenue",
+        "value": 398854,
+        "unit": "USD",
+        "label": "revenue",
+        "subject": [
+          "revenue"
+        ]
+      },
+      {
+        "name": "revenue_previous",
+        "value": 402192,
+        "unit": "USD",
+        "label": "revenue in the previous quarter",
+        "subject": [
+          "revenue"
+        ]
+      },
+      {
+        "name": "revenue_change",
+        "compute": "percent_change",
+        "from": "revenue_previous",
+        "to": "revenue",
+        "label": "change in revenue vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "units_sold",
+        "value": 9671,
+        "unit": "units",
+        "label": "units sold",
+        "subject": [
+          "sales",
+          "units"
+        ]
+      },
+      {
+        "name": "average_order",
+        "value": 136.01,
+        "unit": "USD",
+        "label": "average order value",
+        "subject": [
+          "order value",
+          "average order"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "average_order_previous",
+        "value": 136.82,
+        "unit": "USD",
+        "label": "average order value in the previous quarter",
+        "subject": [
+          "order value",
+          "average order"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "average_order_change",
+        "compute": "percent_change",
+        "from": "average_order_previous",
+        "to": "average_order",
+        "label": "change in average order value vs the previous quarter",
+        "decimals": 1
+      },
+      {
+        "name": "return_rate",
+        "value": 5.2,
+        "unit": "%",
+        "label": "return rate",
+        "subject": [
+          "returns",
+          "return rate"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "return_rate_previous",
+        "value": 6.0,
+        "unit": "%",
+        "label": "return rate in the previous quarter",
+        "subject": [
+          "returns",
+          "return rate"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "return_rate_change",
+        "compute": "difference",
+        "from": "return_rate_previous",
+        "to": "return_rate",
+        "label": "change in return rate vs the previous quarter, in percentage points",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "Q1 2026"
+      },
+      {
+        "name": "revenue_trend",
+        "from": "revenue_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Harbor & Pine"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Sales team note",
+        "title": "Seasonal campaign",
+        "text": "The Orange Week campaign started on October 2 in Bristol and Denver, with discounts of up to 15% on home goods."
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "dataset": "p20",
+  "split": "pilot",
+  "model": "groq:qwen/qwen3.8-27b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para los inversores de Lumbre sobre las métricas del negocio en marzo de 2026, a partir de estos datos.\n\nEmpresa: Lumbre\nPeríodo: marzo de 2026\n\nDatos:\n- Clientes nuevos: 8 clientes\n- Costo de adquisición de clientes (CAC): 606 USD\n- Usuarios activos: 215.160 usuarios\n- Conversión de prueba a pago: 21,3 %\n- Retención neta de ingresos (NRR): 123 %\n\nNotas para el informe:\n[s1] Nota de éxito del cliente, «Renovación»: Clínicas Moreno renovó su contrato por 3 años y sumó 257 licencias.\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En marzo de 2026, Lumbre registró una sólida expansión comercial con la incorporación de 8 nuevos clientes, manteniendo un costo de adquisición de 606 USD. Nuestra base de usuarios activos alcanzó los 215.160, reflejando una penetración robusta en el mercado objetivo. La estrategia de conversión mostró resultados eficaces, logrando que el 21,3 % de los usuarios de prueba migraran a planes de pago. Destaca particularmente la retención neta de ingresos (NRR) del 123 %, lo que demuestra un fuerte crecimiento dentro de nuestra cartera actual de clientes. Este desempeño comercial se ve reforzado por la renovación de tres años de Clínicas Moreno, quien además amplió su licencia en 257 unidades. Esta combinación de nuevas adquisiciones y crecimiento interno posiciona a la empresa en una trayectoria de expansión sostenible. La proyección para los próximos meses es favorable, dado el equilibrio entre la eficiencia en la captación y la lealtad de la base instalada. Confiamos en que estas métricas consolidan el valor para nuestros inversores y respaldan la continuidad de nuestra hoja de ruta estratégica.",
+  "text": "En marzo de 2026, Lumbre registró una sólida expansión comercial con la incorporación de 8 nuevos clientes, manteniendo un costo de adquisición de 606 USD. Nuestra base de usuarios activos alcanzó los 215.160, reflejando una penetración robusta en el mercado objetivo. La estrategia de conversión mostró resultados eficaces, logrando que el 21,3 % de los usuarios de prueba migraran a planes de pago. Destaca particularmente la retención neta de ingresos (NRR) del 123 %, lo que demuestra un fuerte crecimiento dentro de nuestra cartera actual de clientes. Este desempeño comercial se ve reforzado por la renovación de tres años de Clínicas Moreno, quien además amplió su licencia en 257 unidades. Esta combinación de nuevas adquisiciones y crecimiento interno posiciona a la empresa en una trayectoria de expansión sostenible. La proyección para los próximos meses es favorable, dado el equilibrio entre la eficiencia en la captación y la lealtad de la base instalada. Confiamos en que estas métricas consolidan el valor para nuestros inversores y respaldan la continuidad de nuestra hoja de ruta estratégica.",
+  "finish_reason": "stop",
+  "served_by": "qwen/qwen3.8-27b",
+  "usage": {
+    "queue_time": 0.251658511,
+    "prompt_tokens": 225,
+    "prompt_time": 0.016552819,
+    "completion_tokens": 251,
+    "completion_time": 0.521163553,
+    "total_tokens": 476,
+    "total_time": 0.537716372
+  },
+  "seconds": 0.89,
+  "created_at": "2026-11-18T14:26:55+00:00"
+}

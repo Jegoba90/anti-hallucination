@@ -1,0 +1,172 @@
+{
+  "id": "m013",
+  "split": "dev",
+  "domain": "support",
+  "locale": "es",
+  "brief": {
+    "company": "Mirlo",
+    "audience": "la gerencia de operaciones",
+    "topic": "el desempeño del área de soporte",
+    "period": "enero de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "tickets_resueltos",
+        "value": 4537,
+        "unit": "tickets",
+        "label": "tickets resueltos",
+        "subject": [
+          "tickets resueltos",
+          "resueltos"
+        ]
+      },
+      {
+        "name": "tickets_resueltos_anterior",
+        "value": 4186,
+        "unit": "tickets",
+        "label": "tickets resueltos en el mes anterior",
+        "subject": [
+          "tickets resueltos",
+          "resueltos"
+        ]
+      },
+      {
+        "name": "variacion_tickets_resueltos",
+        "compute": "percent_change",
+        "from": "tickets_resueltos_anterior",
+        "to": "tickets_resueltos",
+        "label": "variación de los tickets resueltos respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "tiempo_resolucion",
+        "value": 29.8,
+        "unit": "h",
+        "label": "tiempo medio de resolución",
+        "subject": [
+          "resolución"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tiempo_resolucion_anterior",
+        "value": 27.6,
+        "unit": "h",
+        "label": "tiempo medio de resolución en el mes anterior",
+        "subject": [
+          "resolución"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_tiempo_resolucion",
+        "compute": "percent_change",
+        "from": "tiempo_resolucion_anterior",
+        "to": "tiempo_resolucion",
+        "label": "variación del tiempo medio de resolución respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "escalamientos",
+        "value": 14,
+        "unit": "",
+        "label": "escalamientos",
+        "subject": [
+          "escalamientos"
+        ]
+      },
+      {
+        "name": "variacion_escalamientos",
+        "value": -19.9,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los escalamientos respecto del mes anterior",
+        "subject": [
+          "escalamientos"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "primera_respuesta",
+        "value": 6.4,
+        "unit": "h",
+        "label": "tiempo de primera respuesta",
+        "subject": [
+          "primera respuesta",
+          "tiempo de respuesta"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "primera_respuesta_anterior",
+        "value": 6.3,
+        "unit": "h",
+        "label": "tiempo de primera respuesta en el mes anterior",
+        "subject": [
+          "primera respuesta",
+          "tiempo de respuesta"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_primera_respuesta",
+        "compute": "percent_change",
+        "from": "primera_respuesta_anterior",
+        "to": "primera_respuesta",
+        "label": "variación del tiempo de primera respuesta respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "csat",
+        "value": 80,
+        "unit": "%",
+        "label": "satisfacción del cliente (CSAT)",
+        "subject": [
+          "satisfacción",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "variacion_csat",
+        "value": 1.8,
+        "unit": "pp",
+        "change": true,
+        "label": "variación de la satisfacción del cliente (CSAT) respecto del mes anterior, en puntos",
+        "subject": [
+          "satisfacción",
+          "CSAT"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "enero de 2026"
+      }
+    ],
+    "known_names": [
+      "Mirlo"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 9625",
+        "title": "Facturas con el impuesto equivocado",
+        "text": "8 clientes empresa de Montevideo recibieron facturas con el impuesto equivocado. Finanzas está emitiendo las facturas de nuevo."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 4755",
+        "title": "Falla el pago con tarjeta",
+        "text": "Desde el lunes, 9 clientes de Montevideo reportan que el pago con tarjeta falla con el error 409. El equipo de pagos revirtió la versión 3.10.5 el martes y las fallas se detuvieron."
+      }
+    ]
+  }
+}

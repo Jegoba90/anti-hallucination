@@ -1,0 +1,26 @@
+{
+  "dataset": "p17",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para el equipo de soporte de Pampa Digital sobre el desempeño del área de soporte en la semana del 6 al 12 de noviembre de 2026, a partir de estos datos.\n\nEmpresa: Pampa Digital\nPeríodo: la semana del 6 al 12 de noviembre de 2026\n\nDatos:\n- Tickets recibidos: 4.095 tickets\n- Tickets recibidos en la semana anterior: 4.237 tickets\n- Variación de los tickets recibidos respecto de la semana anterior: -3,4 %\n- Satisfacción del cliente (CSAT): 88 %\n- Satisfacción del cliente (CSAT) en la semana anterior: 87 %\n- Variación de la satisfacción del cliente (CSAT) respecto de la semana anterior, en puntos: 1 pp\n- Tickets resueltos: 12.316 tickets\n- Tickets resueltos en la semana anterior: 11.271 tickets\n- Variación de los tickets resueltos respecto de la semana anterior: 9,3 %\n- Escalamientos: 2\n- Variación de los escalamientos respecto de la semana anterior: -14,8 %\n- Tiempo medio de resolución: 31,6 h\n\nNotas para el informe:\n[s1] Ticket 7791, «Falla el pago con tarjeta»: Desde el martes, 39 clientes de Mendoza reportan que el pago con tarjeta falla con el error 402. El equipo de pagos revirtió la versión 5.4.1 el lunes y las fallas se detuvieron.\n[s2] Ticket 6485, «La app no sincroniza»: Usuarios de Android reportan que la app no sincroniza los pedidos desde la versión 5.4.1. Hay 39 reportes y el equipo móvil prepara un parche.\n\nEscribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "Durante la semana del 6 al 12 de noviembre de 2026 el área de soporte recibió 4 095 tickets, lo que representa una caída del 3,4 % respecto a la semana anterior (4 237 tickets). La satisfacción del cliente (CSAT) mejoró ligeramente, alcanzando el 88 % frente al 87 % previo, con un aumento de 1 punto porcentual. Se resolvieron 12 316 tickets, un crecimiento del 9,3 % frente a los 11 271 de la semana pasada, lo que indica una mayor eficacia del equipo. Los escalamientos se redujeron a 2, una disminución del 14,8 % respecto a la semana anterior, reflejando una mejor gestión en primera línea. El tiempo medio de resolución se mantuvo en 31,6 horas, dentro de los parámetros esperados para nuestra operación. En el caso del ticket 7791, 39 clientes de Mendoza reportaron fallas de pago con tarjeta (error 402) desde el martes; el equipo de pagos revirtió la versión 5.4.1 el lunes y la incidencia se detuvo. Por otro lado, el ticket 6485 indica que 39 usuarios de Android experimentaron problemas de sincronización de pedidos con la versión 5.4.1; el equipo móvil está preparando un parche para corregir la anomalía.",
+  "text": "Durante la semana del 6 al 12 de noviembre de 2026 el área de soporte recibió 4 095 tickets, lo que representa una caída del 3,4 % respecto a la semana anterior (4 237 tickets). La satisfacción del cliente (CSAT) mejoró ligeramente, alcanzando el 88 % frente al 87 % previo, con un aumento de 1 punto porcentual. Se resolvieron 12 316 tickets, un crecimiento del 9,3 % frente a los 11 271 de la semana pasada, lo que indica una mayor eficacia del equipo. Los escalamientos se redujeron a 2, una disminución del 14,8 % respecto a la semana anterior, reflejando una mejor gestión en primera línea. El tiempo medio de resolución se mantuvo en 31,6 horas, dentro de los parámetros esperados para nuestra operación. En el caso del ticket 7791, 39 clientes de Mendoza reportaron fallas de pago con tarjeta (error 402) desde el martes; el equipo de pagos revirtió la versión 5.4.1 el lunes y la incidencia se detuvo. Por otro lado, el ticket 6485 indica que 39 usuarios de Android experimentaron problemas de sincronización de pedidos con la versión 5.4.1; el equipo móvil está preparando un parche para corregir la anomalía.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 1.252541455,
+    "prompt_tokens": 489,
+    "prompt_time": 0.026684223,
+    "completion_tokens": 521,
+    "completion_time": 1.125360043,
+    "total_tokens": 1010,
+    "total_time": 1.152044266,
+    "completion_tokens_details": {
+      "reasoning_tokens": 220
+    }
+  },
+  "seconds": 2.46,
+  "created_at": "2026-11-18T14:22:18+00:00"
+}

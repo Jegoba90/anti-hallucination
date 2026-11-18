@@ -1,0 +1,189 @@
+{
+  "id": "m008",
+  "split": "test",
+  "domain": "sales",
+  "locale": "es",
+  "brief": {
+    "company": "Cardón",
+    "audience": "el equipo comercial",
+    "topic": "los resultados de ventas",
+    "period": "marzo de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "clientes_nuevos",
+        "value": 3898,
+        "unit": "clientes",
+        "label": "clientes nuevos",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "clientes_nuevos_anterior",
+        "value": 3607,
+        "unit": "clientes",
+        "label": "clientes nuevos en el mes anterior",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "variacion_clientes_nuevos",
+        "compute": "percent_change",
+        "from": "clientes_nuevos_anterior",
+        "to": "clientes_nuevos",
+        "label": "variación de los clientes nuevos respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "ticket_promedio",
+        "value": 318.6,
+        "unit": "USD",
+        "label": "ticket promedio",
+        "subject": [
+          "ticket"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "ticket_promedio_anterior",
+        "value": 293.19,
+        "unit": "USD",
+        "label": "ticket promedio en el mes anterior",
+        "subject": [
+          "ticket"
+        ],
+        "decimals": 2
+      },
+      {
+        "name": "variacion_ticket_promedio",
+        "compute": "percent_change",
+        "from": "ticket_promedio_anterior",
+        "to": "ticket_promedio",
+        "label": "variación del ticket promedio respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "tasa_devoluciones",
+        "value": 1.0,
+        "unit": "%",
+        "label": "tasa de devoluciones",
+        "subject": [
+          "devoluciones"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tasa_devoluciones_anterior",
+        "value": 1.9,
+        "unit": "%",
+        "label": "tasa de devoluciones en el mes anterior",
+        "subject": [
+          "devoluciones"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_tasa_devoluciones",
+        "compute": "difference",
+        "from": "tasa_devoluciones_anterior",
+        "to": "tasa_devoluciones",
+        "label": "variación de la tasa de devoluciones respecto del mes anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "pedidos_online",
+        "value": 2479,
+        "unit": "pedidos",
+        "label": "pedidos online",
+        "subject": [
+          "pedidos"
+        ]
+      },
+      {
+        "name": "pedidos_online_anterior",
+        "value": 2530,
+        "unit": "pedidos",
+        "label": "pedidos online en el mes anterior",
+        "subject": [
+          "pedidos"
+        ]
+      },
+      {
+        "name": "variacion_pedidos_online",
+        "compute": "percent_change",
+        "from": "pedidos_online_anterior",
+        "to": "pedidos_online",
+        "label": "variación de los pedidos online respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "unidades_vendidas",
+        "value": 43575,
+        "unit": "unidades",
+        "label": "unidades vendidas",
+        "subject": [
+          "ventas",
+          "unidades"
+        ]
+      },
+      {
+        "name": "unidades_vendidas_anterior",
+        "value": 42966,
+        "unit": "unidades",
+        "label": "unidades vendidas en el mes anterior",
+        "subject": [
+          "ventas",
+          "unidades"
+        ]
+      },
+      {
+        "name": "variacion_unidades_vendidas",
+        "compute": "percent_change",
+        "from": "unidades_vendidas_anterior",
+        "to": "unidades_vendidas",
+        "label": "variación de las unidades vendidas respecto del mes anterior",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "marzo de 2026"
+      },
+      {
+        "name": "tendencia_unidades_vendidas",
+        "from": "variacion_unidades_vendidas",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Cardón"
+    ]
+  }
+}

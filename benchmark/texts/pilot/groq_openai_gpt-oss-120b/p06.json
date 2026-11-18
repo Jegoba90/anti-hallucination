@@ -1,0 +1,26 @@
+{
+  "dataset": "p06",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para el directorio de Corvina Labs sobre los resultados de ventas en enero de 2026, a partir de estos datos.\n\nEmpresa: Corvina Labs\nPeríodo: enero de 2026\n\nDatos:\n- Tasa de devoluciones: 2,8 %\n- Tasa de devoluciones en el mes anterior: 1,9 %\n- Variación de la tasa de devoluciones respecto del mes anterior, en puntos: 0,9 pp\n- Pedidos online: 1.702 pedidos\n- Pedidos online en el mes anterior: 1.879 pedidos\n- Variación de los pedidos online respecto del mes anterior: -9,4 %\n- Unidades vendidas: 18.726 unidades\n- Unidades vendidas en el mes anterior: 30.092 unidades\n- Variación de las unidades vendidas respecto del mes anterior: -37,8 %\n- Ticket promedio: 99,92 USD\n- Ticket promedio en el mes anterior: 113,05 USD\n- Variación del ticket promedio respecto del mes anterior: -11,6 %\n- Conversión web: 1,2 %\n- Conversión web en el mes anterior: 1,1 %\n- Variación de la conversión web respecto del mes anterior, en puntos: 0,1 pp\n- Veredicto sobre la variación de la conversión web respecto del mes anterior, en puntos: estabilidad\n\nNotas para el informe:\n[s1] Informe de logística, «Demoras en entregas»: Durante 4 días hubo demoras en las entregas a Rosario por un problema con el operador Envíos Delta.\n[s2] Nota del equipo comercial, «Campaña de temporada»: La campaña «Días Calientes» empezó el 23 de marzo en Rosario y Medellín, con descuentos de hasta 40 % en la categoría hogar.\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En enero de 2026 la tasa de devoluciones de Corvina Labs se situó en 2,8 %, lo que representa un incremento de 0,9 pp respecto al mes anterior. Los pedidos online descendieron 9,4 % y alcanzaron los 1.702, mientras que las unidades vendidas bajaron 37,8 % hasta 18.726, acompañadas de una reducción del ticket promedio de 11,6 % (99,92 USD). La conversión web mostró una ligera mejora, situándose en 1,2 % (variación de 0,1 pp) y se califica como estable. Durante cuatro días se registraron demoras en las entregas a Rosario por un problema con el operador Envíos Delta. El equipo comercial informó que la campaña de temporada «Días Calientes», con descuentos de hasta 40 % en la categoría hogar, se lanzó el 23 de marzo en Rosario y Medellín. Estas observaciones deben considerarse al planificar ajustes operativos y de marketing para los próximos períodos.",
+  "text": "En enero de 2026 la tasa de devoluciones de Corvina Labs se situó en 2,8 %, lo que representa un incremento de 0,9 pp respecto al mes anterior. Los pedidos online descendieron 9,4 % y alcanzaron los 1.702, mientras que las unidades vendidas bajaron 37,8 % hasta 18.726, acompañadas de una reducción del ticket promedio de 11,6 % (99,92 USD). La conversión web mostró una ligera mejora, situándose en 1,2 % (variación de 0,1 pp) y se califica como estable. Durante cuatro días se registraron demoras en las entregas a Rosario por un problema con el operador Envíos Delta. El equipo comercial informó que la campaña de temporada «Días Calientes», con descuentos de hasta 40 % en la categoría hogar, se lanzó el 23 de marzo en Rosario y Medellín. Estas observaciones deben considerarse al planificar ajustes operativos y de marketing para los próximos períodos.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.250499412,
+    "prompt_tokens": 524,
+    "prompt_time": 0.096925921,
+    "completion_tokens": 639,
+    "completion_time": 1.3339731989999999,
+    "total_tokens": 1163,
+    "total_time": 1.43089912,
+    "completion_tokens_details": {
+      "reasoning_tokens": 403
+    }
+  },
+  "seconds": 1.73,
+  "created_at": "2026-11-18T14:21:35+00:00"
+}

@@ -1,0 +1,204 @@
+{
+  "id": "m048",
+  "split": "test",
+  "domain": "saas",
+  "locale": "en",
+  "brief": {
+    "company": "Tidewell",
+    "audience": "the leadership team",
+    "topic": "business metrics",
+    "period": "April 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "cac",
+        "value": 2452,
+        "unit": "GBP",
+        "label": "customer acquisition cost (CAC)",
+        "subject": [
+          "CAC",
+          "acquisition cost"
+        ]
+      },
+      {
+        "name": "cac_previous",
+        "value": 2374,
+        "unit": "GBP",
+        "label": "customer acquisition cost (CAC) in the previous month",
+        "subject": [
+          "CAC",
+          "acquisition cost"
+        ]
+      },
+      {
+        "name": "cac_change",
+        "compute": "percent_change",
+        "from": "cac_previous",
+        "to": "cac",
+        "label": "change in customer acquisition cost (CAC) vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "trial_conversion",
+        "value": 23.4,
+        "unit": "%",
+        "label": "trial-to-paid conversion",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "active_users",
+        "value": 147642,
+        "unit": "users",
+        "label": "active users",
+        "subject": [
+          "users",
+          "active users"
+        ]
+      },
+      {
+        "name": "active_users_previous",
+        "value": 151381,
+        "unit": "users",
+        "label": "active users in the previous month",
+        "subject": [
+          "users",
+          "active users"
+        ]
+      },
+      {
+        "name": "active_users_change",
+        "compute": "percent_change",
+        "from": "active_users_previous",
+        "to": "active_users",
+        "label": "change in active users vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "churn",
+        "value": 2.2,
+        "unit": "%",
+        "label": "monthly churn",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_change",
+        "value": 0.8,
+        "unit": "pp",
+        "change": true,
+        "label": "change in monthly churn vs the previous month, in percentage points",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "mrr",
+        "value": 14079,
+        "unit": "GBP",
+        "label": "monthly recurring revenue (MRR)",
+        "subject": [
+          "MRR",
+          "recurring revenue"
+        ]
+      },
+      {
+        "name": "mrr_previous",
+        "value": 12887,
+        "unit": "GBP",
+        "label": "monthly recurring revenue (MRR) in the previous month",
+        "subject": [
+          "MRR",
+          "recurring revenue"
+        ]
+      },
+      {
+        "name": "mrr_change",
+        "compute": "percent_change",
+        "from": "mrr_previous",
+        "to": "mrr",
+        "label": "change in monthly recurring revenue (MRR) vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "nrr",
+        "value": 120,
+        "unit": "%",
+        "label": "net revenue retention (NRR)",
+        "subject": [
+          "NRR",
+          "retention"
+        ]
+      },
+      {
+        "name": "nrr_change",
+        "value": -1.8,
+        "unit": "pp",
+        "change": true,
+        "label": "change in net revenue retention (NRR) vs the previous month, in percentage points",
+        "subject": [
+          "NRR",
+          "retention"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "April 2026"
+      },
+      {
+        "name": "nrr_trend",
+        "from": "nrr_change",
+        "thresholds": [
+          [
+            -2,
+            "a sharp drop"
+          ],
+          [
+            -0.3,
+            "a mild drop"
+          ],
+          [
+            0.3,
+            "stability"
+          ],
+          [
+            2,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Tidewell"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Customer success note",
+        "title": "Renewal",
+        "text": "Avalon Schools renewed its contract for 2 years and added 68 seats."
+      },
+      {
+        "id": "s2",
+        "name": "Release notes",
+        "title": "Version 8.7.4",
+        "text": "Version 8.7.4, released on October 16, added single sign-on and a new usage dashboard."
+      }
+    ]
+  }
+}

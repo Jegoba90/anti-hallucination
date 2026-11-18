@@ -1,0 +1,26 @@
+{
+  "dataset": "m032",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para la gerencia de operaciones de Cardón sobre el desempeño del área de soporte en la semana del 14 al 20 de octubre de 2026, a partir de estos datos.\n\nEmpresa: Cardón\nPeríodo: la semana del 14 al 20 de octubre de 2026\n\nDatos:\n- Tickets recibidos: 11.363 tickets\n- Tickets recibidos en la semana anterior: 9.334 tickets\n- Variación de los tickets recibidos respecto de la semana anterior: 21,7 %\n- Tickets pendientes: 50 tickets\n- Satisfacción del cliente (CSAT): 68 %\n- Escalamientos: 20\n- Escalamientos en la semana anterior: 19\n- Variación de los escalamientos respecto de la semana anterior: 5,3 %\n- Tiempo medio de resolución: 11,2 h\n- Tiempo medio de resolución en la semana anterior: 8,5 h\n- Variación del tiempo medio de resolución respecto de la semana anterior: 31,8 %\n- Tickets resueltos: 405 tickets\n- Tickets resueltos en la semana anterior: 511 tickets\n- Variación de los tickets resueltos respecto de la semana anterior: -20,7 %\n- Veredicto sobre la variación de los escalamientos respecto de la semana anterior: subida leve\n\nNotas para el informe:\n[s1] Ticket 7441, «Falla el pago con tarjeta»: Desde el viernes, 20 clientes de Valencia reportan que el pago con tarjeta falla con el error 502. El equipo de pagos revirtió la versión 2.7.2 el jueves y las fallas se detuvieron.\n[s2] Ticket 5350, «Correos demorados»: Los correos de confirmación llegan con hasta 5 horas de demora porque el proveedor de envíos limitó el tráfico. Se pasó el tráfico a un proveedor alternativo.\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En la semana del 14 al 20 de octubre de 2026, el área de soporte recibió 11 363 tickets, lo que representa un aumento del 21,7 % respecto a la semana anterior (9 334 tickets). Los tickets pendientes al cierre del periodo fueron 50, mientras que el número de tickets resueltos fue de 405, una disminución del 20,7 % frente a los 511 de la semana previa. El tiempo medio de resolución se incrementó a 11,2 h, un 31,8 % más que los 8,5 h de la semana anterior. La satisfacción del cliente (CSAT) se ubicó en 68 % y se registraron 20 escalamientos, lo que supone una subida leve del 5,3 % respecto a los 19 de la semana pasada. El ticket 7441 reportó que 20 clientes de Valencia experimentaron fallas de pago con tarjeta (error 502) desde el viernes, situación que se mitigó cuando el equipo de pagos revirtió la versión 2.7.2 el jueves. En el ticket 5350 se constató que los correos de confirmación presentaron demoras de hasta 5 horas debido a una limitación de tráfico del proveedor, y el tráfico se trasladó a un proveedor alternativo.",
+  "text": "En la semana del 14 al 20 de octubre de 2026, el área de soporte recibió 11 363 tickets, lo que representa un aumento del 21,7 % respecto a la semana anterior (9 334 tickets). Los tickets pendientes al cierre del periodo fueron 50, mientras que el número de tickets resueltos fue de 405, una disminución del 20,7 % frente a los 511 de la semana previa. El tiempo medio de resolución se incrementó a 11,2 h, un 31,8 % más que los 8,5 h de la semana anterior. La satisfacción del cliente (CSAT) se ubicó en 68 % y se registraron 20 escalamientos, lo que supone una subida leve del 5,3 % respecto a los 19 de la semana pasada. El ticket 7441 reportó que 20 clientes de Valencia experimentaron fallas de pago con tarjeta (error 502) desde el viernes, situación que se mitigó cuando el equipo de pagos revirtió la versión 2.7.2 el jueves. En el ticket 5350 se constató que los correos de confirmación presentaron demoras de hasta 5 horas debido a una limitación de tráfico del proveedor, y el tráfico se trasladó a un proveedor alternativo.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.481308394,
+    "prompt_tokens": 541,
+    "prompt_time": 0.038482835,
+    "completion_tokens": 790,
+    "completion_time": 1.66721509,
+    "total_tokens": 1331,
+    "total_time": 1.705697925,
+    "completion_tokens_details": {
+      "reasoning_tokens": 497
+    }
+  },
+  "seconds": 2.28,
+  "created_at": "2026-11-18T14:35:23+00:00"
+}

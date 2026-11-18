@@ -1,0 +1,26 @@
+{
+  "dataset": "p14",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para el directorio de Pampa Digital sobre los resultados financieros en el segundo trimestre de 2026, a partir de estos datos.\n\nEmpresa: Pampa Digital\nPeríodo: el segundo trimestre de 2026\n\nDatos:\n- Empleados: 15.627 empleados\n- Empleados en el trimestre anterior: 18.595 empleados\n- Variación de los empleados respecto del trimestre anterior: -16,0 %\n- EBITDA: 64 millones USD\n- EBITDA en el trimestre anterior: 58,1 millones USD\n- Variación del EBITDA respecto del trimestre anterior: 10,2 %\n- Resultado neto: 462,8 millones USD\n- Resultado neto en el trimestre anterior: 328,7 millones USD\n- Variación del resultado neto respecto del trimestre anterior: 134 millones USD\n- Ingresos: 1,3 mil millones USD\n- Ingresos en el trimestre anterior: 1,3 mil millones USD\n- Variación de los ingresos respecto del trimestre anterior: -1,1 %\n- Margen operativo: -1,1 %\n- Margen operativo en el trimestre anterior: -1,5 %\n- Variación del margen operativo respecto del trimestre anterior, en puntos: 0,4 pp\n- Veredicto sobre la variación del EBITDA respecto del trimestre anterior: subida fuerte\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "En el segundo trimestre de 2026, Pampa Digital reportó una plantilla de 15.627 empleados, lo que representa una reducción del 16,0 % frente al trimestre anterior de 18.595 empleados. El EBITDA alcanzó los 64 millones USD, incrementándose un 10,2 % respecto a los 58,1 millones USD del periodo previo, lo que se califica como una subida fuerte. El resultado neto fue de 462,8 millones USD, superior en 134 millones USD al trimestre anterior, que había sido de 328,7 millones USD. Los ingresos se mantuvieron en torno a 1,3 mil millones USD, con una ligera caída del 1,1 % respecto al trimestre anterior. El margen operativo mejoró a -1,1 % desde -1,5 % en el periodo anterior, lo que equivale a una mejora de 0,4 puntos porcentuales. En conjunto, los indicadores muestran un desempeño financiero mejorado pese a la reducción de personal y a la ligera disminución de los ingresos.",
+  "text": "En el segundo trimestre de 2026, Pampa Digital reportó una plantilla de 15.627 empleados, lo que representa una reducción del 16,0 % frente al trimestre anterior de 18.595 empleados. El EBITDA alcanzó los 64 millones USD, incrementándose un 10,2 % respecto a los 58,1 millones USD del periodo previo, lo que se califica como una subida fuerte. El resultado neto fue de 462,8 millones USD, superior en 134 millones USD al trimestre anterior, que había sido de 328,7 millones USD. Los ingresos se mantuvieron en torno a 1,3 mil millones USD, con una ligera caída del 1,1 % respecto al trimestre anterior. El margen operativo mejoró a -1,1 % desde -1,5 % en el periodo anterior, lo que equivale a una mejora de 0,4 puntos porcentuales. En conjunto, los indicadores muestran un desempeño financiero mejorado pese a la reducción de personal y a la ligera disminución de los ingresos.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.15143042,
+    "prompt_tokens": 419,
+    "prompt_time": 0.01851039,
+    "completion_tokens": 795,
+    "completion_time": 1.717860328,
+    "total_tokens": 1214,
+    "total_time": 1.7363707179999999,
+    "completion_tokens_details": {
+      "reasoning_tokens": 554
+    }
+  },
+  "seconds": 1.94,
+  "created_at": "2026-11-18T14:21:55+00:00"
+}

@@ -1,0 +1,173 @@
+{
+  "id": "p03",
+  "split": "pilot",
+  "domain": "crypto",
+  "locale": "es",
+  "brief": {
+    "company": "Mesa Pampa Trading",
+    "audience": "los clientes de la mesa de trading",
+    "topic": "el mercado cripto",
+    "period": "el 3 de noviembre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "tasa_financiamiento",
+        "value": 0.045,
+        "unit": "%",
+        "label": "tasa de financiamiento promedio",
+        "subject": [
+          "financiamiento"
+        ],
+        "decimals": 3
+      },
+      {
+        "name": "tasa_financiamiento_anterior",
+        "value": 0.044,
+        "unit": "%",
+        "label": "tasa de financiamiento promedio en el día anterior",
+        "subject": [
+          "financiamiento"
+        ],
+        "decimals": 3
+      },
+      {
+        "name": "variacion_tasa_financiamiento",
+        "compute": "difference",
+        "from": "tasa_financiamiento_anterior",
+        "to": "tasa_financiamiento",
+        "label": "variación de la tasa de financiamiento promedio respecto del día anterior, en puntos",
+        "decimals": 3
+      },
+      {
+        "name": "indice_miedo",
+        "value": 61,
+        "unit": "",
+        "label": "índice de miedo y codicia",
+        "subject": [
+          "miedo",
+          "codicia",
+          "sentimiento"
+        ]
+      },
+      {
+        "name": "indice_miedo_anterior",
+        "value": 77,
+        "unit": "",
+        "label": "índice de miedo y codicia en el día anterior",
+        "subject": [
+          "miedo",
+          "codicia",
+          "sentimiento"
+        ]
+      },
+      {
+        "name": "variacion_indice_miedo",
+        "compute": "difference",
+        "from": "indice_miedo_anterior",
+        "to": "indice_miedo",
+        "label": "variación del índice de miedo y codicia respecto del día anterior",
+        "decimals": 0
+      },
+      {
+        "name": "precio_eth",
+        "value": 4170,
+        "unit": "USD",
+        "label": "precio de ether (ETH)",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "precio_eth_anterior",
+        "value": 4155,
+        "unit": "USD",
+        "label": "precio de ether (ETH) en el día anterior",
+        "subject": [
+          "ether",
+          "ETH"
+        ]
+      },
+      {
+        "name": "variacion_precio_eth",
+        "compute": "percent_change",
+        "from": "precio_eth_anterior",
+        "to": "precio_eth",
+        "label": "variación del precio de ether (ETH) respecto del día anterior",
+        "decimals": 1
+      },
+      {
+        "name": "dominancia_btc",
+        "value": 59.7,
+        "unit": "%",
+        "label": "dominancia de bitcoin",
+        "subject": [
+          "dominancia"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "interes_abierto",
+        "value": 5089555592,
+        "unit": "USD",
+        "label": "interés abierto en futuros",
+        "subject": [
+          "interés abierto"
+        ],
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el 3 de noviembre de 2026"
+      },
+      {
+        "name": "tendencia_tasa_financiamiento",
+        "from": "variacion_tasa_financiamiento",
+        "thresholds": [
+          [
+            -2,
+            "tendencia bajista fuerte"
+          ],
+          [
+            -0.3,
+            "tendencia bajista"
+          ],
+          [
+            0.3,
+            "movimiento lateral"
+          ],
+          [
+            2,
+            "tendencia alcista"
+          ]
+        ],
+        "otherwise": "tendencia alcista fuerte"
+      }
+    ],
+    "known_names": [
+      "Mesa Pampa Trading"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Agenda de redes",
+        "title": "Actualización de red",
+        "text": "La red Telar activará la actualización «Faro» el 5 de mayo."
+      },
+      {
+        "id": "s2",
+        "name": "Orbita News",
+        "title": "Retiros suspendidos",
+        "text": "El exchange Orbita suspendió los retiros de ETH durante 6 horas el viernes por mantenimiento."
+      }
+    ]
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "id": "m079",
+  "split": "test",
+  "domain": "support",
+  "locale": "en",
+  "brief": {
+    "company": "Kestrel Goods",
+    "audience": "the operations managers",
+    "topic": "support performance",
+    "period": "March 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "first_response",
+        "value": 3.0,
+        "unit": "h",
+        "label": "first response time",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_previous",
+        "value": 2.9,
+        "unit": "h",
+        "label": "first response time in the previous month",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response_change",
+        "compute": "percent_change",
+        "from": "first_response_previous",
+        "to": "first_response",
+        "label": "change in first response time vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "tickets_received",
+        "value": 21484,
+        "unit": "tickets",
+        "label": "tickets received",
+        "subject": [
+          "tickets received",
+          "received"
+        ]
+      },
+      {
+        "name": "tickets_received_change",
+        "value": 9.1,
+        "unit": "%",
+        "change": true,
+        "label": "change in tickets received vs the previous month",
+        "subject": [
+          "tickets received",
+          "received"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "tickets_resolved",
+        "value": 7571,
+        "unit": "tickets",
+        "label": "tickets resolved",
+        "subject": [
+          "tickets resolved",
+          "resolved"
+        ]
+      },
+      {
+        "name": "tickets_resolved_change",
+        "value": 6.3,
+        "unit": "%",
+        "change": true,
+        "label": "change in tickets resolved vs the previous month",
+        "subject": [
+          "tickets resolved",
+          "resolved"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "csat",
+        "value": 85,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT)",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_previous",
+        "value": 84,
+        "unit": "%",
+        "label": "customer satisfaction (CSAT) in the previous month",
+        "subject": [
+          "satisfaction",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "csat_change",
+        "compute": "difference",
+        "from": "csat_previous",
+        "to": "csat",
+        "label": "change in customer satisfaction (CSAT) vs the previous month, in percentage points",
+        "decimals": 0
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "March 2026"
+      },
+      {
+        "name": "first_response_trend",
+        "from": "first_response_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Kestrel Goods"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 6130",
+        "title": "Delayed emails",
+        "text": "Confirmation emails arrive up to 12 hours late because the email provider throttled sending. Traffic was moved to a backup provider."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 9501",
+        "title": "Card payments fail",
+        "text": "Since Friday, 18 customers in Tampa report that card payments fail with error 402. The payments team rolled back release 8.14.2 on Thursday and the failures stopped."
+      }
+    ]
+  }
+}

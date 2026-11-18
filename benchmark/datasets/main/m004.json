@@ -1,0 +1,170 @@
+{
+  "id": "m004",
+  "split": "dev",
+  "domain": "finance",
+  "locale": "es",
+  "brief": {
+    "company": "Nubra",
+    "audience": "los accionistas",
+    "topic": "los resultados financieros",
+    "period": "el primer trimestre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "resultado_neto",
+        "value": -39206274,
+        "unit": "EUR",
+        "label": "resultado neto",
+        "subject": [
+          "resultado neto",
+          "ganancia"
+        ],
+        "compact": true
+      },
+      {
+        "name": "resultado_neto_anterior",
+        "value": -30887920,
+        "unit": "EUR",
+        "label": "resultado neto en el trimestre anterior",
+        "subject": [
+          "resultado neto",
+          "ganancia"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_resultado_neto",
+        "compute": "difference",
+        "from": "resultado_neto_anterior",
+        "to": "resultado_neto",
+        "label": "variación del resultado neto respecto del trimestre anterior",
+        "decimals": 0,
+        "compact": true
+      },
+      {
+        "name": "margen_operativo",
+        "value": 19.5,
+        "unit": "%",
+        "label": "margen operativo",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "margen_operativo_anterior",
+        "value": 19.3,
+        "unit": "%",
+        "label": "margen operativo en el trimestre anterior",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_margen_operativo",
+        "compute": "difference",
+        "from": "margen_operativo_anterior",
+        "to": "margen_operativo",
+        "label": "variación del margen operativo respecto del trimestre anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "ingresos",
+        "value": 3142230744,
+        "unit": "EUR",
+        "label": "ingresos",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ingresos_anterior",
+        "value": 3236948618,
+        "unit": "EUR",
+        "label": "ingresos en el trimestre anterior",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_ingresos",
+        "compute": "percent_change",
+        "from": "ingresos_anterior",
+        "to": "ingresos",
+        "label": "variación de los ingresos respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "deuda_neta",
+        "value": 2052629827,
+        "unit": "EUR",
+        "label": "deuda neta",
+        "subject": [
+          "deuda"
+        ],
+        "compact": true
+      },
+      {
+        "name": "deuda_neta_anterior",
+        "value": 2258156715,
+        "unit": "EUR",
+        "label": "deuda neta en el trimestre anterior",
+        "subject": [
+          "deuda"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_deuda_neta",
+        "compute": "percent_change",
+        "from": "deuda_neta_anterior",
+        "to": "deuda_neta",
+        "label": "variación de la deuda neta respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el primer trimestre de 2026"
+      },
+      {
+        "name": "tendencia_ingresos",
+        "from": "variacion_ingresos",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Nubra"
+    ]
+  }
+}

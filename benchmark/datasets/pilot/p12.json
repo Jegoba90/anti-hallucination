@@ -1,0 +1,198 @@
+{
+  "id": "p12",
+  "split": "pilot",
+  "domain": "finance",
+  "locale": "es",
+  "brief": {
+    "company": "Arkadia",
+    "audience": "el directorio",
+    "topic": "los resultados financieros",
+    "period": "el segundo trimestre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "caja",
+        "value": 90603823,
+        "unit": "USD",
+        "label": "caja y equivalentes",
+        "subject": [
+          "caja"
+        ],
+        "compact": true
+      },
+      {
+        "name": "caja_anterior",
+        "value": 89920388,
+        "unit": "USD",
+        "label": "caja y equivalentes en el trimestre anterior",
+        "subject": [
+          "caja"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_caja",
+        "compute": "percent_change",
+        "from": "caja_anterior",
+        "to": "caja",
+        "label": "variación de la caja y equivalentes respecto del trimestre anterior",
+        "decimals": 1
+      },
+      {
+        "name": "ingresos",
+        "value": 4157502754,
+        "unit": "USD",
+        "label": "ingresos",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ingresos_anterior",
+        "value": 5387204225,
+        "unit": "USD",
+        "label": "ingresos en el trimestre anterior",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_ingresos",
+        "compute": "percent_change",
+        "from": "ingresos_anterior",
+        "to": "ingresos",
+        "label": "variación de los ingresos respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "empleados",
+        "value": 3857,
+        "unit": "empleados",
+        "label": "empleados",
+        "subject": [
+          "empleados",
+          "plantilla"
+        ]
+      },
+      {
+        "name": "empleados_anterior",
+        "value": 3835,
+        "unit": "empleados",
+        "label": "empleados en el trimestre anterior",
+        "subject": [
+          "empleados",
+          "plantilla"
+        ]
+      },
+      {
+        "name": "variacion_empleados",
+        "compute": "percent_change",
+        "from": "empleados_anterior",
+        "to": "empleados",
+        "label": "variación de los empleados respecto del trimestre anterior",
+        "decimals": 1
+      },
+      {
+        "name": "margen_operativo",
+        "value": 3.2,
+        "unit": "%",
+        "label": "margen operativo",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "deuda_neta",
+        "value": 3269906523,
+        "unit": "USD",
+        "label": "deuda neta",
+        "subject": [
+          "deuda"
+        ],
+        "compact": true
+      },
+      {
+        "name": "deuda_neta_anterior",
+        "value": 3340242952,
+        "unit": "USD",
+        "label": "deuda neta en el trimestre anterior",
+        "subject": [
+          "deuda"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_deuda_neta",
+        "compute": "percent_change",
+        "from": "deuda_neta_anterior",
+        "to": "deuda_neta",
+        "label": "variación de la deuda neta respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "ebitda",
+        "value": 908592894,
+        "unit": "USD",
+        "label": "EBITDA",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_ebitda",
+        "value": -2.6,
+        "unit": "%",
+        "change": true,
+        "label": "variación del EBITDA respecto del trimestre anterior",
+        "subject": [
+          "EBITDA"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el segundo trimestre de 2026"
+      },
+      {
+        "name": "tendencia_empleados",
+        "from": "variacion_empleados",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Arkadia"
+    ]
+  }
+}

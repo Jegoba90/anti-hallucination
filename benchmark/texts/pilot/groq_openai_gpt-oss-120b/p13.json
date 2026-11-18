@@ -1,0 +1,26 @@
+{
+  "dataset": "p13",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the board at Kestrel Goods on financial results for Q3 2026, based on this data.\n\nCompany: Kestrel Goods\nPeriod: Q3 2026\n\nData:\n- Net income: -3.1 million USD\n- EBITDA: 292.9 million USD\n- EBITDA in the previous quarter: 198.9 million USD\n- Change in EBITDA vs the previous quarter: 47.2%\n- Cash and equivalents: 1.6 billion USD\n- Change in cash and equivalents vs the previous quarter: 1.9%\n- Net debt: 1.1 billion USD\n- Operating margin: 23.5%\n- Employees: 14,842 employees\n- Employees in the previous quarter: 13,139 employees\n- Change in employees vs the previous quarter: 13.0%\n- Verdict on the change in cash and equivalents vs the previous quarter: stability\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "Kestrel Goods delivered a mixed performance in Q3 2026, posting a net loss of $3.1 million despite a robust operating margin of 23.5 percent. EBITDA surged to $292.9 million, a 47.2 percent increase over the prior quarter’s $198.9 million, underscoring the strength of core earnings. Cash and equivalents rose modestly to $1.6 billion, reflecting a 1.9 percent change that the board has judged to indicate overall financial stability. Net debt stood at $1.1 billion, a level that remains manageable given the strong cash position and operating cash flow. The workforce expanded to 14,842 employees, a 13.0 percent rise from the previous quarter, signaling accelerated hiring to support growth initiatives. Overall, the quarter highlighted solid profitability metrics and cash resilience, though the negative net income warrants monitoring of cost controls and margin sustainability.",
+  "text": "Kestrel Goods delivered a mixed performance in Q3 2026, posting a net loss of $3.1 million despite a robust operating margin of 23.5 percent. EBITDA surged to $292.9 million, a 47.2 percent increase over the prior quarter’s $198.9 million, underscoring the strength of core earnings. Cash and equivalents rose modestly to $1.6 billion, reflecting a 1.9 percent change that the board has judged to indicate overall financial stability. Net debt stood at $1.1 billion, a level that remains manageable given the strong cash position and operating cash flow. The workforce expanded to 14,842 employees, a 13.0 percent rise from the previous quarter, signaling accelerated hiring to support growth initiatives. Overall, the quarter highlighted solid profitability metrics and cash resilience, though the negative net income warrants monitoring of cost controls and margin sustainability.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.320294607,
+    "prompt_tokens": 299,
+    "prompt_time": 0.013580547,
+    "completion_tokens": 293,
+    "completion_time": 0.628608464,
+    "total_tokens": 592,
+    "total_time": 0.642189011,
+    "completion_tokens_details": {
+      "reasoning_tokens": 86
+    }
+  },
+  "seconds": 1.01,
+  "created_at": "2026-11-18T14:21:50+00:00"
+}

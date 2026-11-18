@@ -1,0 +1,211 @@
+{
+  "id": "m022",
+  "split": "dev",
+  "domain": "support",
+  "locale": "es",
+  "brief": {
+    "company": "Quillon",
+    "audience": "la gerencia de operaciones",
+    "topic": "el desempeño del área de soporte",
+    "period": "agosto de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "escalamientos",
+        "value": 1,
+        "unit": "",
+        "label": "escalamientos",
+        "subject": [
+          "escalamientos"
+        ]
+      },
+      {
+        "name": "variacion_escalamientos",
+        "value": 19.7,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los escalamientos respecto del mes anterior",
+        "subject": [
+          "escalamientos"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "primera_respuesta",
+        "value": 10.7,
+        "unit": "h",
+        "label": "tiempo de primera respuesta",
+        "subject": [
+          "primera respuesta",
+          "tiempo de respuesta"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "primera_respuesta_anterior",
+        "value": 10.8,
+        "unit": "h",
+        "label": "tiempo de primera respuesta en el mes anterior",
+        "subject": [
+          "primera respuesta",
+          "tiempo de respuesta"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_primera_respuesta",
+        "compute": "percent_change",
+        "from": "primera_respuesta_anterior",
+        "to": "primera_respuesta",
+        "label": "variación del tiempo de primera respuesta respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "csat",
+        "value": 84,
+        "unit": "%",
+        "label": "satisfacción del cliente (CSAT)",
+        "subject": [
+          "satisfacción",
+          "CSAT"
+        ]
+      },
+      {
+        "name": "tickets_resueltos",
+        "value": 23680,
+        "unit": "tickets",
+        "label": "tickets resueltos",
+        "subject": [
+          "tickets resueltos",
+          "resueltos"
+        ]
+      },
+      {
+        "name": "tickets_resueltos_anterior",
+        "value": 22413,
+        "unit": "tickets",
+        "label": "tickets resueltos en el mes anterior",
+        "subject": [
+          "tickets resueltos",
+          "resueltos"
+        ]
+      },
+      {
+        "name": "variacion_tickets_resueltos",
+        "compute": "percent_change",
+        "from": "tickets_resueltos_anterior",
+        "to": "tickets_resueltos",
+        "label": "variación de los tickets resueltos respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "pendientes",
+        "value": 1652,
+        "unit": "tickets",
+        "label": "tickets pendientes",
+        "subject": [
+          "pendientes",
+          "backlog"
+        ]
+      },
+      {
+        "name": "pendientes_anterior",
+        "value": 1689,
+        "unit": "tickets",
+        "label": "tickets pendientes en el mes anterior",
+        "subject": [
+          "pendientes",
+          "backlog"
+        ]
+      },
+      {
+        "name": "variacion_pendientes",
+        "compute": "percent_change",
+        "from": "pendientes_anterior",
+        "to": "pendientes",
+        "label": "variación de los tickets pendientes respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "tickets_recibidos",
+        "value": 454,
+        "unit": "tickets",
+        "label": "tickets recibidos",
+        "subject": [
+          "tickets recibidos",
+          "recibidos"
+        ]
+      },
+      {
+        "name": "tickets_recibidos_anterior",
+        "value": 478,
+        "unit": "tickets",
+        "label": "tickets recibidos en el mes anterior",
+        "subject": [
+          "tickets recibidos",
+          "recibidos"
+        ]
+      },
+      {
+        "name": "variacion_tickets_recibidos",
+        "compute": "percent_change",
+        "from": "tickets_recibidos_anterior",
+        "to": "tickets_recibidos",
+        "label": "variación de los tickets recibidos respecto del mes anterior",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "agosto de 2026"
+      },
+      {
+        "name": "tendencia_pendientes",
+        "from": "variacion_pendientes",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Quillon"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 8480",
+        "title": "Facturas con el impuesto equivocado",
+        "text": "6 clientes empresa de Rosario recibieron facturas con el impuesto equivocado. Finanzas está emitiendo las facturas de nuevo."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 4222",
+        "title": "Falla el pago con tarjeta",
+        "text": "Desde el viernes, 54 clientes de Rosario reportan que el pago con tarjeta falla con el error 502. El equipo de pagos revirtió la versión 6.11.2 el lunes y las fallas se detuvieron."
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "dataset": "m034",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para los suscriptores de Mesa Pampa Trading sobre el mercado cripto en el 7 de noviembre de 2026, a partir de estos datos.\n\nEmpresa: Mesa Pampa Trading\nPeríodo: el 7 de noviembre de 2026\n\nDatos:\n- Tasa de financiamiento promedio: 0,037 %\n- Interés abierto en futuros: 27,7 mil millones USD\n- Interés abierto en futuros en el día anterior: 25 mil millones USD\n- Variación del interés abierto en futuros respecto del día anterior: 10,8 %\n- Precio de ether (ETH): 1.505 USD\n- Índice de miedo y codicia: 14\n- Índice de miedo y codicia en el día anterior: 10\n- Variación del índice de miedo y codicia respecto del día anterior: 4\n- Dominancia de bitcoin: 47,7 %\n- Dominancia de bitcoin en el día anterior: 45,4 %\n- Variación de la dominancia de bitcoin respecto del día anterior, en puntos: 2,3 pp\n- Precio de bitcoin (BTC): 38.967 USD\n\nNotas para el informe:\n[s1] Nimbex News, «Retiros suspendidos»: El exchange Nimbex suspendió los retiros de ETH durante 2 horas el jueves por mantenimiento.\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "La tasa de financiamiento promedio se ubicó en 0,037 %. El interés abierto en futuros alcanzó 27,7 mil millones USD, un aumento del 10,8 % respecto al día anterior, que registró 25 mil millones USD. El precio de ether (ETH) se situó en 1.505 USD, mientras que el precio de bitcoin (BTC) estuvo en 38.967 USD. El índice de miedo y codicia subió a 14, cuatro puntos más que el 10 del día anterior. La dominancia de bitcoin creció a 47,7 %, un incremento de 2,3 puntos porcentuales frente al 45,4 % previo. Según Nimbex News, el exchange Nimbex suspendió los retiros de ETH durante dos horas el jueves por mantenimiento.",
+  "text": "La tasa de financiamiento promedio se ubicó en 0,037 %. El interés abierto en futuros alcanzó 27,7 mil millones USD, un aumento del 10,8 % respecto al día anterior, que registró 25 mil millones USD. El precio de ether (ETH) se situó en 1.505 USD, mientras que el precio de bitcoin (BTC) estuvo en 38.967 USD. El índice de miedo y codicia subió a 14, cuatro puntos más que el 10 del día anterior. La dominancia de bitcoin creció a 47,7 %, un incremento de 2,3 puntos porcentuales frente al 45,4 % previo. Según Nimbex News, el exchange Nimbex suspendió los retiros de ETH durante dos horas el jueves por mantenimiento.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.312173877,
+    "prompt_tokens": 422,
+    "prompt_time": 0.017840267,
+    "completion_tokens": 575,
+    "completion_time": 1.214353297,
+    "total_tokens": 997,
+    "total_time": 1.232193564,
+    "completion_tokens_details": {
+      "reasoning_tokens": 386
+    }
+  },
+  "seconds": 1.63,
+  "created_at": "2026-11-18T14:35:38+00:00"
+}

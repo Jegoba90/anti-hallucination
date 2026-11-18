@@ -1,0 +1,26 @@
+{
+  "dataset": "m020",
+  "split": "dev",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para el equipo de soporte de Tallo sobre el desempeño del área de soporte en la semana del 4 al 10 de octubre de 2026, a partir de estos datos.\n\nEmpresa: Tallo\nPeríodo: la semana del 4 al 10 de octubre de 2026\n\nDatos:\n- Escalamientos: 15\n- Satisfacción del cliente (CSAT): 69 %\n- Satisfacción del cliente (CSAT) en la semana anterior: 71 %\n- Variación de la satisfacción del cliente (CSAT) respecto de la semana anterior, en puntos: -2 pp\n- Tiempo de primera respuesta: 1,0 h\n- Tiempo de primera respuesta en la semana anterior: 1,1 h\n- Variación del tiempo de primera respuesta respecto de la semana anterior: -9,1 %\n- Tickets resueltos: 12.297 tickets\n- Tickets recibidos: 1.861 tickets\n- Tickets recibidos en la semana anterior: 1.885 tickets\n- Variación de los tickets recibidos respecto de la semana anterior: -1,3 %\n- Veredicto sobre la variación del tiempo de primera respuesta respecto de la semana anterior: caída leve\n\nNotas para el informe:\n[s1] Ticket 4151, «La app no sincroniza»: Usuarios de Android reportan que la app no sincroniza los pedidos desde la versión 6.7.3. Hay 36 reportes y el equipo móvil prepara un parche.\n[s2] Ticket 4773, «Facturas con el impuesto equivocado»: 6 clientes empresa de Guadalajara recibieron facturas con el impuesto equivocado. Finanzas está emitiendo las facturas de nuevo.\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "Durante la semana del 4 al 10 de octubre de 2026 el área de soporte gestionó 1 861 tickets recibidos, lo que representa una disminución del 1,3 % respecto a la semana anterior. Se resolvieron 12 297 tickets, manteniendo el nivel de atención. Los escalamientos totalizaron 15 casos. El CSAT quedó en 69 %, una caída de 2 puntos porcentuales frente a la semana previa. El tiempo de primera respuesta se redujo a 1,0 h, equivalente a una mejora del 9,1 % y se califica como una caída leve. Entre los incidentes destacados, el ticket 4151 reportó que la app Android no sincroniza los pedidos desde la versión 6.7.3, con 36 reportes y un parche en preparación por el equipo móvil. Asimismo, el ticket 4773 indicó que 6 clientes empresariales de Guadalajara recibieron facturas con el impuesto equivocado, y Finanzas está emitiendo las facturas correctas.",
+  "text": "Durante la semana del 4 al 10 de octubre de 2026 el área de soporte gestionó 1 861 tickets recibidos, lo que representa una disminución del 1,3 % respecto a la semana anterior. Se resolvieron 12 297 tickets, manteniendo el nivel de atención. Los escalamientos totalizaron 15 casos. El CSAT quedó en 69 %, una caída de 2 puntos porcentuales frente a la semana previa. El tiempo de primera respuesta se redujo a 1,0 h, equivalente a una mejora del 9,1 % y se califica como una caída leve. Entre los incidentes destacados, el ticket 4151 reportó que la app Android no sincroniza los pedidos desde la versión 6.7.3, con 36 reportes y un parche en preparación por el equipo móvil. Asimismo, el ticket 4773 indicó que 6 clientes empresariales de Guadalajara recibieron facturas con el impuesto equivocado, y Finanzas está emitiendo las facturas correctas.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.311753049,
+    "prompt_tokens": 496,
+    "prompt_time": 0.027701645,
+    "completion_tokens": 740,
+    "completion_time": 1.5717398839999999,
+    "total_tokens": 1236,
+    "total_time": 1.599441529,
+    "completion_tokens_details": {
+      "reasoning_tokens": 501
+    }
+  },
+  "seconds": 1.97,
+  "created_at": "2026-11-18T14:33:58+00:00"
+}

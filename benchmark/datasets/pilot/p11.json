@@ -1,0 +1,122 @@
+{
+  "id": "p11",
+  "split": "pilot",
+  "domain": "support",
+  "locale": "en",
+  "brief": {
+    "company": "Marlow Supply",
+    "audience": "the support team",
+    "topic": "support performance",
+    "period": "the week of October 15–21, 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "tickets_resolved",
+        "value": 12476,
+        "unit": "tickets",
+        "label": "tickets resolved",
+        "subject": [
+          "tickets resolved",
+          "resolved"
+        ]
+      },
+      {
+        "name": "tickets_resolved_change",
+        "value": 5.1,
+        "unit": "%",
+        "change": true,
+        "label": "change in tickets resolved vs the previous week",
+        "subject": [
+          "tickets resolved",
+          "resolved"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "first_response",
+        "value": 3.3,
+        "unit": "h",
+        "label": "first response time",
+        "subject": [
+          "first response",
+          "response time"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resolution_time",
+        "value": 28.1,
+        "unit": "h",
+        "label": "average resolution time",
+        "subject": [
+          "resolution"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "escalations",
+        "value": 69,
+        "unit": "",
+        "label": "escalations",
+        "subject": [
+          "escalations"
+        ]
+      },
+      {
+        "name": "escalations_previous",
+        "value": 67,
+        "unit": "",
+        "label": "escalations in the previous week",
+        "subject": [
+          "escalations"
+        ]
+      },
+      {
+        "name": "escalations_change",
+        "compute": "percent_change",
+        "from": "escalations_previous",
+        "to": "escalations",
+        "label": "change in escalations vs the previous week",
+        "decimals": 1
+      },
+      {
+        "name": "backlog",
+        "value": 31,
+        "unit": "tickets",
+        "label": "open backlog",
+        "subject": [
+          "backlog"
+        ]
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "the week of October 15–21, 2026"
+      }
+    ],
+    "known_names": [
+      "Marlow Supply"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Ticket 8374",
+        "title": "The app does not sync",
+        "text": "Android users report that the app has not synced orders since version 6.14.3. There are 11 reports and the mobile team is preparing a fix."
+      },
+      {
+        "id": "s2",
+        "name": "Ticket 7532",
+        "title": "Invoices show the wrong tax",
+        "text": "6 business customers in Portland received invoices with the wrong tax. Finance is reissuing them."
+      }
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "id": "m050",
+  "split": "dev",
+  "domain": "saas",
+  "locale": "es",
+  "brief": {
+    "company": "Ventisca",
+    "audience": "el equipo directivo",
+    "topic": "las métricas del negocio",
+    "period": "mayo de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "usuarios_activos",
+        "value": 300,
+        "unit": "usuarios",
+        "label": "usuarios activos",
+        "subject": [
+          "usuarios"
+        ]
+      },
+      {
+        "name": "usuarios_activos_anterior",
+        "value": 365,
+        "unit": "usuarios",
+        "label": "usuarios activos en el mes anterior",
+        "subject": [
+          "usuarios"
+        ]
+      },
+      {
+        "name": "variacion_usuarios_activos",
+        "compute": "percent_change",
+        "from": "usuarios_activos_anterior",
+        "to": "usuarios_activos",
+        "label": "variación de los usuarios activos respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "mrr",
+        "value": 268720,
+        "unit": "EUR",
+        "label": "ingreso mensual recurrente (MRR)",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ]
+      },
+      {
+        "name": "mrr_anterior",
+        "value": 392961,
+        "unit": "EUR",
+        "label": "ingreso mensual recurrente (MRR) en el mes anterior",
+        "subject": [
+          "MRR",
+          "ingreso recurrente"
+        ]
+      },
+      {
+        "name": "variacion_mrr",
+        "compute": "percent_change",
+        "from": "mrr_anterior",
+        "to": "mrr",
+        "label": "variación del ingreso mensual recurrente (MRR) respecto del mes anterior",
+        "decimals": 1
+      },
+      {
+        "name": "conversion_prueba",
+        "value": 19.9,
+        "unit": "%",
+        "label": "conversión de prueba a pago",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_conversion_prueba",
+        "value": -1.8,
+        "unit": "pp",
+        "change": true,
+        "label": "variación de la conversión de prueba a pago respecto del mes anterior, en puntos",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "clientes_nuevos",
+        "value": 570,
+        "unit": "clientes",
+        "label": "clientes nuevos",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "clientes_nuevos_anterior",
+        "value": 636,
+        "unit": "clientes",
+        "label": "clientes nuevos en el mes anterior",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "variacion_clientes_nuevos",
+        "compute": "percent_change",
+        "from": "clientes_nuevos_anterior",
+        "to": "clientes_nuevos",
+        "label": "variación de los clientes nuevos respecto del mes anterior",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "mayo de 2026"
+      }
+    ],
+    "known_names": [
+      "Ventisca"
+    ]
+  }
+}

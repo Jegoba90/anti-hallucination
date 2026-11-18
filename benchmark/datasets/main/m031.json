@@ -1,0 +1,129 @@
+{
+  "id": "m031",
+  "split": "dev",
+  "domain": "finance",
+  "locale": "es",
+  "brief": {
+    "company": "Alerce Foods",
+    "audience": "los accionistas",
+    "topic": "los resultados financieros",
+    "period": "el primer trimestre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "margen_operativo",
+        "value": 32.5,
+        "unit": "%",
+        "label": "margen operativo",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_margen_operativo",
+        "value": -0.6,
+        "unit": "pp",
+        "change": true,
+        "label": "variación del margen operativo respecto del trimestre anterior, en puntos",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "resultado_neto",
+        "value": -57923792,
+        "unit": "USD",
+        "label": "resultado neto",
+        "subject": [
+          "resultado neto",
+          "ganancia"
+        ],
+        "compact": true
+      },
+      {
+        "name": "resultado_neto_anterior",
+        "value": -52761216,
+        "unit": "USD",
+        "label": "resultado neto en el trimestre anterior",
+        "subject": [
+          "resultado neto",
+          "ganancia"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_resultado_neto",
+        "compute": "difference",
+        "from": "resultado_neto_anterior",
+        "to": "resultado_neto",
+        "label": "variación del resultado neto respecto del trimestre anterior",
+        "decimals": 0,
+        "compact": true
+      },
+      {
+        "name": "ingresos",
+        "value": 2115468364,
+        "unit": "USD",
+        "label": "ingresos",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ingresos_anterior",
+        "value": 1397924362,
+        "unit": "USD",
+        "label": "ingresos en el trimestre anterior",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_ingresos",
+        "compute": "percent_change",
+        "from": "ingresos_anterior",
+        "to": "ingresos",
+        "label": "variación de los ingresos respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "deuda_neta",
+        "value": 124466810,
+        "unit": "USD",
+        "label": "deuda neta",
+        "subject": [
+          "deuda"
+        ],
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el primer trimestre de 2026"
+      }
+    ],
+    "known_names": [
+      "Alerce Foods"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Comunicado de prensa",
+        "title": "Nueva planta",
+        "text": "Alerce Foods anunció una inversión de 40 millones de USD en una planta en Valparaíso, que empezará a operar en 2027."
+      }
+    ]
+  }
+}

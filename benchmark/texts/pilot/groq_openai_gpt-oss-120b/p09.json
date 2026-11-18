@@ -1,0 +1,26 @@
+{
+  "dataset": "p09",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the board at Lanternly on financial results for Q1 2026, based on this data.\n\nCompany: Lanternly\nPeriod: Q1 2026\n\nData:\n- Operating margin: 27.8%\n- Operating margin in the previous quarter: 30.1%\n- Change in operating margin vs the previous quarter, in percentage points: -2.3 pp\n- EBITDA: 1.8 billion USD\n- Cash and equivalents: 127.6 million USD\n- Cash and equivalents in the previous quarter: 124.6 million USD\n- Change in cash and equivalents vs the previous quarter: 2.4%\n- Revenue: 368.8 million USD\n- Change in revenue vs the previous quarter: -16.7%\n- Employees: 1,916 employees\n- Employees in the previous quarter: 1,877 employees\n- Change in employees vs the previous quarter: 2.1%\n- Verdict on the change in operating margin vs the previous quarter, in percentage points: a sharp drop\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "Lanternly delivered an operating margin of 27.8% in Q1 2026, representing a sharp drop of 2.3 percentage points from the prior quarter’s 30.1%. Despite the margin contraction, the company generated robust EBITDA of $1.8 billion, underscoring the underlying profitability of its core operations. Revenue declined to $368.8 million, a 16.7% decrease quarter‑over‑quarter, reflecting slower demand in key segments and heightened competitive pressure. Cash and equivalents modestly rose to $127.6 million, up 2.4% from $124.6 million, providing a modest cushion for working‑capital needs and strategic initiatives. The workforce expanded to 1,916 employees, a 2.1% increase over the previous quarter, signaling continued investment in talent to support growth objectives. Management is focusing on cost‑optimization and revenue‑recovery measures to restore margin stability while leveraging the strong cash position to fund targeted investments.",
+  "text": "Lanternly delivered an operating margin of 27.8% in Q1 2026, representing a sharp drop of 2.3 percentage points from the prior quarter’s 30.1%. Despite the margin contraction, the company generated robust EBITDA of $1.8 billion, underscoring the underlying profitability of its core operations. Revenue declined to $368.8 million, a 16.7% decrease quarter‑over‑quarter, reflecting slower demand in key segments and heightened competitive pressure. Cash and equivalents modestly rose to $127.6 million, up 2.4% from $124.6 million, providing a modest cushion for working‑capital needs and strategic initiatives. The workforce expanded to 1,916 employees, a 2.1% increase over the previous quarter, signaling continued investment in talent to support growth objectives. Management is focusing on cost‑optimization and revenue‑recovery measures to restore margin stability while leveraging the strong cash position to fund targeted investments.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.311837235,
+    "prompt_tokens": 323,
+    "prompt_time": 0.017842061,
+    "completion_tokens": 346,
+    "completion_time": 0.728123614,
+    "total_tokens": 669,
+    "total_time": 0.745965675,
+    "completion_tokens_details": {
+      "reasoning_tokens": 131
+    }
+  },
+  "seconds": 1.11,
+  "created_at": "2026-11-18T14:21:39+00:00"
+}

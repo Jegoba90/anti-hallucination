@@ -1,0 +1,182 @@
+{
+  "id": "m075",
+  "split": "test",
+  "domain": "sales",
+  "locale": "es",
+  "brief": {
+    "company": "Ventisca",
+    "audience": "el directorio",
+    "topic": "los resultados de ventas",
+    "period": "el primer trimestre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "pedidos_online",
+        "value": 520,
+        "unit": "pedidos",
+        "label": "pedidos online",
+        "subject": [
+          "pedidos"
+        ]
+      },
+      {
+        "name": "clientes_nuevos",
+        "value": 1293,
+        "unit": "clientes",
+        "label": "clientes nuevos",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "clientes_nuevos_anterior",
+        "value": 1262,
+        "unit": "clientes",
+        "label": "clientes nuevos en el trimestre anterior",
+        "subject": [
+          "clientes"
+        ]
+      },
+      {
+        "name": "variacion_clientes_nuevos",
+        "compute": "percent_change",
+        "from": "clientes_nuevos_anterior",
+        "to": "clientes_nuevos",
+        "label": "variación de los clientes nuevos respecto del trimestre anterior",
+        "decimals": 1
+      },
+      {
+        "name": "unidades_vendidas",
+        "value": 16284,
+        "unit": "unidades",
+        "label": "unidades vendidas",
+        "subject": [
+          "ventas",
+          "unidades"
+        ]
+      },
+      {
+        "name": "unidades_vendidas_anterior",
+        "value": 14737,
+        "unit": "unidades",
+        "label": "unidades vendidas en el trimestre anterior",
+        "subject": [
+          "ventas",
+          "unidades"
+        ]
+      },
+      {
+        "name": "variacion_unidades_vendidas",
+        "compute": "percent_change",
+        "from": "unidades_vendidas_anterior",
+        "to": "unidades_vendidas",
+        "label": "variación de las unidades vendidas respecto del trimestre anterior",
+        "decimals": 1
+      },
+      {
+        "name": "conversion_web",
+        "value": 4.3,
+        "unit": "%",
+        "label": "conversión web",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "conversion_web_anterior",
+        "value": 4.6,
+        "unit": "%",
+        "label": "conversión web en el trimestre anterior",
+        "subject": [
+          "conversión"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_conversion_web",
+        "compute": "difference",
+        "from": "conversion_web_anterior",
+        "to": "conversion_web",
+        "label": "variación de la conversión web respecto del trimestre anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "facturacion",
+        "value": 3155089,
+        "unit": "USD",
+        "label": "facturación",
+        "subject": [
+          "facturación",
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "facturacion_anterior",
+        "value": 2844751,
+        "unit": "USD",
+        "label": "facturación en el trimestre anterior",
+        "subject": [
+          "facturación",
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_facturacion",
+        "compute": "percent_change",
+        "from": "facturacion_anterior",
+        "to": "facturacion",
+        "label": "variación de la facturación respecto del trimestre anterior",
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el primer trimestre de 2026"
+      },
+      {
+        "name": "tendencia_facturacion",
+        "from": "variacion_facturacion",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Ventisca"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Nota del equipo comercial",
+        "title": "Campaña de temporada",
+        "text": "La campaña «Primavera 360» empezó el 13 de julio en Medellín y Asunción, con descuentos de hasta 25 % en la categoría hogar."
+      }
+    ]
+  }
+}

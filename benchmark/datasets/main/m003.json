@@ -1,0 +1,149 @@
+{
+  "id": "m003",
+  "split": "dev",
+  "domain": "finance",
+  "locale": "es",
+  "brief": {
+    "company": "Cardón",
+    "audience": "el directorio",
+    "topic": "los resultados financieros",
+    "period": "el segundo trimestre de 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "es",
+    "facts": [
+      {
+        "name": "margen_operativo",
+        "value": 1.4,
+        "unit": "%",
+        "label": "margen operativo",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "margen_operativo_anterior",
+        "value": 1.0,
+        "unit": "%",
+        "label": "margen operativo en el trimestre anterior",
+        "subject": [
+          "margen"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "variacion_margen_operativo",
+        "compute": "difference",
+        "from": "margen_operativo_anterior",
+        "to": "margen_operativo",
+        "label": "variación del margen operativo respecto del trimestre anterior, en puntos",
+        "decimals": 1
+      },
+      {
+        "name": "ingresos",
+        "value": 4351881,
+        "unit": "EUR",
+        "label": "ingresos",
+        "subject": [
+          "ingresos"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_ingresos",
+        "value": 0.2,
+        "unit": "%",
+        "change": true,
+        "label": "variación de los ingresos respecto del trimestre anterior",
+        "subject": [
+          "ingresos"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "deuda_neta",
+        "value": 827917394,
+        "unit": "EUR",
+        "label": "deuda neta",
+        "subject": [
+          "deuda"
+        ],
+        "compact": true
+      },
+      {
+        "name": "deuda_neta_anterior",
+        "value": 770316995,
+        "unit": "EUR",
+        "label": "deuda neta en el trimestre anterior",
+        "subject": [
+          "deuda"
+        ],
+        "compact": true
+      },
+      {
+        "name": "variacion_deuda_neta",
+        "compute": "percent_change",
+        "from": "deuda_neta_anterior",
+        "to": "deuda_neta",
+        "label": "variación de la deuda neta respecto del trimestre anterior",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "caja",
+        "value": 133432951,
+        "unit": "EUR",
+        "label": "caja y equivalentes",
+        "subject": [
+          "caja"
+        ],
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "periodo",
+        "text": "el segundo trimestre de 2026"
+      },
+      {
+        "name": "tendencia_deuda_neta",
+        "from": "variacion_deuda_neta",
+        "thresholds": [
+          [
+            -10,
+            "caída fuerte"
+          ],
+          [
+            -2,
+            "caída leve"
+          ],
+          [
+            2,
+            "estabilidad"
+          ],
+          [
+            10,
+            "subida leve"
+          ]
+        ],
+        "otherwise": "subida fuerte"
+      }
+    ],
+    "known_names": [
+      "Cardón"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Declaraciones de la dirección",
+        "title": "Prioridades",
+        "text": "Carla Benítez, directora financiera, dijo que el foco de los próximos trimestres será bajar la deuda y sostener el margen."
+      }
+    ]
+  }
+}

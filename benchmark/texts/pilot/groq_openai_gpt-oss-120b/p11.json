@@ -1,0 +1,26 @@
+{
+  "dataset": "p11",
+  "split": "pilot",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "plain",
+  "system": "You are an analyst who writes clear, concise business reports.",
+  "prompt": "Write a report of 5 to 8 sentences for the support team at Marlow Supply on support performance for the week of October 15–21, 2026, based on this data.\n\nCompany: Marlow Supply\nPeriod: the week of October 15–21, 2026\n\nData:\n- Tickets resolved: 12,476 tickets\n- Change in tickets resolved vs the previous week: 5.1%\n- First response time: 3.3 h\n- Average resolution time: 28.1 h\n- Escalations: 69\n- Escalations in the previous week: 67\n- Change in escalations vs the previous week: 3.0%\n- Open backlog: 31 tickets\n\nNotes for the report:\n[s1] Ticket 8374, \"The app does not sync\": Android users report that the app has not synced orders since version 6.14.3. There are 11 reports and the mobile team is preparing a fix.\n[s2] Ticket 7532, \"Invoices show the wrong tax\": 6 business customers in Portland received invoices with the wrong tax. Finance is reissuing them.\n\nWrite only the report, in prose, with no headings or lists.",
+  "raw": "During the week of October 15–21, 2026, the support team resolved 12,476 tickets, representing a 5.1 % increase over the prior week. The average first‑response time improved to 3.3 hours, while the average resolution time remained steady at 28.1 hours. Escalations rose modestly to 69, a 3.0 % increase from 67 the week before, indicating a slight uptick in complex cases. The open backlog was reduced to 31 tickets, reflecting effective queue management. Notably, Ticket 8374 highlighted a syncing issue affecting Android users since version 6.14.3, with 11 reports pending a fix from the mobile team. Additionally, Ticket 7532 involved six Portland business customers receiving invoices with incorrect tax, and the finance department is currently reissuing the affected invoices. Overall, the team’s performance metrics show positive momentum, though the rise in escalations and the identified technical issues should be monitored closely to maintain service quality.",
+  "text": "During the week of October 15–21, 2026, the support team resolved 12,476 tickets, representing a 5.1 % increase over the prior week. The average first‑response time improved to 3.3 hours, while the average resolution time remained steady at 28.1 hours. Escalations rose modestly to 69, a 3.0 % increase from 67 the week before, indicating a slight uptick in complex cases. The open backlog was reduced to 31 tickets, reflecting effective queue management. Notably, Ticket 8374 highlighted a syncing issue affecting Android users since version 6.14.3, with 11 reports pending a fix from the mobile team. Additionally, Ticket 7532 involved six Portland business customers receiving invoices with incorrect tax, and the finance department is currently reissuing the affected invoices. Overall, the team’s performance metrics show positive momentum, though the rise in escalations and the identified technical issues should be monitored closely to maintain service quality.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.317118049,
+    "prompt_tokens": 341,
+    "prompt_time": 0.082605826,
+    "completion_tokens": 509,
+    "completion_time": 1.063873058,
+    "total_tokens": 850,
+    "total_time": 1.146478884,
+    "completion_tokens_details": {
+      "reasoning_tokens": 287
+    }
+  },
+  "seconds": 1.52,
+  "created_at": "2026-11-18T14:21:42+00:00"
+}

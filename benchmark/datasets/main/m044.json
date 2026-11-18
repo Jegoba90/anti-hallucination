@@ -1,0 +1,174 @@
+{
+  "id": "m044",
+  "split": "test",
+  "domain": "finance",
+  "locale": "en",
+  "brief": {
+    "company": "Tidewell",
+    "audience": "the board",
+    "topic": "financial results",
+    "period": "Q2 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "ebitda",
+        "value": 1041905788,
+        "unit": "GBP",
+        "label": "EBITDA",
+        "subject": [
+          "EBITDA"
+        ],
+        "compact": true
+      },
+      {
+        "name": "ebitda_change",
+        "value": 12.8,
+        "unit": "%",
+        "change": true,
+        "label": "change in EBITDA vs the previous quarter",
+        "subject": [
+          "EBITDA"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "cash",
+        "value": 625146668,
+        "unit": "GBP",
+        "label": "cash and equivalents",
+        "subject": [
+          "cash"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash_previous",
+        "value": 460673539,
+        "unit": "GBP",
+        "label": "cash and equivalents in the previous quarter",
+        "subject": [
+          "cash"
+        ],
+        "compact": true
+      },
+      {
+        "name": "cash_change",
+        "compute": "percent_change",
+        "from": "cash_previous",
+        "to": "cash",
+        "label": "change in cash and equivalents vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "revenue",
+        "value": 260873759,
+        "unit": "GBP",
+        "label": "revenue",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "revenue_previous",
+        "value": 245206494,
+        "unit": "GBP",
+        "label": "revenue in the previous quarter",
+        "subject": [
+          "revenue"
+        ],
+        "compact": true
+      },
+      {
+        "name": "revenue_change",
+        "compute": "percent_change",
+        "from": "revenue_previous",
+        "to": "revenue",
+        "label": "change in revenue vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      },
+      {
+        "name": "operating_margin",
+        "value": 20.6,
+        "unit": "%",
+        "label": "operating margin",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_previous",
+        "value": 18.0,
+        "unit": "%",
+        "label": "operating margin in the previous quarter",
+        "subject": [
+          "margin"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "operating_margin_change",
+        "compute": "difference",
+        "from": "operating_margin_previous",
+        "to": "operating_margin",
+        "label": "change in operating margin vs the previous quarter, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "net_debt",
+        "value": 88647794,
+        "unit": "GBP",
+        "label": "net debt",
+        "subject": [
+          "debt"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_debt_previous",
+        "value": 94671647,
+        "unit": "GBP",
+        "label": "net debt in the previous quarter",
+        "subject": [
+          "debt"
+        ],
+        "compact": true
+      },
+      {
+        "name": "net_debt_change",
+        "compute": "percent_change",
+        "from": "net_debt_previous",
+        "to": "net_debt",
+        "label": "change in net debt vs the previous quarter",
+        "decimals": 1,
+        "compact": true
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "Q2 2026"
+      }
+    ],
+    "known_names": [
+      "Tidewell"
+    ],
+    "sources": [
+      {
+        "id": "s1",
+        "name": "Press release",
+        "title": "New plant",
+        "text": "Tidewell announced a USD 120 million investment in a plant in Leeds, due to start operating in 2028."
+      }
+    ]
+  }
+}

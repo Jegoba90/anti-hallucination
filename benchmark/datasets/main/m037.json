@@ -1,0 +1,167 @@
+{
+  "id": "m037",
+  "split": "dev",
+  "domain": "saas",
+  "locale": "en",
+  "brief": {
+    "company": "Bluefen",
+    "audience": "investors",
+    "topic": "business metrics",
+    "period": "July 2026",
+    "sentences": [
+      5,
+      8
+    ]
+  },
+  "data": {
+    "locale": "en",
+    "facts": [
+      {
+        "name": "mrr",
+        "value": 980329,
+        "unit": "EUR",
+        "label": "monthly recurring revenue (MRR)",
+        "subject": [
+          "MRR",
+          "recurring revenue"
+        ]
+      },
+      {
+        "name": "mrr_change",
+        "value": 23.3,
+        "unit": "%",
+        "change": true,
+        "label": "change in monthly recurring revenue (MRR) vs the previous month",
+        "subject": [
+          "MRR",
+          "recurring revenue"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn",
+        "value": 0.5,
+        "unit": "%",
+        "label": "monthly churn",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_previous",
+        "value": 0.3,
+        "unit": "%",
+        "label": "monthly churn in the previous month",
+        "subject": [
+          "churn"
+        ],
+        "decimals": 1
+      },
+      {
+        "name": "churn_change",
+        "compute": "difference",
+        "from": "churn_previous",
+        "to": "churn",
+        "label": "change in monthly churn vs the previous month, in percentage points",
+        "decimals": 1
+      },
+      {
+        "name": "cac",
+        "value": 277,
+        "unit": "EUR",
+        "label": "customer acquisition cost (CAC)",
+        "subject": [
+          "CAC",
+          "acquisition cost"
+        ]
+      },
+      {
+        "name": "cac_previous",
+        "value": 174,
+        "unit": "EUR",
+        "label": "customer acquisition cost (CAC) in the previous month",
+        "subject": [
+          "CAC",
+          "acquisition cost"
+        ]
+      },
+      {
+        "name": "cac_change",
+        "compute": "percent_change",
+        "from": "cac_previous",
+        "to": "cac",
+        "label": "change in customer acquisition cost (CAC) vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "new_customers",
+        "value": 111,
+        "unit": "customers",
+        "label": "new customers",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "new_customers_previous",
+        "value": 112,
+        "unit": "customers",
+        "label": "new customers in the previous month",
+        "subject": [
+          "customers"
+        ]
+      },
+      {
+        "name": "new_customers_change",
+        "compute": "percent_change",
+        "from": "new_customers_previous",
+        "to": "new_customers",
+        "label": "change in new customers vs the previous month",
+        "decimals": 1
+      },
+      {
+        "name": "trial_conversion",
+        "value": 11.4,
+        "unit": "%",
+        "label": "trial-to-paid conversion",
+        "subject": [
+          "conversion"
+        ],
+        "decimals": 1
+      }
+    ],
+    "labels": [
+      {
+        "name": "period",
+        "text": "July 2026"
+      },
+      {
+        "name": "cac_trend",
+        "from": "cac_change",
+        "thresholds": [
+          [
+            -10,
+            "a sharp drop"
+          ],
+          [
+            -2,
+            "a mild drop"
+          ],
+          [
+            2,
+            "stability"
+          ],
+          [
+            10,
+            "mild growth"
+          ]
+        ],
+        "otherwise": "strong growth"
+      }
+    ],
+    "known_names": [
+      "Bluefen"
+    ]
+  }
+}

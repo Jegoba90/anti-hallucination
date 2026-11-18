@@ -1,0 +1,26 @@
+{
+  "dataset": "m040",
+  "split": "test",
+  "model": "groq:openai/gpt-oss-120b",
+  "variant": "strict",
+  "system": "Eres un analista que redacta informes claros y breves para empresas.",
+  "prompt": "Escribe un informe de 5 a 8 oraciones para los suscriptores de Boletín Cripto Sur sobre el mercado cripto en la semana del 18 al 24 de noviembre de 2026, a partir de estos datos.\n\nEmpresa: Boletín Cripto Sur\nPeríodo: la semana del 18 al 24 de noviembre de 2026\n\nDatos:\n- Precio de ether (ETH): 1.849 USD\n- Precio de ether (ETH) en la semana anterior: 1.862 USD\n- Variación del precio de ether (ETH) respecto de la semana anterior: -0,7 %\n- Interés abierto en futuros: 46,2 mil millones USD\n- Interés abierto en futuros en la semana anterior: 43,9 mil millones USD\n- Variación del interés abierto en futuros respecto de la semana anterior: 5,4 %\n- Precio de bitcoin (BTC): 114.984 USD\n- Precio de bitcoin (BTC) en la semana anterior: 114.472 USD\n- Variación del precio de bitcoin (BTC) respecto de la semana anterior: 0,4 %\n- Dominancia de bitcoin: 42,0 %\n- Variación de la dominancia de bitcoin respecto de la semana anterior, en puntos: -0,6 pp\n- Tasa de financiamiento promedio: 0,009 %\n- Tasa de financiamiento promedio en la semana anterior: 0,010 %\n- Variación de la tasa de financiamiento promedio respecto de la semana anterior, en puntos: -0,001 pp\n- Veredicto sobre la variación del precio de ether (ETH) respecto de la semana anterior: movimiento lateral\n\nNotas para el informe:\n[s1] Agenda de redes, «Actualización de red»: La red Telar activará la actualización «Faro» el 19 de junio.\n\nUsa solo la información de los datos: no agregues cifras, nombres, causas ni predicciones que no estén ahí. Escribe solo el informe, en prosa, sin títulos ni listas.",
+  "raw": "Durante la semana del 18 al 24 de noviembre de 2026, el precio de ether (ETH) se ubicó en 1,849 USD, lo que equivale a una caída del ‑0,7 % respecto a la semana anterior. El interés abierto en futuros aumentó a 46,2 mil millones USD, un crecimiento del 5,4 % frente a los 43,9 mil millones USD de la semana previa. Bitcoin (BTC) cotizó a 114.984 USD, ligeramente superior en un 0,4 % al nivel de 114.472 USD registrado la semana anterior. La dominancia de bitcoin se mantuvo en 42,0 % con una disminución de 0,6 puntos porcentuales respecto a la semana pasada. La tasa de financiamiento promedio descendió a 0,009 %, reduciéndose 0,001 puntos porcentuales con respecto a la semana anterior. El movimiento del precio de ether se describió como lateral. En la agenda de redes, la red Telar activará la actualización “Faro” el 19 de junio.",
+  "text": "Durante la semana del 18 al 24 de noviembre de 2026, el precio de ether (ETH) se ubicó en 1,849 USD, lo que equivale a una caída del ‑0,7 % respecto a la semana anterior. El interés abierto en futuros aumentó a 46,2 mil millones USD, un crecimiento del 5,4 % frente a los 43,9 mil millones USD de la semana previa. Bitcoin (BTC) cotizó a 114.984 USD, ligeramente superior en un 0,4 % al nivel de 114.472 USD registrado la semana anterior. La dominancia de bitcoin se mantuvo en 42,0 % con una disminución de 0,6 puntos porcentuales respecto a la semana pasada. La tasa de financiamiento promedio descendió a 0,009 %, reduciéndose 0,001 puntos porcentuales con respecto a la semana anterior. El movimiento del precio de ether se describió como lateral. En la agenda de redes, la red Telar activará la actualización “Faro” el 19 de junio.",
+  "finish_reason": "stop",
+  "served_by": "openai/gpt-oss-120b",
+  "usage": {
+    "queue_time": 0.854539476,
+    "prompt_tokens": 518,
+    "prompt_time": 0.158103507,
+    "completion_tokens": 998,
+    "completion_time": 2.095360401,
+    "total_tokens": 1516,
+    "total_time": 2.253463908,
+    "completion_tokens_details": {
+      "reasoning_tokens": 745
+    }
+  },
+  "seconds": 3.19,
+  "created_at": "2026-11-18T14:36:18+00:00"
+}
