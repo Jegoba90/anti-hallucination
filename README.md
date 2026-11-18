@@ -253,8 +253,8 @@ language, and MCP over HTTP for Claude Code and other MCP clients. It calls no
 model, keeps nothing between requests, and runs inside your own network.
 
 ```bash
-docker run -d -p 8000:8000 -e ANTIHALLUCINATION_TOKEN=<a long random string> \
-  ghcr.io/jegoba90/anti-hallucination
+export ANTIHALLUCINATION_TOKEN=$(openssl rand -hex 32)
+docker run -d -p 8000:8000 -e ANTIHALLUCINATION_TOKEN ghcr.io/jegoba90/anti-hallucination
 ```
 
 The service ships with v0.3.0, and from then on each release publishes the
@@ -292,7 +292,22 @@ claude mcp add --transport http anti-hallucination http://your-host:8000/mcp \
 
 Every route except `/health` needs the token. Without
 `ANTIHALLUCINATION_TOKEN` the service only starts on `127.0.0.1`, so the
-container will not start without one.
+container will not start without one. Make the token long and random, as
+`openssl rand -hex 32` does. The service refuses a token shorter than 16
+characters.
+
+The service speaks plain HTTP. Without TLS, the token and every report travel
+in clear text, so anyone on the network path can read and reuse them. Put it
+behind a proxy that terminates TLS (nginx, Caddy, a cloud load balancer), or
+reach it only inside a private network you trust. Do not expose its port to
+the internet directly.
+
+A request must send its body with `Content-Type: application/json`, or it gets
+`415`. A service on `127.0.0.1` also refuses a `Host` or `Origin` header that is
+not local, with `421` or `403`, on both the REST routes and `/mcp`. That keeps
+a web page from reaching it through the visitor's browser. A proxy on the same
+machine must pass a local `Host`, or the service must listen on another
+address, with a token.
 
 Each request is limited, and one past a limit gets `413` while the service
 goes on:
@@ -347,7 +362,9 @@ checker.
 The [test record](https://github.com/Jegoba90/anti-hallucination/blob/main/docs/pruebas-2026-11-16.md)
 includes real Groq drafts and a Claude Code MCP session, along with what has
 and has not been tested live. CI runs the tests on Python 3.11, 3.13, and 3.14,
-plus minimal-install and installed-wheel checks.
+plus minimal-install and installed-wheel checks. The
+[security review](https://github.com/Jegoba90/anti-hallucination/blob/main/docs/revision-de-seguridad.md)
+lists what was found before v0.3.0, how each point was fixed, and what remains.
 
 ## Contributing
 
