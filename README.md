@@ -247,6 +247,21 @@ assistant is the arithmetic: a change between two figures goes in as
 computes it. Each receipt shows which figures were computed and which were
 supplied. Client and model privacy policies still apply.
 
+### Privacy and data flow
+
+The four MCP tools run checks on the server's machine, make no outbound model
+or network calls, and return results to your MCP client. They do not save
+reports or receipts to disk. Your client may send tool inputs and outputs to
+its model provider or keep them in conversation history.
+
+Optional writers used through `write()` or the CLI `write` command send prompts
+to the provider you select. Prompts include source text, the brief, and labels;
+placeholders for fact values do not anonymize that content. Receipts contain
+fact values and report text, so treat them as sensitive as the original data.
+
+Read the [privacy policy](https://github.com/Jegoba90/anti-hallucination/blob/main/PRIVACY.md)
+for destinations, stored outputs, retention, and self-hosted service details.
+
 ## Run it as a service
 
 For teams that would rather call an endpoint than add Python to their agent.
