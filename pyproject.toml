@@ -54,6 +54,7 @@ antihallucination-mcp = "antihallucination.mcp_server:main"
 [project.urls]
 Homepage = "https://github.com/Jegoba90/anti-hallucination"
 Issues = "https://github.com/Jegoba90/anti-hallucination/issues"
+"Privacy Policy" = "https://github.com/Jegoba90/anti-hallucination/blob/main/PRIVACY.md"
 
 [tool.setuptools.packages.find]
 include = ["antihallucination*"]
