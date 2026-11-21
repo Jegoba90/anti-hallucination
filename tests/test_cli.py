@@ -167,3 +167,16 @@ class TestDataFile:
 
         assert code == 2
         assert "not valid JSON" in err
+
+
+class TestMcp:
+    def test_without_the_extra_it_says_what_to_install(
+        self, capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        # None in sys.modules makes the import fail, as it does without the SDK.
+        monkeypatch.setitem(sys.modules, "antihallucination.mcp_server", None)
+
+        code, _, err = _run(capsys, "mcp")
+
+        assert code == 2
+        assert 'pip install "antihallucination[mcp]"' in err

@@ -178,11 +178,15 @@ def test_a_changed_receipt_is_caught() -> None:
     assert checked["replay"] == "skipped"
 
 
-def test_the_stdio_entry_point_serves_the_tools() -> None:
-    """The command Claude Desktop runs: a separate process speaking over stdio."""
-    params = StdioServerParameters(
-        command=sys.executable, args=["-m", "antihallucination.mcp_server"], cwd=str(_ROOT)
-    )
+@pytest.mark.parametrize(
+    "args",
+    [["-m", "antihallucination.mcp_server"], ["-m", "antihallucination", "mcp"]],
+    ids=["module", "cli"],
+)
+def test_the_stdio_entry_point_serves_the_tools(args: list[str]) -> None:
+    """The command Claude Desktop runs, and the one MCP registries run
+    (`antihallucination mcp`): a separate process speaking over stdio."""
+    params = StdioServerParameters(command=sys.executable, args=args, cwd=str(_ROOT))
 
     async def run():
         async with Client(params) as client:

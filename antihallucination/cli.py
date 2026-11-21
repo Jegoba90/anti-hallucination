@@ -5,9 +5,11 @@
     write    --data DATA --brief "..." [--writer claude]   have a model draft it
     receipt  RECEIPT [--data DATA]   check a receipt and run its decision again
     serve    [--host H] [--port P]   serve the checks over HTTP: a REST API and MCP
+    mcp      serve the four tools to an MCP client over stdio
 
 TEXT and DRAFT are file paths, or - to read standard input. serve reads its
-token from ANTIHALLUCINATION_TOKEN and needs the [server] extra.
+token from ANTIHALLUCINATION_TOKEN and needs the [server] extra; mcp needs the
+[mcp] extra.
 
 Exit codes: 0 every sentence passed, 1 some sentence failed (the text printed
 holds the ones that passed and your fallbacks), 2 the input could not be read,
@@ -97,6 +99,13 @@ def _parser() -> argparse.ArgumentParser:
     service.add_argument(
         "--no-auth", action="store_true", help="serve without a token beyond this machine: anyone who reaches it can use it"
     )
+
+    commands.add_parser(
+        "mcp",
+        help="serve the four tools to an MCP client over stdio",
+        description="Serve prepare_report, compose_report, verify_text and check_receipt over stdio, the way "
+        "Claude Code, Claude Desktop and other MCP clients launch a server. Needs the [mcp] extra.",
+    )
     return parser
 
 
@@ -185,6 +194,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _receipt(args)
     if args.command == "serve":
         return _serve(args)
+    if args.command == "mcp":
+        return _mcp()
     try:
         data = load_data(args.data)
     except DataError as exc:
@@ -220,6 +231,18 @@ def main(argv: Sequence[str] | None = None) -> int:
     _show(result, as_json=args.json, written=written)
     _save(result, args.receipt)
     return 0 if result.ok else 1
+
+
+def _mcp() -> int:
+    """The MCP server over stdio: the same one as antihallucination-mcp. MCP
+    registries launch it as `antihallucination mcp`, with the extra beside it."""
+    try:
+        from .mcp_server import main as serve_stdio
+    except ImportError:
+        print('Error: the MCP server needs the mcp extra: pip install "antihallucination[mcp]"', file=sys.stderr)
+        return 2
+    serve_stdio()
+    return 0
 
 
 def _serve(args: argparse.Namespace) -> int:
