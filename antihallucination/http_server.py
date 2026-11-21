@@ -59,8 +59,9 @@ DEFAULT_SECONDS = 10.0
 DEFAULT_MEMORY_MB = 1024
 LOCAL_HOSTS = frozenset({"127.0.0.1", "localhost", "::1"})
 # The Host and Origin headers a local service accepts: the MCP SDK's own list.
+# The Origin is the same host after the scheme, so it reuses the pattern.
 _LOCAL_HOST_HEADER = re.compile(r"(127\.0\.0\.1|localhost|\[::1\])(:\d+)?", re.IGNORECASE)
-_LOCAL_ORIGIN = re.compile(r"http://(127\.0\.0\.1|localhost|\[::1\])(:\d+)?", re.IGNORECASE)
+_LOCAL_ORIGIN = re.compile("http://" + _LOCAL_HOST_HEADER.pattern, re.IGNORECASE)
 
 Body = Mapping[str, object]
 T = TypeVar("T")
