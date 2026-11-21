@@ -13,6 +13,7 @@
 
 <p align="center">
   <a href="https://pypi.org/project/antihallucination/"><img src="https://img.shields.io/pypi/v/antihallucination?style=flat-square&amp;color=2563eb" alt="PyPI version"></a>
+  <a href="https://registry.modelcontextprotocol.io/v0.1/servers/io.github.Jegoba90%2Fanti-hallucination/versions/latest"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.modelcontextprotocol.io%2Fv0.1%2Fservers%2Fio.github.Jegoba90%252Fanti-hallucination%2Fversions%2Flatest&amp;query=%24.server.version&amp;label=MCP%20Registry&amp;style=flat-square&amp;color=2563eb" alt="Official MCP Registry version"></a>
   <a href="https://github.com/Jegoba90/anti-hallucination/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/Jegoba90/anti-hallucination/tests.yml?branch=main&amp;style=flat-square&amp;label=tests" alt="Tests"></a>
   <a href="https://pypi.org/project/antihallucination/"><img src="https://img.shields.io/badge/python-3.11%2B-3776ab?style=flat-square" alt="Python 3.11 or newer"></a>
   <a href="https://github.com/Jegoba90/anti-hallucination/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Jegoba90/anti-hallucination?style=flat-square" alt="MIT license"></a>
@@ -199,7 +200,9 @@ written with figures. The test suite checks their expected outputs.
 <!-- mcp-name: io.github.Jegoba90/anti-hallucination -->
 
 Use the same checks from Claude Code, Claude Desktop, or another MCP client.
-The server exposes four tools and makes no model or network calls itself.
+The server exposes four tools and makes no model or network calls itself. It
+is listed in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.Jegoba90%2Fanti-hallucination/versions/latest)
+as `io.github.Jegoba90/anti-hallucination`.
 
 **Claude Code** with [uv](https://docs.astral.sh/uv/), which fetches the package on first run:
 
