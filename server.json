@@ -1,0 +1,39 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Jegoba90/anti-hallucination",
+  "title": "Anti-Hallucination",
+  "description": "Checks AI-written reports against your data: Python writes each figure and drops failing sentences.",
+  "websiteUrl": "https://github.com/Jegoba90/anti-hallucination#use-with-mcp",
+  "repository": {
+    "url": "https://github.com/Jegoba90/anti-hallucination",
+    "source": "github"
+  },
+  "version": "0.3.1",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "antihallucination",
+      "version": "0.3.1",
+      "runtimeHint": "uvx",
+      "runtimeArguments": [
+        {
+          "description": "Installs the MCP SDK, the package's [mcp] extra, at the same version.",
+          "type": "named",
+          "name": "--with",
+          "value": "antihallucination[mcp]==0.3.1"
+        }
+      ],
+      "packageArguments": [
+        {
+          "description": "Serves the four tools over stdio.",
+          "type": "positional",
+          "value": "mcp"
+        }
+      ],
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

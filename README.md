@@ -196,16 +196,21 @@ written with figures. The test suite checks their expected outputs.
 
 ## Use with MCP
 
+<!-- mcp-name: io.github.Jegoba90/anti-hallucination -->
+
 Use the same checks from Claude Code, Claude Desktop, or another MCP client.
 The server exposes four tools and makes no model or network calls itself.
 
+**Claude Code** with [uv](https://docs.astral.sh/uv/), which fetches the package on first run:
+
 ```bash
-pip install "antihallucination[mcp]"
+claude mcp add --transport stdio --scope user anti-hallucination -- uvx --with "antihallucination[mcp]" antihallucination mcp
 ```
 
-**Claude Code:**
+**Claude Code** with pip:
 
 ```bash
+pip install "antihallucination[mcp]"
 claude mcp add --transport stdio --scope user anti-hallucination -- python -m antihallucination.mcp_server
 ```
 
@@ -218,17 +223,19 @@ Add this to `claude_desktop_config.json`:
 {
   "mcpServers": {
     "anti-hallucination": {
-      "command": "python",
-      "args": ["-m", "antihallucination.mcp_server"]
+      "command": "uvx",
+      "args": ["--with", "antihallucination[mcp]", "antihallucination", "mcp"]
     }
   }
 }
 ```
 
 The file is in `%APPDATA%\Claude\` on Windows and
-`~/Library/Application Support/Claude/` on macOS. Use the Python executable
-where you installed the extra; this may be `python3` or an absolute path.
-`antihallucination-mcp` launches the same server.
+`~/Library/Application Support/Claude/` on macOS. With pip instead of uv, use
+`"command": "python"` and `"args": ["-m", "antihallucination.mcp_server"]`,
+with the Python where you installed the extra; this may be `python3` or an
+absolute path. `antihallucination mcp` and `antihallucination-mcp` launch the
+same server.
 
 </details>
 
@@ -238,6 +245,19 @@ where you installed the extra; this may be `python3` or an absolute path.
 | `compose_report` | Fill the draft, run checks, and return text, decisions, and a receipt |
 | `verify_text` | Check an existing text against the supplied data |
 | `check_receipt` | Verify receipt consistency and replay its decisions |
+
+**How an assistant uses them.** The server sends these steps to the client as
+its instructions, so the model follows them without a prompt:
+
+1. `prepare_report` with the user's figures as `facts`: it returns a
+   placeholder for each figure and the rules.
+2. The model writes its draft with those placeholders and types no figure.
+3. `compose_report` with the draft and the same data: Python writes every
+   figure, and the result holds the final `text`, a decision for each
+   sentence, and a receipt.
+
+`verify_text` checks a text that already has its figures, and `check_receipt`
+replays a receipt.
 
 **The assistant supplies the data.** It may already have seen, calculated, or
 changed the values. The server checks the text against what it receives; it
