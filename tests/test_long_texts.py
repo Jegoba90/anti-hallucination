@@ -19,7 +19,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from antihallucination import Fact, Label, Result, compose, verify
+from antihallucination import Fact, Label, Result, Source, compose, verify
 from antihallucination.numbers import extract
 from antihallucination.text import split_sentences
 
@@ -28,6 +28,7 @@ FACTS = [
     Fact("revenue_change", 5, unit="%", change=True, subject="revenue"),
     Fact("drop", -3.2, unit="%", change=True, subject="margin"),
 ]
+SOURCES = [Source("s1", "Emails were late because the provider throttled sending.")]
 BUDGET = 3.0  # seconds; each case takes well under 0.3 on a laptop
 
 
@@ -59,6 +60,16 @@ CASES: dict[str, Callable[[], object]] = {
     # Digits and number words side by side: each figure read was checked
     # against every figure read before it.
     "figures next to number words": lambda: extract(_repeat("1 tres ", 64_000)),
+    # Each move followed by the subject it names.
+    "moves naming their subject": lambda: verify(_repeat("the rise in revenue ", 32_000), FACTS),
+    # Each clause a move that points back to the sentence before.
+    "moves pointing back": lambda: verify("Revenue grew 5 %. " + _repeat("despite this rise, ", 32_000), FACTS),
+    # Each clause a cause the source states, compared with the source's words.
+    "causes a source states": lambda: verify(_repeat("emails were late due to provider throttling, ", 32_000), FACTS, sources=SOURCES),
+    # One long clause of causes: each reads only so far ahead.
+    "causes in one long clause": lambda: verify(_repeat("due to provider throttling ", 32_000), FACTS, sources=SOURCES),
+    # A change said again after every «which means».
+    "changes said again": lambda: verify(_repeat("margin, which means a 3.2 % drop, ", 32_000), FACTS),
 }
 
 

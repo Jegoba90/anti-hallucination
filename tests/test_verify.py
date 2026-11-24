@@ -298,3 +298,183 @@ class TestWordsAsModelsWriteThem:
         assert ("unbacked_name", "Goods") in _found(
             verify("Kestrel Goods' support team resolved 12,476 tickets.", facts, policy=policy, locale="en")
         )
+
+
+class TestTheChangeAMoveTalksAbout:
+    """Correct sentences cut for the change a move was judged against.
+
+    Found in the evaluation's second round on the pilot (2026-11-24), in
+    reports by gpt-oss-120b and qwen3.8-27b.
+    """
+
+    SAAS = [
+        Fact("churn_change", 0.4, unit="pp", decimals=1, change=True, subject="churn"),
+        Fact("nrr", 90, unit="%", subject=("NRR", "retention")),
+        Fact("nrr_change", -4, unit="pp", change=True, subject=("NRR", "retention")),
+    ]
+    TICKETS = [
+        Fact("recibidos", 4095, unit="tickets", subject=("tickets recibidos", "recibidos")),
+        Fact("variacion_recibidos", -3.4, unit="%", decimals=1, change=True, subject=("tickets recibidos", "recibidos")),
+        Fact("resueltos", 12316, unit="tickets", subject=("tickets resueltos", "resueltos")),
+        Fact("variacion_resueltos", 9.3, unit="%", decimals=1, change=True, subject=("tickets resueltos", "resueltos")),
+    ]
+    FIRST = "Se recibieron 4.095 tickets, una disminución del 3,4 %. "
+
+    def test_a_move_is_about_the_subject_it_names(self) -> None:
+        # The nearer figure is NRR's, but the rise is churn's.
+        text = "This rise in churn aligns with a 4 percentage point decline in NRR, which fell to 90%."
+
+        assert verify(text, self.SAAS, locale="en").ok
+        assert ("direction_contradiction", "fall") in _found(
+            verify("This fall in churn aligns with a 4 percentage point decline in NRR.", self.SAAS, locale="en")
+        )
+
+    def test_only_the_words_right_after_the_move_name_its_subject(self) -> None:
+        facts = [
+            Fact("revenue_change", -5, unit="%", change=True, subject="revenue"),
+            Fact("costs_change", 3, unit="%", change=True, subject="costs"),
+        ]
+        policy = Policy(known_names=("Europe",))
+
+        # «costs» is three words past «fell»: the fall is not theirs.
+        assert verify("Revenue fell in Europe as costs rose.", facts, policy=policy, locale="en").ok
+        assert verify("The decline in revenue came as costs rose.", facts, locale="en").ok
+
+    def test_points_stand_for_the_change_in_points(self) -> None:
+        facts = [
+            Fact("orders_change", 1.9, unit="%", decimals=1, change=True, subject="orders"),
+            Fact("return_rate", 5.8, unit="%", decimals=1, subject=("returns", "return rate")),
+            Fact("return_rate_change", -1.9, unit="pp", decimals=1, change=True, subject=("returns", "return rate")),
+        ]
+        text = "The return rate decreased to 5.8 %, 1.9 percentage points lower than the prior quarter."
+
+        assert verify(text, facts, locale="en").ok  # «lower» was judged against the orders' +1.9 %
+        # A change in % written in points is caught, where it used to pass as the orders' change.
+        assert not verify("Online orders rose 1.9 percentage points.", facts, locale="en").ok
+
+    def test_a_move_that_points_back_is_about_the_sentence_before(self) -> None:
+        text = self.FIRST + "Pese a esta reducción en la afluencia, se resolvieron 12.316 tickets, un 9,3 % más."
+
+        assert verify(text, self.TICKETS, locale="es").ok
+        wrong = verify(self.FIRST + "Pese a este aumento en la afluencia, se resolvieron 12.316 tickets.", self.TICKETS, locale="es")
+        assert ("direction_contradiction", "aumento") in _found(wrong)
+
+    def test_a_pointer_with_a_time_word_points_at_the_time(self) -> None:
+        facts = [Fact("variacion_ventas", -5, unit="%", change=True, subject="ventas")]
+
+        result = verify("Las ventas cayeron 5 %. Este mes subieron.", facts, locale="es")
+
+        # Judged as a move nothing backs, not against the sales of the sentence before.
+        assert [finding.check for finding in result.decisions[1].findings] == ["unbacked_direction"]
+
+
+class TestWhatASourceStates:
+    """A cause or a date ahead that a source states may be repeated in its words (pilot, 2026-11-24)."""
+
+    EMAILS = [
+        Source(
+            "s2",
+            "Confirmation emails arrive up to 8 hours late because the email provider throttled sending. "
+            "Traffic was moved to a backup provider.",
+        )
+    ]
+
+    def test_a_cause_the_source_states(self) -> None:
+        text = "Confirmation emails were delayed up to eight hours due to email‑provider throttling."
+
+        assert verify(text, sources=self.EMAILS, locale="en").ok
+        assert verify(text.replace(".", " [s2]."), sources=self.EMAILS, locale="en").ok
+
+    def test_the_effect_has_to_be_the_sources_too(self) -> None:
+        # The source's cause, joined to an effect it never gave it.
+        result = verify("Customer satisfaction fell due to provider throttling.", sources=self.EMAILS, locale="en")
+
+        assert ("cause", "due to") in _found(result)
+
+    def test_a_cause_the_source_does_not_state(self) -> None:
+        result = verify("Confirmation emails were delayed due to a database outage.", sources=self.EMAILS, locale="en")
+
+        assert ("cause", "due to") in _found(result)
+
+    def test_a_source_that_links_nothing_backs_no_cause(self) -> None:
+        sources = [Source("s1", "Confirmation emails arrive 8 hours late. The email provider throttled sending.")]
+
+        result = verify("Confirmation emails arrive 8 hours late due to provider throttling.", sources=sources, locale="en")
+
+        assert ("cause", "due to") in _found(result)
+
+    def test_only_the_cited_source_counts(self) -> None:
+        sources = [*self.EMAILS, Source("s3", "Five customers in Tampa received invoices with the wrong tax.")]
+
+        result = verify("Confirmation emails were delayed due to email provider throttling [s3].", sources=sources, locale="en")
+
+        assert ("cause", "due to") in _found(result)
+
+    def test_a_date_ahead_the_source_gives(self) -> None:
+        sources = [Source("s1", "La red Telar activará la actualización «Faro» el 5 de mayo.")]
+
+        text = "Asimismo, se informa que la red Telar activará la actualización «Faro» el 5 de mayo."
+        assert verify(text, sources=sources, locale="es").ok
+        changed = verify("La red Telar cancelará la actualización «Faro» el 5 de mayo.", sources=sources, locale="es")
+        assert ("forecast", "cancelará") in _found(changed)
+        assert ("forecast", "subirá") in _found(verify("El precio de ether subirá.", sources=sources, locale="es"))
+
+
+class TestAReadingOfTheFigures:
+    """«Lo que implica», «indicating», «sugiere»: a figure said again, or a reading of it (pilot, 2026-11-24)."""
+
+    CONVERSION = [
+        Fact("conversion", 4.0, unit="%", decimals=1, subject="conversión"),
+        Fact("variacion_conversion", -1.5, unit="pp", decimals=1, change=True, subject="conversión"),
+    ]
+
+    @pytest.mark.parametrize("words", ["lo que implica", "lo que refleja", "reflejando"])
+    def test_a_change_said_again_is_not_a_cause(self, words: str) -> None:
+        text = f"La conversión se ubicó en 4,0 %, {words} una disminución de 1,5 pp respecto al mes anterior."
+
+        assert verify(text, self.CONVERSION, locale="es").ok
+
+    def test_more_read_into_the_change_is_a_cause(self) -> None:
+        text = (
+            "La conversión se ubicó en 4,0 %, lo que refleja una disminución de 1,5 pp que responde a la mayor "
+            "competencia en el segmento de pymes."
+        )
+
+        assert ("cause", "lo que refleja") in _found(verify(text, self.CONVERSION, locale="es"))
+
+    def test_a_negative_variation_is_a_fall(self) -> None:
+        facts = [Fact("variacion_devoluciones", 0.9, unit="pp", decimals=1, change=True, subject="devoluciones")]
+        text = "La tasa de devoluciones aumentó, lo que implica una variación negativa de 0,9 puntos porcentuales."
+
+        assert ("direction_contradiction", "variación negativa") in _found(verify(text, facts, locale="es"))
+        assert verify(text.replace("negativa", "positiva"), facts, locale="es").ok
+
+    @pytest.mark.parametrize(
+        "reading",
+        [
+            "indicating stronger demand",
+            "suggesting a shift in demand",
+            "signaling continued investment",
+            "which contributed to the result",
+        ],
+    )
+    def test_a_reading_of_the_figures_is_a_cause_in_any_grammar(self, reading: str) -> None:
+        facts = [Fact("orders", 37225, unit="orders", subject="orders")]
+
+        result = verify(f"Online orders reached 37,225, {reading}.", facts, locale="en")
+
+        assert "cause" in {finding.check for finding in result.findings}
+
+    @pytest.mark.parametrize("text", ["Estos indicadores sugieren una expansión.", "Los pedidos llegaron a 506, sugiriendo una mejora."])
+    def test_a_reading_in_spanish(self, text: str) -> None:
+        facts = [Fact("pedidos", 506, unit="pedidos", subject="pedidos")]
+
+        assert "cause" in {finding.check for finding in verify(text, facts, locale="es").findings}
+
+    def test_a_verdict_of_yours_after_a_reading_is_yours(self) -> None:
+        facts = [Fact("nrr", 101, unit="%", subject="NRR"), Fact("variacion_nrr", 1, unit="pp", change=True, subject="NRR")]
+        labels = [Label("tendencia", "subida leve")]
+
+        assert verify("El NRR subió a 101 %, indicando una subida leve.", facts, labels, locale="es").ok
+        result = verify("El NRR subió a 101 %, indicando una subida fuerte.", facts, labels, locale="es")
+        assert ("cause", "indicando") in _found(result)

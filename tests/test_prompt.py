@@ -85,6 +85,12 @@ class TestTheRulesFollowThePolicy:
         assert "Do not forecast, do not give causes, do not say that anything is certain" in prompt
         assert "ends with its id in brackets, like [s1]" in prompt
 
+    def test_a_source_may_lend_its_own_causes_and_dates(self) -> None:
+        # What the checks let through: a source's cause or date ahead, repeated in its words.
+        assert "may repeat a cause or a date ahead that the source itself gives" in _prompt()
+        assert "may repeat a cause" not in _prompt(policy=Policy(causes=False, forecasts=False))
+        assert "may repeat a cause" not in build_prompt("x", FACTS, LABELS, [], Policy(), "es")[1]
+
     def test_a_check_turned_off_drops_its_rule(self) -> None:
         prompt = _prompt(policy=Policy(causes=False, forecasts=False))
 

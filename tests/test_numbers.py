@@ -111,6 +111,20 @@ class TestSignsPercentsAndIdentifiers:
     def test_percentages_are_marked(self, text: str) -> None:
         assert _one(text).percent
 
+    @pytest.mark.parametrize(
+        "text",
+        ["1,5 pp", "1.5pp", "0,9 puntos porcentuales", "1 punto porcentual", "4 percentage points",
+         "a 4-percentage-point fall", "a 0.4‑percentage‑point rise", "16 puntos", "16 points", "2 p.p."],
+    )  # fmt: skip
+    def test_points_are_marked(self, text: str) -> None:
+        mention = _one(text)
+
+        assert mention.points and not mention.percent
+
+    @pytest.mark.parametrize("text", ["25 puntos básicos", "25 basis points", "1,5 %", "1,5 personas"])
+    def test_other_units_are_not_points(self, text: str) -> None:
+        assert not _one(text).points
+
     @pytest.mark.parametrize("text", ["Q3", "COVID-19", "5G", "B2B", "3er"])
     def test_digits_glued_to_letters_are_identifiers(self, text: str) -> None:
         mention = _one(f"en {text} hubo")
@@ -168,6 +182,13 @@ class TestMatchingAFact:
     def test_a_percentage_never_matches_a_plain_count(self) -> None:
         assert match_fact(_one("48 %"), Decimal("48"), percent=False) is None
         assert match_fact(_one("48"), Decimal("48"), percent=False) == "exact"
+
+    def test_points_never_match_a_fact_in_percent(self) -> None:
+        """Found in the evaluation's pilot (2026-11-24): «1.9 percentage points lower» read as orders' +1.9 %."""
+        assert match_fact(_one("1.9 percentage points"), Decimal("1.9"), percent=True) is None
+        assert match_fact(_one("1.9 percentage points"), Decimal("-1.9"), percent=False) == "abs"
+        assert match_fact(_one("1,5 puntos porcentuales", "es"), Decimal("-1.5"), percent=False) == "abs"
+        assert match_fact(_one("1.9"), Decimal("1.9"), percent=True) == "exact"  # a bare figure still may
 
     def test_an_identifier_is_never_a_quantity(self) -> None:
         assert match_fact(_one("Q3"), Decimal("3"), percent=False) is None

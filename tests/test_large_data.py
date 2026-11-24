@@ -72,6 +72,12 @@ CASES: dict[str, Callable[[], object]] = {
     "identifiers against a long source": lambda: verify(
         " ".join(_word(i) + "9" for i in range(HALF // 7)), [], sources=_big_source()
     ),
+    # A cause repeated against thousands of sources that state it.
+    "causes against many sources": lambda: verify(
+        "Emails were late due to provider throttling. " * (HALF // 46),
+        [],
+        sources=[Source(f"s{i}", "Emails were late because the provider throttled sending.") for i in range(HALF // 60)],
+    ),
     # Every sentence against every fact's subject.
     "subjects against many sentences": lambda: verify(
         "Flat. " * (HALF // 6), [Fact(f"f{i}", 1000 + i, subject=_word(i)) for i in range(HALF // 40)]

@@ -11,10 +11,14 @@ out. The checks, in the order they run:
 2. Signs. A negative value written without its minus sign needs a word that
    says it fell («cayeron 3,2 %»).
 3. Directions. A word that says something went up or down must agree with the
-   sign of the change it talks about, and a move nothing backs is a claim.
+   sign of the change it talks about, and a move nothing backs is a claim. The
+   change it talks about is the subject it names («the rise in churn»), else
+   the figure beside it, else, for a move that points back («esta
+   reducción»), the changes of the sentence before.
 4. Names. A proper name must be in your facts, labels, sources or known names.
 5. Claims. A forecast, a claim of certainty or a cause is a claim the numbers
-   do not make (lexicon.py says how far those lists go).
+   do not make (lexicon.py says how far those lists go). A cause or a forecast
+   that a source states may be repeated with that source's words.
 6. Anchoring. A sentence that passed everything else must still carry
    something from your data, or cite a source. It needs no word list: a
    sentence with no data is the writer's opinion, however it is phrased.
@@ -23,6 +27,7 @@ out. The checks, in the order they run:
 import re
 from bisect import bisect_left, bisect_right
 from collections import Counter
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from decimal import Context as DecimalContext
 from decimal import Decimal, localcontext
@@ -41,6 +46,27 @@ _EDGE = ".,;:-'’\"«»“”()¿?¡!"
 _OPENERS = ":¿¡«\"“(—–-"
 _BEFORE_A_WORD = " " + MASK
 _MOVES = (("up", lexicon.UP), ("down", lexicon.DOWN))
+# What a move names right after it: «the rise in churn», «la caída de la conversión».
+# Two words reach «monthly churn» or «tickets resueltos», and not the «costs» of
+# «revenue fell in Europe as costs rose».
+_ABOUT = re.compile(r"\s+(?:in|of|en|de|del)\s+(?:(?:the|el|la|los|las)\s+)?")
+_NEXT_WORDS = re.compile(r"(?:[^\W\d_][\w'’\-]*\s*){1,2}")
+# The verbs that may bring in a figure rather than a cause: «lo que implica una
+# caída de 1,5 pp», «reflecting a 1.9 % increase» (see _restates_a_change).
+_RESTATES = re.compile(r"\b(?:implica|significa|refleja|reflejando|means|implies|reflects|reflecting)\b")
+_RESTATE_LEAD = 4  # words between such a verb and the change it brings in
+_RESTATE_TAIL = 8  # words after that change to the end of the clause («respecto al mes anterior»)
+# The verbs that read a conclusion off the figures rather than give a cause:
+# followed by a verdict of yours («indicando una tendencia alcista»), they
+# only say that verdict again.
+_INFERS = re.compile(
+    r"\b(?:refleja|indica|demuestra|sugier(?:e|en)|sugiri[oó]|sugiriendo|evidencia|confirma|implica|significa"
+    r"|indicando|se[ñn]alando|reflejando|reflects|indicates|shows|suggest(?:s|ed|ing)?|demonstrates|means"
+    r"|implies|signals|indicating|signall?ing|reflecting)\b"
+)
+_CLAIM_WORD = re.compile(r"[^\W_]+")
+_CLAIM_REACH = 12  # words compared on each side of a cause or a forecast
+_CLAIMS_A_SOURCE_MAY_STATE = (("cause", lexicon.CAUSE), ("forecast", lexicon.FORECAST))
 
 
 @dataclass(frozen=True)
@@ -114,6 +140,7 @@ class SentenceCheck:
     subjects: list[str] = field(default_factory=list)
     output: str = ""
     anchors: int = 0  # pieces of your data the sentence carries, for the anchoring check
+    changes: list[str] = field(default_factory=list)  # the changes it spoke of, for «esta reducción» in the next
 
 
 _RUN = re.compile(r"[a-z0-9]+")  # a word's letters, as the word matchers bound them
@@ -292,9 +319,26 @@ class Context:
         # like, how each verdict reads when quoted, and whether a verdict's own
         # words say the value fell («caída leve»).
         self.source_moves: dict[str, frozenset[str]] = {}
+        # Which sources state a cause or a forecast themselves, and the stems of
+        # the words those write: a sentence may repeat such a claim with the
+        # source's words (see _stated_by_a_source), and make up none.
+        claims: dict[str, set[str]] = {code: set() for code, _ in _CLAIMS_A_SOURCE_MAY_STATE}
         for sid, source in self.sources.items():
             lowered = lower(source.evidence)
             self.source_moves[sid] = frozenset(polarity for polarity, pattern in _MOVES if pattern.search(lowered))
+            for code, pattern in _CLAIMS_A_SOURCE_MAY_STATE:
+                if pattern.search(lowered):
+                    claims[code].add(sid)
+        self.claimed_by: dict[str, frozenset[str]] = {code: frozenset(sids) for code, sids in claims.items()}
+        self.source_stems: dict[str, frozenset[str]] = {
+            sid: frozenset(_stem(word) for word in _CLAIM_WORD.findall(self.source_evidence[sid]))
+            for sid in sorted(set().union(*claims.values()))
+        }
+        self._claimers_by_stem: dict[str, list[str]] = {}
+        for sid, stems in self.source_stems.items():
+            for stem in stems:
+                self._claimers_by_stem.setdefault(stem, []).append(sid)
+        self._stated: dict[tuple[str, frozenset[str], frozenset[str], frozenset[str]], bool] = {}
         self.label_minus = {
             name: _carries_minus(lower(label.text), (0, len(label.text))) for name, label in self.labels.items()
         }
@@ -471,6 +515,28 @@ class Context:
             self._backed[key] = found
         return self._backed[key]
 
+    def claim_stated(self, code: str, needed: set[str], some: set[str], evidence: _Evidence) -> bool:
+        """Whether one of these sources states a claim of this kind in these words.
+
+        That source writes every stem in `needed` and at least one in `some`.
+        Only the sources holding the rarest needed stem are looked at, and
+        each is counted like a fact a figure may stand for. A claim repeated
+        word for word is looked up once.
+        """
+        key = (code, frozenset(needed), frozenset(some), evidence.key)
+        if key not in self._stated:
+            rarest = min(needed, key=lambda stem: len(self._claimers_by_stem.get(stem, ())))
+            candidates = self._claimers_by_stem.get(rarest, [])
+            self.spend(len(candidates))
+            self._stated[key] = any(
+                sid in self.claimed_by[code]
+                and sid in evidence.key
+                and needed <= self.source_stems[sid]
+                and not some.isdisjoint(self.source_stems[sid])
+                for sid in candidates
+            )
+        return self._stated[key]
+
 
 def _shown(fact: Fact, ctx: Context) -> str:
     """A fact as Python writes it, for a finding a person will read."""
@@ -522,6 +588,96 @@ def _agrees(polarity: str, negated: bool, value: Decimal) -> bool:
     if polarity == "up":
         return value <= 0 if negated else value > 0
     return value >= 0 if negated else value < 0
+
+
+def _one_way(facts: list[Fact]) -> bool:
+    """Whether these changes all point the same way: two that do not get no verdict."""
+    return len({(fact.number > 0) - (fact.number < 0) for fact in facts}) == 1
+
+
+def _points_back(lowered: str, clause_start: int, position: int) -> bool:
+    """Whether the move at `position` points back: «esta reducción», «this sharp decline».
+
+    One word may stand between the pointer and the move, unless it says when
+    («este mes cayó»), says nothing («this is up») or is a possessive («this
+    quarter's decline» is this quarter's).
+    """
+    words = last_words(lowered, clause_start, position, 2)
+    if words and words[-1] in lexicon.DEMONSTRATIVES:
+        return True
+    return (
+        len(words) == 2
+        and words[0] in lexicon.DEMONSTRATIVES
+        and words[1] not in lexicon.TIME_WORDS
+        and fold(words[1]) not in lexicon.FUNCTION_WORDS
+        and not words[1].endswith(("'s", "’s"))
+    )
+
+
+def _words_up_to(text: str, start: int, end: int, limit: int) -> int:
+    """How many words text[start:end] holds, counted no further than limit + 1."""
+    count = 0
+    for _ in _CLAIM_WORD.finditer(text, start, end):
+        count += 1
+        if count > limit:
+            break
+    return count
+
+
+def _restates_a_change(
+    lowered: str, match: re.Match[str], clause: tuple[int, int], changes: list[_Reference], starts: list[int]
+) -> bool:
+    """Whether «lo que implica» or «reflecting» brings in one of your changes and nothing more.
+
+    The change comes within a few words of it and the clause ends a few
+    words after the change: «reflejando una disminución del 3,6 % frente al
+    mes anterior». «Reflecting a 1.1 % increase that aligns with typical
+    inflationary pressures» reads more into the figure, and is a cause.
+    """
+    index = bisect_left(starts, match.end())
+    if index == len(starts) or starts[index] >= clause[1]:
+        return False
+    change = changes[index]
+    if _words_up_to(lowered, match.end(), change.start, _RESTATE_LEAD) > _RESTATE_LEAD:
+        return False
+    return _words_up_to(lowered, change.start + len(change.span), clause[1], _RESTATE_TAIL) <= _RESTATE_TAIL
+
+
+def _stem(word: str) -> str:
+    """A folded word cut to six letters after a plural «s»: «throttled» and «throttling», «email» and «emails»."""
+    if len(word) > 3 and word.endswith("s"):
+        word = word[:-1]
+    return word[:6]
+
+
+def _content_stems(words: list[str]) -> set[str]:
+    """The stems of the words that say something, folded."""
+    return {_stem(word) for chunk in words for word in _CLAIM_WORD.findall(fold(chunk)) if word not in lexicon.FUNCTION_WORDS}
+
+
+def _stated_by_a_source(
+    code: str, lowered: str, match: re.Match[str], clause: tuple[int, int], evidence: _Evidence, ctx: Context
+) -> bool:
+    """Whether the sentence repeats a cause or a forecast that a source states itself.
+
+    The source has to state one («because the email provider throttled
+    sending», «activará la actualización el 5 de mayo») and write the
+    sentence's words for it: every word after the connector to the end of its
+    clause, the connector's own words that say something («activará»), and at
+    least one word before it in the clause. «MRR fell due to provider
+    throttling» joins the source's cause to an effect the source never gave
+    it: cut. So is a claim too long to compare, past _CLAIM_REACH words.
+    """
+    if not ctx.claimed_by[code]:
+        return False
+    after: list[str] = []
+    for word in _CLAIM_WORD.finditer(lowered, match.end(), clause[1]):
+        after.append(word.group())
+        if len(after) > _CLAIM_REACH:
+            return False
+    needed = _content_stems([lowered[match.start() : match.end()], *after])
+    some = _content_stems(last_words(lowered, clause[0], match.start(), _CLAIM_REACH))
+    return bool(needed and some) and ctx.claim_stated(code, needed, some, evidence)
 
 
 class _Subjects:
@@ -728,23 +884,46 @@ def _check_directions(
     evidence: _Evidence,
     check: SentenceCheck,
     refs: list[_Reference],
-) -> None:
+    before: list[Fact],
+) -> bool:
+    """Check each move against the change it talks about; say whether one pointed back to `before`."""
     changes = sorted((ref for ref in refs if ctx.facts[ref.fact].change), key=lambda ref: ref.start)
     starts = [ref.start for ref in changes]
     # What a move with no figure of its own is judged against, per clause:
     # the changes it names (and whether they all point one way).
     judged: dict[tuple[int, int], tuple[list[Fact], bool]] = {}
+    before_one_way = _one_way(before)
+    pointed_back = False
+
+    def judge(word: str, polarity: str, negated: bool, facts: list[Fact], one_way: bool) -> None:
+        check.anchors += 1
+        if one_way and not _agrees(polarity, negated, facts[0].number):
+            check.findings.append(_contradiction(word, polarity, negated, facts[0], ctx))
+
     for polarity, pattern in _MOVES:
         for match in pattern.finditer(lowered):
             clause = clauses.of(match.start())
             negated = _negated(lowered, clause[0], match.start())
             word = masked[match.start() : match.end()]
+            # The subject it names right after it: in «this rise in churn
+            # aligns with a 4-point fall in NRR» the rise is churn's, whatever
+            # figure stands nearer.
+            about = _ABOUT.match(lowered, match.end(), clause[1])
+            words = _NEXT_WORDS.match(lowered, about.end(), clause[1]) if about else None
+            if words is not None:
+                bound = [ctx.facts[name] for name in subject_facts.named(words.span()) if ctx.facts[name].change]
+                if bound:
+                    judge(word, polarity, negated, bound, _one_way(bound))
+                    continue
             nearest = _nearest(changes, starts, clause, match.start())
             if nearest is not None:
-                check.anchors += 1
-                fact = ctx.facts[nearest.fact]
-                if not _agrees(polarity, negated, fact.number):
-                    check.findings.append(_contradiction(word, polarity, negated, fact, ctx))
+                judge(word, polarity, negated, [ctx.facts[nearest.fact]], True)
+                continue
+            # A move that points back and names nothing of its own talks about
+            # the sentence before: «Pese a esta reducción, se resolvieron más».
+            if before and not subject_facts.named(clause) and _points_back(lowered, clause[0], match.start()):
+                pointed_back = True
+                judge(word, polarity, negated, before, before_one_way)
                 continue
             if clause not in judged:
                 # Which change the word talks about: one whose subject the
@@ -756,19 +935,17 @@ def _check_directions(
                     named = subject_facts.named((0, len(masked)))
                 facts = [ctx.facts[name] for name in named if ctx.facts[name].change]
                 # Two changes of that subject pointing different ways get no verdict.
-                one_way = len({(fact.number > 0) - (fact.number < 0) for fact in facts}) == 1
-                judged[clause] = (facts, one_way)
+                judged[clause] = (facts, _one_way(facts))
             facts, one_way = judged[clause]
             if facts:
-                check.anchors += 1
-                if one_way and not _agrees(polarity, negated, facts[0].number):
-                    check.findings.append(_contradiction(word, polarity, negated, facts[0], ctx))
+                judge(word, polarity, negated, facts, one_way)
                 continue
             if polarity in evidence.moves:
                 continue
             check.findings.append(
                 Finding("unbacked_direction", word, f"«{word}» claims a move that no change fact or source backs")
             )
+    return pointed_back
 
 
 def _anchored(check: SentenceCheck, refs: list[_Reference]) -> bool:
@@ -788,8 +965,12 @@ def _contradiction(word: str, polarity: str, negated: bool, fact: Fact, ctx: Con
     return Finding("direction_contradiction", word, f"«{word}» says {said}, but {fact.name} is {_shown(fact, ctx)}")
 
 
-def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceCheck:
-    """Run every check on one sentence and render what would go out."""
+def check_sentence(sentence: str, ctx: Context, *, compose: bool, before: Sequence[str] = ()) -> SentenceCheck:
+    """Run every check on one sentence and render what would go out.
+
+    before: the changes the sentence before spoke of (its SentenceCheck.changes),
+    for a move here that points back to them («esta reducción»).
+    """
     check = SentenceCheck()
     hidden: list[tuple[int, int]] = []
 
@@ -870,8 +1051,10 @@ def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceChe
         )
 
     subject_facts = _Subjects(masked, ctx)
+    pointed_back = False
     if ctx.policy.directions:
-        _check_directions(masked, lowered, clauses, subject_facts, ctx, evidence, check, refs)
+        earlier = [ctx.facts[name] for name in before if name in ctx.facts]
+        pointed_back = _check_directions(masked, lowered, clauses, subject_facts, ctx, evidence, check, refs, earlier)
 
     if ctx.policy.names:
         for name in _name_candidates(masked):
@@ -884,6 +1067,9 @@ def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceChe
                     Finding("unbacked_name", name, f"«{name}» is not in your facts, labels, sources or known names")
                 )
 
+    change_refs = sorted((ref for ref in refs if ctx.facts[ref.fact].change), key=lambda ref: ref.start)
+    change_starts = [ref.start for ref in change_refs]
+    verdict_starts = sorted(start for start, _ in verdicts)
     for enabled, code, pattern, why in (
         (ctx.policy.forecasts, "forecast", lexicon.FORECAST, "forecasts; the text may only describe the data"),
         (ctx.policy.certainty, "certainty", lexicon.CERTAINTY, "claims a certainty the numbers do not carry"),
@@ -891,6 +1077,22 @@ def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceChe
     ):
         if enabled:
             for match in pattern.finditer(lowered):
+                clause = clauses.of(match.start())
+                if code == "cause" and (
+                    (
+                        _RESTATES.search(lowered, match.start(), match.end())
+                        and _restates_a_change(lowered, match, clause, change_refs, change_starts)
+                    )
+                    or (
+                        _INFERS.search(lowered, match.start(), match.end())
+                        and _any_within(verdict_starts, (match.end(), clause[1]))
+                    )
+                ):
+                    # «lo que implica una caída de 1,5 pp», «indicando una tendencia
+                    # alcista»: a change or a verdict of yours, said again, not a cause.
+                    continue
+                if code != "certainty" and _stated_by_a_source(code, lowered, match, clause, evidence, ctx):
+                    continue
                 span = masked[match.start() : match.end()]
                 check.findings.append(Finding(code, span, f"«{span}» {why}"))
 
@@ -907,8 +1109,13 @@ def check_sentence(sentence: str, ctx: Context, *, compose: bool) -> SentenceChe
             listed.add(ref.fact)
             check.facts.append(ref.fact)
     subjects: dict[str, None] = {}  # in order, without repeats
-    for name in [*check.facts, *subject_facts.named((0, len(masked)))]:
+    spoken = [*check.facts, *subject_facts.named((0, len(masked)))]
+    for name in spoken:
         subjects.update(dict.fromkeys(ctx.facts[name].subjects))
     check.subjects = list(subjects)
+    # What a «this rise» in the next sentence points back to: the changes this
+    # one gave or named, or, if it only pointed back itself, the same ones.
+    own = [name for name in dict.fromkeys(spoken) if ctx.facts[name].change]
+    check.changes = own or (list(before) if pointed_back else [])
     check.output = render_template(sentence, ctx) if compose else sentence
     return check

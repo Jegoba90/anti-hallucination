@@ -23,6 +23,7 @@ from .checks import (
     Context,
     Finding,
     Policy,
+    SentenceCheck,
     TooManyMatches,
     check_sentence,
     render_template,
@@ -162,7 +163,16 @@ def _run(
         if problems:
             raise ValueError(f"fallback {subject!r}: {'; '.join(problems)}")
 
-    planned = [[(sentence, check_sentence(sentence, ctx, compose=mode == "compose")) for sentence in split_sentences(line)] for line in split_lines(text)]
+    # In reading order, each sentence told which changes the one before spoke
+    # of: «Pese a esta reducción» talks about those.
+    planned: list[list[tuple[str, SentenceCheck]]] = []
+    before: list[str] = []
+    for line in split_lines(text):
+        planned.append([])
+        for sentence in split_sentences(line):
+            check = check_sentence(sentence, ctx, compose=mode == "compose", before=before)
+            planned[-1].append((sentence, check))
+            before = check.changes
     kept_facts = {name for line in planned for _, check in line if not check.findings for name in check.facts}
     # Each fallback read once, not once per failed sentence: the facts it would
     # give, and which fallbacks each subject (as the checks compare it) calls.

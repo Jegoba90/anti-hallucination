@@ -121,7 +121,11 @@ def build_prompt(
         if enabled
     ]
     if claims:
-        rules.append("Do not " + ", do not ".join(claims) + ".")
+        rule = "Do not " + ", do not ".join(claims) + "."
+        if sources and (policy.forecasts or policy.causes):
+            # What the checks let through: a source's own cause or date ahead, in its words.
+            rule += " A sentence about a source may repeat a cause or a date ahead that the source itself gives."
+        rules.append(rule)
     if policy.names:
         rules.append("Name no person, company, product or place that the brief, the placeholders or the sources do not name.")
     if sources:

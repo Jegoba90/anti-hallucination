@@ -47,6 +47,7 @@ class Mention:
     negative: bool = False
     signed: bool = False  # the text wrote a sign: «-3,2», «+5»
     percent: bool = False
+    points: bool = False  # «1,5 pp», «4 percentage points»: a change in points, never a fact in %
     identifier: bool = False  # «Q3», «COVID-19»: compared as written, never as a quantity
 
 
@@ -78,7 +79,11 @@ _NUMBER_RE = re.compile(
     r"(?P<digits>\d{1,3}(?:[" + _GROUP_SPACES + r"]\d{3})+(?!\d)(?:[.,]\d+)?|\d+(?:[.,]\d+)*)"
     r"(?:(?P<suffix>MM|mn|bn|tn|[kKMBT])(?![^\W_])"
     r"|\s?(?P<scale>(?i:" + _SCALE_WORD_RE + r"))(?![^\W_]))?"
-    r"(?P<percent>\s?(?:%|(?i:por\s+ciento|percent|pct)\b))?"
+    r"(?:(?P<percent>\s?(?:%|(?i:por\s+ciento|percent|pct)\b))"
+    # Points: «1,5 pp», «a 4-percentage-point fall», «0,9 puntos porcentuales»,
+    # «16 puntos». Basis points («25 puntos básicos») are not points.
+    r"|(?P<points>[\s‑-]?(?i:pp\b|p\.\s?p\.|percentage[\s‑-]+points?\b|puntos?\s+porcentuales?\b"
+    r"|punto\s+porcentual\b|points?\b|puntos?\b(?!\s+b[aá]sicos?\b))))?"
 )
 
 _WORDS_ES: dict[str, int] = {
@@ -269,6 +274,7 @@ def extract(text: str, locale: str = "auto") -> list[Mention]:
                 negative=sign in ("-", "−"),
                 signed=sign is not None,
                 percent=bool(match.group("percent")),
+                points=bool(match.group("points")),
             )
         )
         spans.append((start, end))
@@ -346,8 +352,12 @@ def match_fact(mention: Mention, value: Decimal, percent: bool, decimals: int | 
     decimals: how many decimals Python writes the fact with. A figure written
     to exactly that precision is the fact as Python writes it, even with one
     significant digit: 0.76 % written with one decimal is «0,8 %».
+
+    The unit has to agree both ways: a figure in % is no fact in other units,
+    and a figure in points («1,9 pp») is no fact in %, whose change in points
+    it would be confused with.
     """
-    if mention.identifier or (mention.percent and not percent):
+    if mention.identifier or (mention.percent and not percent) or (mention.points and percent):
         return None
     found: str | None = None
     for reading in mention.readings:

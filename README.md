@@ -147,10 +147,10 @@ its figures.
 
 | Check | `compose()` — a draft with placeholders | `verify()` — existing text |
 |---|---|---|
-| Figures | Python fills placeholders; figures copied from a cited source are also allowed | Each figure must match a fact at the written precision, or occur in a label or permitted source |
-| Signs and directions | A word such as “fell” or “cayeron” must agree with the change; unsupported movement is flagged | Same |
+| Figures | Python fills placeholders; figures copied from a cited source are also allowed | Each figure must match a fact at the written precision and in its unit (`1.9 pp` is never a fact in %), or occur in a label or permitted source |
+| Signs and directions | A word such as “fell” or “cayeron” must agree with the change it talks about: the subject it names (“the rise in churn”), the figure beside it, or for “this rise” the sentence before; unsupported movement is flagged | Same |
 | Names | Checks proper names against facts, labels, sources, and `known_names` | Same |
-| Forecasts, certainty, causes | Flags phrases from English and Spanish word lists by default | Same |
+| Forecasts, certainty, causes | Flags phrases from English and Spanish word lists by default, readings of the figures included (“indicating”, “sugiere”); a cause or a forecast that a source states passes when the sentence repeats it in the source’s words | Same |
 | Data in every sentence | Requires a placeholder, a checked direction, or a source citation | Requires a figure, a verdict from your data, a checked direction, or a citation |
 
 Number parsing follows the locale: `1.250` means a thousand two hundred and

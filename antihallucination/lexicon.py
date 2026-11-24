@@ -26,6 +26,7 @@ UP = re.compile(
     r"|climb(?:s|ed|ing)?|jump(?:s|ed|ing)?|surg(?:e|es|ed|ing)|soar(?:s|ed|ing)?"
     r"|rall(?:y|ied|ies|ying)|rebound(?:s|ed|ing)?|gain(?:s|ed|ing)?|doubl(?:e|es|ed|ing)"
     r"|tripl(?:e|es|ed|ing)|higher(?=\s+than\b)|up(?=\s+(?:by\b|\d))"
+    r"|variaci[oó]n(?:es)?\s+positivas?|cambios?\s+positivos?|positive\s+(?:change|variation)s?"
     r")\b"
 )
 DOWN = re.compile(
@@ -41,8 +42,27 @@ DOWN = re.compile(
     r"|slump(?:s|ed|ing)?|plung(?:e|es|ed|ing)|tumbl(?:e|es|ed|ing)|sank|los(?:e|es|t|ing)"
     r"|halv(?:e|es|ed|ing)|contract(?:ed|ing|ion)|reduc(?:e|es|ed|ing|tion)"
     r"|lower(?=\s+than\b)|down(?=\s+(?:by\b|\d))"
+    r"|variaci[oó]n(?:es)?\s+negativas?|cambios?\s+negativos?|negative\s+(?:change|variation)s?"
     r")\b"
 )
+# Words that point back to what the sentence before said: «pese a esta
+# reducción», «this rise». «that» is left out («orders that fell» points at
+# nothing), and so are «tal» and «such» («tal como subió», «such as rising»).
+DEMONSTRATIVES = frozenset(
+    {
+        "este", "esta", "estos", "estas", "ese", "esa", "esos", "esas", "aquel", "aquella", "aquellos",
+        "aquellas", "dicho", "dicha", "dichos", "dichas", "this", "these", "those",
+    }
+)  # fmt: skip
+# Between a pointer and its move a word may stand («esta leve reducción»),
+# unless it says when: «este mes cayó» is about this month, not the last sentence.
+TIME_WORDS = frozenset(
+    {
+        "día", "días", "semana", "semanas", "mes", "meses", "trimestre", "trimestres", "año", "años",
+        "período", "periodo", "períodos", "periodos", "day", "days", "week", "weeks", "month", "months",
+        "quarter", "quarters", "year", "years", "period", "periods",
+    }
+)  # fmt: skip
 # Words that carry a minus sign the figure left out: «una pérdida de 120.000».
 NEGATIVE_NOUNS = re.compile(
     r"\b(?:p[ée]rdidas?|d[ée]ficit|negativ[oa]s?|n[úu]meros\s+rojos|loss(?:es)?|deficit|negative"
@@ -94,6 +114,12 @@ CAUSE = re.compile(
     r"|because|due\s+to|owing\s+to|driven\s+by|caused\s+by|fuell?ed\s+by|thanks\s+to|as\s+a\s+result"
     r"|(?:which|this|that)\s+(?:reflects|indicates|shows|suggests|demonstrates|means|implies|signals)"
     r"|therefore|consequently|hence|led\s+to|resulted\s+in|attribut(?:ed|able)\s+to|on\s+the\s+back\s+of"
+    # The same readings with another grammar: a gerund («indicating», «sugiriendo»)
+    # or any subject («estos indicadores sugieren»). Bare «indica», «indicates»
+    # and «señala» stay out: they also report («el ticket indica que…»).
+    r"|sugier(?:e|en)|sugiri[oó]|sugiriendo|indicando|se[ñn]alando|reflejando"
+    r"|suggest(?:s|ed|ing)?|indicating|signall?ing|reflecting"
+    r"|contribu(?:ye|yen|y[oó]|yeron|ido|ir|yendo)\s+a|contribut(?:e|es|ed|ing)\s+to"
     r")\b"
 )
 
@@ -109,5 +135,30 @@ NOT_NAMES = frozenset(
         "usd", "eur", "gbp", "jpy", "cny", "chf", "cad", "aud", "mxn", "ars", "brl", "clp", "cop",
         "pen", "uyu", "kpi", "kpis", "ceo", "cfo", "coo", "cto", "pib", "gdp", "iva", "vat", "yoy",
         "mom", "qoq", "ytd", "ia", "ai", "id", "ok", "pdf", "url", "api", "utc",
+    }
+)  # fmt: skip
+
+# Words that say nothing of their own: articles, prepositions, pronouns,
+# auxiliaries and the bare connectors («due to», «debido a», «will»). A cause
+# or a forecast is compared with a source by the other words. Folded.
+FUNCTION_WORDS = frozenset(
+    {
+        "a", "al", "ante", "con", "contra", "de", "del", "desde", "durante", "en", "entre", "hacia",
+        "hasta", "mediante", "para", "por", "segun", "sin", "sobre", "tras", "el", "la", "los", "las",
+        "lo", "un", "una", "unos", "unas", "y", "e", "o", "u", "ni", "que", "como", "cuando", "donde",
+        "cual", "cuales", "quien", "quienes", "se", "su", "sus", "le", "les", "me", "te", "nos", "mi",
+        "mis", "tu", "tus", "este", "esta", "estos", "estas", "ese", "esa", "esos", "esas", "esto", "eso",
+        "ello", "es", "son", "fue", "fueron", "ser", "sido", "era", "eran", "ha", "han", "habia",
+        "habian", "hay", "estan", "estaba", "estaban", "muy", "mas", "menos", "tambien", "ya", "aun",
+        "asi", "pero", "sino", "aunque", "mientras", "si", "no", "porque", "pues", "debido", "causa",
+        "gracias", "culpa", "raiz",
+        "an", "the", "of", "in", "on", "at", "to", "for", "from", "by", "with", "as", "into", "onto",
+        "over", "under", "up", "down", "out", "about", "after", "before", "between", "through", "and",
+        "or", "nor", "but", "so", "yet", "if", "than", "then", "that", "this", "these", "those",
+        "which", "who", "whom", "whose", "what", "it", "its", "they", "their", "them", "he", "she",
+        "his", "her", "we", "our", "you", "your", "is", "are", "was", "were", "be", "been", "being",
+        "has", "have", "had", "do", "does", "did", "will", "would", "can", "shall", "must", "not",
+        "also", "very", "more", "most", "less", "due", "because", "owing", "thanks", "there", "here",
+        "where", "when", "while", "since", "until",
     }
 )  # fmt: skip
