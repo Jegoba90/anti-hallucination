@@ -23,7 +23,7 @@ that your facts are right, or that no sentence claims more than the lists in
 lexicon.py know how to catch.
 """
 
-__version__ = "0.3.2"
+__version__ = "0.4.0"
 
 from .checks import MAX_MATCHES, Finding, Policy, TooManyMatches
 from .errors import WriterError

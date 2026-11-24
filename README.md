@@ -384,7 +384,7 @@ Exit codes: `0` all sentences passed, `1` checks failed, `2` invalid input,
 
 ## Scope and limitations
 
-**Experimental · v0.3.** This is a layer of explicit rules for text generated
+**Experimental · v0.4.** This is a layer of explicit rules for text generated
 from supplied data. It is not a general factuality or semantic entailment
 checker.
 

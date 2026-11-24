@@ -8,20 +8,20 @@
     "url": "https://github.com/Jegoba90/anti-hallucination",
     "source": "github"
   },
-  "version": "0.3.2",
+  "version": "0.4.0",
   "packages": [
     {
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "antihallucination",
-      "version": "0.3.2",
+      "version": "0.4.0",
       "runtimeHint": "uvx",
       "runtimeArguments": [
         {
           "description": "Installs the MCP SDK, the package's [mcp] extra, at the same version.",
           "type": "named",
           "name": "--with",
-          "value": "antihallucination[mcp]==0.3.2"
+          "value": "antihallucination[mcp]==0.4.0"
         }
       ],
       "packageArguments": [
