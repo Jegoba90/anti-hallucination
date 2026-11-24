@@ -20,7 +20,11 @@
   <a href="#scope-and-limitations"><img src="https://img.shields.io/badge/status-experimental-f59e0b?style=flat-square" alt="Status: experimental"></a>
 </p>
 
+<div align="center">
+
 [![M8ven Score](https://m8ven.ai/badge/mcp/jegoba90-anti-hallucination-1ns4i6?v=ca6de084755e0557be9940ccb0d2e135)](https://m8ven.ai/mcp/jegoba90-anti-hallucination-1ns4i6?s=readme)
+
+</div>
 
 <p align="center">
   <a href="#quick-start">Quick start</a> &nbsp;·&nbsp;
