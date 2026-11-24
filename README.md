@@ -160,18 +160,21 @@ such as `1,2 millones` and `4bn`, and a vocabulary of numbers written in words.
 ### Large inputs
 
 Checking time grows in line with the size of the text and the data together,
-for every kind of input found to be slow but one, at the end of this section.
-On the test machine, a 256 KB report of about 5,000 sentences takes 0.7 s, and
-the slowest text or mix of text and data found takes 1.1 s.
+for every kind of input found to be slow but one, at the end of this section:
+twice the input takes about twice the time. On the test machine, a 256 KB
+report of about 5,000 sentences takes 1 to 2 seconds, depending on its load,
+and the slowest kind of text found, digits next to numbers in words, about 4
+seconds. `tools/timing.py` measures each kind on your machine.
 
 When the text matches the data over and over, such as one figure that stands
 for thousands of facts, the work and the receipt would keep growing. The
 checks stop at 200,000 matches and raise `TooManyMatches`. The examples, made
-256 KB long, use at most 6,500.
+256 KB long, use at most 6,720.
 
 Two test files keep this from coming back: `tests/test_long_texts.py` and
-`tests/test_large_data.py` time 17 inputs that took from 6 to more than 25
-seconds before, and each must now finish within 3 seconds. The faster code was
+`tests/test_large_data.py` time 23 inputs, the 17 that took from 6 to more
+than 25 seconds before and 6 for the checks added in v0.4.0, and each must
+finish within 3 seconds. The faster code was
 also compared with the code before it on tens of thousands of random texts and
 data sets, and gave the same receipt, digest included, for every one.
 `tools/compare_versions.py` repeats that comparison against any git ref, and
@@ -395,6 +398,9 @@ checker.
   a name at the start of a sentence is not checked.
 - A sentence can carry a valid figure and still add an unsupported opinion.
   Put verdicts in labels and keep human review where it matters.
+- The checks do not know which way is better for each metric: “churn
+  improved by 0.4 pp” is cut when churn fell, because “improved” does not say
+  that it went down.
 - A receipt's SHA-256 digest checks internal consistency. It is unkeyed and
   does not authenticate the author or the origin of the data.
 
